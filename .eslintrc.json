@@ -1,0 +1,64 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jest": true,
+    "node": true
+  },
+  "rules": {
+    "semi": ["error", "always"],
+    "semi-style": ["error", "last"],
+    "quotes": ["error", "single"],
+    "brace-style": "error",
+    "space-before-blocks": "error",
+    "no-multi-spaces": "error",
+    "no-extra-semi": "error",
+    "no-duplicate-imports": "error",
+    "no-dupe-args": "error",
+    "no-dupe-keys": "error",
+    "no-duplicate-case": "error",
+    "no-func-assign": "error",
+    "no-label-var": "error",
+    "no-self-compare": "error",
+    "no-sparse-arrays": "error",
+    "no-this-before-super": "error",
+    "no-regex-spaces": "error",
+    "no-unexpected-multiline": "error",
+    "no-useless-rename": [
+      "error",
+      {
+        "ignoreDestructuring": false,
+        "ignoreImport": false,
+        "ignoreExport": false
+      }
+    ],
+    "react/jsx-uses-vars": "error",
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/ban-ts-comment": ["warn"],
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      {
+        "functions": false,
+        "classes": false
+      }
+    ],
+    "no-console": "warn"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react", "prettier"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
