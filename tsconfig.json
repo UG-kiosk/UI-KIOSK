@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+      "allowUnreachableCode": false,
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitReturns": true,
+      "strict": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "baseUrl": ".",
+      "module": "ESNext",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "noEmit": true,
+      "allowJs": true,
+      "checkJs": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "isolatedModules": true,
+      "esModuleInterop": true,
+      "jsx": "react-jsx",
+      "target": "es6",
+      "lib": ["dom", "dom.iterable", "esnext"],
+      "skipLibCheck": true,
+    },
+    "include": ["src/**/*", "cypress"],
+    "exclude": ["node_modules"]
+}
