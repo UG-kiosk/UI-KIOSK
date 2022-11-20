@@ -55,7 +55,7 @@
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "react", "prettier"],
+  "plugins": ["@typescript-eslint", "react", "prettier", "jest", "cypress"],
   "settings": {
     "react": {
       "version": "detect"
