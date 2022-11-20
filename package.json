@@ -7,9 +7,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "test-jest": "jest",
-    "prettier:ci": "prettier --list-different",
-    "lint": "npx eslint.",
-    "intgration:ci":"npx cypress run --component"
+    "prettier:ci": "npx prettier --list-different .",
+    "lint": "npx eslint .",
+    "intgration:ci": "npx cypress run --component"
   },
   "dependencies": {
     "react": "^18.2.0",
