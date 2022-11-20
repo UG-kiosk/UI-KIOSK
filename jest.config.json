@@ -1,5 +1,5 @@
 {
-    "bail": 0,
-    "errorOnDeprecated": true,
-    "verbose": true
+  "bail": 0,
+  "errorOnDeprecated": true,
+  "verbose": true
 }
