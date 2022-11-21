@@ -32,8 +32,8 @@ jobs:
       - name: unit test
       - run: yarn test
 
-      - name: integration cypress
-      - run: yarn npx cypress run --component
+      - name: integration tests
+      - run: yarn integration:ci
 
       - name: build
       - run: yarn build
