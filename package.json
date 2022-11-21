@@ -6,7 +6,10 @@
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test-jest": "jest"
+    "test": "jest --passWithNoTests",
+    "prettier:ci": "npx prettier --list-different .",
+    "lint": "npx eslint .",
+    "integration:ci": "npx cypress run --component"
   },
   "dependencies": {
     "react": "^18.2.0",
