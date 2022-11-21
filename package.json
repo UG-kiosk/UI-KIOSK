@@ -9,7 +9,7 @@
     "test": "jest --passWithNoTests",
     "prettier:ci": "npx prettier --list-different .",
     "lint": "npx eslint .",
-    "intgration:ci": "npx cypress run --component"
+    "integration:ci": "npx cypress run --component"
   },
   "dependencies": {
     "react": "^18.2.0",
