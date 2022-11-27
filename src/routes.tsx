@@ -12,7 +12,7 @@ const routes = [
     element: <App />,
   },
   {
-    path: '/*',
+    path: '*',
     element: <div>Error: wrong path: {window.location.pathname}</div>,
   },
 ];
