@@ -12,8 +12,8 @@ const routes = [
     element: <App />,
   },
   {
-    path: '/*',
-    element: <div>Error: wrong path: {window.location.pathname}</div>,
+    path: '*',
+    element: <div data-cy="ErrorDiv">Error: wrong path: {window.location.pathname}</div>,
   },
 ];
 
