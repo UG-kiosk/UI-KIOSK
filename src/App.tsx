@@ -1,3 +1,3 @@
-const App = () => <p>Hello World</p>;
+const App = () => <p data-cy="HelloWorld">Hello World</p>;
 
 export default App;

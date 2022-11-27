@@ -13,7 +13,7 @@ const routes = [
   },
   {
     path: '*',
-    element: <div>Error: wrong path: {window.location.pathname}</div>,
+    element: <div data-cy="ErrorDiv">Error: wrong path: {window.location.pathname}</div>,
   },
 ];
 
