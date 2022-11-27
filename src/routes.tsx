@@ -1,10 +1,11 @@
-import Login from './AdminPanel/modules/Login';
+import { LoginPage } from './AdminPanel/modules/LoginPage';
 import App from './App';
+import { createBrowserRouter } from 'react-router-dom';
 
 const routes = [
   {
     path: '/admin-panel/login',
-    element: <Login />,
+    element: <LoginPage />,
   },
   {
     path: '/',
@@ -16,4 +17,6 @@ const routes = [
   },
 ];
 
-export default routes;
+const router = createBrowserRouter(routes);
+
+export default router;
