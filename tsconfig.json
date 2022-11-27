@@ -22,6 +22,6 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true
   },
-  "include": ["src/**/*", "cypress"],
+  "include": ["src/**/*", "cypress", "cypress.d.ts"],
   "exclude": ["node_modules"]
 }
