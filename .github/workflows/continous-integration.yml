@@ -22,19 +22,22 @@ jobs:
           cache: 'yarn'
 
       - name: install dependencies
-      - run: yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile
 
       - name: test prettier
-      - run: yarn prettier:ci
+        run: yarn prettier:ci
 
       - name: test eslint
-      - run: yarn lint
+        run: yarn lint
 
       - name: unit test
-      - run: yarn test
+        run: yarn test
 
       - name: integration tests
-      - run: yarn integration:ci
+        run: yarn integration:ci
+
+      - name: e2e tests
+        run: yarn e2e:ci
 
       - name: build
-      - run: yarn build
+        run: yarn build
