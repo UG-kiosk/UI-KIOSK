@@ -14,9 +14,10 @@
     "e2e:ci": "npx start-server-and-test start http://localhost:3000 cy:e2e"
   },
   "dependencies": {
+    "@hookform/error-message": "^2.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.39.5",
+    "react-hook-form": "^7.39.4",
     "react-router-dom": "^6.4.3"
   },
   "devDependencies": {
