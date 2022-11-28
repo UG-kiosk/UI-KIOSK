@@ -15,10 +15,12 @@
   },
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
+    "@hookform/resolvers": "^2.9.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.39.4",
-    "react-router-dom": "^6.4.3"
+    "react-router-dom": "^6.4.3",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",

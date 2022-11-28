@@ -1,9 +1,9 @@
 export enum LoginFormFieldsNames {
-  Username = 'username',
-  Password = 'password',
+  USERNAME = 'USERNAME',
+  PASSWORD = 'PASSWORD',
 }
 
 export interface LoginFormTypes {
-  [LoginFormFieldsNames.Username]: string;
-  [LoginFormFieldsNames.Password]: string;
+  [LoginFormFieldsNames.USERNAME]: string;
+  [LoginFormFieldsNames.PASSWORD]: string;
 }
