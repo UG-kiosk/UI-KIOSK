@@ -14,8 +14,10 @@
     "e2e:ci": "npx start-server-and-test start http://localhost:3000 cy:e2e"
   },
   "dependencies": {
+    "@types/styled-components": "^5.1.26",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
@@ -41,5 +43,8 @@
     "start-server-and-test": "^1.14.0",
     "typescript": "^4.9.3",
     "vite": "^3.2.3"
+  },
+  "resolutions": {
+    "styled-components": "^5"
   }
 }
