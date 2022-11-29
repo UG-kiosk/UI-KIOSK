@@ -33,9 +33,6 @@ jobs:
       - name: unit test
         run: yarn test
 
-      - name: integration tests
-        run: yarn integration:ci
-
       - name: e2e tests
         run: yarn e2e:ci
 
