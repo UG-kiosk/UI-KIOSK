@@ -1,27 +1,22 @@
 import { LoginFormFieldsNames } from '../../../src/AdminPanel/modules/LoginPage/types';
 import { LoginPage } from '../../../src/AdminPanel/modules/LoginPage';
+import { LoginPageTestFunctions } from '../../utils/AdminPanel/LoginPageTestFunctions';
 
 describe('LoginPage.tsx', () => {
-  beforeEach(() => {
+  beforeEach(function () {
     cy.mount(<LoginPage />);
+    cy.wrap(new LoginPageTestFunctions()).as('tests');
   });
 
-  it.only('Login page content test', () => {
-    cy.getBySelector('admin-login-form').should('exist');
-    cy.getBySelector('username-label').should('exist').contains('Username:');
-    cy.getBySelector('username-input').should('exist');
-    cy.getBySelector('username-error').should('not.exist');
-    cy.getBySelector('password-label').should('exist').contains('Password:');
-    cy.getBySelector('password-input').should('exist');
-    cy.getBySelector('password-error').should('not.exist');
-    cy.getBySelector('login-button').should('exist');
+  it.only('Login page content test', function () {
+    this.tests.testLoginPageContent();
   });
 
-  it.only('Submit correct data', () => {
-    cy.getBySelector('username-input').type('admin');
-    cy.getBySelector('password-input').type('admin');
+  it.only('Submit correct data', function () {
+    this.tests.typeToUsername('admin');
+    this.tests.typeToPassword('admin');
 
-    cy.getBySelector('login-button').click();
+    this.tests.submitForm();
 
     cy.on('window:alert', str => {
       expect(str).to.equal(
@@ -30,46 +25,46 @@ describe('LoginPage.tsx', () => {
     });
   });
 
-  it.only('Type empty login', () => {
-    cy.getBySelector('username-error').should('not.exist');
-    cy.getBySelector('password-error').should('not.exist');
+  it.only('Type empty login', function () {
+    this.tests.getUsernameError().should('not.exist');
+    this.tests.getPasswordError().should('not.exist');
 
-    cy.getBySelector('username-input').focus().blur();
+    this.tests.getUsernameInput().focus().blur();
 
-    cy.getBySelector('username-error').should('exist');
-    cy.getBySelector('password-error').should('not.exist');
+    this.tests.getUsernameError().should('exist');
+    this.tests.getPasswordError().should('not.exist');
   });
 
-  it.only('Type empty password', () => {
-    cy.getBySelector('username-error').should('not.exist');
-    cy.getBySelector('password-error').should('not.exist');
+  it.only('Type empty password', function () {
+    this.tests.getUsernameError().should('not.exist');
+    this.tests.getPasswordError().should('not.exist');
 
-    cy.getBySelector('password-input').focus().blur();
+    this.tests.getPasswordInput().focus().blur();
 
-    cy.getBySelector('username-error').should('not.exist');
-    cy.getBySelector('password-error').should('exist');
+    this.tests.getUsernameError().should('not.exist');
+    this.tests.getPasswordError().should('exist');
   });
 
-  it.only('Submit empty data', () => {
-    cy.getBySelector('username-error').should('not.exist');
-    cy.getBySelector('password-error').should('not.exist');
+  it.only('Submit empty data', function () {
+    this.tests.getUsernameError().should('not.exist');
+    this.tests.getPasswordError().should('not.exist');
 
-    cy.getBySelector('login-button').click();
+    this.tests.submitForm();
 
-    cy.getBySelector('username-error').should('exist');
-    cy.getBySelector('password-error').should('exist');
+    this.tests.getUsernameError().should('exist');
+    this.tests.getPasswordError().should('exist');
   });
 
-  it.only('Errors disappear after correct data', () => {
-    cy.getBySelector('login-button').click();
+  it.only('Errors disappear after correct data', function () {
+    this.tests.submitForm();
 
-    cy.getBySelector('username-error').should('exist');
-    cy.getBySelector('password-error').should('exist');
+    this.tests.getUsernameError().should('exist');
+    this.tests.getPasswordError().should('exist');
 
-    cy.getBySelector('username-input').type('a');
-    cy.getBySelector('username-error').should('not.exist');
+    this.tests.typeToUsername('a');
+    this.tests.getUsernameError().should('not.exist');
 
-    cy.getBySelector('password-input').type('a');
-    cy.getBySelector('password-error').should('not.exist');
+    this.tests.typeToPassword('a');
+    this.tests.getPasswordError().should('not.exist');
   });
 });
