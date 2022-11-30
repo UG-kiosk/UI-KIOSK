@@ -2,7 +2,7 @@ name: CI
 
 on:
   pull_request:
-    branches: '*'
+    branches: '**'
 
 jobs:
   build:
@@ -32,9 +32,6 @@ jobs:
 
       - name: unit test
         run: yarn test
-
-      - name: integration tests
-        run: yarn integration:ci
 
       - name: e2e tests
         run: yarn e2e:ci
