@@ -14,6 +14,9 @@
     "e2e:ci": "npx start-server-and-test start http://localhost:3000 cy:e2e"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.10.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
