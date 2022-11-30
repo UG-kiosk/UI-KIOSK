@@ -1,8 +1,8 @@
 import { LoginPage } from './AdminPanel/modules/LoginPage';
 import App from './App';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, RouteObject } from 'react-router-dom';
 
-const routes = [
+const routes: RouteObject[] = [
   {
     path: '/admin-panel/login',
     element: <LoginPage />,
