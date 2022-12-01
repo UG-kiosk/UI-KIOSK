@@ -1,3 +1,7 @@
 {
-  "extends": ["plugin:cypress/recommended", "../.eslintrc.json"]
+  "extends": ["plugin:cypress/recommended", "../.eslintrc.json"],
+  "rules": {
+    "no-empty-function": "off",
+    "@typescript-eslint/no-empty-function": "off"
+  }
 }
