@@ -9,11 +9,13 @@
     "test": "jest --passWithNoTests",
     "prettier:ci": "npx prettier --list-different .",
     "lint": "npx eslint .",
-    "integration:ci": "npx cypress run --component",
     "cy:e2e": "cypress run",
     "e2e:ci": "npx start-server-and-test start http://localhost:3000 cy:e2e"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.10.16",
     "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^2.9.10",
     "react": "^18.2.0",
