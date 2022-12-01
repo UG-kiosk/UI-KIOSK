@@ -1,7 +1,6 @@
 # UI-KIOSK
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/UniversityOfGdanskProjects/UI-KIOSK?style=for-the-badge)
-![GitHub top language](https://img.shields.io/github/languages/top/UniversityOfGdanskProjects/UI-KIOSK?logo=typescript&style=for-the-badge)
 ![Netlify](https://img.shields.io/netlify/9aef6243-0742-42b4-9636-049204e0bbed?logo=netlify&style=for-the-badge)
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/UniversityOfGdanskProjects/UI-KIOSK/react?color=green&logo=react&style=for-the-badge)
 ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/UniversityOfGdanskProjects/UI-KIOSK/dev/typescript/master?color=darkblue&logo=typescript&style=for-the-badge)
@@ -20,7 +19,15 @@ UI-KIOSK uses:
 
 ### Bundler
 
-This project's bundler is [Vite](https://vitejs.dev/).
+This project is bundled by [Vite](https://vitejs.dev/).
+
+### Tests
+
+This app uses [Jest](https://jestjs.io/) for unit testing and [Cypress](https://www.cypress.io/) for end-to-end testing.
+
+### CI & CD
+
+CI pipeline runs on every pull request to any branch, while CD runs on every merge to `master` branch.
 
 ### Production site
 
@@ -69,7 +76,7 @@ $ cd UI-KIOSK
 $ yarn install
 ```
 
-### Start server
+### Start development server
 
 ```console
 $ yarn start
@@ -94,3 +101,10 @@ $ yarn test
 ```console
 $ yarn cy:e2e
 ```
+
+---
+
+## Contribution
+
+In order to contribute to the repository, check out the [contribution guide](docs/CONTRIBUTING.md).
+The release guide is available [here]().
