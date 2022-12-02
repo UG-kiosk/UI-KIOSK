@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
-import colorTheme from './CustomTheme';
+import colorTheme from './theme';
 import { RouterProvider } from 'react-router-dom';
 import router from './routes';
 

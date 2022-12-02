@@ -7,9 +7,12 @@ const colorTheme = createTheme({
     },
     primary: {
       main: '#0044B0',
+      light: '#FFFFFF',
+      dark: '#000000',
     },
     secondary: {
       main: '#D9D9D9',
+      light: '#FBFBFB',
     },
   },
 });
