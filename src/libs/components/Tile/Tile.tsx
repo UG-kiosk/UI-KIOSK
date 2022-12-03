@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 interface TileProps {
   content?: string;
   tileWidth?: number;
+  url?: string;
 }
 
 const StyledTile = styled('div', {
@@ -18,4 +19,27 @@ const StyledTile = styled('div', {
   background-color: ${({ theme }) => theme.palette.secondary.main};
 `;
 
-export const Tile = ({ content, tileWidth }: TileProps) => <StyledTile tileWidth={tileWidth}>{content}</StyledTile>;
+const StyledLink = styled('a')`
+  text-decoration: none;
+  color: ${({ theme }) => theme.palette.secondary.dark};
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 49px;
+`;
+
+const StyledParagraph = styled('p')`
+  color: ${({ theme }) => theme.palette.secondary.dark};
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 49px;
+`;
+
+export const Tile = ({ content, tileWidth, url }: TileProps) => (
+  <StyledTile tileWidth={tileWidth}>
+    {url ? <StyledLink href={url}>{content}</StyledLink> : <StyledParagraph>{content}</StyledParagraph>}
+  </StyledTile>
+);

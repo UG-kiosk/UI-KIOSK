@@ -13,6 +13,7 @@ const colorTheme = createTheme({
     secondary: {
       main: '#D9D9D9',
       light: '#FBFBFB',
+      dark: '#4A4A4A',
     },
   },
 });
