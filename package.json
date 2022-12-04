@@ -1,6 +1,6 @@
 {
   "name": "ui-kiosk",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "start": "vite",
@@ -9,7 +9,6 @@
     "test": "jest --passWithNoTests",
     "prettier:ci": "npx prettier --list-different .",
     "lint": "npx eslint .",
-    "integration:ci": "npx cypress run --component",
     "cy:e2e": "cypress run",
     "e2e:ci": "npx start-server-and-test start http://localhost:3000 cy:e2e"
   },
@@ -17,7 +16,15 @@
     "@reduxjs/toolkit": "^1.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.0.5"
+    "react-redux": "^8.0.5",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.10.16",
+    "@hookform/error-message": "^2.0.1",
+    "@hookform/resolvers": "^2.9.10",
+    "react-hook-form": "^7.39.4",
+    "react-router-dom": "^6.4.3",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
