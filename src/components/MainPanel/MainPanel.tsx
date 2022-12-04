@@ -9,29 +9,30 @@ export const MainPanel = () => (
     alignItems="center"
     rowSpacing={8}
     sx={{ width: 1695, margin: 'auto', mb: 8, mt: 8 }}
+    data-cy="main-panel"
   >
-    <Grid item xs={12} container justifyContent="center">
+    <Grid item xs={12} container justifyContent="center" data-cy="tile">
       <Tile />
     </Grid>
 
-    <Grid item xs={4} container direction="row" justifyContent="flex-start">
+    <Grid item xs={4} container direction="row" justifyContent="flex-start" data-cy="tile">
       <Tile tileWidth={535} />
     </Grid>
-    <Grid item xs={4} container direction="row" justifyContent="center">
+    <Grid item xs={4} container direction="row" justifyContent="center" data-cy="tile">
       <Tile tileWidth={535} />
     </Grid>
-    <Grid item xs={4} container direction="row" justifyContent="flex-end">
+    <Grid item xs={4} container direction="row" justifyContent="flex-end" data-cy="tile">
       <Tile tileWidth={535} />
     </Grid>
 
-    <Grid item xs={12} container justifyContent="center">
+    <Grid item xs={12} container justifyContent="center" data-cy="tile">
       <Tile />
     </Grid>
 
-    <Grid item xs={6} container justifyContent="flex-start">
+    <Grid item xs={6} container justifyContent="flex-start" data-cy="tile">
       <Tile tileWidth={826} />
     </Grid>
-    <Grid item xs={6} container justifyContent="flex-end">
+    <Grid item xs={6} container justifyContent="flex-end" data-cy="tile">
       <Tile tileWidth={826} />
     </Grid>
   </Grid>
