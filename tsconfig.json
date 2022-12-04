@@ -25,6 +25,6 @@
       "@UG/libs/components": ["./src/libs/components"]
     }
   },
-  "include": ["src/**/*", "cypress", "cypress.d.ts"],
+  "include": ["src/**/*", "cypress"],
   "exclude": ["node_modules"]
 }
