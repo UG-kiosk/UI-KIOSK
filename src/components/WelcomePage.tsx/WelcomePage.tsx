@@ -1,7 +1,8 @@
 import Box from '@mui/material/Box';
 import { styled } from '@mui/system';
 import { useDispatch } from 'react-redux';
-import { MainView } from 'src/state/WelcomeSlice';
+import { showMainView } from 'src/state/WelcomeSlice';
+import { useCallback } from 'react';
 
 const StyledTitle = styled('h1')`
   font-family: 'Montserrat';
@@ -36,6 +37,10 @@ const StyledImage = styled('img')`
 export const WelcomePage = () => {
   const dispatch = useDispatch();
 
+  const handleClick = useCallback(() => {
+    dispatch(showMainView());
+  }, [dispatch]);
+
   return (
     <Box
       display="flex"
@@ -47,8 +52,7 @@ export const WelcomePage = () => {
       sx={{ width: 1920, height: 2891, margin: 'auto', mb: 8, mt: 8 }}
     >
       <StyledTitle>Instytut Informatyki</StyledTitle>
-
-      <StyledButton onClick={() => dispatch(MainView())}>Dotknij Tutaj</StyledButton>
+      <StyledButton onClick={handleClick}>Dotknij Tutaj</StyledButton>
       <StyledImage src="src/assets/UG.png" alt="" />
     </Box>
   );
