@@ -5,33 +5,36 @@ import { showMainView } from 'src/state/WelcomeSlice';
 import { useCallback } from 'react';
 
 const StyledTitle = styled('h1')`
+  width: 738px;
+  height: 209px;
   font-family: 'Montserrat';
-  color: ${({ theme }) => theme.palette.secondary.light};
   font-style: normal;
   font-weight: 800;
-  font-size: 150px;
-  line-height: 183px;
+  font-size: 96px;
+  line-height: 117px;
   text-align: center;
-  width: 1578px;
+  color: ${({ theme }) => theme.palette.secondary.light};
 `;
 
 const StyledButton = styled('button')`
   border: 5px solid #fbfbfb;
   border-radius: 50px;
-  width: 1435px;
-  height: 195px;
+  height: 120px;
+  width: 800px;
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 800;
-  font-size: 128px;
-  line-height: 156px;
+  font-size: 64px;
+  line-height: 78px;
+  /* identical to box height */
+  text-align: center;
   color: ${({ theme }) => theme.palette.secondary.light};
   background: ${({ theme }) => theme.palette.primary.main}; ;
 `;
 
 const StyledImage = styled('img')`
-  width: 1420px;
-  height: 853px;
+  width: 831px;
+  height: 500px;
 `;
 
 export const WelcomePage = () => {
@@ -49,7 +52,7 @@ export const WelcomePage = () => {
       flexDirection="column"
       bgcolor="#004daa"
       gap="250px"
-      sx={{ width: 1920, height: 2891, margin: 'auto', mb: 8, mt: 8 }}
+      sx={{ width: 1080, height: 1920, margin: 'auto', mb: 8, mt: 8 }}
     >
       <StyledTitle>Instytut Informatyki</StyledTitle>
       <StyledButton onClick={handleClick}>Dotknij Tutaj</StyledButton>
