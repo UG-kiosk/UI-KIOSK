@@ -1,6 +1,13 @@
-import { ErrorMessage } from '@hookform/error-message';
+import { Input } from '@UG/libs/components';
 import { useFormContext } from 'react-hook-form';
 import { LoginFormFieldsNames, LoginFormTypes } from './types';
+import { styled } from '@mui/material/styles';
+
+const StyledInputsDiv = styled('div')`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
 
 export const LoginFormFields = () => {
   const {
@@ -9,17 +16,21 @@ export const LoginFormFields = () => {
   } = useFormContext<LoginFormTypes>();
 
   return (
-    <>
-      <label data-cy="username-label" htmlFor={LoginFormFieldsNames.USERNAME}>
-        Username:
-      </label>
-      <input data-cy="username-input" {...register(LoginFormFieldsNames.USERNAME)} />
-      <ErrorMessage data-cy="username-error" errors={errors} name={LoginFormFieldsNames.USERNAME} as="p" />
-      <label data-cy="password-label" htmlFor={LoginFormFieldsNames.PASSWORD}>
-        Password:
-      </label>
-      <input data-cy="password-input" type="password" {...register(LoginFormFieldsNames.PASSWORD)} />
-      <ErrorMessage data-cy="password-error" errors={errors} name={LoginFormFieldsNames.PASSWORD} as="p" />
-    </>
+    <StyledInputsDiv>
+      <Input
+        type="text"
+        content="login"
+        register={register}
+        fieldName={LoginFormFieldsNames.USERNAME}
+        errors={errors}
+      />
+      <Input
+        type="password"
+        content="password"
+        register={register}
+        fieldName={LoginFormFieldsNames.PASSWORD}
+        errors={errors}
+      />
+    </StyledInputsDiv>
   );
 };
