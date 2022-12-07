@@ -2,7 +2,7 @@ import { Input } from '@UG/libs/components';
 import { LoginFormFieldsNames } from './types';
 import { styled } from '@mui/material/styles';
 
-const StyledInputsDiv = styled('div')`
+const StyledFormFields = styled('div')`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -10,9 +10,9 @@ const StyledInputsDiv = styled('div')`
 
 export const LoginFormFields = () => {
   return (
-    <StyledInputsDiv>
-      <Input name="login" fieldName={LoginFormFieldsNames.USERNAME} />
-      <Input type="password" name="password" fieldName={LoginFormFieldsNames.PASSWORD} />
-    </StyledInputsDiv>
+    <StyledFormFields>
+      <Input label="login" fieldName={LoginFormFieldsNames.USERNAME} />
+      <Input type="password" label="password" fieldName={LoginFormFieldsNames.PASSWORD} />
+    </StyledFormFields>
   );
 };
