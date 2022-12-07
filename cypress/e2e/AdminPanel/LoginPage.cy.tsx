@@ -1,5 +1,5 @@
 import { LoginPageTestFunctions } from '../../utils/AdminPanel/LoginPageTestFunctions';
-import { LoginFormFieldsNames } from '../../../src/AdminPanel/modules/LoginPage/types';
+import { LoginFormFieldsNames } from '../../../src/AdminPanel/modules/LoginPage/LoginPageForm/types';
 
 const LoginPageTests = new LoginPageTestFunctions();
 
