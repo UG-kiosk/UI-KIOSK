@@ -15,6 +15,9 @@ const colorTheme = createTheme({
       light: '#FBFBFB',
       dark: '#4A4A4A',
     },
+    error: {
+      main: '#ff0000',
+    },
   },
 });
 

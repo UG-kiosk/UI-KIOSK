@@ -63,7 +63,7 @@ const StyledTextField = styled(TextField)`
 `;
 
 const StyledErrorMessage = styled('p')`
-  color: red;
+  color: ${({ theme }) => theme.palette.error.main};
   font-family: 'Montserrat';
   font-weight: 400;
   font-size: 0.75rem;

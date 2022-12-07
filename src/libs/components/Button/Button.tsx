@@ -12,18 +12,18 @@ const StyledButton = styled(MUIButton)`
   padding: 0px;
   width: 96px;
   height: 46px;
-  border: 3px solid #0055d2;
+  border: 3px solid ${({ theme }) => theme.palette.primary.main};
   border-radius: 50px;
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
-  color: #095eac;
+  color: ${({ theme }) => theme.palette.primary.main};
   text-transform: lowercase;
   transform: matrix(1, -0.01, 0.01, 1, 0, 0);
   &:hover {
-    border: 3px solid #0044b0;
+    border: 3px solid ${({ theme }) => theme.palette.secondary.dark};
   }
 `;
 
