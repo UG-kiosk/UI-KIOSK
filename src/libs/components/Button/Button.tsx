@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button as MUIButton } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 interface ButtonProps {
@@ -7,7 +7,7 @@ interface ButtonProps {
   name: string;
 }
 
-const StyledButton = styled(Button)`
+const StyledButton = styled(MUIButton)`
   margin: 25px;
   padding: 0px;
   width: 96px;
@@ -27,7 +27,7 @@ const StyledButton = styled(Button)`
   }
 `;
 
-export const CustomButton = ({ text, type, name }: ButtonProps) => (
+export const Button = ({ text, type, name }: ButtonProps) => (
   <StyledButton data-cy={`${name}-button`} variant="outlined" type={type}>
     {text}
   </StyledButton>
