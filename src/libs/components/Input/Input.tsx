@@ -1,13 +1,11 @@
 import { TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { FieldErrorsImpl, UseFormRegister } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 
 interface InputProps {
-  content: string;
-  register: UseFormRegister<any>;
+  name: string;
   fieldName: string;
-  errors: Partial<FieldErrorsImpl>;
-  type: string;
+  type?: string;
 }
 
 const StyledLabel = styled('label')`
@@ -85,22 +83,26 @@ const StyledDiv = styled('div')`
   flex-direction: column;
 `;
 
-export const Input = ({ content, register, fieldName, errors, type }: InputProps) => {
+export const Input = ({ name, fieldName, type = 'text' }: InputProps) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<any>();
   const { ref: inputRef, ...inputProps } = register(fieldName);
   return (
     <StyledDiv>
-      <StyledLabel data-cy={`${content}-label`}>{content}</StyledLabel>
+      <StyledLabel data-cy={`${name}-label`}>{name}</StyledLabel>
       <StyledTextField
         type={type}
         size="small"
         inputRef={inputRef}
         {...inputProps}
-        label={content}
+        label={name}
         error={!!errors?.[fieldName]}
-        inputProps={{ 'data-cy': `${content}-input` }}
+        inputProps={{ 'data-cy': `${name}-input` }}
       />
       {errors?.[fieldName] ? (
-        <StyledErrorMessage data-cy={`${content}-error`}>
+        <StyledErrorMessage data-cy={`${name}-error`}>
           <>{errors?.[fieldName]?.message}</>
         </StyledErrorMessage>
       ) : null}
