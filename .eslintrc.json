@@ -36,6 +36,8 @@
     ],
     "react/jsx-uses-vars": "error",
     "react/react-in-jsx-scope": "off",
+    "react-hooks/exhaustive-deps": "error",
+    "react-hooks/rules-of-hooks": "error",
     "@typescript-eslint/ban-ts-comment": ["warn"],
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-use-before-define": [
@@ -52,10 +54,11 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:react-hooks/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "react", "prettier", "jest", "cypress"],
+  "plugins": ["@typescript-eslint", "react", "prettier", "jest", "cypress", "react-hooks"],
   "settings": {
     "react": {
       "version": "detect"
