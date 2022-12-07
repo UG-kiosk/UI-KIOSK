@@ -8,9 +8,9 @@ interface TileProps {
 
 const StyledTile = styled('div', {
   shouldForwardProp: prop => prop !== 'tileWidth',
-})<Pick<TileProps, 'tileWidth'>>`
-  height: 560px;
-  width: ${({ tileWidth }) => (tileWidth ? `${tileWidth}px` : '1695px')};
+})<TileProps>`
+  height: 320px;
+  width: ${({ tileWidth }) => (tileWidth ? `${tileWidth}px` : '985px')};
   border-radius: 55px;
   display: flex;
   flex-direction: column;
