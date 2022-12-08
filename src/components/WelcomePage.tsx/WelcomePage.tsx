@@ -52,10 +52,13 @@ export const WelcomePage = () => {
       bgcolor="#004daa"
       gap="250px"
       sx={{ width: 1080, height: 1920, margin: 'auto' }}
+      data-cy="welcome-page"
     >
-      <StyledTitle>Instytut Informatyki</StyledTitle>
-      <StyledButton onClick={handleClick}>Dotknij Tutaj</StyledButton>
-      <StyledImage src="src/assets/UG.png" alt="" />
+      <StyledTitle data-cy="welcome-page-title">Instytut Informatyki</StyledTitle>
+      <StyledButton onClick={handleClick} data-cy="welcome-page-button">
+        Dotknij Tutaj
+      </StyledButton>
+      <StyledImage src="src/assets/UG.png" alt="" data-cy="welcome-page-img" />
     </Box>
   );
 };
