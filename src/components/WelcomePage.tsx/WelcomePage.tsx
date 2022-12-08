@@ -17,7 +17,7 @@ const StyledTitle = styled('h1')`
 `;
 
 const StyledButton = styled('button')`
-  border: 5px solid #fbfbfb;
+  border: 5px solid ${({ theme }) => theme.palette.secondary.light};
   border-radius: 50px;
   height: 120px;
   width: 800px;
@@ -26,10 +26,9 @@ const StyledButton = styled('button')`
   font-weight: 800;
   font-size: 64px;
   line-height: 78px;
-  /* identical to box height */
   text-align: center;
   color: ${({ theme }) => theme.palette.secondary.light};
-  background: ${({ theme }) => theme.palette.primary.main}; ;
+  background: ${({ theme }) => theme.palette.primary.main};
 `;
 
 const StyledImage = styled('img')`
@@ -52,7 +51,7 @@ export const WelcomePage = () => {
       flexDirection="column"
       bgcolor="#004daa"
       gap="250px"
-      sx={{ width: 1080, height: 1920, margin: 'auto', mb: 8, mt: 8 }}
+      sx={{ width: 1080, height: 1920, margin: 'auto' }}
     >
       <StyledTitle>Instytut Informatyki</StyledTitle>
       <StyledButton onClick={handleClick}>Dotknij Tutaj</StyledButton>
