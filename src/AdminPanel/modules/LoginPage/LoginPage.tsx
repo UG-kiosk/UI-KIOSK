@@ -10,7 +10,7 @@ const StyledTile = styled(Tile)`
 
 export const LoginPage = () => {
   return (
-    <StyledTile>
+    <StyledTile tileWidth={885}>
       <LoginPageForm />
     </StyledTile>
   );
