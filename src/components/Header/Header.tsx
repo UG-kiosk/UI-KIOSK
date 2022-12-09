@@ -21,7 +21,7 @@ export const Header = () => {
       right={0}
       marginLeft="auto"
       marginRight="auto"
-      sx={{ backgroundColor: 'primary.light', width: 1080 }}
+      sx={{ backgroundColor: 'primary.light', width: '100%' }}
       data-cy="header"
     >
       <Grid
@@ -33,8 +33,9 @@ export const Header = () => {
           px: 6,
           height: 90,
         }}
+        data-cy="header-grid"
       >
-        <StyledLogoPL src="src/assets/ug_logo_pl.png" alt="blue UG"></StyledLogoPL>
+        <StyledLogoPL src="src/assets/ug_logo_pl.png" alt="blue UG logo"></StyledLogoPL>
         <StyledLine />
         <Grid item xs={7} />
         <StyledLine />

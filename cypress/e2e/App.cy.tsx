@@ -7,8 +7,21 @@ describe('Root.cy.tsc', () => {
     cy.visit('/');
   });
 
-  it('hello world', () => {
-    cy.getBySelector('hello-world-p').contains('Hello World');
+  it('render Header', () => {
+    cy.getBySelector('header').should('exist');
+  });
+
+  it('display images in Header', () => {
+    cy.getBySelector('header-grid')
+      .find('img')
+      .should('be.visible')
+      .each((img: { naturalWidth: number }[]) => {
+        expect(img[0].naturalWidth).to.be.greaterThan(0);
+      });
+  });
+
+  it('display vertical lines in Header', () => {
+    cy.getBySelector('header-grid').find('div').should('be.visible');
   });
 
   it('render MainPanel', () => {
