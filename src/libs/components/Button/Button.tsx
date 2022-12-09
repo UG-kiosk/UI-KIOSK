@@ -8,7 +8,7 @@ interface ButtonProps {
 }
 
 const StyledButton = styled(MUIButton)`
-  margin: 25px;
+  margin: 26px;
   padding: 0px;
   width: 96px;
   height: 46px;
@@ -21,7 +21,6 @@ const StyledButton = styled(MUIButton)`
   line-height: 24px;
   color: ${({ theme }) => theme.palette.primary.main};
   text-transform: lowercase;
-  transform: matrix(1, -0.01, 0.01, 1, 0, 0);
   &:hover {
     border: 3px solid ${({ theme }) => theme.palette.secondary.dark};
   }
