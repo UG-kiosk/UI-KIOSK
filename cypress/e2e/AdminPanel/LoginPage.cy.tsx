@@ -1,11 +1,17 @@
+import { HeaderTestFunctions } from '../../utils/Header/HeaderTestFunctions';
 import { LoginPageTestFunctions } from '../../utils/AdminPanel/LoginPageTestFunctions';
 import { LoginFormFieldsNames } from '../../../src/AdminPanel/modules/LoginPage/LoginPageForm/types';
 
+const Header = new HeaderTestFunctions();
 const LoginPageTests = new LoginPageTestFunctions();
 
 describe('LoginPage.cy.tsx', () => {
   beforeEach(() => {
     cy.visit('/admin-panel/login');
+  });
+
+  it.only('render Header', () => {
+    Header.renderHeader();
   });
 
   it.only('Login page content test', () => {

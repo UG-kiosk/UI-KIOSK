@@ -5,6 +5,7 @@ import { LoginFormFields } from './LoginFormFields';
 import { LoginFormTypes, LoginFormFieldsNames } from './types';
 import { validationSchema } from './validationSchema';
 import { styled } from '@mui/material/styles';
+import { Header } from '@UG/libs/components';
 
 const StyledForm = styled('form')`
   display: -webkit-box;
@@ -32,6 +33,7 @@ export const LoginPageForm = () => {
 
   return (
     <FormProvider {...formMethods}>
+      <Header />
       <StyledForm data-cy="admin-login-form" onSubmit={formMethods.handleSubmit(onSubmit)}>
         <LoginFormFields />
         <Button name="login" text="log in" type="submit" />

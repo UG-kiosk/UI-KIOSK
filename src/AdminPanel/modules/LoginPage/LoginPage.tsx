@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 
 const StyledTile = styled(Tile)`
   margin-left: 48px;
-  margin-top: 75px;
+  margin-top: 146px;
   padding: 50px 0px 25px 75px;
 `;
 

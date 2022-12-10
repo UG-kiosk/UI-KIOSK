@@ -1,5 +1,5 @@
 import { MainPanel } from './components/MainPanel';
-import { Header } from './components/Header';
+import { Header } from './libs/components/Header';
 
 const App = () => (
   <>
