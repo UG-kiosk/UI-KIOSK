@@ -1,11 +1,10 @@
-import { Button } from '@UG/libs/components';
+import { Button, Header } from '@UG/libs/components';
 import { useCallback } from 'react';
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 import { LoginFormFields } from './LoginFormFields';
 import { LoginFormTypes, LoginFormFieldsNames } from './types';
 import { validationSchema } from './validationSchema';
 import { styled } from '@mui/material/styles';
-import { Header } from '@UG/libs/components';
 
 const StyledForm = styled('form')`
   display: -webkit-box;
