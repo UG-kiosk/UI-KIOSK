@@ -1,11 +1,11 @@
 export class LoginPageTestFunctions {
   getAdminLoginForm = () => cy.getBySelector('admin-login-form');
 
-  getUsernameLabel = () => cy.getBySelector('username-label');
+  getLoginLabel = () => cy.getBySelector('login-label');
 
-  getUsernameInput = () => cy.getBySelector('username-input');
+  getLoginInput = () => cy.getBySelector('login-input');
 
-  getUsernameError = () => cy.getBySelector('username-error');
+  getLoginError = () => cy.getBySelector('login-error');
 
   getPasswordLabel = () => cy.getBySelector('password-label');
 
@@ -15,7 +15,7 @@ export class LoginPageTestFunctions {
 
   getLoginButton = () => cy.getBySelector('login-button');
 
-  typeToUsername = (username: string) => this.getUsernameInput().type(username);
+  typeToLogin = (login: string) => this.getLoginInput().type(login);
 
   typeToPassword = (password: string) => this.getPasswordInput().type(password);
 
@@ -23,9 +23,9 @@ export class LoginPageTestFunctions {
 
   testLoginPageContent = () => {
     this.getAdminLoginForm().should('exist');
-    this.getUsernameLabel().should('exist');
-    this.getUsernameInput().should('exist');
-    this.getUsernameError().should('not.exist');
+    this.getLoginLabel().should('exist');
+    this.getLoginInput().should('exist');
+    this.getLoginError().should('not.exist');
     this.getPasswordLabel().should('exist');
     this.getPasswordInput().should('exist');
     this.getPasswordError().should('not.exist');
