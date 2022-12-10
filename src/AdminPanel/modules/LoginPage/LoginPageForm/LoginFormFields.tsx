@@ -3,7 +3,12 @@ import { LoginFormFieldsNames } from './types';
 import { styled } from '@mui/material/styles';
 
 const StyledFormFields = styled('div')`
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   gap: 20px;
 `;

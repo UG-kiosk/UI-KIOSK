@@ -79,7 +79,12 @@ const StyledErrorMessage = styled('p')`
 const StyledDiv = styled('div')`
   width: 350px;
   height: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 `;
 

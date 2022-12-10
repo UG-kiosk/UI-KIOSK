@@ -7,7 +7,11 @@ import { validationSchema } from './validationSchema';
 import { styled } from '@mui/material/styles';
 
 const StyledForm = styled('form')`
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
   align-items: flex-end;
 `;
 
