@@ -1,5 +1,7 @@
+import { HeaderTestFunctions } from 'cypress/utils/Header/HeaderTestFunctions';
 import { MainPanelTestFunctions } from 'cypress/utils/MainPanel/MainPanelTestFunctions';
 
+const Header = new HeaderTestFunctions();
 const MainPanel = new MainPanelTestFunctions();
 
 describe('Root.cy.tsc', () => {
@@ -8,20 +10,7 @@ describe('Root.cy.tsc', () => {
   });
 
   it('render Header', () => {
-    cy.getBySelector('header').should('exist');
-  });
-
-  it('display images in Header', () => {
-    cy.getBySelector('header-grid')
-      .find('img')
-      .should('be.visible')
-      .each((img: { naturalWidth: number }[]) => {
-        expect(img[0].naturalWidth).to.be.greaterThan(0);
-      });
-  });
-
-  it('display vertical lines in Header', () => {
-    cy.getBySelector('header-grid').find('div').should('be.visible');
+    Header.renderHeader();
   });
 
   it('render MainPanel', () => {

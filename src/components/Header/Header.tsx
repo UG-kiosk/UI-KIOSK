@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import { styled } from '@mui/system';
 
 const StyledLogoPL = styled('img')`
@@ -11,36 +11,42 @@ const StyledLine = styled('div')`
   border-left: 3px solid ${({ theme }) => theme.palette.secondary.main};
   height: 50px;
 `;
+const StyledGridElement = styled('div')`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 35px;
+`;
 
 export const Header = () => {
   return (
-    <Box
+    <Grid
       position="fixed"
       top={0}
       left={0}
       right={0}
       marginLeft="auto"
       marginRight="auto"
-      sx={{ backgroundColor: 'primary.light', width: '100%' }}
+      container
+      direction="row"
+      justifyContent="space-between"
+      alignItems="center"
+      sx={{
+        backgroundColor: 'primary.light',
+        width: '100%',
+        height: 90,
+        px: 6,
+      }}
       data-cy="header"
     >
-      <Grid
-        container
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        sx={{
-          px: 6,
-          height: 90,
-        }}
-        data-cy="header-grid"
-      >
-        <StyledLogoPL src="src/assets/ug_logo_pl.png" alt="blue UG logo"></StyledLogoPL>
-        <StyledLine />
-        <Grid item xs={7} />
-        <StyledLine />
-        <StyledFlag src="src/assets/eu_flag.jpg" alt="Europan Union Flag"></StyledFlag>
-      </Grid>
-    </Box>
+      <StyledGridElement data-cy="header-left">
+        <StyledLogoPL src="/src/assets/ug_logo_pl.png" alt="blue UG logo" data-cy="header-ug-logo"></StyledLogoPL>
+        <StyledLine data-cy="header-line" />
+      </StyledGridElement>
+      <StyledGridElement data-cy="header-right">
+        <StyledLine data-cy="header-line" />
+        <StyledFlag src="/src/assets/eu_flag.jpg" alt="European Union Flag" data-cy="header-eu-flag"></StyledFlag>
+      </StyledGridElement>
+    </Grid>
   );
 };
