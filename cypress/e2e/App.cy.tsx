@@ -10,7 +10,7 @@ describe('Root.cy.tsc', () => {
   });
 
   it('render Header', () => {
-    Header.renderHeader();
+    Header.testHeaderContent();
   });
 
   it('render MainPanel', () => {

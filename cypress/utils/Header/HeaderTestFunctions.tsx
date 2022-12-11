@@ -11,7 +11,7 @@ export class HeaderTestFunctions {
 
   getEuFlag = () => cy.getBySelector('header-eu-flag');
 
-  renderHeader = () => {
+  testHeaderContent = () => {
     this.getHeader().should('exist');
     this.getLeftElements().should('exist');
     this.getRightElements().should('exist');

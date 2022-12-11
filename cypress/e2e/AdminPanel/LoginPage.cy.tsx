@@ -10,8 +10,8 @@ describe('LoginPage.cy.tsx', () => {
     cy.visit('/admin-panel/login');
   });
 
-  it.only('render Header', () => {
-    Header.renderHeader();
+  it.only('Render Header', () => {
+    Header.testHeaderContent();
   });
 
   it.only('Login page content test', () => {

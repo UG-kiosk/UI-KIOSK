@@ -1,4 +1,4 @@
-import { Button, Header } from '@UG/libs/components';
+import { Button } from '@UG/libs/components';
 import { useCallback } from 'react';
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 import { LoginFormFields } from './LoginFormFields';
@@ -32,7 +32,6 @@ export const LoginPageForm = () => {
 
   return (
     <FormProvider {...formMethods}>
-      <Header />
       <StyledForm data-cy="admin-login-form" onSubmit={formMethods.handleSubmit(onSubmit)}>
         <LoginFormFields />
         <Button name="login" text="log in" type="submit" />
