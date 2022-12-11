@@ -1,8 +1,8 @@
-import { HeaderTest } from '../../utils/Header/HeaderTestFunctions';
+import { HeaderTests } from '../../utils/Header/HeaderTestFunctions';
 import { LoginPageTestFunctions } from '../../utils/AdminPanel/LoginPageTestFunctions';
 import { LoginFormFieldsNames } from '../../../src/AdminPanel/modules/LoginPage/LoginPageForm/types';
 
-const Header = new HeaderTest();
+const Header = new HeaderTests();
 const LoginPageTests = new LoginPageTestFunctions();
 
 describe('LoginPage.cy.tsx', () => {
