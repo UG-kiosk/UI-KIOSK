@@ -1,7 +1,7 @@
-import { HeaderTests } from 'cypress/utils/Header/HeaderTestFunctions';
+import { HeaderTestFunctions } from 'cypress/utils/Header/HeaderTestFunctions';
 import { MainPanelTestFunctions } from 'cypress/utils/MainPanel/MainPanelTestFunctions';
 
-const Header = new HeaderTests();
+const HeaderTests = new HeaderTestFunctions();
 const MainPanel = new MainPanelTestFunctions();
 
 describe('Root.cy.tsc', () => {
@@ -10,7 +10,7 @@ describe('Root.cy.tsc', () => {
   });
 
   it('render Header', () => {
-    Header.testHeaderContent();
+    HeaderTests.testHeaderContent();
   });
 
   it('render MainPanel', () => {

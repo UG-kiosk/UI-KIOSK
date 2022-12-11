@@ -1,4 +1,4 @@
-export class HeaderTests {
+export class HeaderTestFunctions {
   getHeader = () => cy.getBySelector('header');
 
   getLeftElements = () => cy.getBySelector('header-left');

@@ -1,8 +1,8 @@
-import { HeaderTests } from '../../utils/Header/HeaderTestFunctions';
+import { HeaderTestFunctions } from '../../utils/Header/HeaderTestFunctions';
 import { LoginPageTestFunctions } from '../../utils/AdminPanel/LoginPageTestFunctions';
 import { LoginFormFieldsNames } from '../../../src/AdminPanel/modules/LoginPage/LoginPageForm/types';
 
-const Header = new HeaderTests();
+const HeaderTests = new HeaderTestFunctions();
 const LoginPageTests = new LoginPageTestFunctions();
 
 describe('LoginPage.cy.tsx', () => {
@@ -11,7 +11,7 @@ describe('LoginPage.cy.tsx', () => {
   });
 
   it.only('Render Header', () => {
-    Header.testHeaderContent();
+    HeaderTests.testHeaderContent();
   });
 
   it.only('Login page content test', () => {
