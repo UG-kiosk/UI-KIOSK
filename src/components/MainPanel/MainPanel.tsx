@@ -8,7 +8,7 @@ export const MainPanel = () => (
     justifyContent="center"
     alignItems="center"
     rowSpacing={8}
-    sx={{ width: 1695, margin: 'auto', mb: 8, mt: 8 }}
+    sx={{ width: 1080, margin: 'auto', my: 12, px: 6 }}
     data-cy="main-panel"
   >
     <Grid item xs={12} container justifyContent="center" data-cy="tile">
@@ -16,13 +16,13 @@ export const MainPanel = () => (
     </Grid>
 
     <Grid item xs={4} container direction="row" justifyContent="flex-start" data-cy="tile">
-      <Tile tileWidth={535} />
+      <Tile tileWidth={305} />
     </Grid>
     <Grid item xs={4} container direction="row" justifyContent="center" data-cy="tile">
-      <Tile tileWidth={535} />
+      <Tile tileWidth={305} />
     </Grid>
     <Grid item xs={4} container direction="row" justifyContent="flex-end" data-cy="tile">
-      <Tile tileWidth={535} />
+      <Tile tileWidth={305} />
     </Grid>
 
     <Grid item xs={12} container justifyContent="center" data-cy="tile">
@@ -30,10 +30,10 @@ export const MainPanel = () => (
     </Grid>
 
     <Grid item xs={6} container justifyContent="flex-start" data-cy="tile">
-      <Tile tileWidth={826} />
+      <Tile tileWidth={473} />
     </Grid>
     <Grid item xs={6} container justifyContent="flex-end" data-cy="tile">
-      <Tile tileWidth={826} />
+      <Tile tileWidth={473} />
     </Grid>
   </Grid>
 );
