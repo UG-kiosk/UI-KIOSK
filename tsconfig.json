@@ -22,7 +22,8 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true,
     "paths": {
-      "@UG/libs/components": ["./src/libs/components"]
+      "@UG/libs/components": ["./src/libs/components"],
+      "@UG/libs/types": ["./src/libs/types"]
     }
   },
   "include": ["src/**/*", "cypress"],
