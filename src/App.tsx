@@ -1,8 +1,9 @@
 import { MainPanel } from './components/MainPanel';
+import { Header } from './libs/components/Header';
 
 const App = () => (
   <>
-    <p data-cy="hello-world-p">Hello World</p>
+    <Header />
     <MainPanel />
   </>
 );

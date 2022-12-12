@@ -1,5 +1,7 @@
+import { HeaderTestFunctions } from 'cypress/utils/Header/HeaderTestFunctions';
 import { MainPanelTestFunctions } from 'cypress/utils/MainPanel/MainPanelTestFunctions';
 
+const HeaderTests = new HeaderTestFunctions();
 const MainPanel = new MainPanelTestFunctions();
 
 describe('Root.cy.tsc', () => {
@@ -7,8 +9,8 @@ describe('Root.cy.tsc', () => {
     cy.visit('/');
   });
 
-  it('hello world', () => {
-    cy.getBySelector('hello-world-p').contains('Hello World');
+  it('render Header', () => {
+    HeaderTests.testHeaderContent();
   });
 
   it('render MainPanel', () => {
