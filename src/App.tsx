@@ -9,5 +9,3 @@ const App = () => (
 );
 
 export default App;
-
-// initial commit
