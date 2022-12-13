@@ -2,7 +2,6 @@ import { WelcomePageTestFunctions } from 'cypress/utils/WelcomePage/WelcomePageT
 import { MainPanelTestFunctions } from 'cypress/utils/MainPanel/MainPanelTestFunctions';
 
 const MainPanel = new MainPanelTestFunctions();
-
 const WelcomePage = new WelcomePageTestFunctions();
 
 describe('Root.cy.tsc', () => {
@@ -14,7 +13,7 @@ describe('Root.cy.tsc', () => {
     WelcomePage.testWelcomePageContent();
   });
 
-  it.only('welcomePage click', () => {
+  it.only('render MainPanel after WelcomePage click', () => {
     WelcomePage.showMain();
     cy.getBySelector('hello-world-p').contains('Hello World');
     MainPanel.getMainPanel().should('exist');

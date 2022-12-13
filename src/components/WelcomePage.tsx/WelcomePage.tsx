@@ -49,9 +49,8 @@ export const WelcomePage = () => {
       justifyContent="center"
       alignItems="center"
       flexDirection="column"
-      bgcolor="#004daa"
       gap="250px"
-      sx={{ width: 1080, height: 1920, margin: 'auto' }}
+      sx={{ width: 1080, height: 1920, margin: 'auto', bgcolor: theme => theme.palette.primary.main }}
       data-cy="welcome-page"
     >
       <StyledTitle data-cy="welcome-page-title">Instytut Informatyki</StyledTitle>
