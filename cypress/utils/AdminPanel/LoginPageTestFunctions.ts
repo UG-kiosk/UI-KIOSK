@@ -1,11 +1,11 @@
 export class LoginPageTestFunctions {
   getAdminLoginForm = () => cy.getBySelector('admin-login-form');
 
-  getLoginLabel = () => cy.getBySelector('login-label');
+  getLoginLabel = () => cy.getBySelector('username-label');
 
-  getLoginInput = () => cy.getBySelector('login-input');
+  getLoginInput = () => cy.getBySelector('username-input');
 
-  getLoginError = () => cy.getBySelector('login-error');
+  getLoginError = () => cy.getBySelector('username-error');
 
   getPasswordLabel = () => cy.getBySelector('password-label');
 
