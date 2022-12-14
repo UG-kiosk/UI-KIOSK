@@ -3,8 +3,8 @@ import { styled } from '@mui/system';
 import { useTranslation } from 'react-i18next';
 import { LanguageChange } from '@UG/libs/components';
 import { Namespaces } from '@UG/libs/types';
-import ug_logo_pl from 'src/assets/images/ug_logo_pl.png';
-import ug_logo_en from 'src/assets/images/ug_logo_en.png';
+import ug_logo_pl from 'src/assets/images/ug_logo_pl_blue.png';
+import ug_logo_en from 'src/assets/images/ug_logo_en_blue.png';
 import eu_flag from 'src/assets/images/eu_flag.jpg';
 import { useMemo } from 'react';
 
