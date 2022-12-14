@@ -16,7 +16,7 @@ const StyledHeader = styled('div')`
 `;
 
 const StyledTitle = styled('h1')`
-  width: 738px;
+  width: 695px;
   height: 209px;
   font-family: 'Montserrat';
   font-style: normal;
