@@ -5,22 +5,23 @@ import { useTranslation } from 'react-i18next';
 
 interface LanguageChangeProps {
   color?: string;
+  bgColor?: string;
+  fontSize?: number;
 }
 
 const StyledLanguageChange = styled('button')<LanguageChangeProps>`
   color: ${({ theme, color }) => (color ? color : theme.palette.primary.main)};
   border: none;
-  background-color: ${({ theme }) => theme.palette.primary.light};
+  background-color: ${({ theme, bgColor }) => (bgColor ? bgColor : theme.palette.primary.light)};
   font-family: Montserrat;
-  font-size: 32px;
+  font-size: ${({ fontSize }) => (fontSize ? fontSize : 32)}px;
   font-weight: 800;
   line-height: 39px;
   letter-spacing: 0em;
-  text-align: left;
 `;
 
-export const LanguageChange = ({ color }: LanguageChangeProps) => {
-  const { i18n } = useTranslation('home');
+export const LanguageChange = ({ ...props }: LanguageChangeProps) => {
+  const { i18n } = useTranslation();
 
   const getLanguage = useMemo(() => {
     if (i18n.language === Language.EN) return Language.PL;
@@ -34,7 +35,7 @@ export const LanguageChange = ({ color }: LanguageChangeProps) => {
   }, [getLanguage, i18n]);
 
   return (
-    <StyledLanguageChange color={color} onClick={handleLanguageChange}>
+    <StyledLanguageChange {...props} onClick={handleLanguageChange}>
       {getLanguage}
     </StyledLanguageChange>
   );
