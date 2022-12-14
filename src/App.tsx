@@ -17,8 +17,8 @@ const App = () => {
 
   return (
     <>
-    <Header />
-    <MainPanel />
+      <Header />
+      <MainPanel />
     </>
   );
 };
