@@ -2,7 +2,7 @@ import { WelcomePageTestFunctions } from 'cypress/utils/WelcomePage/WelcomePageT
 import { HeaderTestFunctions } from 'cypress/utils/Header/HeaderTestFunctions';
 import { MainPanelTestFunctions } from 'cypress/utils/MainPanel/MainPanelTestFunctions';
 
-const HeaderTests = new HeaderTestFunctions();
+const Header = new HeaderTestFunctions();
 const MainPanel = new MainPanelTestFunctions();
 const WelcomePage = new WelcomePageTestFunctions();
 
@@ -11,13 +11,26 @@ describe('Root.cy.tsc', () => {
     cy.visit('/');
   });
 
-  it('render welcomePage', () => {
-    WelcomePage.testWelcomePageContent();
+  it.only('render welcomePage PL', () => {
+    WelcomePage.testWelcomePageContentPL();
   });
 
-  it.only('render MainPanel after WelcomePage click', () => {
+  it.only('render welcomePage EN', () => {
+    WelcomePage.testWelcomePageContentEN();
+  });
+
+  it.only('render MainPanel after WelcomePage click PL', () => {
     WelcomePage.showMain();
-    HeaderTests.testHeaderContent();
+    Header.testHeaderContentPL();
+    MainPanel.getMainPanel().should('exist');
+    MainPanel.getTile('tile').each((tile: React.ReactNode, index: number, tilesList: React.ReactNode[]) => {
+      expect(tilesList).to.have.length(7);
+    });
+  });
+
+  it.only('render MainPanel after WelcomePage click EN', () => {
+    WelcomePage.showMain();
+    Header.testHeaderContentEN();
     MainPanel.getMainPanel().should('exist');
     MainPanel.getTile('tile').each((tile: React.ReactNode, index: number, tilesList: React.ReactNode[]) => {
       expect(tilesList).to.have.length(7);

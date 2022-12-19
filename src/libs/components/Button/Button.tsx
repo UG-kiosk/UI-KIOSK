@@ -10,7 +10,8 @@ interface ButtonProps {
 const StyledButton = styled(MUIButton)`
   margin: 26px;
   padding: 0px;
-  width: 96px;
+  padding-left: 26px;
+  padding-right: 26px;
   height: 46px;
   border: 3px solid ${({ theme }) => theme.palette.primary.main};
   border-radius: 50px;
