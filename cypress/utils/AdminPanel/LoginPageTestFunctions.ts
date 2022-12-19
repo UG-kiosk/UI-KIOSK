@@ -69,7 +69,7 @@ export class LoginPageTestFunctions {
     this.getLoginInput().focus().blur();
     this.getLoginError().should('exist');
     this.getPasswordError().should('not.exist');
-    this.getLoginError().should('have.text', 'Login jest wymagane');
+    this.getLoginError().should('have.text', 'Login jest wymagany(e)');
   };
 
   emptyLoginErrorEN = () => {
@@ -84,7 +84,7 @@ export class LoginPageTestFunctions {
     this.getPasswordInput().focus().blur();
     this.getLoginError().should('not.exist');
     this.getPasswordError().should('exist');
-    this.getPasswordError().should('have.text', 'Hasło jest wymagane');
+    this.getPasswordError().should('have.text', 'Hasło jest wymagwymagany(e)ane');
   };
 
   emptyPasswordErrorEN = () => {
@@ -103,8 +103,8 @@ export class LoginPageTestFunctions {
 
   submitEmptyDataPL = () => {
     this.submitEmptyData();
-    this.getLoginError().should('have.text', 'Login jest wymagane');
-    this.getPasswordError().should('have.text', 'Hasło jest wymagane');
+    this.getLoginError().should('have.text', 'Login jest wymagany(e)');
+    this.getPasswordError().should('have.text', 'Hasło jest wymagany(e)');
   };
 
   submitEmptyDataEN = () => {
