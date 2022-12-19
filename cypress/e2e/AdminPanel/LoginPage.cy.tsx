@@ -1,8 +1,8 @@
 import { HeaderTestFunctions } from '../../utils/Header/HeaderTestFunctions';
 import { LoginPageTestFunctions } from '../../utils/AdminPanel/LoginPageTestFunctions';
 
-const HeaderTests = new HeaderTestFunctions();
-const LoginPageTests = new LoginPageTestFunctions();
+const Header = new HeaderTestFunctions();
+const LoginPage = new LoginPageTestFunctions();
 
 describe('LoginPage.cy.tsx', () => {
   beforeEach(() => {
@@ -10,50 +10,50 @@ describe('LoginPage.cy.tsx', () => {
   });
 
   it.only('Render Header PL', () => {
-    HeaderTests.testHeaderContentPL();
+    Header.testHeaderContentPL();
   });
 
   it.only('Render Header EN', () => {
-    HeaderTests.testHeaderContentEN();
+    Header.testHeaderContentEN();
   });
 
   it.only('Login page content PL', () => {
-    LoginPageTests.testLoginPageContentPL();
+    LoginPage.testLoginPageContentPL();
   });
 
   it.only('Login page content EN', () => {
-    LoginPageTests.testLoginPageContentEN();
+    LoginPage.testLoginPageContentEN();
   });
 
   it.only('Submit correct data', () => {
-    LoginPageTests.submitCorrectData();
+    LoginPage.submitCorrectData();
   });
 
   it.only('Type empty login PL', () => {
-    LoginPageTests.emptyLoginErrorPL();
+    LoginPage.emptyLoginErrorPL();
   });
 
   it.only('Type empty login EN', () => {
-    LoginPageTests.emptyLoginErrorEN();
+    LoginPage.emptyLoginErrorEN();
   });
 
   it.only('Type empty password PL', () => {
-    LoginPageTests.emptyPasswordErrorPL();
+    LoginPage.emptyPasswordErrorPL();
   });
 
   it.only('Type empty password EN', () => {
-    LoginPageTests.emptyPasswordErrorEN();
+    LoginPage.emptyPasswordErrorEN();
   });
 
   it.only('Submit empty data PL', () => {
-    LoginPageTests.submitEmptyDataPL();
+    LoginPage.submitEmptyDataPL();
   });
 
   it.only('Submit empty data EN', () => {
-    LoginPageTests.submitEmptyDataEN();
+    LoginPage.submitEmptyDataEN();
   });
 
   it.only('Errors disappear after submitting correct data', () => {
-    LoginPageTests.disappearErrorsAfterCorrectData();
+    LoginPage.disappearErrorsAfterCorrectData();
   });
 });
