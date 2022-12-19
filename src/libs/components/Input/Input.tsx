@@ -97,7 +97,7 @@ export const Input = ({ label, fieldName, type = 'text' }: InputProps) => {
 
   return (
     <StyledDiv>
-      <StyledLabel data-cy={`${label}-label`}>{label}</StyledLabel>
+      <StyledLabel data-cy={`${fieldName}-label`}>{label}</StyledLabel>
       <StyledTextField
         type={type}
         size="small"
@@ -105,10 +105,10 @@ export const Input = ({ label, fieldName, type = 'text' }: InputProps) => {
         {...inputProps}
         label={label}
         error={!!errors?.[fieldName]}
-        inputProps={{ 'data-cy': `${label}-input` }}
+        inputProps={{ 'data-cy': `${fieldName}-input` }}
       />
       {errors?.[fieldName] && (
-        <StyledErrorMessage data-cy={`${label}-error`}>
+        <StyledErrorMessage data-cy={`${fieldName}-error`}>
           <>{errors?.[fieldName]?.message}</>
         </StyledErrorMessage>
       )}

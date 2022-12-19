@@ -1,16 +1,26 @@
 import { Grid } from '@mui/material';
 import { styled } from '@mui/system';
+import { useTranslation } from 'react-i18next';
+import { LanguageChange } from '@UG/libs/components';
+import { Namespaces } from '@UG/libs/types';
+import ug_logo_pl from 'src/assets/images/ug_logo_pl_blue.png';
+import ug_logo_en from 'src/assets/images/ug_logo_en_blue.png';
+import eu_flag from 'src/assets/images/eu_flag.jpg';
+import { useMemo } from 'react';
 
 const StyledLogoPL = styled('img')`
   height: 60px;
 `;
+
 const StyledFlag = styled('img')`
   height: 32px;
 `;
+
 const StyledLine = styled('div')`
   border-left: 3px solid ${({ theme }) => theme.palette.secondary.main};
   height: 50px;
 `;
+
 const StyledGridElement = styled('div')`
   display: flex;
   flex-direction: row;
@@ -19,6 +29,17 @@ const StyledGridElement = styled('div')`
 `;
 
 export const Header = () => {
+  const { t } = useTranslation(Namespaces.LIBS);
+
+  const UGLogo = useMemo(() => {
+    const logoName = t('ug_logo');
+
+    if (logoName === 'ug_logo_en') return ug_logo_en;
+    if (logoName === 'ug_logo_pl') return ug_logo_pl;
+
+    return ug_logo_pl;
+  }, [t]);
+
   return (
     <Grid
       position="fixed"
@@ -40,12 +61,14 @@ export const Header = () => {
       data-cy="header"
     >
       <StyledGridElement data-cy="header-left">
-        <StyledLogoPL src="/src/assets/ug_logo_pl.png" alt="blue UG logo" data-cy="header-ug-logo"></StyledLogoPL>
+        <StyledLogoPL src={UGLogo} alt="blue UG logo" data-cy="header-ug-logo"></StyledLogoPL>
         <StyledLine data-cy="header-line" />
       </StyledGridElement>
+
       <StyledGridElement data-cy="header-right">
+        <LanguageChange />
         <StyledLine data-cy="header-line" />
-        <StyledFlag src="/src/assets/eu_flag.jpg" alt="European Union Flag" data-cy="header-eu-flag"></StyledFlag>
+        <StyledFlag src={eu_flag} alt="European Union Flag" data-cy="header-eu-flag"></StyledFlag>
       </StyledGridElement>
     </Grid>
   );
