@@ -84,7 +84,7 @@ export class LoginPageTestFunctions {
     this.getPasswordInput().focus().blur();
     this.getLoginError().should('not.exist');
     this.getPasswordError().should('exist');
-    this.getPasswordError().should('have.text', 'Hasło jest wymagwymagany(e)ane');
+    this.getPasswordError().should('have.text', 'Hasło jest wymagany(e)');
   };
 
   emptyPasswordErrorEN = () => {
