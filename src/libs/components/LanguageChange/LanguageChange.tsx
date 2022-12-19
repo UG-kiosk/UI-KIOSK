@@ -35,7 +35,7 @@ export const LanguageChange = ({ ...props }: LanguageChangeProps) => {
   }, [getLanguage, i18n]);
 
   return (
-    <StyledLanguageChange {...props} onClick={handleLanguageChange}>
+    <StyledLanguageChange {...props} onClick={handleLanguageChange} data-cy="language-change">
       {getLanguage}
     </StyledLanguageChange>
   );
