@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 import { DetailsTile, Header, Paragraph } from '@UG/libs/components';
 import { Worker } from '@UG/libs/types';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { StateType } from 'src/store';
@@ -38,6 +38,19 @@ export const WorkerDetailsPage = () => {
       navigate('/error');
     }
   }, [name, navigate]);
+
+  const workerPosts: JSX.Element[] = useMemo(() => {
+    if (!worker || !worker.content) {
+      return [];
+    }
+    return worker.content?.posts.map((post, index) => (
+      <DetailsTile key={index} width={975} marginTop={35} padding={'10px 40px'}>
+        <Paragraph margin={25} color={theme.palette.primary.main} fontWeight={600}>
+          {post}
+        </Paragraph>
+      </DetailsTile>
+    ));
+  }, [worker, theme.palette.primary.main]);
 
   //TODO change layout as soon as we get designs
   if (!isLoading && errorMessage) {
@@ -96,13 +109,14 @@ export const WorkerDetailsPage = () => {
             {worker?.content?.tutorship?.link}
           </Paragraph>
         </DetailsTile>
-        {worker?.content?.posts.map((post, index) => (
+        {/* {worker?.content?.posts.map((post, index) => (
           <DetailsTile key={index} width={975} marginTop={35} padding={'10px 40px'}>
-            <Paragraph margin={25} fontSize={24} color={theme.palette.primary.main} fontWeight={600}>
+            <Paragraph margin={25} color={theme.palette.primary.main} fontWeight={600}>
               {post}
             </Paragraph>
           </DetailsTile>
-        ))}
+        ))} */}
+        {workerPosts}
       </Box>
     </>
   );

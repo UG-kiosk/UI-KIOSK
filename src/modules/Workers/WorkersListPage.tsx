@@ -59,7 +59,7 @@ interface StateProps {
   errorMessage: string | null;
 }
 
-export const WorkersPage = () => {
+export const WorkersListPage = () => {
   const theme = useTheme();
   const { t } = useTranslation();
   const { getWorkersList } = useGetWorkers();
@@ -121,7 +121,6 @@ export const WorkersPage = () => {
         sx={{
           width: 800,
         }}
-        // noValidate
         autoComplete="off"
       >
         <StyledSearchTextField label={t('search')} data-cy="search-bar" />
@@ -129,15 +128,7 @@ export const WorkersPage = () => {
           <SearchIcon data-cy="search-icon" />
         </StyledSearchButton>
       </Box>
-      <Box
-        width={1080}
-        // maxHeight={1000}
-        margin="50px auto"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        // overflow="auto"
-      >
+      <Box width={1080} margin="50px auto" display="flex" flexDirection="column" alignItems="center">
         {workersTiles}
       </Box>
     </>
