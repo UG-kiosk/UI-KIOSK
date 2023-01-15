@@ -49,20 +49,22 @@ export const MajorDetailsPage = () => {
   //   getMajorDetails();
   // }, [getMajorDetails]);
 
+  //TODO change layout as soon as we get designs
   if (!isLoading && errorMessage) {
     return (
       <>
         <Header />
-        <p>{errorMessage}</p>
+        <p style={{ marginTop: '150px' }}>{errorMessage}</p>
       </>
     );
   }
 
+  //TODO change layout as soon as we get designs
   if (isLoading && !errorMessage) {
     return (
       <>
         <Header />
-        <p>loading...</p>
+        <p style={{ marginTop: '150px' }}>loading...</p>
       </>
     );
   }
