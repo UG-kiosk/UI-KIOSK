@@ -3,5 +3,10 @@
   "ug_logo": "ug_logo_pl",
   "welcomePage": {
     "touchHere": "DOTKNIJ TUTAJ"
+  },
+  "search": "szukaj",
+  "workerPage": {
+    "contact": "Kontakt",
+    "tutorial": "Konsultacje"
   }
 }

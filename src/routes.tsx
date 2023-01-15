@@ -1,6 +1,8 @@
 import { LoginPage } from './AdminPanel/modules/LoginPage';
 import App from './App';
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
+import { WorkersPage } from './components/WorkersPage';
+import { WorkerPage } from './components/WorkersPage';
 
 const routes: RouteObject[] = [
   {
@@ -10,6 +12,14 @@ const routes: RouteObject[] = [
   {
     path: '/',
     element: <App />,
+  },
+  {
+    path: '/workers',
+    element: <WorkersPage />,
+  },
+  {
+    path: '/workers/:id',
+    element: <WorkerPage />,
   },
   {
     path: '*',
