@@ -1,6 +1,7 @@
 import { LoginPage } from './AdminPanel/modules/LoginPage';
 import App from './App';
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
+import { MajorsList } from './modules/Majors';
 
 const routes: RouteObject[] = [
   {
@@ -10,6 +11,10 @@ const routes: RouteObject[] = [
   {
     path: '/',
     element: <App />,
+  },
+  {
+    path: '/majors',
+    element: <MajorsList />,
   },
   {
     path: '*',
