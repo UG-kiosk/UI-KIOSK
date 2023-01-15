@@ -7,7 +7,7 @@ export interface ParagraphProps {
   color?: string;
 }
 
-export const StyledParagraph = styled('p', {
+export const Paragraph = styled('p', {
   shouldForwardProp: prop =>
     prop !== 'margin' && prop !== 'fontFamily' && prop !== 'fontSize' && prop !== 'fontWeight' && prop !== 'color',
 })<ParagraphProps>`

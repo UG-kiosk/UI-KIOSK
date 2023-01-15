@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { isWelcomedReducer, WelcomeType } from './state/WelcomeSlice';
-import { workersReducer, Worker } from './state/WorkersSlice';
+import { workersReducer, WorkerType } from './state/WorkersSlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,5 +11,5 @@ export const store = configureStore({
 
 export interface StateType {
   isWelcomed: WelcomeType;
-  workers: Worker[];
+  workers: WorkerType;
 }
