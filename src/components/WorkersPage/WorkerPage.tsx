@@ -74,8 +74,8 @@ export const WorkerPage = () => {
             {worker?.content?.tutorship?.link}
           </StyledParagraph>
         </StyledTile>
-        {worker?.content?.posts.map(post => (
-          <StyledTile marginTop={35} padding={15} borderRadius={55}>
+        {worker?.content?.posts.map((post, i) => (
+          <StyledTile key={i} marginTop={35} padding={15} borderRadius={55}>
             <StyledParagraph margin={25} fontSize={24} color={theme.palette.secondary.dark}>
               {post}
             </StyledParagraph>

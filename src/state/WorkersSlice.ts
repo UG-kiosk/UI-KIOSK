@@ -19,10 +19,14 @@ export interface Worker {
 
 export const workersSlice = createSlice({
   name: 'workers',
-  initialState: [] as Worker[],
-  reducers: {},
+  initialState: [],
+  reducers: {
+    showWorkers(state) {
+      return state;
+    },
+  },
 });
 
-export const {} = workersSlice.actions;
+export const { showWorkers } = workersSlice.actions;
 
 export const workersReducer = workersSlice.reducer;

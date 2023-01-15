@@ -1,8 +1,7 @@
 import { LoginPage } from './AdminPanel/modules/LoginPage';
 import App from './App';
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
-import { WorkersPage } from './components/WorkersPage';
-import { WorkerPage } from './components/WorkersPage';
+import { WorkersPage, WorkerPage } from './components/WorkersPage';
 
 const routes: RouteObject[] = [
   {
