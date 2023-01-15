@@ -79,7 +79,7 @@ export const WorkersPage = () => {
       // id later will be replaced with worker id
       workersList.map(({ name, units }) => (
         <StyledLink to={`/workers/${name}`} key={name}>
-          <DetailsTile key={name} backgroundColor={'#e0e0e080'} hoverBgColor={'#e0e0e0'}>
+          <DetailsTile key={name} backgroundColor={theme.palette.background.paper}>
             <Paragraph color={theme.palette.secondary.dark}>{name}</Paragraph>
             <Paragraph fontWeight={500} fontSize={16} color={theme.palette.primary.main}>
               {units.join(' • ')}
@@ -87,7 +87,7 @@ export const WorkersPage = () => {
           </DetailsTile>
         </StyledLink>
       )),
-    [workersList],
+    [workersList, theme.palette.background.paper, theme.palette.secondary.dark, theme.palette.primary.main],
   );
 
   if (!isLoading && errorMessage) {
