@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Header, DetailsTile, Paragraph } from '@UG/libs/components';
 import { Worker } from '@UG/libs/types';
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, TextField, Button } from '@mui/material';
+import { Box, TextField, Button, LinearProgress } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
 
@@ -103,10 +103,16 @@ export const WorkersListPage = () => {
     return (
       <>
         <Header />
-        <p>loading...</p>
+        <Box marginLeft="auto" marginRight="auto" marginTop="250px" textAlign="center" sx={{ width: 800 }}>
+          <Paragraph fontSize={20} fontWeight={600} color={theme.palette.secondary.dark}>
+            loading...
+          </Paragraph>
+          <LinearProgress />
+        </Box>
       </>
     );
   }
+
   return (
     <>
       <Header />
