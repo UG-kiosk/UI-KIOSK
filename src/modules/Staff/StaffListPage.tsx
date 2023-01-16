@@ -1,14 +1,36 @@
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { useGetWorkers } from './hooks';
+import { useGetStaff } from './hooks';
 import { StateType } from 'src/store';
 import { useTranslation } from 'react-i18next';
 import { Header, DetailsTile, Paragraph } from '@UG/libs/components';
-import { Worker } from '@UG/libs/types';
+import { Academic } from '@UG/libs/types';
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, TextField, Button, LinearProgress } from '@mui/material';
+import { Box, TextField, Button } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
+import { Skeleton } from '@mui/material';
+
+const SearchSkeleton = styled(Skeleton)`
+  width: 710px;
+  height: 60px;
+  border-radius: 25px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+`;
+
+const ButtonSkeleton = styled(Skeleton)`
+  width: 60px;
+  height: 60px;
+  border-radius: 25px;
+`;
+
+const TileSkeleton = styled(Skeleton)`
+  width: 900px;
+  height: 125px;
+  border-radius: 55px;
+  margin-bottom: 40px;
+`;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -55,30 +77,30 @@ const StyledSearchButton = styled(Button)`
 
 interface StateProps {
   isLoading: boolean;
-  workersList: Worker[];
+  staffList: Academic[];
   errorMessage: string | null;
 }
 
-export const WorkersListPage = () => {
+export const StaffListPage = () => {
   const theme = useTheme();
   const { t } = useTranslation();
-  const { getWorkersList } = useGetWorkers();
+  const { getStaffList } = useGetStaff();
 
-  const { isLoading, workersList, errorMessage } = useSelector<StateType, StateProps>(state => ({
-    isLoading: state.workers.isLoading,
-    workersList: state.workers.workersList,
-    errorMessage: state.workers.error,
+  const { isLoading, staffList, errorMessage } = useSelector<StateType, StateProps>(state => ({
+    isLoading: state.staff.isLoading,
+    staffList: state.staff.staffList,
+    errorMessage: state.staff.error,
   }));
 
   useEffect(() => {
-    getWorkersList();
-  }, [getWorkersList]);
+    getStaffList();
+  }, [getStaffList]);
 
-  const workersTiles: JSX.Element[] = useMemo(
+  const staffTiles: JSX.Element[] = useMemo(
     () =>
-      // id later will be replaced with worker id
-      workersList.map(({ name, units }) => (
-        <StyledLink to={`/workers/${name}`} key={name}>
+      // id later will be replaced with faculty member id
+      staffList.map(({ name, units }) => (
+        <StyledLink to={`/staff/${name}`} key={name}>
           <DetailsTile key={name} backgroundColor={theme.palette.background.paper}>
             <Paragraph color={theme.palette.secondary.dark}>{name}</Paragraph>
             <Paragraph fontWeight={500} fontSize={16} color={theme.palette.primary.main}>
@@ -87,7 +109,7 @@ export const WorkersListPage = () => {
           </DetailsTile>
         </StyledLink>
       )),
-    [workersList, theme.palette.background.paper, theme.palette.secondary.dark, theme.palette.primary.main],
+    [staffList, theme.palette.background.paper, theme.palette.secondary.dark, theme.palette.primary.main],
   );
 
   if (!isLoading && errorMessage) {
@@ -103,11 +125,32 @@ export const WorkersListPage = () => {
     return (
       <>
         <Header />
-        <Box marginLeft="auto" marginRight="auto" marginTop="250px" textAlign="center" sx={{ width: 800 }}>
-          <Paragraph fontSize={20} fontWeight={600} color={theme.palette.secondary.dark}>
-            loading...
-          </Paragraph>
-          <LinearProgress />
+        <Box
+          marginLeft="auto"
+          marginRight="auto"
+          marginTop="150px"
+          marginBottom="50px"
+          display="flex"
+          textAlign="center"
+          sx={{ width: 800 }}
+        >
+          <SearchSkeleton animation="wave" variant="rectangular" />
+          <ButtonSkeleton animation="wave" variant="rectangular" />
+        </Box>
+        <Box
+          marginLeft="auto"
+          marginRight="auto"
+          display="flex"
+          alignItems="center"
+          flexDirection="column"
+          sx={{ width: 1080 }}
+        >
+          <TileSkeleton animation="wave" variant="rectangular" />
+          <TileSkeleton animation="wave" variant="rectangular" />
+          <TileSkeleton animation="wave" variant="rectangular" />
+          <TileSkeleton animation="wave" variant="rectangular" />
+          <TileSkeleton animation="wave" variant="rectangular" />
+          <TileSkeleton animation="wave" variant="rectangular" />
         </Box>
       </>
     );
@@ -135,7 +178,7 @@ export const WorkersListPage = () => {
         </StyledSearchButton>
       </Box>
       <Box width={1080} margin="50px auto" display="flex" flexDirection="column" alignItems="center">
-        {workersTiles}
+        {staffTiles}
       </Box>
     </>
   );

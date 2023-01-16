@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 import { DetailsTile, Header, Paragraph } from '@UG/libs/components';
-import { Worker } from '@UG/libs/types';
+import { Academic } from '@UG/libs/types';
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -16,22 +16,22 @@ const Line = styled('div')`
 
 interface StateProps {
   isLoading: boolean;
-  workersList: Worker[];
+  staffList: Academic[];
   errorMessage: string | null;
 }
 
-export const WorkerDetailsPage = () => {
+export const StaffDetailsPage = () => {
   const theme = useTheme();
   const { t } = useTranslation();
   const { name } = useParams();
   const navigate = useNavigate();
 
-  const { isLoading, workersList, errorMessage } = useSelector<StateType, StateProps>(state => ({
-    isLoading: state.workers.isLoading,
-    workersList: state.workers.workersList,
-    errorMessage: state.workers.error,
+  const { isLoading, staffList, errorMessage } = useSelector<StateType, StateProps>(state => ({
+    isLoading: state.staff.isLoading,
+    staffList: state.staff.staffList,
+    errorMessage: state.staff.error,
   }));
-  const worker = workersList.find(worker => worker.name === name);
+  const academic = staffList.find(academic => academic.name === name);
 
   useEffect(() => {
     if (!name) {
@@ -39,18 +39,18 @@ export const WorkerDetailsPage = () => {
     }
   }, [name, navigate]);
 
-  const workerPosts: JSX.Element[] = useMemo(() => {
-    if (!worker || !worker.content) {
+  const academicPosts: JSX.Element[] = useMemo(() => {
+    if (!academic || !academic.content) {
       return [];
     }
-    return worker.content?.posts.map((post, index) => (
+    return academic.content?.posts.map((post, index) => (
       <DetailsTile key={index} width={975} marginTop={35} padding={'10px 40px'}>
         <Paragraph margin={25} color={theme.palette.primary.main} fontWeight={600}>
           {post}
         </Paragraph>
       </DetailsTile>
     ));
-  }, [worker, theme.palette.primary.main]);
+  }, [academic, theme.palette.primary.main]);
 
   //TODO change layout as soon as we get designs
   if (!isLoading && errorMessage) {
@@ -73,7 +73,7 @@ export const WorkerDetailsPage = () => {
   }
 
   //TODO change layout as soon as we get designs
-  if (!worker) {
+  if (!academic) {
     return (
       <>
         <Header />
@@ -87,36 +87,26 @@ export const WorkerDetailsPage = () => {
       <Header />
       <Box marginTop="150px" marginBottom="40px" marginLeft="auto" marginRight="auto" width={975}>
         <Paragraph margin={15} fontSize={36} color={theme.palette.secondary.dark}>
-          {worker?.name}
+          {academic?.name}
         </Paragraph>
         <Line />
         <DetailsTile width={975} padding={'40px 40px'}>
           <Paragraph margin={25} fontSize={36} color={theme.palette.secondary.dark}>
-            {t('workerPage.contact')}
+            {t('staffPage.contact')}
           </Paragraph>
           <Paragraph margin={25} fontSize={24} color={theme.palette.secondary.dark} fontWeight={500}>
-            {worker?.content?.email}
+            {academic?.content?.email}
           </Paragraph>
-          {worker?.content?.tutorship?.schedule ? (
+          {academic?.content?.tutorial ? (
             <Paragraph margin={25} fontSize={36} color={theme.palette.secondary.dark}>
-              {t('workerPage.tutorial')}
+              {t('staffPage.tutorial')}
             </Paragraph>
           ) : null}
           <Paragraph margin={25} fontSize={24} color={theme.palette.secondary.dark} fontWeight={500}>
-            {worker?.content?.tutorship?.schedule}
-          </Paragraph>
-          <Paragraph margin={25} fontSize={20} color={theme.palette.secondary.dark}>
-            {worker?.content?.tutorship?.link}
+            {academic?.content?.tutorial}
           </Paragraph>
         </DetailsTile>
-        {/* {worker?.content?.posts.map((post, index) => (
-          <DetailsTile key={index} width={975} marginTop={35} padding={'10px 40px'}>
-            <Paragraph margin={25} color={theme.palette.primary.main} fontWeight={600}>
-              {post}
-            </Paragraph>
-          </DetailsTile>
-        ))} */}
-        {workerPosts}
+        {academicPosts}
       </Box>
     </>
   );

@@ -1,3 +1,3 @@
 export * from './Language';
 export * from './Namespaces';
-export * from './Worker';
+export * from './Staff';
