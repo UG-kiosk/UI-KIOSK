@@ -1,4 +1,3 @@
-import { Box } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 import { DetailsTile, Header, Paragraph } from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
@@ -7,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { StateType } from 'src/store';
 import { useTranslation } from 'react-i18next';
+import { Box } from '@mui/material';
 
 const Line = styled('div')`
   width: 975px;
