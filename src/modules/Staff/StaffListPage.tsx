@@ -6,10 +6,9 @@ import { useTranslation } from 'react-i18next';
 import { Header, DetailsTile, Paragraph } from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, TextField, Button } from '@mui/material';
+import { Box, TextField, Button, Skeleton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
-import { Skeleton } from '@mui/material';
 
 const SearchSkeleton = styled(Skeleton)`
   width: 710px;

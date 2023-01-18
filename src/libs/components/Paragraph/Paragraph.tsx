@@ -8,8 +8,7 @@ export interface ParagraphProps {
 }
 
 export const Paragraph = styled('p', {
-  shouldForwardProp: prop =>
-    prop !== 'margin' && prop !== 'fontFamily' && prop !== 'fontSize' && prop !== 'fontWeight' && prop !== 'color',
+  shouldForwardProp: prop => prop !== 'margin' && prop !== 'fontSize' && prop !== 'fontWeight' && prop !== 'color',
 })<ParagraphProps>`
   font-family: 'Montserrat', sans-serif;
   margin: ${({ margin }) => (margin ? `${margin}px` : '0px')};
