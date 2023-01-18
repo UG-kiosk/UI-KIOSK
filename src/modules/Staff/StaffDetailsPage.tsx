@@ -1,5 +1,5 @@
 import { styled, useTheme } from '@mui/material/styles';
-import { DetailsTile, Header, Paragraph } from '@UG/libs/components';
+import { DetailsTile, Header, Paragraph, StyledSkeleton, ListPageSkeleton } from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
@@ -67,7 +67,13 @@ export const StaffDetailsPage = () => {
     return (
       <>
         <Header />
-        <p style={{ marginTop: '150px' }}>loading...</p>
+        <Box marginTop="150px" marginBottom="40px" ml="auto" mr="auto" width={975}>
+          <StyledSkeleton animation="wave" variant="rectangular" width={500} height={50} mt={30} />
+          <StyledSkeleton animation="wave" variant="rectangular" width={500} height={50} mt={30} />
+          <Line />
+          <StyledSkeleton animation="wave" variant="rectangular" width={975} height={250} />
+          <ListPageSkeleton tiles={3} width={975} mt={50} height={100} />
+        </Box>
       </>
     );
   }
@@ -85,7 +91,7 @@ export const StaffDetailsPage = () => {
   return (
     <>
       <Header />
-      <Box marginTop="150px" marginBottom="40px" marginLeft="auto" marginRight="auto" width={975}>
+      <Box marginTop="150px" marginBottom="40px" ml="auto" mr="auto" width={975}>
         <Paragraph margin={15} fontSize={36} color={theme.palette.secondary.dark}>
           {academic?.name}
         </Paragraph>
