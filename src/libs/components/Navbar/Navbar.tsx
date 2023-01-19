@@ -21,10 +21,10 @@ export const Navbar = () => {
   const navigate = useNavigate();
   const handleNavigateBack = useCallback(() => {
     navigate(-1);
-  }, []);
+  }, [navigate]);
   const handleNavigateForward = useCallback(() => {
     navigate(1);
-  }, []);
+  }, [navigate]);
   return (
     <Grid
       position="fixed"
