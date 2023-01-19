@@ -3,6 +3,7 @@ import { MainPanel } from './components/MainPanel';
 import { WelcomePage } from './components/WelcomePage.tsx';
 import { StateType } from './store';
 import { Header } from './libs/components/Header';
+import { Navbar } from './libs/components/Navbar';
 
 interface StateProps {
   isWelcomed: boolean;
@@ -19,6 +20,7 @@ const App = () => {
     <>
       <Header />
       <MainPanel />
+      <Navbar />
     </>
   );
 };

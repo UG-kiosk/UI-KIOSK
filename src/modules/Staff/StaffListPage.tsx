@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetStaff } from './hooks';
 import { StateType } from 'src/store';
-import { Header, DetailsTile, Paragraph, ListPageSkeleton } from '@UG/libs/components';
+import { Header, Navbar, DetailsTile, Paragraph, ListPageSkeleton } from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
 import { styled, useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
@@ -75,6 +75,7 @@ export const StaffListPage = () => {
       <Box width={1080} margin="50px auto" display="flex" flexDirection="column" alignItems="center">
         {staffTiles}
       </Box>
+      <Navbar />
     </>
   );
 };

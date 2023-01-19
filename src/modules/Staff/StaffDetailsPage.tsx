@@ -1,5 +1,5 @@
 import { styled, useTheme } from '@mui/material/styles';
-import { DetailsTile, Header, Paragraph, StyledSkeleton, ListPageSkeleton } from '@UG/libs/components';
+import { DetailsTile, Header, Navbar, Paragraph, StyledSkeleton, ListPageSkeleton } from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
@@ -114,6 +114,7 @@ export const StaffDetailsPage = () => {
         </DetailsTile>
         {academicPosts}
       </Box>
+      <Navbar />
     </>
   );
 };
