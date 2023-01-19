@@ -1,10 +1,12 @@
 import { WelcomePageTestFunctions } from 'cypress/utils/WelcomePage/WelcomePageTestFunctions';
 import { HeaderTestFunctions } from 'cypress/utils/Header/HeaderTestFunctions';
 import { MainPanelTestFunctions } from 'cypress/utils/MainPanel/MainPanelTestFunctions';
+import { NavbarTestFunctions } from 'cypress/utils/Navbar/NavbarTestFunctions';
 
 const Header = new HeaderTestFunctions();
 const MainPanel = new MainPanelTestFunctions();
 const WelcomePage = new WelcomePageTestFunctions();
+const Navbar = new NavbarTestFunctions();
 
 describe('Root.cy.tsc', () => {
   beforeEach(() => {
@@ -35,5 +37,10 @@ describe('Root.cy.tsc', () => {
     MainPanel.getTile('tile').each((tile: React.ReactNode, index: number, tilesList: React.ReactNode[]) => {
       expect(tilesList).to.have.length(7);
     });
+  });
+
+  it.only('render bottom Navbar', () => {
+    WelcomePage.showMain();
+    Navbar.testNavbarContent();
   });
 });
