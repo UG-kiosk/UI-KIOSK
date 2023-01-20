@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetStaff } from './hooks';
 import { StateType } from 'src/store';
-import { Header, Navbar, DetailsTile, Paragraph, ListPageSkeleton } from '@UG/libs/components';
+import { Header, Navbar, DetailsTile, Paragraph, ListPageSkeleton, ErrorMessage } from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
 import { styled, useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
@@ -35,10 +35,9 @@ export const StaffListPage = () => {
 
   const staffTiles: JSX.Element[] = useMemo(
     () =>
-      // id later will be replaced with faculty member id
-      staffList.map(({ name, units }) => (
-        <StyledLink to={`/staff/${name}`} key={name}>
-          <DetailsTile key={name} backgroundColor={theme.palette.background.paper}>
+      staffList.map(({ _id, name, units }) => (
+        <StyledLink to={`/staff/${_id}`} key={_id}>
+          <DetailsTile key={_id} backgroundColor={theme.palette.background.paper}>
             <Paragraph color={theme.palette.secondary.dark}>{name}</Paragraph>
             <Paragraph fontWeight={500} fontSize={16} color={theme.palette.primary.main}>
               {units.join(' • ')}
@@ -53,7 +52,7 @@ export const StaffListPage = () => {
     return (
       <>
         <Header />
-        <p>{errorMessage}</p>
+        <ErrorMessage />
       </>
     );
   }
@@ -72,7 +71,14 @@ export const StaffListPage = () => {
     <>
       <Header />
       <SearchBar />
-      <Box width={1080} margin="50px auto" display="flex" flexDirection="column" alignItems="center">
+      <Box
+        width={1080}
+        margin="50px auto"
+        marginBottom="180px"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+      >
         {staffTiles}
       </Box>
       <Navbar />

@@ -17,7 +17,7 @@ const routes: RouteObject[] = [
     element: <StaffListPage />,
   },
   {
-    path: '/staff/:name',
+    path: '/staff/:_id',
     element: <StaffDetailsPage />,
   },
   {

@@ -15,6 +15,12 @@ const StyledTile = styled('div', {
   width: ${({ tileWidth }) => (tileWidth ? `${tileWidth}px` : '985px')};
   border-radius: 55px;
   background-color: ${({ theme }) => theme.palette.secondary.main};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 190px;
+  color: ${({ theme }) => theme.palette.background.default};
 `;
 
 export const Tile = ({ children, className, tileWidth, tileHeight }: TileProps) => (

@@ -4,6 +4,9 @@
   "welcomePage": {
     "touchHere": "DOTKNIJ TUTAJ"
   },
+  "mainPanel": {
+    "staff": "skład osobowy"
+  },
   "search": "szukaj",
   "staffPage": {
     "contact": "Kontakt",

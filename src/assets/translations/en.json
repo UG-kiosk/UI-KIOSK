@@ -4,6 +4,9 @@
   "welcomePage": {
     "touchHere": "TOUCH HERE"
   },
+  "mainPanel": {
+    "staff": "faculty members"
+  },
   "search": "search",
   "staffPage": {
     "contact": "Contact",

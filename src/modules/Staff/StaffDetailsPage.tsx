@@ -1,5 +1,13 @@
 import { styled, useTheme } from '@mui/material/styles';
-import { DetailsTile, Header, Navbar, Paragraph, StyledSkeleton, ListPageSkeleton } from '@UG/libs/components';
+import {
+  DetailsTile,
+  Header,
+  Navbar,
+  Paragraph,
+  StyledSkeleton,
+  ListPageSkeleton,
+  ErrorMessage,
+} from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
@@ -23,7 +31,7 @@ interface StateProps {
 export const StaffDetailsPage = () => {
   const theme = useTheme();
   const { t } = useTranslation();
-  const { name } = useParams();
+  const { _id } = useParams();
   const navigate = useNavigate();
 
   const { isLoading, staffList, errorMessage } = useSelector<StateType, StateProps>(state => ({
@@ -31,24 +39,31 @@ export const StaffDetailsPage = () => {
     staffList: state.staff.staffList,
     errorMessage: state.staff.error,
   }));
-  const academic = staffList.find(academic => academic.name === name);
+  const academic = staffList.find(academic => academic._id === _id);
 
   useEffect(() => {
-    if (!name) {
+    if (!_id) {
       navigate('/error');
     }
-  }, [name, navigate]);
+  }, [_id, navigate]);
 
   const academicPosts: JSX.Element[] = useMemo(() => {
     if (!academic || !academic.content) {
       return [];
     }
     return academic.content?.posts.map((post, index) => (
-      <DetailsTile key={index} width={975} marginTop={35} padding={'10px 40px'}>
-        <Paragraph margin={25} color={theme.palette.primary.main} fontWeight={600}>
-          {post}
+      <>
+        <Paragraph margin={'50px 0 50px 0'} fontSize={28} align={'center'}>
+          {post.position}
         </Paragraph>
-      </DetailsTile>
+        {post.faculty.map((f, index) => (
+          <DetailsTile key={index} width={975} marginTop={35} padding={'10px 40px'}>
+            <Paragraph margin={'25px'} color={theme.palette.primary.main} fontWeight={600}>
+              {f}
+            </Paragraph>
+          </DetailsTile>
+        ))}
+      </>
     ));
   }, [academic, theme.palette.primary.main]);
 
@@ -57,7 +72,7 @@ export const StaffDetailsPage = () => {
     return (
       <>
         <Header />
-        <p style={{ marginTop: '150px' }}>{errorMessage}</p>
+        <ErrorMessage />
       </>
     );
   }
@@ -83,7 +98,7 @@ export const StaffDetailsPage = () => {
     return (
       <>
         <Header />
-        <p style={{ marginTop: '150px' }}>sorry but we couldn&apos;t find {name}</p>
+        <ErrorMessage />
       </>
     );
   }
@@ -91,24 +106,24 @@ export const StaffDetailsPage = () => {
   return (
     <>
       <Header />
-      <Box marginTop="150px" marginBottom="40px" ml="auto" mr="auto" width={975}>
-        <Paragraph margin={15} fontSize={36} color={theme.palette.secondary.dark}>
+      <Box margin="150px auto" marginBottom="180px" width={975}>
+        <Paragraph margin={'15px'} fontSize={36} color={theme.palette.secondary.dark}>
           {academic?.name}
         </Paragraph>
         <Line />
         <DetailsTile width={975} padding={'40px 40px'}>
-          <Paragraph margin={25} fontSize={36} color={theme.palette.secondary.dark}>
+          <Paragraph margin={'25px'} fontSize={36} color={theme.palette.secondary.dark}>
             {t('staffPage.contact')}
           </Paragraph>
-          <Paragraph margin={25} fontSize={24} color={theme.palette.secondary.dark} fontWeight={500}>
+          <Paragraph margin={'25px'} fontSize={24} color={theme.palette.secondary.dark} fontWeight={500}>
             {academic?.content?.email}
           </Paragraph>
           {academic?.content?.tutorial ? (
-            <Paragraph margin={25} fontSize={36} color={theme.palette.secondary.dark}>
+            <Paragraph margin={'25px'} fontSize={36} color={theme.palette.secondary.dark}>
               {t('staffPage.tutorial')}
             </Paragraph>
           ) : null}
-          <Paragraph margin={25} fontSize={24} color={theme.palette.secondary.dark} fontWeight={500}>
+          <Paragraph margin={'25px'} fontSize={24} color={theme.palette.secondary.dark} fontWeight={500}>
             {academic?.content?.tutorial}
           </Paragraph>
         </DetailsTile>
