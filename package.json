@@ -17,6 +17,7 @@
     "@emotion/styled": "^11.10.5",
     "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^2.9.10",
+    "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.10.16",
     "@reduxjs/toolkit": "^1.9.0",
     "axios": "^1.2.2",

@@ -6,3 +6,4 @@ export * from './LanguageChange';
 export * from './DetailsTile';
 export * from './Divider';
 export * from './ListPageSkeleton';
+export * from './Navbar';

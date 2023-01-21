@@ -1,4 +1,4 @@
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
 import { showMainView } from 'src/state/WelcomeSlice';
