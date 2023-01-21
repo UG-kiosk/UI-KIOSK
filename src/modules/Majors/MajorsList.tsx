@@ -38,7 +38,7 @@ export const MajorsList = () => {
     () =>
       //TODO - change name to id
       majorsList.map(({ name }) => (
-        <StyledLink to={name} key={name}>
+        <StyledLink to={name} key={name} data-cy="major-tile-container">
           <DetailsTile>{name}</DetailsTile>
         </StyledLink>
       )),
