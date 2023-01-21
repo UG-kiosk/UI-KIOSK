@@ -1,15 +1,7 @@
 import { styled, useTheme } from '@mui/material/styles';
-import {
-  DetailsTile,
-  Header,
-  Navbar,
-  Paragraph,
-  StyledSkeleton,
-  ListPageSkeleton,
-  ErrorMessage,
-} from '@UG/libs/components';
+import { DetailsTile, Header, Navbar, Paragraph, StyledSkeleton, ListPageSkeleton, Error } from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
-import { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { StateType } from 'src/store';
@@ -54,9 +46,10 @@ export const StaffDetailsPage = () => {
     if (!staffDetails || !staffDetails.content) {
       return [];
     }
+
     return staffDetails.content?.posts.map((post, i) => (
-      <>
-        <Paragraph key={i} margin={'50px 0 50px 0'} fontSize={28} align={'center'}>
+      <React.Fragment key={i}>
+        <Paragraph margin={'50px 0 50px 0'} fontSize={28} align="center">
           {post.position}
         </Paragraph>
         {post.faculty.map((f, index) => (
@@ -66,21 +59,20 @@ export const StaffDetailsPage = () => {
             </Paragraph>
           </DetailsTile>
         ))}
-      </>
+      </React.Fragment>
     ));
   }, [staffDetails, theme.palette.primary.main]);
 
-  //TODO change layout as soon as we get designs
   if (!isLoading && errorMessage) {
+    // optional props will be added later
     return (
       <>
         <Header />
-        <ErrorMessage />
+        <Error />
       </>
     );
   }
 
-  //TODO change layout as soon as we get designs
   if (isLoading && !errorMessage) {
     return (
       <>
@@ -96,12 +88,11 @@ export const StaffDetailsPage = () => {
     );
   }
 
-  //TODO change layout as soon as we get designs
   if (!staffDetails) {
     return (
       <>
         <Header />
-        <ErrorMessage />
+        <Error />
       </>
     );
   }

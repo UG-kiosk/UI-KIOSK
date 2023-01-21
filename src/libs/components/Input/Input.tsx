@@ -62,7 +62,7 @@ const StyledTextField = styled(TextField)`
   }
 `;
 
-const StyledErrorMessage = styled('p')`
+const StyledError = styled('p')`
   color: ${({ theme }) => theme.palette.error.main};
   font-family: 'Montserrat';
   font-weight: 400;
@@ -108,9 +108,9 @@ export const Input = ({ label, fieldName, type = 'text' }: InputProps) => {
         inputProps={{ 'data-cy': `${fieldName}-input` }}
       />
       {errors?.[fieldName] && (
-        <StyledErrorMessage data-cy={`${fieldName}-error`}>
+        <StyledError data-cy={`${fieldName}-error`}>
           <>{errors?.[fieldName]?.message}</>
-        </StyledErrorMessage>
+        </StyledError>
       )}
     </StyledDiv>
   );

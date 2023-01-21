@@ -8,7 +8,8 @@ const StyledAlert = styled(Alert)`
   font-family: 'Montserrat';
 `;
 
-export const ErrorMessage = () => (
+// optional props will be added later
+export const Error = () => (
   <Stack marginTop="150px" marginX="auto" width={975}>
     <StyledAlert severity="error">
       <StyledAlertTitle>Error</StyledAlertTitle>

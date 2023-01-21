@@ -2,12 +2,12 @@ import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetStaff } from './hooks';
 import { StateType } from 'src/store';
-import { Header, Navbar, DetailsTile, Paragraph, ListPageSkeleton, ErrorMessage } from '@UG/libs/components';
+import { Header, Navbar, DetailsTile, Paragraph, ListPageSkeleton, Error } from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
 import { styled, useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { SearchBar, SearchBarSkeleton } from './SearchBar';
+// import { SearchBar } from '../../libs/components/SearchBar';
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -52,7 +52,7 @@ export const StaffListPage = () => {
     return (
       <>
         <Header />
-        <ErrorMessage />
+        <Error />
       </>
     );
   }
@@ -61,16 +61,17 @@ export const StaffListPage = () => {
     return (
       <>
         <Header />
-        <SearchBarSkeleton mb={-10} />
-        <ListPageSkeleton height={100} />
+        {/* <SearchBar /> */}
+        <ListPageSkeleton mt={80} height={100} />
       </>
     );
   }
 
   return (
+    // searchbar will be implemented in the future
     <>
       <Header />
-      <SearchBar />
+      {/* <SearchBar /> */}
       <Box
         width={1080}
         margin="50px auto"

@@ -1,5 +1,6 @@
 import { Skeleton, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { useMemo } from 'react';
 
 export const StyledSkeleton = styled(Skeleton)<ListPageSkeletonProps>`
   width: ${({ width }) => (width ? width : 900)}px;
@@ -16,6 +17,14 @@ interface ListPageSkeletonProps {
 }
 
 export const ListPageSkeleton = ({ tiles, mt, width, height }: ListPageSkeletonProps) => {
+  const skeletonTiles: JSX.Element[] = useMemo(
+    () =>
+      Array.from(Array(tiles ? tiles : 6).keys()).map((_, index) => (
+        <StyledSkeleton animation="wave" variant="rectangular" width={width} height={height} key={index} />
+      )),
+    [],
+  );
+
   return (
     <Box
       mx="auto"
@@ -25,9 +34,7 @@ export const ListPageSkeleton = ({ tiles, mt, width, height }: ListPageSkeletonP
       flexDirection="column"
       sx={{ width: '100%' }}
     >
-      {Array.from(Array(tiles ? tiles : 6).keys()).map((_, index) => (
-        <StyledSkeleton animation="wave" variant="rectangular" width={width} height={height} key={index} />
-      ))}
+      {skeletonTiles}
     </Box>
   );
 };

@@ -19,6 +19,7 @@ export const useGetStaff = () => {
       const errorMessage = error?.response?.message || 'Something went wrong';
 
       dispatch(setError(errorMessage));
+      dispatch(finishLoading());
     }
   }, [dispatch]);
 
@@ -35,6 +36,7 @@ export const useGetStaff = () => {
         const errorMessage = error?.response?.message || 'Something went wrong';
 
         dispatch(setError(errorMessage));
+        dispatch(finishLoading());
       }
     },
     [dispatch],

@@ -21,7 +21,6 @@ const StyledSearchTextField = styled(TextField)`
   }
   & .MuiFormLabel-root {
     font-weight: 700;
-    // color: ${({ theme }) => theme.palette.secondary.main};
   }
   & label {
     font-weight: 700;
