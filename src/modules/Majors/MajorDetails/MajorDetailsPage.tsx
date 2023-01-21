@@ -77,6 +77,7 @@ export const MajorDetailsPage = () => {
       <>
         <Header />
         <p style={{ marginTop: '150px' }}>sorry but we couldn&apos;t find {name}</p>
+        <Navbar />
       </>
     );
   }
