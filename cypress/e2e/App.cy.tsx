@@ -42,5 +42,6 @@ describe('Root.cy.tsc', () => {
   it.only('render bottom Navbar', () => {
     WelcomePage.showMain();
     Navbar.testNavbarContent();
+    Navbar.testNavbarNavigationToHome();
   });
 });
