@@ -15,6 +15,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { StateType } from 'src/store';
 import { useTranslation } from 'react-i18next';
 import { Box } from '@mui/material';
+import { useGetStaff } from './hooks';
 
 const Line = styled('div')`
   width: 975px;
@@ -24,36 +25,38 @@ const Line = styled('div')`
 
 interface StateProps {
   isLoading: boolean;
-  staffList: Academic[];
+  staffDetails: Academic | null;
   errorMessage: string | null;
 }
 
 export const StaffDetailsPage = () => {
   const theme = useTheme();
   const { t } = useTranslation();
-  const { _id } = useParams();
   const navigate = useNavigate();
+  const { _id } = useParams();
+  const { getStaffDetails } = useGetStaff();
 
-  const { isLoading, staffList, errorMessage } = useSelector<StateType, StateProps>(state => ({
+  const { isLoading, staffDetails, errorMessage } = useSelector<StateType, StateProps>(state => ({
     isLoading: state.staff.isLoading,
-    staffList: state.staff.staffList,
+    staffDetails: state.staff.staffDetails,
     errorMessage: state.staff.error,
   }));
-  const academic = staffList.find(academic => academic._id === _id);
 
   useEffect(() => {
     if (!_id) {
       navigate('/error');
+    } else {
+      getStaffDetails(_id);
     }
-  }, [_id, navigate]);
+  }, [_id, navigate, getStaffDetails]);
 
   const academicPosts: JSX.Element[] = useMemo(() => {
-    if (!academic || !academic.content) {
+    if (!staffDetails || !staffDetails.content) {
       return [];
     }
-    return academic.content?.posts.map(post => (
+    return staffDetails.content?.posts.map((post, i) => (
       <>
-        <Paragraph margin={'50px 0 50px 0'} fontSize={28} align={'center'}>
+        <Paragraph key={i} margin={'50px 0 50px 0'} fontSize={28} align={'center'}>
           {post.position}
         </Paragraph>
         {post.faculty.map((f, index) => (
@@ -65,7 +68,7 @@ export const StaffDetailsPage = () => {
         ))}
       </>
     ));
-  }, [academic, theme.palette.primary.main]);
+  }, [staffDetails, theme.palette.primary.main]);
 
   //TODO change layout as soon as we get designs
   if (!isLoading && errorMessage) {
@@ -94,7 +97,7 @@ export const StaffDetailsPage = () => {
   }
 
   //TODO change layout as soon as we get designs
-  if (!academic) {
+  if (!staffDetails) {
     return (
       <>
         <Header />
@@ -108,7 +111,7 @@ export const StaffDetailsPage = () => {
       <Header />
       <Box margin="150px auto" marginBottom="180px" width={975}>
         <Paragraph margin={'15px'} fontSize={36} color={theme.palette.secondary.dark}>
-          {academic?.name}
+          {staffDetails?.name}
         </Paragraph>
         <Line />
         <DetailsTile width={975} padding={'40px 40px'}>
@@ -116,15 +119,15 @@ export const StaffDetailsPage = () => {
             {t('staffPage.contact')}
           </Paragraph>
           <Paragraph margin={'25px'} fontSize={24} color={theme.palette.secondary.dark} fontWeight={500}>
-            {academic?.content?.email}
+            {staffDetails?.content?.email}
           </Paragraph>
-          {academic?.content?.tutorial ? (
+          {staffDetails?.content?.tutorial ? (
             <Paragraph margin={'25px'} fontSize={36} color={theme.palette.secondary.dark}>
               {t('staffPage.tutorial')}
             </Paragraph>
           ) : null}
           <Paragraph margin={'25px'} fontSize={24} color={theme.palette.secondary.dark} fontWeight={500}>
-            {academic?.content?.tutorial}
+            {staffDetails?.content?.tutorial}
           </Paragraph>
         </DetailsTile>
         {academicPosts}
