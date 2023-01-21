@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { DetailsTile, Header, ListPageSkeleton } from '@UG/libs/components';
+import { DetailsTile, Header, ListPageSkeleton, Navbar } from '@UG/libs/components';
 import { Major } from '@UG/libs/types';
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
@@ -51,6 +51,7 @@ export const MajorsList = () => {
       <>
         <Header />
         <p style={{ marginTop: '150px' }}>{errorMessage}</p>
+        <Navbar />
       </>
     );
   }
@@ -61,6 +62,7 @@ export const MajorsList = () => {
       <>
         <Header />
         <ListPageSkeleton />
+        <Navbar />
       </>
     );
   }
@@ -82,6 +84,7 @@ export const MajorsList = () => {
       >
         {majorsTiles}
       </Box>
+      <Navbar />
     </>
   );
 };
