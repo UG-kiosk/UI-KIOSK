@@ -51,7 +51,7 @@ export const StaffDetailsPage = () => {
     if (!academic || !academic.content) {
       return [];
     }
-    return academic.content?.posts.map((post, index) => (
+    return academic.content?.posts.map(post => (
       <>
         <Paragraph margin={'50px 0 50px 0'} fontSize={28} align={'center'}>
           {post.position}
