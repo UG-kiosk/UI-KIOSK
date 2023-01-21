@@ -15,14 +15,14 @@ const StyledDetailsTile = styled('div', {
   height: auto;
   background-color: ${({ backgroundColor, theme }) =>
     backgroundColor ? backgroundColor : theme.palette.background.default};
-  padding: 20px 40px;
+  padding: 65px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(174, 174, 192, 0.4);
   border-radius: 55px;
 `;
 
 export const DetailsTile = ({ children, marginTop, backgroundColor }: DetailsTileProps) => {
   return (
-    <StyledDetailsTile marginTop={marginTop} backgroundColor={backgroundColor}>
+    <StyledDetailsTile marginTop={marginTop} backgroundColor={backgroundColor} data-cy="details-tile">
       {children}
     </StyledDetailsTile>
   );
