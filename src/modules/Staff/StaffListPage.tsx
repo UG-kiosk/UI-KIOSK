@@ -36,8 +36,8 @@ export const StaffListPage = () => {
   const staffTiles: JSX.Element[] = useMemo(
     () =>
       staffList.map(({ _id, name, units }) => (
-        <StyledLink to={`/staff/${_id}`} key={_id}>
-          <DetailsTile key={_id} backgroundColor={theme.palette.background.paper}>
+        <StyledLink to={`/staff/${_id}`} key={_id} data-cy="link-to-staff-details">
+          <DetailsTile key={_id} backgroundColor={theme.palette.background.paper} data-cy="staff-tile">
             <Paragraph color={theme.palette.secondary.dark}>{name}</Paragraph>
             <Paragraph fontWeight={500} fontSize={16} color={theme.palette.primary.main}>
               {units.join(' • ')}
@@ -78,6 +78,7 @@ export const StaffListPage = () => {
         display="flex"
         flexDirection="column"
         alignItems="center"
+        data-cy="staff-list-container"
       >
         {staffTiles}
       </Box>
