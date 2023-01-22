@@ -9,19 +9,23 @@ describe('MajorsListPage', () => {
     cy.visit('/majors');
   });
 
-  it.only('Render Header PL', () => {
+  it.only('render content PL', () => {
     Header.testHeaderContentPL();
-  });
-
-  it.only('Render Header EN', () => {
-    Header.testHeaderContentEN();
-  });
-
-  it.only('render content', () => {
     MajorsListPage.testMajorsListContent();
   });
 
+  it.only('render content EN', () => {
+    Header.testHeaderContentEN();
+    // TODO - english version
+  });
+
   it.only('request pending', () => {
+    Header.testHeaderContentPL();
     MajorsListPage.testMajorsListContentPendingStatus();
+  });
+
+  it.only('get request error', () => {
+    Header.testHeaderContentPL();
+    MajorsListPage.testMajorsListContentOnRequestError();
   });
 });

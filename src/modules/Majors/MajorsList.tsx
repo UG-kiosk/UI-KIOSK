@@ -50,7 +50,9 @@ export const MajorsList = () => {
     return (
       <>
         <Header />
-        <p style={{ marginTop: '150px' }}>{errorMessage}</p>
+        <p style={{ marginTop: '150px' }} data-cy="error-message">
+          {errorMessage}
+        </p>
         <Navbar />
       </>
     );

@@ -5,6 +5,8 @@ export class MajorsListTestFunctions {
 
   private getSkeletonRow = () => cy.getBySelector('skeleton-row');
 
+  private getErrorMessage = () => cy.getBySelector('error-message');
+
   private mockGETMajors = () => cy.intercept('GET', '/majors', { fixture: 'majors.json' }).as('getMajorsList');
 
   testMajorsListContentPendingStatus = () => {
@@ -27,5 +29,16 @@ export class MajorsListTestFunctions {
     this.getMajorTile().eq(1).should('have.text', 'Bioinformatyka');
     this.getMajorTile().eq(2).should('have.text', 'Fizyka');
     this.getMajorTile().eq(3).should('have.text', 'Profil ogólnoakademicki');
+  };
+
+  testMajorsListContentOnRequestError = () => {
+    cy.intercept('GET', '/majors', {
+      statusCode: 500,
+      body: {
+        message: 'Sorry, something went wrong',
+      },
+    }).as('getMajorsList');
+
+    this.getErrorMessage().should('have.text', 'Sorry, something went wrong');
   };
 }
