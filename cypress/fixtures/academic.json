@@ -1,0 +1,16 @@
+{
+  "content": {
+    "email": "E-mail: joanna.czarnowska@mat.ug.edu.pl",
+    "posts": [
+      {
+        "position": "Starszy wykładowca",
+        "faculty": ["Wydział Matematyki, Fizyki i Informatyki", "Instytut Informatyki", "Zakład Sztucznej Inteligencji"]
+      }
+    ],
+    "tutorial": ""
+  },
+  "_id": "63cb1cf20ada513d831bc83d",
+  "name": "dr Joanna Czarnowska",
+  "link": "https://old.mfi.ug.edu.pl/pracownik/614/joanna_czarnowska",
+  "units": ["Wydział Matematyki, Fizyki i Informatyki", "Instytut Informatyki", "Zakład Sztucznej Inteligencji"]
+}

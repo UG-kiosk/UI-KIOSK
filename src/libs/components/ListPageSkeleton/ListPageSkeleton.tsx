@@ -22,7 +22,7 @@ export const ListPageSkeleton = ({ tiles, mt, width, height }: ListPageSkeletonP
       Array.from(Array(tiles ? tiles : 6).keys()).map((_, index) => (
         <StyledSkeleton animation="wave" variant="rectangular" width={width} height={height} key={index} />
       )),
-    [],
+    [tiles, width, height],
   );
 
   return (

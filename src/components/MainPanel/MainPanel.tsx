@@ -34,7 +34,7 @@ export const MainPanel = () => {
       <Grid item xs={4} container direction="row" justifyContent="flex-end" data-cy="tile">
         <StyledLink to="staff" data-cy="link-to-staff">
           <Tile tileWidth={305}>
-            <PeopleAltIcon fontSize="inherit" data-cy="people-alt-icon" />
+            <PeopleAltIcon sx={{ fontSize: '190px' }} data-cy="people-alt-icon" />
             <Paragraph data-cy="link-to-staff-text">{t('mainPanel.staff')}</Paragraph>
           </Tile>
         </StyledLink>

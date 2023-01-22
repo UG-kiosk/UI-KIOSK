@@ -30,7 +30,13 @@ const StyledDetailsTile = styled('div', {
 
 export const DetailsTile = ({ children, width, marginTop, padding, backgroundColor }: DetailsTileProps) => {
   return (
-    <StyledDetailsTile width={width} marginTop={marginTop} padding={padding} backgroundColor={backgroundColor}>
+    <StyledDetailsTile
+      width={width}
+      marginTop={marginTop}
+      padding={padding}
+      backgroundColor={backgroundColor}
+      data-cy="details-tile"
+    >
       {children}
     </StyledDetailsTile>
   );

@@ -49,7 +49,7 @@ export const StaffDetailsPage = () => {
 
     return staffDetails.content?.posts.map((post, i) => (
       <React.Fragment key={i}>
-        <Paragraph margin={'50px 0 50px 0'} fontSize={28} align="center">
+        <Paragraph margin={'50px 0 50px 0'} fontSize={28} align="center" data-cy="details-post">
           {post.position}
         </Paragraph>
         {post.faculty.map((f, index) => (
@@ -101,25 +101,39 @@ export const StaffDetailsPage = () => {
     <>
       <Header />
       <Box margin="150px auto" marginBottom="180px" width={975}>
-        <Paragraph margin={'15px'} fontSize={36} color={theme.palette.secondary.dark}>
+        <Paragraph margin={'15px'} fontSize={36} color={theme.palette.secondary.dark} data-cy="academic-name">
           {staffDetails?.name}
         </Paragraph>
         <Line />
         <DetailsTile width={975} padding={'40px 40px'}>
-          <Paragraph margin={'25px'} fontSize={36} color={theme.palette.secondary.dark}>
+          <Paragraph margin={'25px'} fontSize={36} color={theme.palette.secondary.dark} data-cy="contact">
             {t('staffPage.contact')}
           </Paragraph>
-          <Paragraph margin={'25px'} fontSize={24} color={theme.palette.secondary.dark} fontWeight={500}>
+          <Paragraph
+            margin={'25px'}
+            fontSize={24}
+            color={theme.palette.secondary.dark}
+            fontWeight={500}
+            data-cy="contact-email"
+          >
             {staffDetails?.content?.email}
           </Paragraph>
           {staffDetails?.content?.tutorial ? (
-            <Paragraph margin={'25px'} fontSize={36} color={theme.palette.secondary.dark}>
-              {t('staffPage.tutorial')}
-            </Paragraph>
+            <>
+              <Paragraph margin={'25px'} fontSize={36} color={theme.palette.secondary.dark} data-cy="tutorial">
+                {t('staffPage.tutorial')}
+              </Paragraph>
+              <Paragraph
+                margin={'25px'}
+                fontSize={24}
+                color={theme.palette.secondary.dark}
+                fontWeight={500}
+                data-cy="tutorial-schedule"
+              >
+                {staffDetails?.content?.tutorial}
+              </Paragraph>
+            </>
           ) : null}
-          <Paragraph margin={'25px'} fontSize={24} color={theme.palette.secondary.dark} fontWeight={500}>
-            {staffDetails?.content?.tutorial}
-          </Paragraph>
         </DetailsTile>
         {academicPosts}
       </Box>
