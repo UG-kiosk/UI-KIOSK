@@ -86,7 +86,7 @@ export const MajorDetailsPage = () => {
     <>
       <Header />
       <Box marginTop="150px" marginBottom="40px" marginLeft="auto" marginRight="auto" width={975}>
-        <StyledTitle>{majorDetails.name}</StyledTitle>
+        <StyledTitle data-cy="title">{majorDetails.name}</StyledTitle>
         <Divider />
         <DetailsTile>
           <MajorDetails major={majorDetails} />

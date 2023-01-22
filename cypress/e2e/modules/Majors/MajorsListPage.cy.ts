@@ -6,6 +6,7 @@ const Header = new HeaderTestFunctions();
 
 describe('MajorsListPage', () => {
   beforeEach(() => {
+    cy.viewport(1080, 1920);
     cy.visit('/majors');
   });
 

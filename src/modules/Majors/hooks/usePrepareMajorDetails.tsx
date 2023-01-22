@@ -45,28 +45,53 @@ export const usePrepareMajorDetails = () => {
   const prepareMajorDetails = useCallback((majorDetails: MajorContent[]): JSX.Element[] => {
     return majorDetails.map(({ element, text }, index) => {
       if (element === 'h2') {
-        return <StyledSubHeader key={index}>{text}</StyledSubHeader>;
+        return (
+          <StyledSubHeader data-cy="sub-header" key={index}>
+            {text}
+          </StyledSubHeader>
+        );
       }
 
       if (element === 'p') {
-        return <StyledParagraph key={index}>{text}</StyledParagraph>;
+        return (
+          <StyledParagraph data-cy="paragraph" key={index}>
+            {text}
+          </StyledParagraph>
+        );
       }
 
       if (element === 'ol') {
-        return <StyledOrderedList key={index} dangerouslySetInnerHTML={{ __html: text }}></StyledOrderedList>;
+        return (
+          <StyledOrderedList
+            data-cy="ordered-list"
+            key={index}
+            dangerouslySetInnerHTML={{ __html: text }}
+          ></StyledOrderedList>
+        );
       }
 
       if (element === 'ul') {
-        return <StyledUnorderedList key={index} dangerouslySetInnerHTML={{ __html: text }}></StyledUnorderedList>;
+        return (
+          <StyledUnorderedList
+            data-cy="unordered-list"
+            key={index}
+            dangerouslySetInnerHTML={{ __html: text }}
+          ></StyledUnorderedList>
+        );
       }
 
       if (text.startsWith('<')) {
-        return <div key={index} dangerouslySetInnerHTML={{ __html: text }}></div>;
+        console.log(text);
+        return <div data-cy="fallback-container" key={index} dangerouslySetInnerHTML={{ __html: text }}></div>;
       }
 
       // TODO <a> tag
 
-      return <StyledParagraph key={index}>{text}</StyledParagraph>;
+      return (
+        <StyledParagraph data-cy="paragraph" key={index}>
+          {text}
+        </StyledParagraph>
+      );
     });
   }, []);
 
