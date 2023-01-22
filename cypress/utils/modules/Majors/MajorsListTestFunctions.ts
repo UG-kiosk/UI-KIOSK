@@ -26,9 +26,15 @@ export class MajorsListTestFunctions {
     this.getMajorTile().should('have.length', 4);
 
     this.getMajorTile().eq(0).should('have.text', 'Bezpieczeństwo jądrowe i ochrona radiologiczna');
+    this.getMajorTileContainer()
+      .eq(0)
+      .should('have.attr', 'href', '/majors/Bezpieczeństwo jądrowe i ochrona radiologiczna');
     this.getMajorTile().eq(1).should('have.text', 'Bioinformatyka');
+    this.getMajorTileContainer().eq(1).should('have.attr', 'href', '/majors/Bioinformatyka');
     this.getMajorTile().eq(2).should('have.text', 'Fizyka');
+    this.getMajorTileContainer().eq(2).should('have.attr', 'href', '/majors/Fizyka');
     this.getMajorTile().eq(3).should('have.text', 'Profil ogólnoakademicki');
+    this.getMajorTileContainer().eq(3).should('have.attr', 'href', '/majors/Profil ogólnoakademicki');
   };
 
   testMajorsListContentOnRequestError = () => {
