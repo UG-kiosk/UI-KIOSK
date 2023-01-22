@@ -10,15 +10,15 @@ export class MajorsListTestFunctions {
   private mockGETMajors = () => cy.intercept('GET', '/majors', { fixture: 'majors.json' }).as('getMajorsList');
 
   testMajorsListContentPendingStatus = () => {
-    cy.intercept('/majors', request => {
-      request.responseTimeout = 50000;
+    cy.intercept('GET', '/majors', request => {
+      request.responseTimeout = 5000;
     });
     this.mockGETMajors();
 
     this.getSkeletonRow().should('have.length', 6);
   };
 
-  testMajorsListContent = () => {
+  testMajorsListContentPL = () => {
     this.mockGETMajors();
     cy.wait('@getMajorsList');
 
