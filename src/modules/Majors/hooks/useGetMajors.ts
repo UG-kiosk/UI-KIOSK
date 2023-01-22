@@ -17,7 +17,7 @@ export const useGetMajors = () => {
       dispatch(setMajorsList(majorsList));
       dispatch(finishLoading());
     } catch (error: any) {
-      const errorMessage = error?.response?.message || 'Something went wrong';
+      const errorMessage = error?.response?.data?.message || 'Something went wrong';
 
       dispatch(setError(errorMessage));
       dispatch(finishLoading());
@@ -35,7 +35,7 @@ export const useGetMajors = () => {
         dispatch(setMajorDetails(majorDetails));
         dispatch(finishLoading());
       } catch (error: any) {
-        const errorMessage = error?.response?.message || 'Something went wrong';
+        const errorMessage = error?.response?.data?.message || 'Something went wrong';
 
         dispatch(setError(errorMessage));
       }
