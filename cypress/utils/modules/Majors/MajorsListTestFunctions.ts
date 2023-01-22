@@ -3,10 +3,22 @@ export class MajorsListTestFunctions {
 
   private getMajorTileContainer = () => cy.getBySelector('major-tile-container');
 
-  private mockGETMajors = () => cy.intercept('GET', '/majors', { fixture: 'majors.json' });
+  private getSkeletonRow = () => cy.getBySelector('skeleton-row');
+
+  private mockGETMajors = () => cy.intercept('GET', '/majors', { fixture: 'majors.json' }).as('getMajorsList');
+
+  testMajorsListContentPendingStatus = () => {
+    cy.intercept('/majors', request => {
+      request.responseTimeout = 50000;
+    });
+    this.mockGETMajors();
+
+    this.getSkeletonRow().should('have.length', 6);
+  };
 
   testMajorsListContent = () => {
     this.mockGETMajors();
+    cy.wait('@getMajorsList');
 
     this.getMajorTileContainer().should('have.length', 4);
     this.getMajorTile().should('have.length', 4);

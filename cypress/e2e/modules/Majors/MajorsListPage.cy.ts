@@ -20,4 +20,8 @@ describe('MajorsListPage', () => {
   it.only('render content', () => {
     MajorsListPage.testMajorsListContent();
   });
+
+  it.only('request pending', () => {
+    MajorsListPage.testMajorsListContentPendingStatus();
+  });
 });
