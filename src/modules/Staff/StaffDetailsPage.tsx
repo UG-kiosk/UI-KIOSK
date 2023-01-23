@@ -68,23 +68,29 @@ export const StaffDetailsPage = () => {
     return (
       <>
         <Header />
-        <Error />
+        <Error data-cy="error-message" />
       </>
     );
   }
 
   if (isLoading && !errorMessage) {
     return (
-      <>
+      <React.Fragment>
         <Header />
         <Box marginTop="150px" marginBottom="40px" ml="auto" mr="auto" width={975}>
-          <StyledSkeleton animation="wave" variant="rectangular" width={500} height={50} mt={30} />
-          <StyledSkeleton animation="wave" variant="rectangular" width={500} height={50} mt={30} />
+          <StyledSkeleton
+            animation="wave"
+            variant="rectangular"
+            width={500}
+            height={50}
+            mt={30}
+            data-cy="skeleton-tile"
+          />
           <Line />
-          <StyledSkeleton animation="wave" variant="rectangular" width={975} height={250} />
+          <StyledSkeleton animation="wave" variant="rectangular" width={975} height={250} data-cy="skeleton-tile" />
           <ListPageSkeleton tiles={3} width={975} mt={50} height={100} />
         </Box>
-      </>
+      </React.Fragment>
     );
   }
 
@@ -119,20 +125,20 @@ export const StaffDetailsPage = () => {
             {staffDetails?.content?.email}
           </Paragraph>
           {staffDetails?.content?.tutorial ? (
-            <>
-              <Paragraph margin={'25px'} fontSize={36} color={theme.palette.secondary.dark} data-cy="tutorial">
-                {t('staffPage.tutorial')}
-              </Paragraph>
-              <Paragraph
-                margin={'25px'}
-                fontSize={24}
-                color={theme.palette.secondary.dark}
-                fontWeight={500}
-                data-cy="tutorial-schedule"
-              >
-                {staffDetails?.content?.tutorial}
-              </Paragraph>
-            </>
+            <Paragraph margin={'25px'} fontSize={36} color={theme.palette.secondary.dark} data-cy="tutorial">
+              {t('staffPage.tutorial')}
+            </Paragraph>
+          ) : null}
+          {staffDetails?.content?.tutorial ? (
+            <Paragraph
+              margin={'25px'}
+              fontSize={24}
+              color={theme.palette.secondary.dark}
+              fontWeight={500}
+              data-cy="tutorial-schedule"
+            >
+              {staffDetails?.content?.tutorial}
+            </Paragraph>
           ) : null}
         </DetailsTile>
         {academicPosts}

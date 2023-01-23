@@ -20,7 +20,14 @@ export const ListPageSkeleton = ({ tiles, mt, width, height }: ListPageSkeletonP
   const skeletonTiles: JSX.Element[] = useMemo(
     () =>
       Array.from(Array(tiles ? tiles : 6).keys()).map((_, index) => (
-        <StyledSkeleton animation="wave" variant="rectangular" width={width} height={height} key={index} />
+        <StyledSkeleton
+          animation="wave"
+          variant="rectangular"
+          width={width}
+          height={height}
+          key={index}
+          data-cy="skeleton-row"
+        />
       )),
     [tiles, width, height],
   );

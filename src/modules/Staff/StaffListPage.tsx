@@ -52,7 +52,8 @@ export const StaffListPage = () => {
     return (
       <>
         <Header />
-        <Error />
+        <Error data-cy="error-message" />
+        <Navbar />
       </>
     );
   }
@@ -79,6 +80,7 @@ export const StaffListPage = () => {
         display="flex"
         flexDirection="column"
         alignItems="center"
+        data-cy="staff-list-container"
       >
         {staffTiles}
       </Box>
