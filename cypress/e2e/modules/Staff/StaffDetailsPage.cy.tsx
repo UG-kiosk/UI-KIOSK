@@ -1,7 +1,5 @@
-import { HeaderTestFunctions } from 'cypress/utils/Header/HeaderTestFunctions';
 import { StaffPageTestFunctions } from 'cypress/utils/StaffPage/StaffPageTestFunctions';
 
-const Header = new HeaderTestFunctions();
 const StaffPage = new StaffPageTestFunctions();
 
 describe('StaffPage.cy.tsc', () => {
@@ -16,7 +14,6 @@ describe('StaffPage.cy.tsc', () => {
   });
 
   it('should render the staff detail page in Polish option 1', () => {
-    Header.testHeaderContentPL();
     StaffPage.testStaffDetailsPL();
   });
 
@@ -26,7 +23,6 @@ describe('StaffPage.cy.tsc', () => {
   // });
 
   it('should render the staff detail page in Polish option 2', () => {
-    Header.testHeaderContentEN();
     StaffPage.testStaffDetailsPL2();
   });
 

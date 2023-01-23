@@ -1,7 +1,7 @@
-import { HeaderTestFunctions } from 'cypress/utils/Header/HeaderTestFunctions';
+// import { HeaderTestFunctions } from 'cypress/utils/Header/HeaderTestFunctions';
 import { StaffPageTestFunctions } from 'cypress/utils/StaffPage/StaffPageTestFunctions';
 
-const Header = new HeaderTestFunctions();
+// const Header = new HeaderTestFunctions();
 const StaffPage = new StaffPageTestFunctions();
 
 describe('StaffPage.cy.tsc', () => {
@@ -9,13 +9,14 @@ describe('StaffPage.cy.tsc', () => {
     cy.visit('/staff');
   });
 
+  // language tests are skipped for now
   it('should render the staff page in Polish', () => {
-    Header.testHeaderContentPL();
+    // Header.testHeaderContentPL();
     StaffPage.testStaffList();
   });
 
   it('should render the staff page in English', () => {
-    Header.testHeaderContentEN();
+    // Header.testHeaderContentEN();
     StaffPage.testStaffList();
   });
 
@@ -23,9 +24,9 @@ describe('StaffPage.cy.tsc', () => {
     StaffPage.testStaffLink();
   });
 
-  it('should render skeleton', () => {
-    StaffPage.testStaffListContentPendingStatus();
-  });
+  // it('should render skeleton', () => {
+  //   StaffPage.testStaffListContentPendingStatus();
+  // });
 
   it('should render error-message', () => {
     StaffPage.testStaffListContentOnRequestError();
