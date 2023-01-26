@@ -2,6 +2,7 @@ import { LoginPage } from './AdminPanel/modules/LoginPage';
 import App from './App';
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import { MajorDetailsPage, MajorsList } from './modules/Majors';
+import { EventsListPage, EventsDetailsPage } from './modules/Events';
 
 const routes: RouteObject[] = [
   {
@@ -19,6 +20,14 @@ const routes: RouteObject[] = [
   {
     path: '/majors/:name',
     element: <MajorDetailsPage />,
+  },
+  {
+    path: '/events',
+    element: <EventsListPage />,
+  },
+  {
+    path: '/events/:name',
+    element: <EventsDetailsPage />,
   },
   {
     path: '*',

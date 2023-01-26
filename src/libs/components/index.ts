@@ -8,3 +8,4 @@ export * from './Divider';
 export * from './ListPageSkeleton';
 export * from './Navbar';
 export * from './Paragraph';
+export * from './Error';

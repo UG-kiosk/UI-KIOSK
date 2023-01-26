@@ -47,7 +47,13 @@
         "classes": false
       }
     ],
-    "no-console": "warn"
+    "no-console": "warn",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "off"
+      }
+    ]
   },
   "extends": [
     "eslint:recommended",
