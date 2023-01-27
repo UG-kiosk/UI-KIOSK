@@ -1,6 +1,7 @@
 import { Grid } from '@mui/material';
 import { Paragraph, Tile } from '@UG/libs/components';
 import SchoolIcon from '@mui/icons-material/School';
+import EventIcon from '@mui/icons-material/Event';
 import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -46,7 +47,14 @@ export const MainPanel = () => {
       </Grid>
 
       <Grid item xs={6} container justifyContent="flex-start" data-cy="tile">
-        <Tile tileWidth={473} />
+        <Tile tileWidth={473}>
+          <StyledLink to="events">
+            <Tile tileWidth={305}>
+              <EventIcon sx={{ fontSize: 190 }} />
+              <Paragraph data-cy="events-link-label">{t('mainPanel.events')}</Paragraph>
+            </Tile>
+          </StyledLink>
+        </Tile>
       </Grid>
       <Grid item xs={6} container justifyContent="flex-end" data-cy="tile">
         <Tile tileWidth={473} />

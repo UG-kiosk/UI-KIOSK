@@ -7,6 +7,7 @@ import { finishLoading, setError, setEventsDetails, setEventsList, startLoading 
 export const useGetEvents = () => {
   const dispatch = useDispatch();
 
+  //uzywamy callbacka 
   const getEventsList = useCallback(async () => {
     try {
       dispatch(startLoading());

@@ -5,6 +5,7 @@
     "touchHere": "DOTKNIJ TUTAJ"
   },
   "mainPanel": {
-    "majors": "kierunki studiów"
+    "majors": "kierunki studiów",
+    "events": "Wydarzenia"
   }
 }

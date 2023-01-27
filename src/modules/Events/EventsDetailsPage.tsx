@@ -1,12 +1,12 @@
 import { Box, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { DetailsTile, Divider, Header, Navbar } from '@UG/libs/components';
+import { styled, useTheme } from '@mui/material/styles';
+import { DetailsTile, Divider, Header, Navbar, Error, Paragraph} from '@UG/libs/components';
 import { Events } from '@UG/libs/types';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { StateType } from 'src/store';
-import { useGetEvents } from './hooks';
+// import { useGetEvents } from './hooks';
 
 interface StateProps {
   isLoading: boolean;
@@ -28,6 +28,7 @@ export const EventsDetailsPage = () => {
   // const { getEventsDetails } = useGetEvents();
   const { name } = useParams();
   const navigate = useNavigate();
+  const theme = useTheme();
   
   const { isLoading, eventsList, errorMessage,  } = useSelector<StateType, StateProps>(state => ({
     isLoading: state.events.isLoading,
@@ -78,12 +79,17 @@ export const EventsDetailsPage = () => {
   return (
     <>
       <Header />
-      <Box marginTop="150px" marginBottom="40px" marginLeft="auto" marginRight="auto" width={975}>
+      <Box marginTop="150px" marginBottom="150px" marginLeft="auto" marginRight="auto" width={975}>
         <StyledTitle data-cy="title">{eventDetails.name}</StyledTitle>
         <Divider />
+        <DetailsTile>
+          <Paragraph margin={'30px'} fontSize={30} color={theme.palette.secondary.dark}>
+          {eventDetails.content}
+        </Paragraph></DetailsTile>
         
       </Box>
       <Navbar />
     </>
+    
   );
 };

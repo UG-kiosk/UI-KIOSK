@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 
 export const StyledSkeleton = styled(Skeleton)<ListPageSkeletonProps>`
   width: ${({ width }) => (width ? width : 900)}px;
-  height: ${({ height }) => (height ? height : '80')}px;
+  height: ${({ height }) => (height ? height : '180')}px;
   border-radius: 55px;
   margin-bottom: 40px;
 `;
@@ -19,7 +19,7 @@ interface ListPageSkeletonProps {
 export const ListPageSkeleton = ({ tiles, mt, width, height }: ListPageSkeletonProps) => {
   const skeletonTiles: JSX.Element[] = useMemo(
     () =>
-      Array.from(Array(tiles ? tiles : 6).keys()).map((_, index) => (
+      Array.from(Array(tiles ? tiles : 8).keys()).map((_, index) => (
         <StyledSkeleton animation="wave" variant="rectangular" width={width} height={height} key={index} />
       )),
     [],
