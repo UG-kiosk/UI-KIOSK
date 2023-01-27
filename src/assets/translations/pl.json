@@ -3,5 +3,9 @@
   "ug_logo": "ug_logo_pl",
   "welcomePage": {
     "touchHere": "DOTKNIJ TUTAJ"
+  },
+  "mainPanel": {
+    "majors": "kierunki studiów",
+    "events": "Wydarzenia"
   }
 }

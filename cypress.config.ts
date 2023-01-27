@@ -1,7 +1,7 @@
 import { defineConfig } from 'cypress';
 
 export default defineConfig({
-  fixturesFolder: false,
+  fixturesFolder: './cypress/fixtures',
   video: false,
   screenshotOnRunFailure: false,
   e2e: {

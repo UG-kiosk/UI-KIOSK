@@ -1,6 +1,8 @@
 import { LoginPage } from './AdminPanel/modules/LoginPage';
 import App from './App';
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
+import { MajorDetailsPage, MajorsList } from './modules/Majors';
+import { EventsList, EventsDetailsPage } from './modules/Events';
 
 const routes: RouteObject[] = [
   {
@@ -10,6 +12,22 @@ const routes: RouteObject[] = [
   {
     path: '/',
     element: <App />,
+  },
+  {
+    path: '/majors',
+    element: <MajorsList />,
+  },
+  {
+    path: '/majors/:name',
+    element: <MajorDetailsPage />,
+  },
+  {
+    path: '/events',
+    element: <EventsList />,
+  },
+  {
+    path: '/events/:name',
+    element: <EventsDetailsPage />,
   },
   {
     path: '*',
