@@ -14,16 +14,18 @@ export class StaffPageTestFunctions {
   private mockGETStaff = () => cy.intercept('GET', '/staff', { fixture: 'staff.json' });
   private getStaffListContainer = () => cy.getBySelector('staff-list-container');
   // staf details page
-  private mockGETStaffDetails = () => {
-    cy.fixture('staff.json').then(staff => {
-      const object = staff[0];
-      cy.intercept('GET', '/staff/63cb1cf20ada513d831bc83d', object);
-    });
+  mockGETStaffDetails = () => {
+    cy.fixture('staff.json')
+      .then(staff => {
+        const object = staff[0];
+        cy.intercept('GET', '/staff/63cb1cf20ada513d831bc83d', object);
+      })
+      .as('getStaffDetails');
   };
   private mockGETStaffDetails2 = () => {
     cy.fixture('staff.json').then(staff => {
       const object = staff[3];
-      cy.intercept('GET', '/staff/63cb1cf20ada513d831bc8c9', object);
+      cy.intercept('GET', '/staff/63cb1cf20ada513d831bc8c9', object).as('getStaffDetails2');
     });
   };
   private getStaffListTileLink = () => cy.getBySelector('link-to-staff-details');
@@ -115,6 +117,7 @@ export class StaffPageTestFunctions {
   testStaffDetailsPL = () => {
     cy.visit('/staff/63cb1cf20ada513d831bc83d');
     this.mockGETStaffDetails();
+    cy.wait('@getStaffDetails');
     this.getStaffDetailsName().should('exist');
     this.getDetailsTile().should('exist');
     this.getDetailsTile().should('have.length', 4);
@@ -133,6 +136,7 @@ export class StaffPageTestFunctions {
   testStaffDetailsPL2 = () => {
     cy.visit('/staff/63cb1cf20ada513d831bc8c9');
     this.mockGETStaffDetails2();
+    cy.wait('@getStaffDetails2');
     this.getStaffDetailsName().should('exist');
     this.getDetailsTile().should('exist');
     this.getDetailsTile().should('have.length', 4);
