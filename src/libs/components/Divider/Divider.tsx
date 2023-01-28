@@ -7,5 +7,5 @@ const StyledDivider = styled('div')`
 `;
 
 export const Divider = () => {
-  return <StyledDivider />;
+  return <StyledDivider data-cy="divider" />;
 };

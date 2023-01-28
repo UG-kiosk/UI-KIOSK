@@ -3,5 +3,8 @@
   "ug_logo": "ug_logo_en",
   "welcomePage": {
     "touchHere": "TOUCH HERE"
+  },
+  "mainPanel": {
+    "majors": "majors"
   }
 }

@@ -38,7 +38,7 @@ export const MajorsList = () => {
     () =>
       //TODO - change name to id
       majorsList.map(({ name }) => (
-        <StyledLink to={name} key={name}>
+        <StyledLink to={name} key={name} data-cy="major-tile-container">
           <DetailsTile>{name}</DetailsTile>
         </StyledLink>
       )),
@@ -50,7 +50,9 @@ export const MajorsList = () => {
     return (
       <>
         <Header />
-        <p style={{ marginTop: '150px' }}>{errorMessage}</p>
+        <p style={{ marginTop: '150px' }} data-cy="error-message">
+          {errorMessage}
+        </p>
         <Navbar />
       </>
     );

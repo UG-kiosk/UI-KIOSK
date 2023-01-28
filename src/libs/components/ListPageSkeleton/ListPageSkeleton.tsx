@@ -15,12 +15,12 @@ interface ListPageSkeletonProps {
 export const ListPageSkeleton = ({ height }: ListPageSkeletonProps) => {
   return (
     <Box mx="auto" mt="150px" display="flex" alignItems="center" flexDirection="column" sx={{ width: '100%' }}>
-      <StyledSkeleton animation="wave" variant="rectangular" height={height} />
-      <StyledSkeleton animation="wave" variant="rectangular" height={height} />
-      <StyledSkeleton animation="wave" variant="rectangular" height={height} />
-      <StyledSkeleton animation="wave" variant="rectangular" height={height} />
-      <StyledSkeleton animation="wave" variant="rectangular" height={height} />
-      <StyledSkeleton animation="wave" variant="rectangular" height={height} />
+      <StyledSkeleton animation="wave" variant="rectangular" height={height} data-cy="skeleton-row" />
+      <StyledSkeleton animation="wave" variant="rectangular" height={height} data-cy="skeleton-row" />
+      <StyledSkeleton animation="wave" variant="rectangular" height={height} data-cy="skeleton-row" />
+      <StyledSkeleton animation="wave" variant="rectangular" height={height} data-cy="skeleton-row" />
+      <StyledSkeleton animation="wave" variant="rectangular" height={height} data-cy="skeleton-row" />
+      <StyledSkeleton animation="wave" variant="rectangular" height={height} data-cy="skeleton-row" />
     </Box>
   );
 };

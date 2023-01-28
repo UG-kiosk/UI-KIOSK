@@ -7,3 +7,4 @@ export * from './DetailsTile';
 export * from './Divider';
 export * from './ListPageSkeleton';
 export * from './Navbar';
+export * from './Paragraph';
