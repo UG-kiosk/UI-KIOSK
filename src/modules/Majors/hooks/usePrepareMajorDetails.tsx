@@ -81,7 +81,6 @@ export const usePrepareMajorDetails = () => {
       }
 
       if (text.startsWith('<')) {
-        console.log(text);
         return <div data-cy="fallback-container" key={index} dangerouslySetInnerHTML={{ __html: text }}></div>;
       }
 

@@ -1,6 +1,5 @@
-import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { DetailsTile, Header, ListPageSkeleton, Navbar } from '@UG/libs/components';
+import { DetailsTile, ListPageSkeleton } from '@UG/libs/components';
 import { Major } from '@UG/libs/types';
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
@@ -36,7 +35,6 @@ export const MajorsList = () => {
 
   const majorsTiles: JSX.Element[] = useMemo(
     () =>
-      //TODO - change name to id
       majorsList.map(({ name, _id }) => (
         <StyledLink to={_id} key={name} data-cy="major-tile-container">
           <DetailsTile>{name}</DetailsTile>
@@ -49,11 +47,9 @@ export const MajorsList = () => {
   if (!isLoading && errorMessage) {
     return (
       <>
-        <Header />
         <p style={{ marginTop: '150px' }} data-cy="error-message">
           {errorMessage}
         </p>
-        <Navbar />
       </>
     );
   }
@@ -62,31 +58,10 @@ export const MajorsList = () => {
   if (isLoading && !errorMessage) {
     return (
       <>
-        <Header />
         <ListPageSkeleton />
-        <Navbar />
       </>
     );
   }
 
-  return (
-    <>
-      <Header />
-      <Box
-        marginLeft="auto"
-        marginRight="auto"
-        marginTop="150px"
-        display="flex"
-        flexDirection="column"
-        justifyContent="space-between"
-        alignItems="center"
-        sx={{
-          width: 1080,
-        }}
-      >
-        {majorsTiles}
-      </Box>
-      <Navbar />
-    </>
-  );
+  return <>{majorsTiles};</>;
 };
