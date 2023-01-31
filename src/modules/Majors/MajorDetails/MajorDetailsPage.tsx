@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { StateType } from 'src/store';
 import { MajorDetails } from './MajorDetails';
-// import { useGetMajors } from './hooks';
+import { useGetMajors } from '../hooks';
 
 interface StateProps {
   isLoading: boolean;
@@ -27,27 +27,23 @@ const StyledTitle = styled(Typography)`
 `;
 
 export const MajorDetailsPage = () => {
-  // const { getMajorDetails } = useGetMajors();
-  const { name } = useParams();
+  const { getMajorDetails } = useGetMajors();
+  const { _id } = useParams();
   const navigate = useNavigate();
-  const { isLoading, errorMessage, majorsList } = useSelector<StateType, StateProps>(state => ({
+  const { isLoading, errorMessage, majorDetails } = useSelector<StateType, StateProps>(state => ({
     isLoading: state.majors.isLoading,
     errorMessage: state.majors.error,
     majorDetails: state.majors.majorDetails,
     majorsList: state.majors.majorsList,
   }));
-  const majorDetails = majorsList.find(major => major.name === name);
 
   useEffect(() => {
-    if (!name) {
+    if (!_id) {
       navigate('/error');
+    } else {
+      getMajorDetails(_id);
     }
-  }, [name, navigate]);
-
-  // TODO - after major endpoint is set up on API
-  // useEffect(() => {
-  //   getMajorDetails();
-  // }, [getMajorDetails]);
+  }, [_id, getMajorDetails, navigate]);
 
   //TODO change layout as soon as we get designs
   if (!isLoading && errorMessage) {
@@ -76,7 +72,7 @@ export const MajorDetailsPage = () => {
     return (
       <>
         <Header />
-        <p style={{ marginTop: '150px' }}>sorry but we couldn&apos;t find {name}</p>
+        <p style={{ marginTop: '150px' }}>sorry but we couldn&apos;t find {_id}</p>
         <Navbar />
       </>
     );

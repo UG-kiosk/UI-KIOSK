@@ -17,7 +17,7 @@ const routes: RouteObject[] = [
     element: <MajorsList />,
   },
   {
-    path: '/majors/:name',
+    path: '/majors/:_id',
     element: <MajorDetailsPage />,
   },
   {
