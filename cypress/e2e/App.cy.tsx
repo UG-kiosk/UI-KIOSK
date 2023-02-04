@@ -11,6 +11,7 @@ const StaffPage = new StaffPageTestFunctions();
 describe('Root.cy.tsc', () => {
   beforeEach(() => {
     cy.visit('/');
+    cy.viewport(1080, 1920);
   });
 
   it.only('render welcomePage PL', () => {
@@ -24,19 +25,18 @@ describe('Root.cy.tsc', () => {
   it.only('render MainPanel after WelcomePage click PL', () => {
     WelcomePage.showMain();
     Header.testHeaderContentPL();
-    MainPanel.getMainPanel().should('exist');
-    MainPanel.getTile('tile').each((tile: React.ReactNode, index: number, tilesList: React.ReactNode[]) => {
-      expect(tilesList).to.have.length(7);
-    });
+    MainPanel.testMainPanelContentPL();
   });
 
   it.only('render MainPanel after WelcomePage click EN', () => {
     WelcomePage.showMain();
     Header.testHeaderContentEN();
-    MainPanel.getMainPanel().should('exist');
-    MainPanel.getTile('tile').each((tile: React.ReactNode, index: number, tilesList: React.ReactNode[]) => {
-      expect(tilesList).to.have.length(7);
-    });
+    MainPanel.testMainPanelContentEN();
+  });
+
+  it.only('navigating to modules', () => {
+    WelcomePage.showMain();
+    MainPanel.testOnClickNavigations();
   });
 
   it.only('render staff Tile on Main Page', () => {

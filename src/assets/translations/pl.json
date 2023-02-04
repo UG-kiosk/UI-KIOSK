@@ -5,7 +5,8 @@
     "touchHere": "DOTKNIJ TUTAJ"
   },
   "mainPanel": {
-    "staff": "skład osobowy"
+    "staff": "skład osobowy",
+    "majors": "kierunki studiów"
   },
   "search": "szukaj",
   "staffPage": {

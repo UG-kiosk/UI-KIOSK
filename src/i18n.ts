@@ -23,7 +23,6 @@ i18n.use(initReactI18next).init({
   },
   lng: Language.PL,
   defaultNS: Namespaces.MAIN_APP,
-  debug: true,
   fallbackLng: Language.EN,
   interpolation: {
     escapeValue: false,
