@@ -15,15 +15,14 @@ describe('StaffPage.cy.tsc', () => {
 
   it('should render error-message', () => {
     StaffPage.testStaffListContentOnRequestError();
+    Header.testHeaderContentPL();
   });
 
-  // language tests are skipped for now
   it('should render the staff page in Polish', () => {
     StaffPage.testStaffList();
     Header.testHeaderContentPL();
   });
 
-  // let's skip this test for now
   it('should render the staff page in English', () => {
     StaffPage.testStaffList();
     Header.testHeaderContentEN();

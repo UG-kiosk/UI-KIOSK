@@ -49,12 +49,12 @@ export const StaffDetailsPage = () => {
 
     return staffDetails.content?.posts.map((post, i) => (
       <React.Fragment key={i}>
-        <Paragraph margin={'50px 0 50px 0'} fontSize={28} align="center" data-cy="details-post">
+        <Paragraph margin="50px 0 50px 0" fontSize={28} align="center" data-cy="details-post">
           {post.position}
         </Paragraph>
         {post.faculty.map((f, index) => (
-          <DetailsTile key={index} width={975} marginTop={35} padding={'10px 40px'}>
-            <Paragraph margin={'25px'} color={theme.palette.primary.main} fontWeight={600}>
+          <DetailsTile key={index} width={975} marginTop={35} padding="10px 40px">
+            <Paragraph margin="25px" color={theme.palette.primary.main} fontWeight={600}>
               {f}
             </Paragraph>
           </DetailsTile>
@@ -75,7 +75,7 @@ export const StaffDetailsPage = () => {
 
   if (isLoading && !errorMessage) {
     return (
-      <React.Fragment>
+      <>
         <Header />
         <Box marginTop="150px" marginBottom="40px" ml="auto" mr="auto" width={975}>
           <StyledSkeleton
@@ -90,7 +90,7 @@ export const StaffDetailsPage = () => {
           <StyledSkeleton animation="wave" variant="rectangular" width={975} height={250} data-cy="skeleton-tile" />
           <ListPageSkeleton tiles={3} width={975} mt={50} height={100} />
         </Box>
-      </React.Fragment>
+      </>
     );
   }
 
@@ -107,16 +107,16 @@ export const StaffDetailsPage = () => {
     <>
       <Header />
       <Box margin="150px auto" marginBottom="180px" width={975}>
-        <Paragraph margin={'15px'} fontSize={36} color={theme.palette.secondary.dark} data-cy="academic-name">
+        <Paragraph margin="15px" fontSize={36} color={theme.palette.secondary.dark} data-cy="academic-name">
           {staffDetails?.name}
         </Paragraph>
         <Line />
-        <DetailsTile width={975} padding={'40px 40px'}>
-          <Paragraph margin={'25px'} fontSize={36} color={theme.palette.secondary.dark} data-cy="contact">
+        <DetailsTile width={975} padding="40px 40px">
+          <Paragraph margin="25px" fontSize={36} color={theme.palette.secondary.dark} data-cy="contact">
             {t('staffPage.contact')}
           </Paragraph>
           <Paragraph
-            margin={'25px'}
+            margin="25px"
             fontSize={24}
             color={theme.palette.secondary.dark}
             fontWeight={500}
@@ -125,13 +125,13 @@ export const StaffDetailsPage = () => {
             {staffDetails?.content?.email}
           </Paragraph>
           {staffDetails?.content?.tutorial ? (
-            <Paragraph margin={'25px'} fontSize={36} color={theme.palette.secondary.dark} data-cy="tutorial">
+            <Paragraph margin="25px" fontSize={36} color={theme.palette.secondary.dark} data-cy="tutorial">
               {t('staffPage.tutorial')}
             </Paragraph>
           ) : null}
           {staffDetails?.content?.tutorial ? (
             <Paragraph
-              margin={'25px'}
+              margin="25px"
               fontSize={24}
               color={theme.palette.secondary.dark}
               fontWeight={500}
