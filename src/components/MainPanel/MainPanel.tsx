@@ -1,8 +1,9 @@
 import { Grid } from '@mui/material';
 import { Tile, Paragraph } from '@UG/libs/components';
 import { Link } from 'react-router-dom';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import { styled } from '@mui/material/styles';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import SchoolIcon from '@mui/icons-material/School';
 import { useTranslation } from 'react-i18next';
 
 const StyledLink = styled(Link)`
@@ -26,7 +27,12 @@ export const MainPanel = () => {
       </Grid>
 
       <Grid item xs={4} container direction="row" justifyContent="flex-start" data-cy="tile">
-        <Tile tileWidth={305} />
+        <StyledLink to="majors">
+          <Tile tileWidth={305}>
+            <SchoolIcon sx={{ fontSize: 190 }} />
+            <Paragraph data-cy="majors-link-label">{t('mainPanel.majors')}</Paragraph>
+          </Tile>
+        </StyledLink>
       </Grid>
       <Grid item xs={4} container direction="row" justifyContent="center" data-cy="tile">
         <Tile tileWidth={305} />
@@ -34,7 +40,7 @@ export const MainPanel = () => {
       <Grid item xs={4} container direction="row" justifyContent="flex-end" data-cy="tile">
         <StyledLink to="staff" data-cy="link-to-staff">
           <Tile tileWidth={305}>
-            <PeopleAltIcon fontSize="inherit" data-cy="people-alt-icon" />
+            <PeopleAltIcon sx={{ fontSize: '190px' }} data-cy="people-alt-icon" />
             <Paragraph data-cy="link-to-staff-text">{t('mainPanel.staff')}</Paragraph>
           </Tile>
         </StyledLink>

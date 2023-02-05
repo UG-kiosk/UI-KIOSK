@@ -19,7 +19,6 @@ const StyledTile = styled('div', {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 190px;
   color: ${({ theme }) => theme.palette.background.default};
 `;
 

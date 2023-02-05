@@ -10,7 +10,7 @@ const StyledAlert = styled(Alert)`
 
 // optional props will be added later
 export const Error = () => (
-  <Stack marginTop="150px" marginX="auto" width={975}>
+  <Stack marginTop="150px" marginX="auto" width={975} data-cy="error-message">
     <StyledAlert severity="error">
       <StyledAlertTitle>Error</StyledAlertTitle>
       Sorry but we couldn&apos;t find the page you&apos;re looking for — <strong>404</strong>

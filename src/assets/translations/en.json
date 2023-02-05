@@ -5,6 +5,7 @@
     "touchHere": "TOUCH HERE"
   },
   "mainPanel": {
+    "majors": "majors",
     "staff": "faculty members"
   },
   "search": "search",
