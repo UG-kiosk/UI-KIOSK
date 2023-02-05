@@ -1,7 +1,7 @@
 import { WelcomePageTestFunctions } from 'cypress/utils/WelcomePage/WelcomePageTestFunctions';
 import { HeaderTestFunctions } from 'cypress/utils/Header/HeaderTestFunctions';
 import { MainPanelTestFunctions } from 'cypress/utils/MainPanel/MainPanelTestFunctions';
-import { StaffPageTestFunctions } from 'cypress/utils/StaffPage/StaffPageTestFunctions';
+import { StaffPageTestFunctions } from 'cypress/utils/modules/StaffPage/StaffPageTestFunctions';
 
 const Header = new HeaderTestFunctions();
 const MainPanel = new MainPanelTestFunctions();

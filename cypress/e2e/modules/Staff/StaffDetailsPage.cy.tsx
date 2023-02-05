@@ -1,10 +1,10 @@
 import { HeaderTestFunctions } from 'cypress/utils/Header/HeaderTestFunctions';
-import { StaffDetailsTestFunctions } from 'cypress/utils/StaffPage/StaffDetailsTestFunctions';
+import { StaffDetailsTestFunctions } from 'cypress/utils/modules/StaffPage/StaffDetailsTestFunctions';
 
 const Header = new HeaderTestFunctions();
 const StaffDetails = new StaffDetailsTestFunctions();
 
-describe('StaffPage.cy.tsc', () => {
+describe('StaffDetailsPage.cy.tsc', () => {
   // let's skip this test for now
   // it('should render skeleton', () => {
   //   cy.visit('/staff/63cb1cf20ada513d831bc83d');

@@ -1,4 +1,4 @@
-import { LanguageChangeTestFunctions } from './../LanguageChange/LanguageChangeTestFunctions';
+import { LanguageChangeTestFunctions } from '../../LanguageChange/LanguageChangeTestFunctions';
 
 const LanguageChange = new LanguageChangeTestFunctions();
 
@@ -15,7 +15,7 @@ export class StaffPageTestFunctions {
   };
 
   // staff page
-  private mockGETStaff = () => cy.intercept('GET', '/staff', { fixture: 'staff.json' });
+  mockGETStaff = () => cy.intercept('GET', '/staff', { fixture: 'staff.json' });
   private getStaffListContainer = () => cy.getBySelector('staff-list-container');
   private getStaffListTileLink = () => cy.getBySelector('link-to-staff-details');
 
@@ -36,7 +36,6 @@ export class StaffPageTestFunctions {
   };
 
   testStaffList = () => {
-    this.mockGETStaff();
     this.getStaffListTile().should('exist');
     this.getStaffListTile().should('have.length', 5);
     this.getStaffListTile().eq(0).contains('dr Joanna Czarnowska');
@@ -68,7 +67,6 @@ export class StaffPageTestFunctions {
   };
 
   testStaffLink = () => {
-    this.mockGETStaff();
     this.getStaffListContainer().should('exist');
     this.getStaffListTileLink().eq(0).should('have.attr', 'href', '/staff/63cb1cf20ada513d831bc83d');
     this.getStaffListTileLink().eq(1).should('have.attr', 'href', '/staff/63cb1cf20ada513d831bc83f');

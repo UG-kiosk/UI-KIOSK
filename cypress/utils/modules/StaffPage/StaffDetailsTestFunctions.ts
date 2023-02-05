@@ -3,7 +3,7 @@
 // const LanguageChange = new LanguageChangeTestFunctions();
 
 export class StaffDetailsTestFunctions {
-  mockGETDetailsWithoutTutorial = () => {
+  mockGETDetailsWithoutTutorial = async () => {
     cy.fixture('staff.json')
       .then(staff => {
         const object = staff[0];
@@ -11,7 +11,8 @@ export class StaffDetailsTestFunctions {
       })
       .as('getDetailsWithoutTutorial');
   };
-  mockGETStaffDetailsWithTutorial = () => {
+
+  mockGETStaffDetailsWithTutorial = async () => {
     cy.fixture('staff.json').then(staff => {
       const object = staff[3];
       cy.intercept('GET', '/staff/63cb1cf20ada513d831bc8c9', object).as('getDetailsWithTutorial');
