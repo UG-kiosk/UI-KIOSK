@@ -38,10 +38,10 @@ export const MainPanel = () => {
         <Tile tileWidth={305} />
       </Grid>
       <Grid item xs={4} container direction="row" justifyContent="flex-end" data-cy="tile">
-        <StyledLink to="staff" data-cy="link-to-staff">
+        <StyledLink to="staff">
           <Tile tileWidth={305}>
             <PeopleAltIcon sx={{ fontSize: '190px' }} data-cy="people-alt-icon" />
-            <Paragraph data-cy="link-to-staff-text">{t('mainPanel.staff')}</Paragraph>
+            <Paragraph data-cy="staff-link-label">{t('mainPanel.staff')}</Paragraph>
           </Tile>
         </StyledLink>
       </Grid>

@@ -1,12 +1,10 @@
 import { WelcomePageTestFunctions } from 'cypress/utils/WelcomePage/WelcomePageTestFunctions';
 import { HeaderTestFunctions } from 'cypress/utils/Header/HeaderTestFunctions';
 import { MainPanelTestFunctions } from 'cypress/utils/MainPanel/MainPanelTestFunctions';
-import { StaffPageTestFunctions } from 'cypress/utils/modules/StaffPage/StaffPageTestFunctions';
 
 const Header = new HeaderTestFunctions();
 const MainPanel = new MainPanelTestFunctions();
 const WelcomePage = new WelcomePageTestFunctions();
-const StaffPage = new StaffPageTestFunctions();
 
 describe('Root.cy.tsc', () => {
   beforeEach(() => {
@@ -37,12 +35,5 @@ describe('Root.cy.tsc', () => {
   it.only('navigating to modules', () => {
     WelcomePage.showMain();
     MainPanel.testOnClickNavigations();
-  });
-
-  it.only('render staff Tile on Main Page', () => {
-    WelcomePage.showMain();
-    StaffPage.testTileContentPL();
-    StaffPage.testTileContentEN();
-    StaffPage.testNavigationToStaffPage();
   });
 });

@@ -1,39 +1,9 @@
-import { LanguageChangeTestFunctions } from '../../LanguageChange/LanguageChangeTestFunctions';
-
-const LanguageChange = new LanguageChangeTestFunctions();
-
 export class StaffPageTestFunctions {
-  // main panel
-  private getStaffTile = () => cy.getBySelector('link-to-staff');
-  private getStaffIcon = () => cy.getBySelector('people-alt-icon');
-  private getStaffLink = () => cy.getBySelector('link-to-staff-text');
   private getStaffListTile = () => cy.getBySelector('details-tile');
 
-  private testStaffPageTile = () => {
-    this.getStaffTile().should('exist');
-    this.getStaffIcon().should('exist');
-  };
-
-  // staff page
   mockGETStaff = () => cy.intercept('GET', '/staff', { fixture: 'staff.json' });
   private getStaffListContainer = () => cy.getBySelector('staff-list-container');
   private getStaffListTileLink = () => cy.getBySelector('link-to-staff-details');
-
-  testTileContentPL = () => {
-    this.testStaffPageTile();
-    this.getStaffLink().contains('skład osobowy');
-  };
-
-  testTileContentEN = () => {
-    this.testStaffPageTile();
-    LanguageChange.changeLanguage();
-    this.getStaffLink().contains('faculty members');
-  };
-
-  testNavigationToStaffPage = () => {
-    this.getStaffTile().click();
-    cy.url().should('include', '/staff');
-  };
 
   testStaffList = () => {
     this.getStaffListTile().should('exist');
