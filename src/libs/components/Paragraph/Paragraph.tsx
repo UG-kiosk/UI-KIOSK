@@ -18,4 +18,5 @@ export const Paragraph = styled('p', {
   font-weight: ${({ fontWeight }) => (fontWeight ? `${fontWeight}` : '700')};
   color: ${({ color, theme }) => (color ? color : theme.palette.secondary.dark)};
   text-align: ${({ align }) => (align ? align : 'left')};
+  data-cy: 'paragraph';
 `;

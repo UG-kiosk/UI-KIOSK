@@ -1,0 +1,114 @@
+[
+  {
+    "content": {
+      "email": "E-mail: joanna.czarnowska@mat.ug.edu.pl",
+      "posts": [
+        {
+          "position": "Starszy wykładowca",
+          "faculty": [
+            "Wydział Matematyki, Fizyki i Informatyki",
+            "Instytut Informatyki",
+            "Zakład Sztucznej Inteligencji"
+          ]
+        }
+      ],
+      "tutorial": ""
+    },
+    "_id": "63cb1cf20ada513d831bc83d",
+    "name": "dr Joanna Czarnowska",
+    "link": "https://old.mfi.ug.edu.pl/pracownik/614/joanna_czarnowska",
+    "units": ["Wydział Matematyki, Fizyki i Informatyki", "Instytut Informatyki", "Zakład Sztucznej Inteligencji"]
+  },
+  {
+    "content": {
+      "email": "E-mail: mikolaj.czechlewski@ug.edu.pl",
+      "posts": [
+        {
+          "position": "Adiunkt",
+          "faculty": ["Wydział Matematyki, Fizyki i Informatyki", "Instytut Informatyki", "Zakład Języków Formalnych"]
+        }
+      ],
+      "tutorial": ""
+    },
+    "_id": "63cb1cf20ada513d831bc83f",
+    "name": "dr Mikołaj Czechlewski",
+    "link": "https://old.mfi.ug.edu.pl/pracownik/54491/mikolaj_czechlewski",
+    "units": ["Wydział Matematyki, Fizyki i Informatyki", "Instytut Informatyki", "Zakład Języków Formalnych"]
+  },
+  {
+    "content": {
+      "email": "E-mail: hanna.furmanczyk@inf.ug.edu.pl",
+      "posts": [
+        {
+          "position": "Adiunkt",
+          "faculty": [
+            "Wydział Matematyki, Fizyki i Informatyki",
+            "Instytut Informatyki",
+            "Zakład Optymalizacji Kombinatorycznej"
+          ]
+        }
+      ],
+      "tutorial": "Konsultacje w semestrze zimowym 2022/23 odbywają się w środy 10:15-12:00.  Forma: MsTeams lub stacjonarnie, p. 4.11 budynek Instytutu Informatyki\n"
+    },
+    "_id": "63cb1cf20ada513d831bc85c",
+    "name": "dr Hanna Furmańczyk",
+    "link": "https://old.mfi.ug.edu.pl/pracownik/833/hanna_furmanczyk",
+    "units": [
+      "Wydział Matematyki, Fizyki i Informatyki",
+      "Instytut Informatyki",
+      "Zakład Optymalizacji Kombinatorycznej"
+    ]
+  },
+  {
+    "content": {
+      "email": "E-mail: mateusz.miotk@inf.ug.edu.pl",
+      "posts": [
+        {
+          "position": "Asystent",
+          "faculty": [
+            "Wydział Matematyki, Fizyki i Informatyki",
+            "Instytut Informatyki",
+            "Zakład Optymalizacji Kombinatorycznej"
+          ]
+        }
+      ],
+      "tutorial": "Czwartki 8-10\n"
+    },
+    "_id": "63cb1cf20ada513d831bc8c9",
+    "name": "mgr Mateusz Miotk",
+    "link": "https://old.mfi.ug.edu.pl/pracownik/51540/mateusz_miotk",
+    "units": [
+      "Wydział Matematyki, Fizyki i Informatyki",
+      "Instytut Informatyki",
+      "Zakład Optymalizacji Kombinatorycznej"
+    ]
+  },
+  {
+    "content": {
+      "email": "E-mail: Pawel.Zylinski@inf.ug.edu.pl",
+      "posts": [
+        {
+          "position": "Dyrektor Instytutu",
+          "faculty": ["Wydział Matematyki, Fizyki i Informatyki", "Instytut Informatyki"]
+        },
+        {
+          "position": "Kierownik Zakładu",
+          "faculty": [
+            "Wydział Matematyki, Fizyki i Informatyki",
+            "Instytut Informatyki",
+            "Zakład Optymalizacji Kombinatorycznej"
+          ]
+        }
+      ],
+      "tutorial": ""
+    },
+    "_id": "63cb1cf20ada513d831bc956",
+    "name": "dr hab. Paweł Żyliński, prof. UG",
+    "link": "https://old.mfi.ug.edu.pl/pracownik/3403/pawel_zylinski",
+    "units": [
+      "Wydział Matematyki, Fizyki i Informatyki",
+      "Instytut Informatyki",
+      "Zakład Optymalizacji Kombinatorycznej"
+    ]
+  }
+]

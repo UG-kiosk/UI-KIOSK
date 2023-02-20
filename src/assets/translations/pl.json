@@ -5,6 +5,12 @@
     "touchHere": "DOTKNIJ TUTAJ"
   },
   "mainPanel": {
+    "staff": "skład osobowy",
     "majors": "kierunki studiów"
+  },
+  "search": "szukaj",
+  "staffPage": {
+    "contact": "Kontakt",
+    "tutorial": "Konsultacje"
   }
 }
