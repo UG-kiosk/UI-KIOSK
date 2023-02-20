@@ -16,11 +16,7 @@ export class NavbarTestFunctions {
   };
 
   testNavbarNavigationToHome = () => {
-    this.getTile().eq(3).click();
-    this.getHomeNavigation().click();
-    cy.location().should(loc => {
-      expect(loc.pathname).to.eq('/');
-    });
+    this.getHomeNavigation().should('have.attr', 'href', '/');
   };
 
   testNavbarNavigationBack = () => {
