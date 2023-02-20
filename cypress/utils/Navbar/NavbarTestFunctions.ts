@@ -1,13 +1,11 @@
 export class NavbarTestFunctions {
-  getNavbar = () => cy.getBySelector('navbar');
+  private getNavbar = () => cy.getBySelector('navbar');
+  private getLeftNavigation = () => cy.getBySelector('nav-back');
+  private getHomeNavigation = () => cy.getBySelector('nav-home');
+  private getRightNavigation = () => cy.getBySelector('nav-forward');
+  private getIcons = () => cy.getBySelector('nav-icon');
 
-  getLeftNavigation = () => cy.getBySelector('nav-back');
-
-  getHomeNavigation = () => cy.getBySelector('nav-home');
-
-  getRightNavigation = () => cy.getBySelector('nav-forward');
-
-  getIcons = () => cy.getBySelector('nav-icon');
+  private getTile = () => cy.getBySelector('tile');
 
   testNavbarContent = () => {
     this.getNavbar().should('exist');
@@ -18,24 +16,27 @@ export class NavbarTestFunctions {
   };
 
   testNavbarNavigationToHome = () => {
+    this.getTile().eq(3).click();
     this.getHomeNavigation().click();
     cy.location().should(loc => {
       expect(loc.pathname).to.eq('/');
     });
   };
 
-  // paths need to be updated
+  testNavbarNavigationBack = () => {
+    this.getTile().eq(3).click();
+    this.getLeftNavigation().click();
+    cy.location().should(loc => {
+      expect(loc.pathname).to.eq('/');
+    });
+  };
 
-  // testNavbarNavigationBack= () => {
-  //   this.getLeftNavigation().click();
-  //   cy.location().should(loc => {
-  //     expect(loc.pathname).to.eq('/');
-  //   });
-  // };
-  // testNavbarNavigationForward = () => {
-  //   this.getRightNavigation().click();
-  //   cy.location().should(loc => {
-  //     expect(loc.pathname).to.eq('/');
-  //   });
-  // };
+  testNavbarNavigationForward = () => {
+    this.getTile().eq(3).click();
+    cy.go('back');
+    this.getRightNavigation().click();
+    cy.location().should(loc => {
+      expect(loc.pathname).to.eq('/staff');
+    });
+  };
 }

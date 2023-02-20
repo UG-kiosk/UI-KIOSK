@@ -26,12 +26,14 @@ describe('Root.cy.tsc', () => {
     WelcomePage.showMain();
     Header.testHeaderContentPL();
     MainPanel.testMainPanelContentPL();
+    Navbar.testNavbarContent();
   });
 
   it.only('render MainPanel after WelcomePage click EN', () => {
     WelcomePage.showMain();
     Header.testHeaderContentEN();
     MainPanel.testMainPanelContentEN();
+    Navbar.testNavbarContent();
   });
 
   it.only('navigating to modules', () => {
@@ -39,9 +41,10 @@ describe('Root.cy.tsc', () => {
     MainPanel.testOnClickNavigations();
   });
 
-  it.only('render bottom Navbar', () => {
+  it.only('navbar navigation', () => {
     WelcomePage.showMain();
-    Navbar.testNavbarContent();
     Navbar.testNavbarNavigationToHome();
+    Navbar.testNavbarNavigationBack();
+    Navbar.testNavbarNavigationForward();
   });
 });
