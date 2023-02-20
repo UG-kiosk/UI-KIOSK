@@ -69,6 +69,7 @@ export const StaffDetailsPage = () => {
       <>
         <Header />
         <Error data-cy="error-message" />
+        <Navbar />
       </>
     );
   }
