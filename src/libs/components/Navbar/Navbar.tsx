@@ -45,17 +45,18 @@ export const Navbar = () => {
         height: 90,
         px: 3,
       }}
+      data-cy="navbar"
     >
-      <NavButtons onClick={handleNavigateBack}>
-        <NavigateBeforeIcon fontSize="inherit" />
+      <NavButtons onClick={handleNavigateBack} data-cy="nav-back">
+        <NavigateBeforeIcon fontSize="inherit" data-cy="nav-icon" />
       </NavButtons>
-      <StyledLink to="/">
+      <StyledLink to="/" data-cy="nav-home">
         <NavButtons>
-          <HomeIcon fontSize="inherit" />
+          <HomeIcon fontSize="inherit" data-cy="nav-icon" />
         </NavButtons>
       </StyledLink>
-      <NavButtons onClick={handleNavigateForward}>
-        <NavigateNextIcon fontSize="inherit" />
+      <NavButtons onClick={handleNavigateForward} data-cy="nav-forward">
+        <NavigateNextIcon fontSize="inherit" data-cy="nav-icon" />
       </NavButtons>
     </Grid>
   );
