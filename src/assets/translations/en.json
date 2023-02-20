@@ -3,5 +3,14 @@
   "ug_logo": "ug_logo_en",
   "welcomePage": {
     "touchHere": "TOUCH HERE"
+  },
+  "mainPanel": {
+    "majors": "majors",
+    "staff": "faculty members"
+  },
+  "search": "search",
+  "staffPage": {
+    "contact": "Contact",
+    "tutorial": "Tutorials"
   }
 }
