@@ -3,7 +3,7 @@ import App from './App';
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import { MajorDetailsPage, MajorsList } from './modules/Majors';
 import { StaffListPage, StaffDetailsPage } from './modules/Staff';
-import { Header } from '@UG/libs/components';
+import { Header, Navbar } from '@UG/libs/components';
 
 const routes: RouteObject[] = [
   {
@@ -26,6 +26,7 @@ const routes: RouteObject[] = [
         {' '}
         <Header />
         <MajorsList />
+        <Navbar />
       </>
     ),
   },
@@ -35,6 +36,7 @@ const routes: RouteObject[] = [
       <>
         <Header />
         <MajorDetailsPage />
+        <Navbar />
       </>
     ),
   },
@@ -42,7 +44,9 @@ const routes: RouteObject[] = [
     path: '/staff',
     element: (
       <>
-        <Header /> <StaffListPage />
+        <Header />
+        <StaffListPage />
+        <Navbar />
       </>
     ),
   },
@@ -52,6 +56,7 @@ const routes: RouteObject[] = [
       <>
         <Header />
         <StaffDetailsPage />
+        <Navbar />
       </>
     ),
   },

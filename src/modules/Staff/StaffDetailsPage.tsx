@@ -1,5 +1,5 @@
 import { styled, useTheme } from '@mui/material/styles';
-import { DetailsTile, Navbar, Paragraph, StyledSkeleton, ListPageSkeleton, Error } from '@UG/libs/components';
+import { DetailsTile, Paragraph, StyledSkeleton, ListPageSkeleton, Error } from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
 import React, { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
@@ -68,7 +68,6 @@ export const StaffDetailsPage = () => {
     return (
       <>
         <Error data-cy="error-message" />
-        <Navbar />
       </>
     );
   }
@@ -140,7 +139,6 @@ export const StaffDetailsPage = () => {
         </DetailsTile>
         {academicPosts}
       </Box>
-      <Navbar />
     </>
   );
 };

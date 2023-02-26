@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetStaff } from './hooks';
 import { StateType } from 'src/store';
-import { Navbar, DetailsTile, Paragraph, ListPageSkeleton, Error } from '@UG/libs/components';
+import { DetailsTile, Paragraph, ListPageSkeleton, Error } from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
 import { styled, useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
@@ -52,7 +52,6 @@ export const StaffListPage = () => {
     return (
       <>
         <Error data-cy="error-message" />
-        <Navbar />
       </>
     );
   }
@@ -81,7 +80,6 @@ export const StaffListPage = () => {
       >
         {staffTiles}
       </Box>
-      <Navbar />
     </>
   );
 };
