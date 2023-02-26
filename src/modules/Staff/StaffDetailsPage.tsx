@@ -1,5 +1,5 @@
 import { styled, useTheme } from '@mui/material/styles';
-import { DetailsTile, Header, Navbar, Paragraph, StyledSkeleton, ListPageSkeleton, Error } from '@UG/libs/components';
+import { DetailsTile, Navbar, Paragraph, StyledSkeleton, ListPageSkeleton, Error } from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
 import React, { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
@@ -67,7 +67,6 @@ export const StaffDetailsPage = () => {
     // optional props will be added later
     return (
       <>
-        <Header />
         <Error data-cy="error-message" />
         <Navbar />
       </>
@@ -77,7 +76,6 @@ export const StaffDetailsPage = () => {
   if (isLoading && !errorMessage) {
     return (
       <>
-        <Header />
         <Box marginTop="150px" marginBottom="40px" ml="auto" mr="auto" width={975}>
           <StyledSkeleton
             animation="wave"
@@ -98,7 +96,6 @@ export const StaffDetailsPage = () => {
   if (!staffDetails) {
     return (
       <>
-        <Header />
         <Error />
       </>
     );
@@ -106,7 +103,6 @@ export const StaffDetailsPage = () => {
 
   return (
     <>
-      <Header />
       <Box margin="150px auto" marginBottom="180px" width={975}>
         <Paragraph margin="15px" fontSize={36} color={theme.palette.secondary.dark} data-cy="academic-name">
           {staffDetails?.name}

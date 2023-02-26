@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { DetailsTile, Divider, Header, Navbar } from '@UG/libs/components';
+import { DetailsTile, Divider, Navbar } from '@UG/libs/components';
 import { Major } from '@UG/libs/types';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
@@ -53,7 +53,6 @@ export const MajorDetailsPage = () => {
   if (!isLoading && errorMessage) {
     return (
       <>
-        <Header />
         <p style={{ marginTop: '150px' }}>{errorMessage}</p>
         <Navbar />
       </>
@@ -64,7 +63,6 @@ export const MajorDetailsPage = () => {
   if (isLoading && !errorMessage) {
     return (
       <>
-        <Header />
         <p style={{ marginTop: '150px' }}>loading...</p>
         <Navbar />
       </>
@@ -75,7 +73,6 @@ export const MajorDetailsPage = () => {
   if (!majorDetails) {
     return (
       <>
-        <Header />
         <p style={{ marginTop: '150px' }}>sorry but we couldn&apos;t find {name}</p>
         <Navbar />
       </>
@@ -84,7 +81,6 @@ export const MajorDetailsPage = () => {
 
   return (
     <>
-      <Header />
       <Box marginTop="150px" marginBottom="40px" marginLeft="auto" marginRight="auto" width={975}>
         <StyledTitle data-cy="title">{majorDetails.name}</StyledTitle>
         <Divider />

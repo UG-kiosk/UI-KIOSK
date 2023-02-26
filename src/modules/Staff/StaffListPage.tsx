@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetStaff } from './hooks';
 import { StateType } from 'src/store';
-import { Header, Navbar, DetailsTile, Paragraph, ListPageSkeleton, Error } from '@UG/libs/components';
+import { Navbar, DetailsTile, Paragraph, ListPageSkeleton, Error } from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
 import { styled, useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
@@ -51,7 +51,6 @@ export const StaffListPage = () => {
   if (!isLoading && errorMessage) {
     return (
       <>
-        <Header />
         <Error data-cy="error-message" />
         <Navbar />
       </>
@@ -61,7 +60,6 @@ export const StaffListPage = () => {
   if (isLoading && !errorMessage) {
     return (
       <>
-        <Header />
         {/* <SearchBar /> */}
         <ListPageSkeleton mt={80} height={100} />
       </>
@@ -71,7 +69,6 @@ export const StaffListPage = () => {
   return (
     // searchbar will be implemented in the future
     <>
-      <Header />
       {/* <SearchBar /> */}
       <Box
         width={1080}
