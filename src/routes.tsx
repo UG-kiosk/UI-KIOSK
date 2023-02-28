@@ -23,7 +23,6 @@ const routes: RouteObject[] = [
     path: '/majors',
     element: (
       <>
-        {' '}
         <Header />
         <MajorsList />
         <Navbar />

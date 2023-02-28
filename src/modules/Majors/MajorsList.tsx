@@ -1,6 +1,5 @@
-import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { DetailsTile, ListPageSkeleton } from '@UG/libs/components';
+import { DetailsTile, ListPageSkeleton, ListContainer } from '@UG/libs/components';
 import { Major } from '@UG/libs/types';
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
@@ -67,20 +66,7 @@ export const MajorsList = () => {
 
   return (
     <>
-      <Box
-        marginLeft="auto"
-        marginRight="auto"
-        marginTop="150px"
-        display="flex"
-        flexDirection="column"
-        justifyContent="space-between"
-        alignItems="center"
-        sx={{
-          width: 1080,
-        }}
-      >
-        {majorsTiles}
-      </Box>
+      <ListContainer>{majorsTiles}</ListContainer>
     </>
   );
 };
