@@ -1,5 +1,5 @@
-import { styled, useTheme } from '@mui/material/styles';
-import { DetailsTile, Paragraph, StyledSkeleton, ListPageSkeleton, Error } from '@UG/libs/components';
+import { useTheme } from '@mui/material/styles';
+import { DetailsTile, Paragraph, StyledSkeleton, ListPageSkeleton, Error, Divider } from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
 import React, { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
@@ -8,12 +8,6 @@ import { StateType } from 'src/store';
 import { useTranslation } from 'react-i18next';
 import { Box } from '@mui/material';
 import { useGetStaff } from './hooks';
-
-const Line = styled('div')`
-  width: 975px;
-  margin-bottom: 35px;
-  border-bottom: 1px solid ${({ theme }) => theme.palette.primary.dark};
-`;
 
 interface StateProps {
   isLoading: boolean;
@@ -84,7 +78,7 @@ export const StaffDetailsPage = () => {
             mt={30}
             data-cy="skeleton-tile"
           />
-          <Line />
+          <Divider />
           <StyledSkeleton animation="wave" variant="rectangular" width={975} height={250} data-cy="skeleton-tile" />
           <ListPageSkeleton tiles={3} width={975} mt={50} height={100} />
         </Box>
@@ -106,7 +100,7 @@ export const StaffDetailsPage = () => {
         <Paragraph margin="15px" fontSize={36} color={theme.palette.secondary.dark} data-cy="academic-name">
           {staffDetails?.name}
         </Paragraph>
-        <Line />
+        <Divider />
         <DetailsTile width={975} padding="40px 40px">
           <Paragraph margin="25px" fontSize={36} color={theme.palette.secondary.dark} data-cy="contact">
             {t('staffPage.contact')}
