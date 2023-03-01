@@ -1,5 +1,13 @@
 import { useTheme } from '@mui/material/styles';
-import { DetailsTile, Paragraph, StyledSkeleton, ListPageSkeleton, Error, Divider } from '@UG/libs/components';
+import {
+  ContentContainer,
+  DetailsTile,
+  Paragraph,
+  StyledSkeleton,
+  ListPageSkeleton,
+  Error,
+  Divider,
+} from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
 import React, { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
@@ -96,7 +104,7 @@ export const StaffDetailsPage = () => {
 
   return (
     <>
-      <Box margin="150px auto" marginBottom="180px" width={975}>
+      <ContentContainer>
         <Paragraph margin="15px" fontSize={36} color={theme.palette.secondary.dark} data-cy="academic-name">
           {staffDetails?.name}
         </Paragraph>
@@ -132,7 +140,7 @@ export const StaffDetailsPage = () => {
           ) : null}
         </DetailsTile>
         {academicPosts}
-      </Box>
+      </ContentContainer>
     </>
   );
 };

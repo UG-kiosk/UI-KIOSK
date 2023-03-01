@@ -12,4 +12,4 @@ export * from './DetailsTile';
 export * from './ListPageSkeleton';
 export * from './Error';
 export * from './SearchBar';
-export * from './ListContainer';
+export * from './ContentContainer';
