@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetStaff } from './hooks';
 import { StateType } from 'src/store';
-import { ContentContainer, DetailsTile, Paragraph, ListPageSkeleton, Error } from '@UG/libs/components';
+import { DetailsTile, Paragraph, ListPageSkeleton, Error } from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
 import { styled, useTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
@@ -68,7 +68,7 @@ export const StaffListPage = () => {
     // searchbar will be implemented in the future
     <>
       {/* <SearchBar /> */}
-      <ContentContainer>{staffTiles}</ContentContainer>
+      <>{staffTiles}</>
     </>
   );
 };

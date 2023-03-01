@@ -1,13 +1,5 @@
 import { useTheme } from '@mui/material/styles';
-import {
-  ContentContainer,
-  DetailsTile,
-  Paragraph,
-  StyledSkeleton,
-  ListPageSkeleton,
-  Error,
-  Divider,
-} from '@UG/libs/components';
+import { DetailsTile, Paragraph, StyledSkeleton, ListPageSkeleton, Error, Divider } from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
 import React, { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
@@ -104,43 +96,41 @@ export const StaffDetailsPage = () => {
 
   return (
     <>
-      <ContentContainer>
-        <Paragraph margin="15px" fontSize={36} color={theme.palette.secondary.dark} data-cy="academic-name">
-          {staffDetails?.name}
+      <Paragraph margin="15px" fontSize={36} color={theme.palette.secondary.dark} data-cy="academic-name">
+        {staffDetails?.name}
+      </Paragraph>
+      <Divider />
+      <DetailsTile width={975} padding="40px 40px">
+        <Paragraph margin="25px" fontSize={36} color={theme.palette.secondary.dark} data-cy="contact">
+          {t('staffPage.contact')}
         </Paragraph>
-        <Divider />
-        <DetailsTile width={975} padding="40px 40px">
-          <Paragraph margin="25px" fontSize={36} color={theme.palette.secondary.dark} data-cy="contact">
-            {t('staffPage.contact')}
+        <Paragraph
+          margin="25px"
+          fontSize={24}
+          color={theme.palette.secondary.dark}
+          fontWeight={500}
+          data-cy="contact-email"
+        >
+          {staffDetails?.content?.email}
+        </Paragraph>
+        {staffDetails?.content?.tutorial ? (
+          <Paragraph margin="25px" fontSize={36} color={theme.palette.secondary.dark} data-cy="tutorial">
+            {t('staffPage.tutorial')}
           </Paragraph>
+        ) : null}
+        {staffDetails?.content?.tutorial ? (
           <Paragraph
             margin="25px"
             fontSize={24}
             color={theme.palette.secondary.dark}
             fontWeight={500}
-            data-cy="contact-email"
+            data-cy="tutorial-schedule"
           >
-            {staffDetails?.content?.email}
+            {staffDetails?.content?.tutorial}
           </Paragraph>
-          {staffDetails?.content?.tutorial ? (
-            <Paragraph margin="25px" fontSize={36} color={theme.palette.secondary.dark} data-cy="tutorial">
-              {t('staffPage.tutorial')}
-            </Paragraph>
-          ) : null}
-          {staffDetails?.content?.tutorial ? (
-            <Paragraph
-              margin="25px"
-              fontSize={24}
-              color={theme.palette.secondary.dark}
-              fontWeight={500}
-              data-cy="tutorial-schedule"
-            >
-              {staffDetails?.content?.tutorial}
-            </Paragraph>
-          ) : null}
-        </DetailsTile>
-        {academicPosts}
-      </ContentContainer>
+        ) : null}
+      </DetailsTile>
+      {academicPosts}
     </>
   );
 };

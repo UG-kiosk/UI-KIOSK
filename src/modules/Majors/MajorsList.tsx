@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { DetailsTile, ListPageSkeleton, ContentContainer } from '@UG/libs/components';
+import { DetailsTile, ListPageSkeleton } from '@UG/libs/components';
 import { Major } from '@UG/libs/types';
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
@@ -64,9 +64,5 @@ export const MajorsList = () => {
     );
   }
 
-  return (
-    <>
-      <ContentContainer>{majorsTiles}</ContentContainer>
-    </>
-  );
+  return <>{majorsTiles}</>;
 };

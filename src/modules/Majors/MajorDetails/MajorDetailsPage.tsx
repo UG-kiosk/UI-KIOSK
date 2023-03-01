@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { DetailsTile, Divider, ContentContainer } from '@UG/libs/components';
+import { DetailsTile, Divider } from '@UG/libs/components';
 import { Major } from '@UG/libs/types';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
@@ -78,13 +78,11 @@ export const MajorDetailsPage = () => {
 
   return (
     <>
-      <ContentContainer>
-        <StyledTitle data-cy="title">{majorDetails.name}</StyledTitle>
-        <Divider />
-        <DetailsTile>
-          <MajorDetails major={majorDetails} />
-        </DetailsTile>
-      </ContentContainer>
+      <StyledTitle data-cy="title">{majorDetails.name}</StyledTitle>
+      <Divider />
+      <DetailsTile>
+        <MajorDetails major={majorDetails} />
+      </DetailsTile>
     </>
   );
 };
