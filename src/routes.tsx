@@ -9,10 +9,12 @@ const routes: RouteObject[] = [
   {
     path: '/admin-panel/login',
     element: (
-      <ContentContainer marginLeft={-6}>
+      <>
         <Header />
-        <LoginPage />
-      </ContentContainer>
+        <ContentContainer marginLeft={-6}>
+          <LoginPage />
+        </ContentContainer>
+      </>
     ),
   },
   {
@@ -22,41 +24,49 @@ const routes: RouteObject[] = [
   {
     path: '/majors',
     element: (
-      <ContentContainer>
+      <>
         <Header />
-        <MajorsList />
+        <ContentContainer>
+          <MajorsList />
+        </ContentContainer>
         <Navbar />
-      </ContentContainer>
+      </>
     ),
   },
   {
     path: '/majors/:name',
     element: (
-      <ContentContainer>
+      <>
         <Header />
-        <MajorDetailsPage />
+        <ContentContainer>
+          <MajorDetailsPage />
+        </ContentContainer>
         <Navbar />
-      </ContentContainer>
+      </>
     ),
   },
   {
     path: '/staff',
     element: (
-      <ContentContainer>
+      <>
         <Header />
-        <StaffListPage />
+        <ContentContainer>
+          <StaffListPage />
+        </ContentContainer>
         <Navbar />
-      </ContentContainer>
+      </>
     ),
   },
   {
     path: '/staff/:_id',
     element: (
-      <ContentContainer>
+      <>
         <Header />
-        <StaffDetailsPage />
+        <ContentContainer>
+          <StaffDetailsPage />
+        </ContentContainer>
         <Navbar />
-      </ContentContainer>
+      </>
     ),
   },
   {
