@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { StateType } from 'src/store';
 import { useTranslation } from 'react-i18next';
-import { Box } from '@mui/material';
 import { useGetStaff } from './hooks';
 
 interface StateProps {
@@ -69,19 +68,17 @@ export const StaffDetailsPage = () => {
   if (isLoading && !errorMessage) {
     return (
       <>
-        <Box marginTop="150px" marginBottom="40px" ml="auto" mr="auto" width={975}>
-          <StyledSkeleton
-            animation="wave"
-            variant="rectangular"
-            width={500}
-            height={50}
-            mt={30}
-            data-cy="skeleton-tile"
-          />
-          <Divider />
-          <StyledSkeleton animation="wave" variant="rectangular" width={975} height={250} data-cy="skeleton-tile" />
-          <ListPageSkeleton tiles={3} width={975} mt={50} height={100} />
-        </Box>
+        <StyledSkeleton
+          animation="wave"
+          variant="rectangular"
+          width={500}
+          height={50}
+          mt={30}
+          data-cy="skeleton-tile"
+        />
+        <Divider />
+        <StyledSkeleton animation="wave" variant="rectangular" width={975} height={250} data-cy="skeleton-tile" />
+        <ListPageSkeleton tiles={3} width={975} mt={50} height={100} />
       </>
     );
   }

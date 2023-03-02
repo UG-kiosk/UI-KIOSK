@@ -4,6 +4,7 @@ import { WelcomePage } from './components/WelcomePage.tsx';
 import { StateType } from './store';
 import { Header } from './libs/components/Header';
 import { Navbar } from './libs/components/Navbar';
+import { ContentContainer } from '@UG/libs/components';
 
 interface StateProps {
   isWelcomed: boolean;
@@ -19,7 +20,9 @@ const App = () => {
   return (
     <>
       <Header />
-      <MainPanel />
+      <ContentContainer marginTop={5} marginBottom={100}>
+        <MainPanel />
+      </ContentContainer>
       <Navbar />
     </>
   );
