@@ -51,29 +51,17 @@ export const MajorDetailsPage = () => {
 
   //TODO change layout as soon as we get designs
   if (!isLoading && errorMessage) {
-    return (
-      <>
-        <p style={{ marginTop: '150px' }}>{errorMessage}</p>
-      </>
-    );
+    return <p style={{ marginTop: '150px' }}>{errorMessage}</p>;
   }
 
   //TODO change layout as soon as we get designs
   if (isLoading && !errorMessage) {
-    return (
-      <>
-        <p style={{ marginTop: '150px' }}>loading...</p>
-      </>
-    );
+    return <p style={{ marginTop: '150px' }}>loading...</p>;
   }
 
   //TODO change layout as soon as we get designs
   if (!majorDetails) {
-    return (
-      <>
-        <p style={{ marginTop: '150px' }}>sorry but we couldn&apos;t find {name}</p>
-      </>
-    );
+    return <p style={{ marginTop: '150px' }}>sorry but we couldn&apos;t find {name}</p>;
   }
 
   return (

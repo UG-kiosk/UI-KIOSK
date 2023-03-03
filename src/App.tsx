@@ -20,7 +20,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <ContentContainer marginTop={5} marginBottom={100}>
+      <ContentContainer marginBottom={180}>
         <MainPanel />
       </ContentContainer>
       <Navbar />

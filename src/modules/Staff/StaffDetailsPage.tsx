@@ -58,11 +58,7 @@ export const StaffDetailsPage = () => {
 
   if (!isLoading && errorMessage) {
     // optional props will be added later
-    return (
-      <>
-        <Error data-cy="error-message" />
-      </>
-    );
+    return <Error data-cy="error-message" />;
   }
 
   if (isLoading && !errorMessage) {
@@ -84,11 +80,7 @@ export const StaffDetailsPage = () => {
   }
 
   if (!staffDetails) {
-    return (
-      <>
-        <Error />
-      </>
-    );
+    return <Error />;
   }
 
   return (

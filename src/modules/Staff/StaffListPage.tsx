@@ -48,11 +48,7 @@ export const StaffListPage = () => {
   );
 
   if (!isLoading && errorMessage) {
-    return (
-      <>
-        <Error data-cy="error-message" />
-      </>
-    );
+    return <Error data-cy="error-message" />;
   }
 
   if (isLoading && !errorMessage) {
