@@ -16,7 +16,7 @@ const StyledContentContainer = styled(Box, {
   margin-left: ${({ marginLeft }) => (marginLeft ? `${marginLeft} px` : 'auto')};
   margin-right: ${({ marginRight }) => (marginRight ? `${marginRight} px` : 'auto')};
   margin-top: ${({ marginTop }) => (marginTop ? marginTop : 150)}px;
-  margin-bottom: ${({ marginBottom }) => (marginBottom ? marginBottom : 150)}px;
+  margin-bottom: ${({ marginBottom }) => (marginBottom ? marginBottom : 180)}px;
   width: ${({ width }) => (width ? `${width}px` : '1080px')};
   display: flex;
   flex-direction: column;
