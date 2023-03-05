@@ -1,29 +1,16 @@
-import { useCallback } from 'react';
-import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
-import { LoginFormFields } from './LoginFormFields';
-import { LoginFormTypes, LoginFormFieldsNames } from './types';
-import { validationSchema } from './validationSchema';
+import { Tile } from '@UG/libs/components';
+import { LoginPageForm } from './LoginPageForm';
+import { styled } from '@mui/material/styles';
+
+const StyledTile = styled(Tile)`
+  padding: 60px;
+  align-items: flex-start;
+`;
 
 export const LoginPage = () => {
-  const formMethods = useForm<LoginFormTypes>({
-    defaultValues: { [LoginFormFieldsNames.USERNAME]: '', [LoginFormFieldsNames.PASSWORD]: '' },
-    resolver: validationSchema,
-    mode: 'onTouched',
-  });
-
-  const onSubmit: SubmitHandler<LoginFormTypes> = useCallback(data => {
-    formMethods.reset();
-    alert(JSON.stringify(data));
-  }, []);
-
   return (
-    <FormProvider {...formMethods}>
-      <form data-cy="admin-login-form" onSubmit={formMethods.handleSubmit(onSubmit)}>
-        <LoginFormFields />
-        <button data-cy="login-button" type="submit">
-          Login
-        </button>
-      </form>
-    </FormProvider>
+    <StyledTile tileWidth={885} tileHeight={370}>
+      <LoginPageForm />
+    </StyledTile>
   );
 };

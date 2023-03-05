@@ -1,70 +1,59 @@
+import { HeaderTestFunctions } from '../../utils/Header/HeaderTestFunctions';
 import { LoginPageTestFunctions } from '../../utils/AdminPanel/LoginPageTestFunctions';
-import { LoginFormFieldsNames } from '../../../src/AdminPanel/modules/LoginPage/types';
 
-const LoginPageTests = new LoginPageTestFunctions();
+const Header = new HeaderTestFunctions();
+const LoginPage = new LoginPageTestFunctions();
 
 describe('LoginPage.cy.tsx', () => {
   beforeEach(() => {
     cy.visit('/admin-panel/login');
   });
 
-  it.only('Login page content test', () => {
-    LoginPageTests.testLoginPageContent();
+  it.only('Render Header PL', () => {
+    Header.testHeaderContentPL();
+  });
+
+  it.only('Render Header EN', () => {
+    Header.testHeaderContentEN();
+  });
+
+  it.only('Login page content PL', () => {
+    LoginPage.testLoginPageContentPL();
+  });
+
+  it.only('Login page content EN', () => {
+    LoginPage.testLoginPageContentEN();
   });
 
   it.only('Submit correct data', () => {
-    LoginPageTests.typeToUsername('admin');
-    LoginPageTests.typeToPassword('admin');
-
-    LoginPageTests.submitForm();
-
-    cy.on('window:alert', str => {
-      expect(str).to.equal(
-        JSON.stringify({ [LoginFormFieldsNames.USERNAME]: 'admin', [LoginFormFieldsNames.PASSWORD]: 'admin' }),
-      );
-    });
+    LoginPage.submitCorrectData();
   });
 
-  it.only('Type empty login', () => {
-    LoginPageTests.getUsernameError().should('not.exist');
-    LoginPageTests.getPasswordError().should('not.exist');
-
-    LoginPageTests.getUsernameInput().focus().blur();
-
-    LoginPageTests.getUsernameError().should('exist');
-    LoginPageTests.getPasswordError().should('not.exist');
+  it.only('Type empty login PL', () => {
+    LoginPage.emptyLoginErrorPL();
   });
 
-  it.only('Type empty password', () => {
-    LoginPageTests.getUsernameError().should('not.exist');
-    LoginPageTests.getPasswordError().should('not.exist');
-
-    LoginPageTests.getPasswordInput().focus().blur();
-
-    LoginPageTests.getUsernameError().should('not.exist');
-    LoginPageTests.getPasswordError().should('exist');
+  it.only('Type empty login EN', () => {
+    LoginPage.emptyLoginErrorEN();
   });
 
-  it.only('Submit empty data', () => {
-    LoginPageTests.getUsernameError().should('not.exist');
-    LoginPageTests.getPasswordError().should('not.exist');
-
-    LoginPageTests.submitForm();
-
-    LoginPageTests.getUsernameError().should('exist');
-    LoginPageTests.getPasswordError().should('exist');
+  it.only('Type empty password PL', () => {
+    LoginPage.emptyPasswordErrorPL();
   });
 
-  it.only('Errors disappear after correct data', () => {
-    LoginPageTests.submitForm();
+  it.only('Type empty password EN', () => {
+    LoginPage.emptyPasswordErrorEN();
+  });
 
-    LoginPageTests.getUsernameError().should('exist');
-    LoginPageTests.getPasswordError().should('exist');
+  it.only('Submit empty data PL', () => {
+    LoginPage.submitEmptyDataPL();
+  });
 
-    LoginPageTests.typeToUsername('a');
-    LoginPageTests.getUsernameError().should('not.exist');
+  it.only('Submit empty data EN', () => {
+    LoginPage.submitEmptyDataEN();
+  });
 
-    LoginPageTests.typeToPassword('a');
-    LoginPageTests.getPasswordError().should('not.exist');
+  it.only('Errors disappear after submitting correct data', () => {
+    LoginPage.disappearErrorsAfterCorrectData();
   });
 });

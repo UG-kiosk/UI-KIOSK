@@ -1,11 +1,16 @@
+import { LoginFormFieldsNames } from 'src/AdminPanel/modules/LoginPage/LoginPageForm/types';
+import { LanguageChangeTestFunctions } from '../LanguageChange/LanguageChangeTestFunctions';
+
+const LanguageChange = new LanguageChangeTestFunctions();
+
 export class LoginPageTestFunctions {
   getAdminLoginForm = () => cy.getBySelector('admin-login-form');
 
-  getUsernameLabel = () => cy.getBySelector('username-label');
+  getLoginLabel = () => cy.getBySelector('username-label');
 
-  getUsernameInput = () => cy.getBySelector('username-input');
+  getLoginInput = () => cy.getBySelector('username-input');
 
-  getUsernameError = () => cy.getBySelector('username-error');
+  getLoginError = () => cy.getBySelector('username-error');
 
   getPasswordLabel = () => cy.getBySelector('password-label');
 
@@ -15,20 +20,105 @@ export class LoginPageTestFunctions {
 
   getLoginButton = () => cy.getBySelector('login-button');
 
-  typeToUsername = (username: string) => this.getUsernameInput().type(username);
+  typeToLogin = (login: string) => this.getLoginInput().type(login);
 
   typeToPassword = (password: string) => this.getPasswordInput().type(password);
 
   submitForm = () => this.getLoginButton().click();
 
-  testLoginPageContent = () => {
+  private testLoginPageContent = () => {
     this.getAdminLoginForm().should('exist');
-    this.getUsernameLabel().should('exist');
-    this.getUsernameInput().should('exist');
-    this.getUsernameError().should('not.exist');
+    this.getLoginLabel().should('exist');
+    this.getLoginInput().should('exist');
+    this.getLoginError().should('not.exist');
     this.getPasswordLabel().should('exist');
     this.getPasswordInput().should('exist');
     this.getPasswordError().should('not.exist');
     this.getLoginButton().should('exist');
+  };
+
+  testLoginPageContentPL = () => {
+    this.testLoginPageContent();
+    this.getLoginLabel().should('have.text', 'login');
+    this.getPasswordLabel().should('have.text', 'hasło');
+    this.getLoginButton().should('have.text', 'zaloguj się');
+  };
+
+  testLoginPageContentEN = () => {
+    this.testLoginPageContent();
+    LanguageChange.changeLanguage();
+    this.getLoginLabel().should('have.text', 'login');
+    this.getPasswordLabel().should('have.text', 'password');
+    this.getLoginButton().should('have.text', 'log in');
+  };
+
+  submitCorrectData = () => {
+    this.typeToLogin('admin');
+    this.typeToPassword('admin');
+
+    this.submitForm();
+
+    cy.on('window:alert', str => {
+      expect(str).to.equal(
+        JSON.stringify({ [LoginFormFieldsNames.USERNAME]: 'admin', [LoginFormFieldsNames.PASSWORD]: 'admin' }),
+      );
+    });
+  };
+
+  emptyLoginErrorPL = () => {
+    this.getLoginInput().focus().blur();
+    this.getLoginError().should('exist');
+    this.getPasswordError().should('not.exist');
+    this.getLoginError().should('have.text', 'Login jest wymagany(e)');
+  };
+
+  emptyLoginErrorEN = () => {
+    LanguageChange.changeLanguage();
+    this.getLoginInput().focus().blur();
+    this.getLoginError().should('exist');
+    this.getPasswordError().should('not.exist');
+    this.getLoginError().should('have.text', 'Username is required');
+  };
+
+  emptyPasswordErrorPL = () => {
+    this.getPasswordInput().focus().blur();
+    this.getLoginError().should('not.exist');
+    this.getPasswordError().should('exist');
+    this.getPasswordError().should('have.text', 'Hasło jest wymagany(e)');
+  };
+
+  emptyPasswordErrorEN = () => {
+    LanguageChange.changeLanguage();
+    this.getPasswordInput().focus().blur();
+    this.getLoginError().should('not.exist');
+    this.getPasswordError().should('exist');
+    this.getPasswordError().should('have.text', 'Password is required');
+  };
+
+  private submitEmptyData = () => {
+    this.submitForm();
+    this.getLoginError().should('exist');
+    this.getPasswordError().should('exist');
+  };
+
+  submitEmptyDataPL = () => {
+    this.submitEmptyData();
+    this.getLoginError().should('have.text', 'Login jest wymagany(e)');
+    this.getPasswordError().should('have.text', 'Hasło jest wymagany(e)');
+  };
+
+  submitEmptyDataEN = () => {
+    LanguageChange.changeLanguage();
+    this.submitEmptyData();
+    this.getLoginError().should('have.text', 'Username is required');
+    this.getPasswordError().should('have.text', 'Password is required');
+  };
+
+  disappearErrorsAfterCorrectData = () => {
+    this.submitEmptyData();
+    this.typeToLogin('admin');
+    this.typeToPassword('password');
+    this.getLoginError().should('not.exist');
+    this.getPasswordError().should('not.exist');
   };
 }

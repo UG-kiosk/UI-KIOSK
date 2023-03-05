@@ -1,0 +1,16 @@
+{
+  "institute": "INSTYTUT INFORMATYKI",
+  "ug_logo": "ug_logo_pl",
+  "welcomePage": {
+    "touchHere": "DOTKNIJ TUTAJ"
+  },
+  "mainPanel": {
+    "staff": "skład osobowy",
+    "majors": "kierunki studiów"
+  },
+  "search": "szukaj",
+  "staffPage": {
+    "contact": "Kontakt",
+    "tutorial": "Konsultacje"
+  }
+}

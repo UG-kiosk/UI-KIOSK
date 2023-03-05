@@ -20,8 +20,12 @@
     "jsx": "react-jsx",
     "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@UG/libs/components": ["./src/libs/components"],
+      "@UG/libs/types": ["./src/libs/types"]
+    }
   },
-  "include": ["src/**/*", "cypress", "cypress.d.ts"],
+  "include": ["src/**/*", "cypress", "./src/assets/images/index.d.ts"],
   "exclude": ["node_modules"]
 }

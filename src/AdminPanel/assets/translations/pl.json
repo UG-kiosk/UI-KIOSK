@@ -1,0 +1,8 @@
+{
+  "loginPage": {
+    "requiredError": "{{field}} jest wymagany(e)",
+    "login": "login",
+    "password": "hasło",
+    "logIn": "zaloguj się"
+  }
+}
