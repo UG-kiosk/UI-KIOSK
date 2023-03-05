@@ -1,6 +1,6 @@
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { DetailsTile, Divider, Header, Navbar } from '@UG/libs/components';
+import { DetailsTile, Divider } from '@UG/libs/components';
 import { Major } from '@UG/libs/types';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
@@ -51,48 +51,26 @@ export const MajorDetailsPage = () => {
 
   //TODO change layout as soon as we get designs
   if (!isLoading && errorMessage) {
-    return (
-      <>
-        <Header />
-        <p style={{ marginTop: '150px' }}>{errorMessage}</p>
-        <Navbar />
-      </>
-    );
+    return <p style={{ marginTop: '150px' }}>{errorMessage}</p>;
   }
 
   //TODO change layout as soon as we get designs
   if (isLoading && !errorMessage) {
-    return (
-      <>
-        <Header />
-        <p style={{ marginTop: '150px' }}>loading...</p>
-        <Navbar />
-      </>
-    );
+    return <p style={{ marginTop: '150px' }}>loading...</p>;
   }
 
   //TODO change layout as soon as we get designs
   if (!majorDetails) {
-    return (
-      <>
-        <Header />
-        <p style={{ marginTop: '150px' }}>sorry but we couldn&apos;t find {name}</p>
-        <Navbar />
-      </>
-    );
+    return <p style={{ marginTop: '150px' }}>sorry but we couldn&apos;t find {name}</p>;
   }
 
   return (
     <>
-      <Header />
-      <Box marginTop="150px" marginBottom="40px" marginLeft="auto" marginRight="auto" width={975}>
-        <StyledTitle data-cy="title">{majorDetails.name}</StyledTitle>
-        <Divider />
-        <DetailsTile>
-          <MajorDetails major={majorDetails} />
-        </DetailsTile>
-      </Box>
-      <Navbar />
+      <StyledTitle data-cy="title">{majorDetails.name}</StyledTitle>
+      <Divider />
+      <DetailsTile>
+        <MajorDetails major={majorDetails} />
+      </DetailsTile>
     </>
   );
 };

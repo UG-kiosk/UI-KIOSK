@@ -2,10 +2,9 @@ import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetStaff } from './hooks';
 import { StateType } from 'src/store';
-import { Header, Navbar, DetailsTile, Paragraph, ListPageSkeleton, Error } from '@UG/libs/components';
+import { DetailsTile, Paragraph, ListPageSkeleton, Error } from '@UG/libs/components';
 import { Academic } from '@UG/libs/types';
 import { styled, useTheme } from '@mui/material/styles';
-import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 // import { SearchBar } from '../../libs/components/SearchBar';
 
@@ -49,19 +48,12 @@ export const StaffListPage = () => {
   );
 
   if (!isLoading && errorMessage) {
-    return (
-      <>
-        <Header />
-        <Error data-cy="error-message" />
-        <Navbar />
-      </>
-    );
+    return <Error data-cy="error-message" />;
   }
 
   if (isLoading && !errorMessage) {
     return (
       <>
-        <Header />
         {/* <SearchBar /> */}
         <ListPageSkeleton mt={80} height={100} />
       </>
@@ -71,20 +63,8 @@ export const StaffListPage = () => {
   return (
     // searchbar will be implemented in the future
     <>
-      <Header />
       {/* <SearchBar /> */}
-      <Box
-        width={1080}
-        margin="50px auto"
-        marginBottom="180px"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        data-cy="staff-list-container"
-      >
-        {staffTiles}
-      </Box>
-      <Navbar />
+      <>{staffTiles}</>
     </>
   );
 };

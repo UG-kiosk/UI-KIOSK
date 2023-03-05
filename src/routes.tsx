@@ -3,11 +3,19 @@ import App from './App';
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import { MajorDetailsPage, MajorsList } from './modules/Majors';
 import { StaffListPage, StaffDetailsPage } from './modules/Staff';
+import { Header, Navbar, ContentContainer } from '@UG/libs/components';
 
 const routes: RouteObject[] = [
   {
     path: '/admin-panel/login',
-    element: <LoginPage />,
+    element: (
+      <>
+        <Header />
+        <ContentContainer marginLeft={-6}>
+          <LoginPage />
+        </ContentContainer>
+      </>
+    ),
   },
   {
     path: '/',
@@ -15,19 +23,51 @@ const routes: RouteObject[] = [
   },
   {
     path: '/majors',
-    element: <MajorsList />,
+    element: (
+      <>
+        <Header />
+        <ContentContainer>
+          <MajorsList />
+        </ContentContainer>
+        <Navbar />
+      </>
+    ),
   },
   {
     path: '/majors/:name',
-    element: <MajorDetailsPage />,
+    element: (
+      <>
+        <Header />
+        <ContentContainer>
+          <MajorDetailsPage />
+        </ContentContainer>
+        <Navbar />
+      </>
+    ),
   },
   {
     path: '/staff',
-    element: <StaffListPage />,
+    element: (
+      <>
+        <Header />
+        <ContentContainer>
+          <StaffListPage />
+        </ContentContainer>
+        <Navbar />
+      </>
+    ),
   },
   {
     path: '/staff/:_id',
-    element: <StaffDetailsPage />,
+    element: (
+      <>
+        <Header />
+        <ContentContainer>
+          <StaffDetailsPage />
+        </ContentContainer>
+        <Navbar />
+      </>
+    ),
   },
   {
     path: '*',

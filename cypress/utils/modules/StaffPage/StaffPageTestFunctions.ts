@@ -2,7 +2,6 @@ export class StaffPageTestFunctions {
   private getStaffListTile = () => cy.getBySelector('details-tile');
 
   mockGETStaff = () => cy.intercept('GET', '/staff', { fixture: 'staff.json' });
-  private getStaffListContainer = () => cy.getBySelector('staff-list-container');
   private getStaffListTileLink = () => cy.getBySelector('link-to-staff-details');
 
   testStaffList = () => {
@@ -37,7 +36,6 @@ export class StaffPageTestFunctions {
   };
 
   testStaffLink = () => {
-    this.getStaffListContainer().should('exist');
     this.getStaffListTileLink().eq(0).should('have.attr', 'href', '/staff/63cb1cf20ada513d831bc83d');
     this.getStaffListTileLink().eq(1).should('have.attr', 'href', '/staff/63cb1cf20ada513d831bc83f');
     this.getStaffListTileLink().eq(2).should('have.attr', 'href', '/staff/63cb1cf20ada513d831bc85c');
