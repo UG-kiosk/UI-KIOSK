@@ -2,9 +2,10 @@
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/UniversityOfGdanskProjects/UI-KIOSK?style=for-the-badge)
 ![Netlify](https://img.shields.io/netlify/9aef6243-0742-42b4-9636-049204e0bbed?logo=netlify&style=for-the-badge)
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/UniversityOfGdanskProjects/UI-KIOSK/react?color=green&logo=react&style=for-the-badge)
-![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/UniversityOfGdanskProjects/UI-KIOSK/dev/typescript/master?color=darkblue&logo=typescript&style=for-the-badge)
 ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/UniversityOfGdanskProjects/UI-KIOSK/dev/vite/master?color=brown&logo=vite&style=for-the-badge)
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/UniversityOfGdanskProjects/UI-KIOSK/dev/typescript/master?color=darkblue&logo=typescript&style=for-the-badge)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/UniversityOfGdanskProjects/UI-KIOSK/react?color=green&logo=react&style=for-the-badge)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/UniversityOfGdanskProjects/UI-KIOSK/react-redux?color=purple&label=redux&logo=redux&style=for-the-badge)
 
 ## Description
 
@@ -16,6 +17,7 @@ UI-KIOSK uses:
 
 - [Typescript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
 
 ### Bundler
 
@@ -107,4 +109,3 @@ $ yarn cy:e2e
 ## Contribution
 
 In order to contribute to the repository, check out the [contribution guide](docs/CONTRIBUTING.md).
-The release guide is available [here]().
