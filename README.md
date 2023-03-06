@@ -9,7 +9,7 @@
 
 ## Description
 
-UI-KIOSK is a front-end project made for University of Gdańsk. It will be used in the information kiosk located outside of MFI building.
+UI-KIOSK is a front-end project made for the University of Gdańsk. It will be used in the information kiosk located outside of the MFI building.
 
 ### Technologies
 
