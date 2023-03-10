@@ -34,7 +34,7 @@ const routes: RouteObject[] = [
     ),
   },
   {
-    path: '/majors/:name',
+    path: '/majors/:_id',
     element: (
       <>
         <Header />
