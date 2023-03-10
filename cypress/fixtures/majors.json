@@ -1,6 +1,7 @@
 [
   {
     "url": "https://mfi.ug.edu.pl/rekrutacja/studia-i-stopnia/bezpieczenstwo-jadrowe-i-ochrona-radiologiczna",
+    "_id": "63d99d74f284efff2fc1d117",
     "content": [
       { "element": "h2", "text": "Opis kierunku " },
       {
@@ -49,6 +50,7 @@
   },
   {
     "url": "https://mfi.ug.edu.pl/rekrutacja/studia-i-stopnia/bioinformatyka",
+    "_id": "63d99d74f284efff2fc1d12a",
     "content": [
       { "element": "h2", "text": "Opis kierunku" },
       {
@@ -88,6 +90,7 @@
   },
   {
     "url": "https://mfi.ug.edu.pl/rekrutacja/studia-i-stopnia/fizyka",
+    "_id": "63d99d74f284efff2fc1d137",
     "content": [
       { "element": "h2", "text": "Opis kierunku " },
       {
@@ -127,6 +130,7 @@
   },
   {
     "url": "https://mfi.ug.edu.pl/rekrutacja/studia-i-stopnia/informatyka/tryb-stacjonarny/profil-ogolnoakademicki",
+    "_id": "63d99d74f284efff2fc1d147",
     "content": [
       { "element": "h2", "text": "Opis kierunku" },
       {
