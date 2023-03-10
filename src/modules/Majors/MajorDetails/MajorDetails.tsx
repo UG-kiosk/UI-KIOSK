@@ -4,7 +4,6 @@ import { DetailsTile, Divider } from '@UG/libs/components';
 import { Major } from '@UG/libs/types';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { StateType } from 'src/store';
 import { MajorDetailsInfo } from './MajorDetailsInfo';
 import { useGetMajors } from '../hooks';
@@ -32,7 +31,6 @@ const StyledTitle = styled(Typography)`
 
 export const MajorDetails = ({ id }: MajorDetailsProps) => {
   const { getMajorDetails } = useGetMajors();
-  const navigate = useNavigate();
   const { isLoading, errorMessage, majorDetails } = useSelector<StateType, StateProps>(state => ({
     isLoading: state.majors.isLoading,
     errorMessage: state.majors.error,
@@ -42,7 +40,7 @@ export const MajorDetails = ({ id }: MajorDetailsProps) => {
 
   useEffect(() => {
     getMajorDetails(id);
-  }, [id, getMajorDetails, navigate]);
+  }, [id, getMajorDetails]);
 
   //TODO change layout as soon as we get designs
   if (!isLoading && errorMessage) {
