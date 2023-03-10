@@ -46,22 +46,16 @@ export const MajorsList = () => {
   //TODO change layout as soon as we get designs
   if (!isLoading && errorMessage) {
     return (
-      <>
-        <p style={{ marginTop: '150px' }} data-cy="error-message">
-          {errorMessage}
-        </p>
-      </>
+      <p style={{ marginTop: '150px' }} data-cy="error-message">
+        {errorMessage}
+      </p>
     );
   }
 
   //TODO change layout as soon as we get designs
   if (isLoading && !errorMessage) {
-    return (
-      <>
-        <ListPageSkeleton />
-      </>
-    );
+    return <ListPageSkeleton />;
   }
 
-  return <>{majorsTiles};</>;
+  return <>{majorsTiles}</>;
 };

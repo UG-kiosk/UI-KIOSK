@@ -5,6 +5,12 @@
     "touchHere": "TOUCH HERE"
   },
   "mainPanel": {
-    "majors": "majors"
+    "majors": "majors",
+    "staff": "faculty members"
+  },
+  "search": "search",
+  "staffPage": {
+    "contact": "Contact",
+    "tutorial": "Tutorials"
   }
 }

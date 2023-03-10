@@ -1,8 +1,10 @@
 import { HeaderTestFunctions } from 'cypress/utils/Header/HeaderTestFunctions';
 import { MajorDetailsTestFunctions } from 'cypress/utils/modules/Majors/MajoDetailsTestFunctions';
+import { NavbarTestFunctions } from 'cypress/utils/Navbar/NavbarTestFunctions';
 
 const Header = new HeaderTestFunctions();
 const MajorDetails = new MajorDetailsTestFunctions();
+const Navbar = new NavbarTestFunctions();
 
 describe('MajorDetails', () => {
   beforeEach(() => {
@@ -17,10 +19,12 @@ describe('MajorDetails', () => {
   it.only('render content PL', () => {
     Header.testHeaderContentPL();
     MajorDetails.testMajorDetailsContentPL();
+    Navbar.testNavbarContent();
   });
 
   it.only('render content EN', () => {
     // TODO - test english version
     Header.testHeaderContentEN();
+    Navbar.testNavbarContent();
   });
 });

@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import { styled } from '@mui/system';
+import { styled } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
 import { LanguageChange } from '@UG/libs/components';
 import { Namespaces } from '@UG/libs/types';
@@ -43,6 +43,7 @@ export const Header = () => {
   return (
     <Grid
       position="fixed"
+      zIndex={2}
       top={0}
       left={0}
       right={0}
