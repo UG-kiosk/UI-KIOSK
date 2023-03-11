@@ -1,2 +1,1 @@
-export * from './StaffListPage';
-export * from './StaffDetailsPage';
+export * from './StaffPage';

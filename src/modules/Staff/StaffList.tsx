@@ -18,7 +18,7 @@ interface StateProps {
   errorMessage: string | null;
 }
 
-export const StaffListPage = () => {
+export const StaffList = () => {
   const theme = useTheme();
   const { getStaffList } = useGetStaff();
 

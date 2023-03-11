@@ -3,7 +3,6 @@ import { DetailsTile, Paragraph, StyledSkeleton, ListPageSkeleton, Error, Divide
 import { Academic } from '@UG/libs/types';
 import React, { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
 import { StateType } from 'src/store';
 import { useTranslation } from 'react-i18next';
 import { useGetStaff } from './hooks';
@@ -14,11 +13,13 @@ interface StateProps {
   errorMessage: string | null;
 }
 
-export const StaffDetailsPage = () => {
+interface StaffDetailsProps {
+  id: string;
+}
+
+export const StaffDetails = ({ id }: StaffDetailsProps) => {
   const theme = useTheme();
   const { t } = useTranslation();
-  const navigate = useNavigate();
-  const { _id } = useParams();
   const { getStaffDetails } = useGetStaff();
 
   const { isLoading, staffDetails, errorMessage } = useSelector<StateType, StateProps>(state => ({
@@ -28,12 +29,8 @@ export const StaffDetailsPage = () => {
   }));
 
   useEffect(() => {
-    if (!_id) {
-      navigate('/error');
-    } else {
-      getStaffDetails(_id);
-    }
-  }, [_id, navigate, getStaffDetails]);
+    getStaffDetails(id);
+  }, [getStaffDetails, id]);
 
   const academicPosts: JSX.Element[] = useMemo(() => {
     if (!staffDetails || !staffDetails.content) {
