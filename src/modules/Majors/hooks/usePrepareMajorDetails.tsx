@@ -10,8 +10,6 @@ const StyledSubHeader = styled(Typography, { shouldForwardProp: prop => prop !==
   line-height: 44px;
   letter-spacing: 0em;
   color: ${({ theme }) => theme.palette.primary.main};
-  margin-top: 30px;
-  margin-bottom: 20px;
 `;
 
 const StyledParagraph = styled(Typography, { shouldForwardProp: prop => prop !== 'key' })<{ key: number }>`
