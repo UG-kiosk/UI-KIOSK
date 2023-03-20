@@ -1,12 +1,11 @@
 FROM node:18-alpine as builder
-COPY . . 
-# RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
-RUN yarn install
+
+WORKDIR /app
+COPY package.json ./
+RUN yarn install --frozen-lockfile
+COPY . .
 RUN yarn build
 
-FROM node:18-alpine
-WORKDIR /app
-COPY --from=builder package.json yarn.lock /app/
-RUN yarn install --production=true
-COPY --from=builder dist/src/ /app/dist/
-ENTRYPOINT [ "yarn", "preview" ]
+FROM nginx:1.23.3-alpine 
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/dist/ /var/www/ui-kiosk/html/
