@@ -4,6 +4,7 @@ export interface MajorContent {
 }
 
 export interface Major {
+  _id: string;
   name: string;
   url: string;
   content: MajorContent[];
