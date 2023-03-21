@@ -11,7 +11,7 @@ export const useGetStaff = () => {
     try {
       dispatch(startLoading());
       // url will be changed as soon as we deploy API
-      const { data: staffList } = await axios.get<Academic[]>('http://localhost:3001/staff');
+      const { data: staffList } = await axios.get<Academic[]>('/api/staff');
 
       dispatch(setStaffList(staffList));
       dispatch(finishLoading());
@@ -28,7 +28,7 @@ export const useGetStaff = () => {
       try {
         dispatch(startLoading());
         // url will be changed as soon as we deploy API
-        const { data: staffDetails } = await axios.get<Academic>(`http://localhost:3001/staff/${id}`);
+        const { data: staffDetails } = await axios.get<Academic>(`/api/staff/${id}`);
 
         dispatch(setStaffDetails(staffDetails));
         dispatch(finishLoading());
