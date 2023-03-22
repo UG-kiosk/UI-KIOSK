@@ -1,12 +1,13 @@
-import { useEffect, useMemo } from 'react';
+import { ChangeEvent, useCallback, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetStaff } from './hooks';
 import { StateType } from 'src/store';
-import { DetailsTile, Paragraph, ListPageSkeleton, Error } from '@UG/libs/components';
-import { Academic } from '@UG/libs/types';
+import { DetailsTile, Paragraph, ListPageSkeleton, Error, SearchBar } from '@UG/libs/components';
+import { Academic, FormData } from '@UG/libs/types';
 import { styled, useTheme } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
-// import { SearchBar } from '../../libs/components/SearchBar';
+import { Link, useSearchParams } from 'react-router-dom';
+import { SubmitHandler } from 'react-hook-form';
+import { Pagination } from '@mui/material';
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -16,21 +17,45 @@ interface StateProps {
   isLoading: boolean;
   staffList: Academic[];
   errorMessage: string | null;
+  totalPages: number;
 }
 
 export const StaffListPage = () => {
   const theme = useTheme();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { getStaffList } = useGetStaff();
 
-  const { isLoading, staffList, errorMessage } = useSelector<StateType, StateProps>(state => ({
+  const { isLoading, staffList, errorMessage, totalPages } = useSelector<StateType, StateProps>(state => ({
     isLoading: state.staff.isLoading,
     staffList: state.staff.staffList,
     errorMessage: state.staff.error,
+    totalPages: state.staff.totalPages,
   }));
+
+  const handlePageChange = useCallback(
+    (_event: ChangeEvent<unknown>, page: number) => {
+      const name = searchParams.get('name');
+      setSearchParams({ ...(name ? { name } : {}), page: page.toString() });
+    },
+    [searchParams, setSearchParams],
+  );
+
+  const getPageNumber = useMemo(() => {
+    const page = searchParams.get('page');
+    return page ? parseInt(page) : 1;
+  }, [searchParams]);
 
   useEffect(() => {
     getStaffList();
   }, [getStaffList]);
+
+  const onSubmit: SubmitHandler<FormData> = useCallback(
+    data => {
+      const { name } = data;
+      setSearchParams({ name });
+    },
+    [setSearchParams],
+  );
 
   const staffTiles: JSX.Element[] = useMemo(
     () =>
@@ -52,19 +77,20 @@ export const StaffListPage = () => {
   }
 
   if (isLoading && !errorMessage) {
-    return (
-      <>
-        {/* <SearchBar /> */}
-        <ListPageSkeleton mt={80} height={100} />
-      </>
-    );
+    return <ListPageSkeleton mt={80} height={100} />;
   }
-
   return (
-    // searchbar will be implemented in the future
     <>
-      {/* <SearchBar /> */}
-      <>{staffTiles}</>
+      <SearchBar query={'name'} onSubmit={onSubmit} />
+      {staffTiles}
+      <Pagination
+        page={getPageNumber}
+        count={totalPages}
+        onChange={handlePageChange}
+        shape="rounded"
+        color="primary"
+        size="large"
+      />
     </>
   );
 };
