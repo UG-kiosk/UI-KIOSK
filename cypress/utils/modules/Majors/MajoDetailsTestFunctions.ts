@@ -19,13 +19,15 @@ export class MajorDetailsTestFunctions {
 
   private getFallbackContainer = () => cy.getBySelector('fallback-container');
 
-  // private mockGETMajorsDetails = () =>
-  //   cy.intercept('GET', '/major/*', { fixture: 'majors.json'[0] }).as('getMajorDetails');
+  private mockGETMajorsDetails = () =>
+    cy.fixture('majors.json').then(majors => {
+      const object = majors[0];
+      cy.intercept('GET', '/majors/63d99d74f284efff2fc1d117', object).as('getMajorDetails');
+    });
 
   testMajorDetailsContentPL = () => {
-    // TODO - mock GET request
-    // this.mockGETMajorsDetails();
-    // cy.wait('@getMajorDetails');
+    this.mockGETMajorsDetails();
+    cy.wait('@getMajorDetails');
 
     this.getTitle().should('have.text', major.name);
     this.getDivider().should('exist');
