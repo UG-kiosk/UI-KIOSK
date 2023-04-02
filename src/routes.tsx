@@ -1,9 +1,9 @@
 import { LoginPage } from './AdminPanel/modules/LoginPage';
 import App from './App';
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
-import { MajorDetailsPage, MajorsList } from './modules/Majors';
-import { StaffListPage, StaffDetailsPage } from './modules/Staff';
+import { MajorsPage } from './modules/Majors';
 import { Header, Navbar, ContentContainer } from '@UG/libs/components';
+import { StaffPage } from './modules/Staff';
 
 const routes: RouteObject[] = [
   {
@@ -27,19 +27,19 @@ const routes: RouteObject[] = [
       <>
         <Header />
         <ContentContainer>
-          <MajorsList />
+          <MajorsPage />
         </ContentContainer>
         <Navbar />
       </>
     ),
   },
   {
-    path: '/majors/:name',
+    path: '/majors/:_id',
     element: (
       <>
         <Header />
         <ContentContainer>
-          <MajorDetailsPage />
+          <MajorsPage />
         </ContentContainer>
         <Navbar />
       </>
@@ -51,7 +51,7 @@ const routes: RouteObject[] = [
       <>
         <Header />
         <ContentContainer>
-          <StaffListPage />
+          <StaffPage />
         </ContentContainer>
         <Navbar />
       </>
@@ -63,7 +63,7 @@ const routes: RouteObject[] = [
       <>
         <Header />
         <ContentContainer>
-          <StaffDetailsPage />
+          <StaffPage />
         </ContentContainer>
         <Navbar />
       </>

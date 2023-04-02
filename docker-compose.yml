@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  ui-kiosk:
+    image: node:18-alpine
+    container_name: ui-kiosk
+    build: .
+    command: sh ./entrypoint.sh
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - 3000:3000

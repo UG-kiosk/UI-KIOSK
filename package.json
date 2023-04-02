@@ -5,6 +5,7 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "up": "docker compose up",
     "preview": "vite preview",
     "test": "jest --passWithNoTests",
     "prettier:ci": "npx prettier --list-different .",

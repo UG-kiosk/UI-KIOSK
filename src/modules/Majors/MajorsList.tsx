@@ -35,9 +35,8 @@ export const MajorsList = () => {
 
   const majorsTiles: JSX.Element[] = useMemo(
     () =>
-      //TODO - change name to id
-      majorsList.map(({ name }) => (
-        <StyledLink to={name} key={name} data-cy="major-tile-container">
+      majorsList.map(({ name, _id }) => (
+        <StyledLink to={_id} key={name} data-cy="major-tile-container">
           <DetailsTile>{name}</DetailsTile>
         </StyledLink>
       )),

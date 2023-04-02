@@ -20,7 +20,7 @@ interface StateProps {
   totalPages: number;
 }
 
-export const StaffListPage = () => {
+export const StaffList = () => {
   const theme = useTheme();
   const [searchParams, setSearchParams] = useSearchParams();
   const { getStaffList } = useGetStaff();

@@ -12,7 +12,7 @@ export const useGetMajors = () => {
       dispatch(startLoading());
 
       // url will be changed as soon as we deploy API
-      const { data: majorsList } = await axios.get<Major[]>('http://localhost:3001/majors');
+      const { data: majorsList } = await axios.get<Major[]>('/api/majors');
 
       dispatch(setMajorsList(majorsList));
       dispatch(finishLoading());
@@ -30,7 +30,7 @@ export const useGetMajors = () => {
         dispatch(startLoading());
 
         // url will be changed as soon as we deploy API
-        const { data: majorDetails } = await axios.get<Major>(`http://localhost:3001/major/${id}`);
+        const { data: majorDetails } = await axios.get<Major>(`/api/major/${id}`);
 
         dispatch(setMajorDetails(majorDetails));
         dispatch(finishLoading());

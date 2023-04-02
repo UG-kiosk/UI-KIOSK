@@ -1,2 +1,1 @@
-export * from './MajorsList';
-export * from './MajorDetails';
+export * from './MajorsPage';

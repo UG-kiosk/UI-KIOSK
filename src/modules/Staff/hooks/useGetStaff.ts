@@ -22,8 +22,8 @@ export const useGetStaff = () => {
 
       const page = searchParams.get('page');
       const name = searchParams.get('name');
-      // url will be changed as soon as we deploy API
-      const { data } = await axios.get<Pagination<Academic>>('http://localhost:3001/staff', {
+
+      const { data } = await axios.get<Pagination<Academic>>('/api/staff', {
         params: { ...(name ? { name } : {}), ...(page ? { page } : {}) },
       });
       const { content, totalPages } = data;
@@ -44,7 +44,7 @@ export const useGetStaff = () => {
       try {
         dispatch(startLoading());
         // url will be changed as soon as we deploy API
-        const { data: staffDetails } = await axios.get<Academic>(`http://localhost:3001/staff/${id}`);
+        const { data: staffDetails } = await axios.get<Academic>(`/api/staff/${id}`);
 
         dispatch(setStaffDetails(staffDetails));
         dispatch(finishLoading());

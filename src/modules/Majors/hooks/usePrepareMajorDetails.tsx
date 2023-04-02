@@ -10,8 +10,6 @@ const StyledSubHeader = styled(Typography, { shouldForwardProp: prop => prop !==
   line-height: 44px;
   letter-spacing: 0em;
   color: ${({ theme }) => theme.palette.primary.main};
-  margin-top: 30px;
-  margin-bottom: 20px;
 `;
 
 const StyledParagraph = styled(Typography, { shouldForwardProp: prop => prop !== 'key' })<{ key: number }>`
@@ -81,7 +79,6 @@ export const usePrepareMajorDetails = () => {
       }
 
       if (text.startsWith('<')) {
-        console.log(text);
         return <div data-cy="fallback-container" key={index} dangerouslySetInnerHTML={{ __html: text }}></div>;
       }
 

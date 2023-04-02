@@ -1,1 +1,1 @@
-export * from './MajorDetailsPage';
+export * from './MajorDetails';
