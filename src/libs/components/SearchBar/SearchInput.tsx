@@ -34,7 +34,7 @@ const StyledSearchTextField = styled(TextField)`
     align-items: center;
     font-weight: 700;
     margin-left: 30px;
-    margin-top: 5px;
+    margin-top: 7px;
     color: ${({ theme }) => theme.palette.secondary.main};
   }
   & legend {
