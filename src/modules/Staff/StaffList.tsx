@@ -59,7 +59,7 @@ export const StaffList = () => {
 
   const staffTiles: JSX.Element[] = useMemo(
     () =>
-      staffList.map(({ _id, name, units }) => (
+      staffList?.map(({ _id, name, units }) => (
         <StyledLink to={`/staff/${_id}`} key={_id} data-cy="link-to-staff-details">
           <DetailsTile key={_id} backgroundColor={theme.palette.background.paper}>
             <Paragraph color={theme.palette.secondary.dark}>{name}</Paragraph>
