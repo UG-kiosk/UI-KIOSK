@@ -6,7 +6,8 @@
   },
   "mainPanel": {
     "majors": "majors",
-    "staff": "faculty members"
+    "staff": "faculty members",
+    "news": "news"
   },
   "search": "search",
   "staffPage": {
