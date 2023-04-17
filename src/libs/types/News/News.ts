@@ -1,4 +1,5 @@
 export interface News {
+  _id: string;
   photo: string;
   link: string;
   datetime: string;

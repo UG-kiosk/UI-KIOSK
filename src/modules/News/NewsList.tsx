@@ -1,0 +1,97 @@
+import { styled, useTheme } from '@mui/material/styles';
+import { Box, Grid } from '@mui/material';
+import { DetailsTile, ListPageSkeleton, Paragraph } from '@UG/libs/components';
+import { News } from '@UG/libs/types';
+import { useEffect, useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { StateType } from 'src/store';
+import { useGetNews } from './hooks';
+
+interface StateProps {
+  isLoading: boolean;
+  newsList: News[];
+  errorMessage: string | null;
+}
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.palette.secondary.dark};
+  font-family: 'Montserrat';
+  font-size: 24px;
+  font-weight: 700;
+`;
+
+export const NewsList = () => {
+  const { getNewsList } = useGetNews();
+  const theme = useTheme();
+  const { isLoading, newsList, errorMessage } = useSelector<StateType, StateProps>(state => ({
+    isLoading: state.news.isLoading,
+    newsList: state.news.newsList,
+    errorMessage: state.news.error,
+  }));
+
+  useEffect(() => {
+    getNewsList();
+  }, [getNewsList]);
+
+  const newsTiles: JSX.Element[] = useMemo(
+    () =>
+      newsList.map(({ title, datetime, source, shortBody, photo, _id }) => (
+        <StyledLink to={_id} key={title} data-cy="news-tile-container">
+          <DetailsTile backgroundColor={theme.palette.background.paper}>
+            <Grid container spacing={2}>
+              <Grid item xs={5} style={{ display: 'flex', alignItems: 'center' }}>
+                <Box
+                  component="img"
+                  sx={{
+                    height: 210,
+                    width: 300,
+                    objectFit: 'cover',
+                    borderRadius: '15px 0px 0px 15px',
+                  }}
+                  alt="The house from the offer."
+                  src={photo}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <Paragraph color={theme.palette.secondary.dark}>{title}</Paragraph>
+                <Paragraph fontWeight={700} fontSize={15} color={theme.palette.primary.main}>
+                  {` • ${datetime} • ${source}`}
+                </Paragraph>
+                {shortBody.map(
+                  (paragraph, index) =>
+                    paragraph.trim().length != 0 && (
+                      <Paragraph key={index} fontWeight={400} fontSize={15} color={theme.palette.primary.dark}>
+                        {paragraph}
+                      </Paragraph>
+                    ),
+                )}
+              </Grid>
+            </Grid>
+          </DetailsTile>
+        </StyledLink>
+      )),
+    [
+      newsList,
+      theme.palette.background.paper,
+      theme.palette.secondary.dark,
+      theme.palette.primary.dark,
+      theme.palette.primary.main,
+    ],
+  );
+
+  if (!isLoading && errorMessage) {
+    return (
+      <p style={{ marginTop: '150px' }} data-cy="error-message">
+        {errorMessage}
+      </p>
+    );
+  }
+
+  if (isLoading && !errorMessage) {
+    return <ListPageSkeleton />;
+  }
+
+  return <>{newsTiles}</>;
+};
