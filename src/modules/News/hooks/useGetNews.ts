@@ -2,7 +2,7 @@ import { News } from '@UG/libs/types';
 import axios from 'axios';
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { finishLoading, setError, setNewsList, startLoading } from 'src/state/NewsSlice';
+import { finishLoading, setError, setNewsDetails, setNewsList, startLoading } from 'src/state/NewsSlice';
 
 export const useGetNews = () => {
   const dispatch = useDispatch();
@@ -20,5 +20,22 @@ export const useGetNews = () => {
     }
   }, [dispatch]);
 
-  return { getNewsList };
+  const getNewsDetails = useCallback(
+    async (id: string) => {
+      try {
+        dispatch(startLoading());
+
+        const { data: newsDetails } = await axios.get<News>(`/api/news/${id}`);
+        dispatch(setNewsDetails(newsDetails));
+        dispatch(finishLoading());
+      } catch (error: any) {
+        const errorMessage = error?.response?.data?.message || 'Something went wrong';
+
+        dispatch(setError(errorMessage));
+      }
+    },
+    [dispatch],
+  );
+
+  return { getNewsList, getNewsDetails };
 };

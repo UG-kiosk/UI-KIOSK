@@ -84,6 +84,18 @@ const routes: RouteObject[] = [
     ),
   },
   {
+    path: '/news/:_id',
+    element: (
+      <>
+        <Header />
+        <ContentContainer>
+          <NewsPage />
+        </ContentContainer>
+        <Navbar />
+      </>
+    ),
+  },
+  {
     path: '*',
     element: <div data-cy="error-div">Error: wrong path: {window.location.pathname}</div>,
   },

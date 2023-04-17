@@ -50,7 +50,6 @@ export const NewsList = () => {
                     objectFit: 'cover',
                     borderRadius: '15px 0px 0px 15px',
                   }}
-                  alt="The house from the offer."
                   src={photo}
                 />
               </Grid>
