@@ -23,8 +23,10 @@ export const useGetStaff = () => {
       const page = searchParams.get('page');
       const name = searchParams.get('name');
 
+      const params = { ...(name ? { name } : {}), ...(page ? { page } : {}) };
+
       const { data } = await axios.get<Pagination<Academic>>('/api/staff', {
-        params: { ...(name ? { name } : {}), ...(page ? { page } : {}) },
+        params,
       });
       const { content, totalPages } = data;
 

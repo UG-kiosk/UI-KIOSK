@@ -4,8 +4,23 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useTranslation } from 'react-i18next';
 import { FormProvider, useForm } from 'react-hook-form';
 import { SearchInput } from '@UG/libs/components';
-import { SearchBarProps } from '@UG/libs/types';
 import { useSearchParams } from 'react-router-dom';
+
+interface FormData {
+  name: string;
+}
+type SubmitHandler = (data: FormData) => void;
+
+interface SearchBarProps {
+  query: string;
+  onSubmit: SubmitHandler;
+}
+enum SearchFormFieldsNames {
+  NAME = 'name',
+}
+interface SearchFormTypes {
+  [SearchFormFieldsNames.NAME]: string;
+}
 
 const StyledSearchButton = styled(Button)`
   width: 56px;
@@ -21,8 +36,8 @@ export const SearchBar = ({ query, onSubmit }: SearchBarProps) => {
   const [searchParams] = useSearchParams();
   const params = searchParams.get(query);
 
-  const formMethods = useForm<{ name: string }>({
-    defaultValues: { name: params || '' },
+  const formMethods = useForm<SearchFormTypes>({
+    defaultValues: { [SearchFormFieldsNames.NAME]: params || '' },
     mode: 'onTouched',
     reValidateMode: 'onChange',
   });

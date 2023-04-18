@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useGetStaff } from './hooks';
 import { StateType } from 'src/store';
 import { DetailsTile, Paragraph, ListPageSkeleton, Error, SearchBar } from '@UG/libs/components';
-import { Academic, FormData } from '@UG/libs/types';
+import { Academic } from '@UG/libs/types';
 import { styled, useTheme } from '@mui/material/styles';
 import { Link, useSearchParams } from 'react-router-dom';
 import { SubmitHandler } from 'react-hook-form';
@@ -12,6 +12,10 @@ import { Pagination } from '@mui/material';
 const StyledLink = styled(Link)`
   text-decoration: none;
 `;
+
+interface FormData {
+  name: string;
+}
 
 interface StateProps {
   isLoading: boolean;
@@ -42,7 +46,7 @@ export const StaffList = () => {
 
   const getPageNumber = useMemo(() => {
     const page = searchParams.get('page');
-    return page ? parseInt(page) : 1;
+    return page ? parseInt(page, 10) : 1;
   }, [searchParams]);
 
   useEffect(() => {
