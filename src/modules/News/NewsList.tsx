@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { StateType } from 'src/store';
 import { useGetNews } from './hooks';
+import moment from 'moment';
 
 interface StateProps {
   isLoading: boolean;
@@ -56,7 +57,7 @@ export const NewsList = () => {
               <Grid item xs={6}>
                 <Paragraph color={theme.palette.secondary.dark}>{title}</Paragraph>
                 <Paragraph fontWeight={700} fontSize={15} color={theme.palette.primary.main}>
-                  {` • ${datetime} • ${source}`}
+                  {` • ${moment(datetime).format('DD-MM-YYYY')} • ${source}`}
                 </Paragraph>
                 {shortBody.map(
                   (paragraph, index) =>

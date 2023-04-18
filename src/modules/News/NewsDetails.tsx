@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { StateType } from 'src/store';
 import { useGetNews } from './hooks';
+import moment from 'moment';
 
 interface StateProps {
   isLoading: boolean;
@@ -81,7 +82,7 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
         <StyledTitle data-cy="title">{newsDetails.title}</StyledTitle>
         <Divider />
         <Paragraph fontWeight={700} fontSize={24} color={theme.palette.primary.main}>
-          {` • ${newsDetails.datetime} • ${newsDetails.source}`}
+          {` • ${moment(newsDetails.datetime).format('DD-MM-YYYY')} • ${newsDetails.source}`}
         </Paragraph>
         <Box
           component="img"
