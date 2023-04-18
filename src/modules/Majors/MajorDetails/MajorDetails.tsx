@@ -73,7 +73,7 @@ export const MajorDetails = ({ id }: MajorDetailsProps) => {
     <>
       <StyledTitle data-cy="title">{majorDetails.name}</StyledTitle>
       <Divider />
-      <DetailsTile padding="40px 40px">
+      <DetailsTile padding="40px 40px" gap={20}>
         <MajorDetailsInfo major={majorDetails} />
       </DetailsTile>
     </>

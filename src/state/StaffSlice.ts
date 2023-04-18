@@ -6,6 +6,7 @@ export interface StaffType {
   staffList: Academic[];
   staffDetails: Academic | null;
   error: string | null;
+  totalPages: number;
 }
 
 const initialState: StaffType = {
@@ -13,6 +14,7 @@ const initialState: StaffType = {
   staffList: [],
   staffDetails: null,
   error: null,
+  totalPages: 1,
 };
 
 export const staffSlice = createSlice({
@@ -36,9 +38,12 @@ export const staffSlice = createSlice({
     setStaffDetails(state: StaffType, action: PayloadAction<Academic>) {
       state.staffDetails = action.payload;
     },
+    setPageInfo(state: StaffType, action: PayloadAction<{ totalPages: number }>) {
+      state.totalPages = action.payload.totalPages;
+    },
   },
 });
 
-export const { startLoading, setStaffList, finishLoading, setError, setStaffDetails } = staffSlice.actions;
+export const { startLoading, setStaffList, finishLoading, setError, setStaffDetails, setPageInfo } = staffSlice.actions;
 
 export const staffReducer = staffSlice.reducer;

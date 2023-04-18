@@ -39,11 +39,11 @@ export const StaffDetails = ({ id }: StaffDetailsProps) => {
 
     return staffDetails.content?.posts.map((post, i) => (
       <React.Fragment key={i}>
-        <Paragraph margin="50px 0 50px 0" fontSize={28} align="center" data-cy="details-post">
+        <Paragraph margin="50px 0 20px 0" fontSize={28} align="center" data-cy="details-post">
           {post.position}
         </Paragraph>
         {post.faculty.map((f, index) => (
-          <DetailsTile key={index} width={975} marginTop={35} padding="10px 40px">
+          <DetailsTile key={index} width={975} marginTop={25} padding="10px 40px">
             <Paragraph margin="25px" color={theme.palette.primary.main} fontWeight={600}>
               {f}
             </Paragraph>

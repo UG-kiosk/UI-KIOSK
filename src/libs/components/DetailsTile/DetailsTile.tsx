@@ -7,6 +7,7 @@ interface DetailsTileProps {
   padding?: string;
   backgroundColor?: string;
   borderRadius?: number;
+  gap?: number;
   children: ReactNode[] | ReactNode;
 }
 
@@ -16,7 +17,8 @@ const StyledDetailsTile = styled('div', {
     prop !== 'marginTop' &&
     prop !== 'padding' &&
     prop !== 'backgroundColor' &&
-    prop !== 'borderRadius',
+    prop !== 'borderRadius' &&
+    prop !== 'gap',
 })<DetailsTileProps>`
   width: ${({ width }) => (width ? `${width}px` : '900px')};
   margin: ${({ marginTop }) => (marginTop ? marginTop : 20)}px auto;
@@ -26,18 +28,19 @@ const StyledDetailsTile = styled('div', {
     backgroundColor ? backgroundColor : theme.palette.background.default};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(174, 174, 192, 0.4);
   border-radius: ${({ borderRadius }) => (borderRadius ? `${borderRadius}px` : '55px')};
-  gap: 20px;
+  gap: ${({ gap }) => (gap ? `${gap}px` : '0')};
   display: flex;
   flex-direction: column;
 `;
 
-export const DetailsTile = ({ children, width, marginTop, padding, backgroundColor }: DetailsTileProps) => {
+export const DetailsTile = ({ children, width, marginTop, padding, backgroundColor, gap }: DetailsTileProps) => {
   return (
     <StyledDetailsTile
       width={width}
       marginTop={marginTop}
       padding={padding}
       backgroundColor={backgroundColor}
+      gap={gap}
       data-cy="details-tile"
     >
       {children}
