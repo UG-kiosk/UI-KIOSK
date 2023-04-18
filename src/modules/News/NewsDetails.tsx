@@ -78,9 +78,11 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
 
   return (
     <>
-      <Box m={5}>
-        <StyledTitle data-cy="title">{newsDetails.title}</StyledTitle>
-        <Divider />
+      <StyledTitle width={1000} data-cy="title">
+        {newsDetails.title}
+      </StyledTitle>
+      <Divider />
+      <Box m={5} width={900}>
         <Paragraph fontWeight={700} fontSize={24} color={theme.palette.primary.main}>
           {` • ${moment(newsDetails.datetime).format('DD-MM-YYYY')} • ${newsDetails.source}`}
         </Paragraph>
