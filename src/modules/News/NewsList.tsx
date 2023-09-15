@@ -1,13 +1,14 @@
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Button } from '@mui/material';
 import { DetailsTile, ListPageSkeleton, Paragraph } from '@UG/libs/components';
 import { News } from '@UG/libs/types';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { StateType } from 'src/store';
 import { useGetNews } from './hooks';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 
 interface StateProps {
   isLoading: boolean;
@@ -23,7 +24,12 @@ const StyledLink = styled(Link)`
   font-weight: 700;
 `;
 
+const StyledButton = styled(Button)`
+  margin-right: 10px;
+`;
+
 export const NewsList = () => {
+  const { t } = useTranslation();
   const { getNewsList } = useGetNews();
   const theme = useTheme();
   const { isLoading, newsList, errorMessage } = useSelector<StateType, StateProps>(state => ({
@@ -31,10 +37,44 @@ export const NewsList = () => {
     newsList: state.news.newsList,
     errorMessage: state.news.error,
   }));
+  const [activeButton, setActiveButton] = useState('button-ALL');
+
+  const clickedButtonHandler = useCallback(
+    (name: string) => {
+      setActiveButton('button-' + name);
+      getNewsList(name);
+    },
+    [getNewsList],
+  );
 
   useEffect(() => {
     getNewsList();
   }, [getNewsList]);
+
+  const buttons = useMemo(
+    () => (
+      <Box mb={2}>
+        {['ALL', 'INF', 'MFI'].map(name => (
+          <StyledButton
+            variant="outlined"
+            name={'button-' + name}
+            key={name}
+            sx={{
+              '&.active': {
+                background: 'blue',
+                color: 'white',
+              },
+            }}
+            className={activeButton == 'button-' + name ? 'active' : ''}
+            onClick={() => clickedButtonHandler(name)}
+          >
+            {t('newsPage.' + name.toLowerCase())}
+          </StyledButton>
+        ))}
+      </Box>
+    ),
+    [activeButton, t, clickedButtonHandler],
+  );
 
   const newsTiles: JSX.Element[] = useMemo(
     () =>
@@ -90,8 +130,18 @@ export const NewsList = () => {
   }
 
   if (isLoading && !errorMessage) {
-    return <ListPageSkeleton />;
+    return (
+      <>
+        {buttons}
+        <ListPageSkeleton />;
+      </>
+    );
   }
 
-  return <>{newsTiles}</>;
+  return (
+    <>
+      {buttons}
+      {newsTiles}
+    </>
+  );
 };

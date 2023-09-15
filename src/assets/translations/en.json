@@ -13,5 +13,10 @@
   "staffPage": {
     "contact": "Contact",
     "tutorial": "Tutorials"
+  },
+  "newsPage": {
+    "all": "All",
+    "inf": "INF",
+    "mfi": "MFI"
   }
 }
