@@ -1,8 +1,8 @@
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, Grid, Button } from '@mui/material';
-import { DetailsTile, ListPageSkeleton, Paragraph } from '@UG/libs/components';
+import { Box, Grid } from '@mui/material';
+import { DetailsTile, ListPageSkeleton, Paragraph, NewsButton } from '@UG/libs/components';
 import { News } from '@UG/libs/types';
-import { useEffect, useState, useMemo, useCallback } from 'react';
+import { useEffect, useMemo, useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { StateType } from 'src/store';
@@ -24,10 +24,6 @@ const StyledLink = styled(Link)`
   font-weight: 700;
 `;
 
-const StyledButton = styled(Button)`
-  margin-right: 10px;
-`;
-
 export const NewsList = () => {
   const { t } = useTranslation();
   const { getNewsList } = useGetNews();
@@ -37,11 +33,12 @@ export const NewsList = () => {
     newsList: state.news.newsList,
     errorMessage: state.news.error,
   }));
-  const [activeButton, setActiveButton] = useState('button-ALL');
+
+  const [activeButton, setActiveButton] = useState('ALL-button');
 
   const clickedButtonHandler = useCallback(
     (name: string) => {
-      setActiveButton('button-' + name);
+      setActiveButton(name + '-button');
       getNewsList(name);
     },
     [getNewsList],
@@ -55,25 +52,18 @@ export const NewsList = () => {
     () => (
       <Box mb={2}>
         {['ALL', 'INF', 'MFI'].map(name => (
-          <StyledButton
-            variant="outlined"
-            name={'button-' + name}
+          <NewsButton
+            name={name}
             key={name}
-            sx={{
-              '&.active': {
-                background: 'blue',
-                color: 'white',
-              },
-            }}
-            className={activeButton == 'button-' + name ? 'active' : ''}
+            type="button"
+            text={t('newsPage.' + name.toLowerCase())}
+            className={activeButton == name + '-button' ? 'selected' : ''}
             onClick={() => clickedButtonHandler(name)}
-          >
-            {t('newsPage.' + name.toLowerCase())}
-          </StyledButton>
+          ></NewsButton>
         ))}
       </Box>
     ),
-    [activeButton, t, clickedButtonHandler],
+    [t, activeButton, clickedButtonHandler],
   );
 
   const newsTiles: JSX.Element[] = useMemo(
@@ -81,7 +71,7 @@ export const NewsList = () => {
       newsList.map(({ title, datetime, source, shortBody, photo, _id }) => (
         <StyledLink to={_id} key={title} data-cy="news-tile-container">
           <DetailsTile backgroundColor={theme.palette.background.paper}>
-            <Grid container spacing={2}>
+            <Grid container direction="row" justifyContent="flex-start" alignItems="flex-start">
               <Grid item xs={5} style={{ display: 'flex', alignItems: 'center' }}>
                 <Box
                   component="img"
@@ -94,8 +84,20 @@ export const NewsList = () => {
                   src={photo}
                 />
               </Grid>
-              <Grid item xs={6}>
-                <Paragraph color={theme.palette.secondary.dark}>{title}</Paragraph>
+              <Grid
+                item
+                xs={7}
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  display: '-webkit-box',
+                  WebkitLineClamp: '8',
+                  WebkitBoxOrient: 'vertical',
+                }}
+              >
+                <Paragraph color={theme.palette.secondary.dark} fontSize={20}>
+                  {title}
+                </Paragraph>
                 <Paragraph fontWeight={700} fontSize={15} color={theme.palette.primary.main}>
                   {` • ${moment(datetime).format('DD-MM-YYYY')} • ${source}`}
                 </Paragraph>

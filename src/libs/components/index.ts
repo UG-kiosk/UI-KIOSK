@@ -13,3 +13,4 @@ export * from './ListPageSkeleton';
 export * from './Error';
 export * from './SearchBar';
 export * from './ContentContainer';
+export * from './NewsButton';
