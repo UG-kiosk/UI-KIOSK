@@ -1,7 +1,8 @@
 export class StaffPageTestFunctions {
   private getStaffListTile = () => cy.getBySelector('details-tile');
 
-  mockGETStaff = () => cy.intercept('GET', '/staff', { fixture: 'staff.json' });
+  mockGETStaff = () => cy.intercept('GET', 'api/staff', { fixture: 'staff.json' });
+
   private getStaffListTileLink = () => cy.getBySelector('link-to-staff-details');
 
   testStaffList = () => {
@@ -36,17 +37,17 @@ export class StaffPageTestFunctions {
   };
 
   testStaffLink = () => {
-    this.getStaffListTileLink().eq(0).should('have.attr', 'href', '/staff/63cb1cf20ada513d831bc83d');
-    this.getStaffListTileLink().eq(1).should('have.attr', 'href', '/staff/63cb1cf20ada513d831bc83f');
-    this.getStaffListTileLink().eq(2).should('have.attr', 'href', '/staff/63cb1cf20ada513d831bc85c');
-    this.getStaffListTileLink().eq(3).should('have.attr', 'href', '/staff/63cb1cf20ada513d831bc8c9');
-    this.getStaffListTileLink().eq(4).should('have.attr', 'href', '/staff/63cb1cf20ada513d831bc956');
+    this.getStaffListTileLink().eq(0).should('have.attr', 'href', '/api/staff/63cb1cf20ada513d831bc83d');
+    this.getStaffListTileLink().eq(1).should('have.attr', 'href', '/api/staff/63cb1cf20ada513d831bc83f');
+    this.getStaffListTileLink().eq(2).should('have.attr', 'href', '/api/staff/63cb1cf20ada513d831bc85c');
+    this.getStaffListTileLink().eq(3).should('have.attr', 'href', '/api/staff/63cb1cf20ada513d831bc8c9');
+    this.getStaffListTileLink().eq(4).should('have.attr', 'href', '/api/staff/63cb1cf20ada513d831bc956');
   };
 
   private getSkeletonRow = () => cy.getBySelector('skeleton-row');
 
   testStaffListContentPendingStatus = () => {
-    cy.intercept('GET', '/staff', request => {
+    cy.intercept('GET', '/api/staff', request => {
       request.responseTimeout = 5000;
     });
     this.mockGETStaff();

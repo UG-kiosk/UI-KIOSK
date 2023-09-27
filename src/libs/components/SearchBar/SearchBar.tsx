@@ -1,66 +1,55 @@
-import { Box, TextField, Button } from '@mui/material';
+import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import { useTranslation } from 'react-i18next';
+import { FormProvider, useForm } from 'react-hook-form';
+import { SearchInput } from '@UG/libs/components';
+import { useSearchParams } from 'react-router-dom';
 
-const StyledSearchTextField = styled(TextField)`
-  width: 710px;
-  & input {
-    font-family: 'Montserrat';
-    color: ${({ theme }) => theme.palette.primary.dark};
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-  & fieldset {
-    border-radius: 25px;
-  }
-  & .MuiOutlinedInput-root:hover {
-    & fieldset {
-      border: 1px solid ${({ theme }) => theme.palette.primary.main};
-    }
-  }
-  & .MuiFormLabel-root {
-    font-weight: 700;
-  }
-  & label {
-    font-weight: 700;
-    margin-left: 30px;
-    color: ${({ theme }) => theme.palette.secondary.main};
-  }
-  & legend {
-    color: ${({ theme }) => theme.palette.primary.main};
-    margin-left: 30px;
-  }
-`;
+interface FormData {
+  name: string;
+}
+type SubmitHandler = (data: FormData) => void;
+
+interface SearchBarProps {
+  query: string;
+  onSubmit: SubmitHandler;
+}
+enum SearchFormFieldsNames {
+  NAME = 'name',
+}
+interface SearchFormTypes {
+  [SearchFormFieldsNames.NAME]: string;
+}
 
 const StyledSearchButton = styled(Button)`
-  width: 60px;
-  height: 60px;
+  width: 56px;
+  height: 56px;
+  margin-left: 20px;
   color: ${({ theme }) => theme.palette.primary.main};
   border-radius: 25px;
   font-size: 12px;
 `;
 
-export const SearchBar = () => {
+export const SearchBar = ({ query, onSubmit }: SearchBarProps) => {
   const { t } = useTranslation();
+  const [searchParams] = useSearchParams();
+  const params = searchParams.get(query);
+
+  const formMethods = useForm<SearchFormTypes>({
+    defaultValues: { [SearchFormFieldsNames.NAME]: params || '' },
+    mode: 'onTouched',
+    reValidateMode: 'onChange',
+  });
+
   return (
-    <Box
-      marginLeft="auto"
-      marginRight="auto"
-      marginTop="150px"
-      component="form"
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-      sx={{
-        width: 800,
-      }}
-      autoComplete="off"
-    >
-      <StyledSearchTextField label={t('search')} data-cy="search-bar" />
-      <StyledSearchButton variant="outlined" data-cy="search-button">
-        <SearchIcon data-cy="search-icon" />
-      </StyledSearchButton>
-    </Box>
+    <FormProvider {...formMethods}>
+      <form onSubmit={formMethods.handleSubmit(onSubmit)}>
+        <SearchInput label={t('search')} fieldName={query} />
+        <StyledSearchButton variant="outlined" type="submit" data-cy="search-button">
+          <SearchIcon data-cy="search-icon" />
+        </StyledSearchButton>
+      </form>
+    </FormProvider>
   );
 };

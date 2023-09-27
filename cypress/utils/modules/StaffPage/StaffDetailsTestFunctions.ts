@@ -2,12 +2,14 @@
 
 // const LanguageChange = new LanguageChangeTestFunctions();
 
+// test will be implemented later
+
 export class StaffDetailsTestFunctions {
   mockGETDetailsWithoutTutorial = async () => {
     cy.fixture('staff.json')
       .then(staff => {
         const object = staff[0];
-        cy.intercept('GET', '/staff/63cb1cf20ada513d831bc83d', object);
+        cy.intercept('GET', '/api/staff/63cb1cf20ada513d831bc83d', object);
       })
       .as('getDetailsWithoutTutorial');
   };
@@ -15,7 +17,7 @@ export class StaffDetailsTestFunctions {
   mockGETStaffDetailsWithTutorial = async () => {
     cy.fixture('staff.json').then(staff => {
       const object = staff[3];
-      cy.intercept('GET', '/staff/63cb1cf20ada513d831bc8c9', object).as('getDetailsWithTutorial');
+      cy.intercept('GET', '/api/staff/63cb1cf20ada513d831bc8c9', object).as('getDetailsWithTutorial');
     });
   };
 
@@ -67,7 +69,7 @@ export class StaffDetailsTestFunctions {
 
   // commented out because language option will be change later
   //   testDetailsWithoutTutorialEN = () => {
-  //     cy.visit('/staff/63cb1cf20ada513d831bc83d');
+  //     cy.visit('/api/staff/63cb1cf20ada513d831bc83d');
   //     this.mockGETDetailsWithoutTutorial();
   //     LanguageChange.changeLanguage();
   //     this.getStaffDetailsName().should('exist');
@@ -85,7 +87,7 @@ export class StaffDetailsTestFunctions {
 
   //   // commented out because language option will be change later
   //   testDetailsWithTutorialEN = () => {
-  //     cy.visit('/staff/63cb1cf20ada513d831bc8c9');
+  //     cy.visit('/api/staff/63cb1cf20ada513d831bc8c9');
   //     this.mockGETStaffDetailsWithTutorial();
   //     LanguageChange.changeLanguage();
   //     this.getStaffDetailsName().should('exist');
@@ -123,7 +125,7 @@ export class StaffDetailsTestFunctions {
   private getErrorMessage = () => cy.getBySelector('error-message');
 
   testDetailsContentOnRequestError = () => {
-    cy.intercept('GET', '/staff/63cb1cf20ada513d831bc83d', {
+    cy.intercept('GET', '/api/staff/63cb1cf20ada513d831bc83d', {
       statusCode: 500,
     }).as('staffDetails');
     this.getErrorMessage().should('exist');
