@@ -11,13 +11,11 @@ interface ButtonProps {
 
 const StyledButton = styled(MUIButton)`
   margin: 10px;
-  height: 75px;
   padding: 0px;
-  padding-left: 26px;
-  padding-right: 26px;
+  padding: 30px;
   height: 46px;
   text-transform: uppercase;
-  border-radius: 50px;
+  border-radius: 25px;
   border: none;
   font-family: 'Montserrat';
   font-style: normal;
