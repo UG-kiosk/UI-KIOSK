@@ -82,7 +82,7 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
         {newsDetails.title}
       </StyledTitle>
       <Divider width={1000} />
-      <Box mx={5}>
+      <Box mx={5} width={1000}>
         <Paragraph fontWeight={700} fontSize={24} color={theme.palette.primary.main}>
           {` • ${moment(newsDetails.datetime).format('DD-MM-YYYY')} • ${newsDetails.source}`}
         </Paragraph>
@@ -93,6 +93,7 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
             minHeight: 300,
             minWidth: 250,
             objectFit: 'cover',
+            borderRadius: 25,
           }}
           src={newsDetails.photo}
         />
