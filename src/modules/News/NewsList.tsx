@@ -70,16 +70,16 @@ export const NewsList = () => {
     () =>
       newsList.map(({ title, datetime, source, shortBody, photo, _id }) => (
         <StyledLink to={_id} key={title} data-cy="news-tile-container">
-          <DetailsTile backgroundColor={theme.palette.background.paper}>
+          <DetailsTile backgroundColor={theme.palette.background.paper} padding="25px 25px">
             <Grid container direction="row" justifyContent="flex-start" alignItems="flex-start">
-              <Grid item xs={5} style={{ display: 'flex', alignItems: 'center' }}>
+              <Grid item style={{ display: 'flex', alignItems: 'center', marginRight: '25px' }}>
                 <Box
                   component="img"
                   sx={{
                     height: 210,
                     width: 300,
                     objectFit: 'cover',
-                    borderRadius: '15px 0px 0px 15px',
+                    borderRadius: '25px 0px 0px 25px',
                   }}
                   src={photo}
                 />
