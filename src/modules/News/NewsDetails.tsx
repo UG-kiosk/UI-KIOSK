@@ -82,7 +82,7 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
         {newsDetails.title}
       </StyledTitle>
       <Divider width={1000} />
-      <Box m={5} width={900}>
+      <Box mx={5}>
         <Paragraph fontWeight={700} fontSize={24} color={theme.palette.primary.main}>
           {` • ${moment(newsDetails.datetime).format('DD-MM-YYYY')} • ${newsDetails.source}`}
         </Paragraph>
