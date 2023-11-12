@@ -135,7 +135,7 @@ export const NewsList = () => {
     return (
       <>
         {buttons}
-        <ListPageSkeleton />;
+        <ListPageSkeleton width={900} />;
       </>
     );
   }
