@@ -6,17 +6,18 @@ export const StyledSkeleton = styled(Skeleton)<ListPageSkeletonProps>`
   width: ${({ width }) => (width ? width : 900)}px;
   height: ${({ height }) => (height ? height : '80')}px;
   border-radius: 55px;
-  margin-bottom: 40px;
+  margin-bottom: ${({ marginBottom }) => (marginBottom ? marginBottom : 40)}px;
 `;
 
 interface ListPageSkeletonProps {
   tiles?: number;
   mt?: number;
+  marginBottom?: number;
   width?: number;
   height?: number;
 }
 
-export const ListPageSkeleton = ({ tiles, mt, width, height }: ListPageSkeletonProps) => {
+export const ListPageSkeleton = ({ tiles, mt, width, height, marginBottom }: ListPageSkeletonProps) => {
   const skeletonTiles: JSX.Element[] = useMemo(
     () =>
       Array.from(Array(tiles ? tiles : 6).keys()).map((_, index) => (
@@ -25,11 +26,12 @@ export const ListPageSkeleton = ({ tiles, mt, width, height }: ListPageSkeletonP
           variant="rectangular"
           width={width}
           height={height}
+          marginBottom={marginBottom}
           key={index}
           data-cy="skeleton-row"
         />
       )),
-    [tiles, width, height],
+    [tiles, width, height, marginBottom],
   );
 
   return (
