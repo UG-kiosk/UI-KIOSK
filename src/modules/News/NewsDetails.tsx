@@ -95,7 +95,7 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
             objectFit: 'cover',
             borderRadius: 25,
           }}
-          src={newsDetails.photo}
+          src={newsDetails.leadingPhoto}
         />
         {newsDetails.body.map((paragraph, index) => (
           <StyledParagraph key={index}>{paragraph}</StyledParagraph>

@@ -68,7 +68,7 @@ export const NewsList = () => {
 
   const newsTiles: JSX.Element[] = useMemo(
     () =>
-      newsList.map(({ title, datetime, source, shortBody, photo, _id }) => (
+      newsList.map(({ title, datetime, source, shortBody, leadingPhoto, _id }) => (
         <StyledLink to={_id} key={title} data-cy="news-tile-container" sx={{ margin: '25px 25px' }}>
           <DetailsTile backgroundColor={theme.palette.background.paper} padding="25px 25px" marginTop={1}>
             <Grid container direction="row" justifyContent="flex-start" alignItems="flex-start">
@@ -81,7 +81,7 @@ export const NewsList = () => {
                     objectFit: 'cover',
                     borderRadius: '25px 0px 0px 25px',
                   }}
-                  src={photo}
+                  src={leadingPhoto}
                 />
               </Grid>
               <Grid

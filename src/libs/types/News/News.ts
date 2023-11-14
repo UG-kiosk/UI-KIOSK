@@ -1,6 +1,7 @@
 export interface News {
   _id: string;
-  photo: string;
+  leadingPhoto: string;
+  photos: string[];
   link: string;
   datetime: string;
   title: string;
