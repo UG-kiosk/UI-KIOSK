@@ -1,6 +1,6 @@
 import { Typography, Box } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
-import { Divider, Paragraph } from '@UG/libs/components';
+import { Divider, Paragraph, Slider } from '@UG/libs/components';
 import { News } from '@UG/libs/types';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
@@ -86,17 +86,34 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
         <Paragraph fontWeight={700} fontSize={24} color={theme.palette.primary.main}>
           {` • ${moment(newsDetails.datetime).format('DD-MM-YYYY')} • ${newsDetails.source}`}
         </Paragraph>
-        <Box
-          component="img"
-          my={3}
-          sx={{
-            minHeight: 300,
-            minWidth: 250,
-            objectFit: 'cover',
-            borderRadius: 25,
-          }}
-          src={newsDetails.leadingPhoto}
-        />
+        <Slider gap={40}>
+          <Box
+            component="img"
+            my={3}
+            sx={{
+              height: 300,
+              width: 350,
+              objectFit: 'fill',
+              borderRadius: 15,
+            }}
+            src={newsDetails.leadingPhoto}
+          />
+          {newsDetails.photos.length > 0 &&
+            newsDetails.photos.map((photo, index) => (
+              <Box
+                component="img"
+                my={3}
+                sx={{
+                  height: 300,
+                  width: 350,
+                  objectFit: 'fill',
+                  borderRadius: 15,
+                }}
+                key={index}
+                src={photo}
+              />
+            ))}
+        </Slider>
         {newsDetails.body.map((paragraph, index) => (
           <StyledParagraph key={index}>{paragraph}</StyledParagraph>
         ))}
