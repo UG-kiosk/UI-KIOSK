@@ -86,7 +86,7 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
         <Paragraph fontWeight={700} fontSize={24} color={theme.palette.primary.main}>
           {` • ${moment(newsDetails.datetime).format('DD-MM-YYYY')} • ${newsDetails.source}`}
         </Paragraph>
-        <Slider gap={40}>
+        <Slider gap={40} ml={170}>
           <Box
             component="img"
             my={3}
