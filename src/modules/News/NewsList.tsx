@@ -51,7 +51,7 @@ export const NewsList = () => {
   const buttons = useMemo(
     () => (
       <Box mb={2}>
-        {['ALL', 'INF', 'MFI'].map(name => (
+        {['ALL', 'MFI', 'INF'].map(name => (
           <NewsButton
             name={name}
             key={name}
