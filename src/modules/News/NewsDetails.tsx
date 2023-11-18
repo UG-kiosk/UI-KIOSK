@@ -96,7 +96,7 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
                 my={3}
                 sx={{
                   height: 300,
-                  width: 380,
+                  width: 'auto',
                   objectFit: 'cover',
                   borderRadius: 15,
                 }}
