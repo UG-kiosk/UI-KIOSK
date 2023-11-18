@@ -98,7 +98,7 @@ export const NewsList = () => {
                 <Paragraph color={theme.palette.secondary.dark} fontSize={20}>
                   {title}
                 </Paragraph>
-                <Paragraph fontWeight={700} fontSize={15} color={theme.palette.primary.main}>
+                <Paragraph fontWeight={700} fontSize={15} color={theme.palette.primary.main} margin="5px 0px 5px">
                   {` • ${moment(datetime).format('DD-MM-YYYY')} • ${source}`}
                 </Paragraph>
                 {shortBody.length != 0 && (
