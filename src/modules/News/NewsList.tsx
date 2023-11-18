@@ -101,13 +101,10 @@ export const NewsList = () => {
                 <Paragraph fontWeight={700} fontSize={15} color={theme.palette.primary.main}>
                   {` • ${moment(datetime).format('DD-MM-YYYY')} • ${source}`}
                 </Paragraph>
-                {shortBody.map(
-                  (paragraph, index) =>
-                    paragraph.trim().length != 0 && (
-                      <Paragraph key={index} fontWeight={400} fontSize={15} color={theme.palette.primary.dark}>
-                        {paragraph}
-                      </Paragraph>
-                    ),
+                {shortBody.length != 0 && (
+                  <Paragraph fontWeight={400} fontSize={15} color={theme.palette.primary.dark}>
+                    {shortBody}
+                  </Paragraph>
                 )}
               </Grid>
             </Grid>
