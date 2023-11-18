@@ -48,6 +48,8 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
     newsList: state.news.newsList,
   }));
 
+  const allPhotos = newsDetails ? [newsDetails.leadingPhoto, ...newsDetails.photos] : [];
+
   useEffect(() => {
     getNewsDetails(id);
   }, [id, getNewsDetails]);
@@ -87,26 +89,15 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
           {` • ${moment(newsDetails.datetime).format('DD-MM-YYYY')} • ${newsDetails.source}`}
         </Paragraph>
         <Slider gap={40}>
-          <Box
-            component="img"
-            my={3}
-            sx={{
-              height: 300,
-              width: 350,
-              objectFit: 'fill',
-              borderRadius: 15,
-            }}
-            src={newsDetails.leadingPhoto}
-          />
-          {newsDetails.photos.length > 0 &&
-            newsDetails.photos.map((photo, index) => (
+          {allPhotos.length > 0 &&
+            allPhotos.map((photo, index) => (
               <Box
                 component="img"
                 my={3}
                 sx={{
                   height: 300,
-                  width: 350,
-                  objectFit: 'fill',
+                  width: 380,
+                  objectFit: 'cover',
                   borderRadius: 15,
                 }}
                 key={index}
