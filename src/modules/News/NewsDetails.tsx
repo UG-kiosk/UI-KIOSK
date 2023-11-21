@@ -29,15 +29,6 @@ const StyledTitle = styled(Typography)`
   color: ${({ theme }) => theme.palette.secondary.dark};
 `;
 
-const StyledParagraph = styled(Typography, { shouldForwardProp: prop => prop !== 'key' })<{ key: number }>`
-  font-family: Montserrat;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 22px;
-  letter-spacing: 0em;
-  text-align: justified;
-`;
-
 export const NewsDetails = ({ id }: NewsDetailsProps) => {
   const theme = useTheme();
   const { getNewsDetails } = useGetNews();
@@ -105,9 +96,7 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
               />
             ))}
         </Slider>
-        {newsDetails.body.map((paragraph, index) => (
-          <StyledParagraph key={index}>{paragraph}</StyledParagraph>
-        ))}
+        <div dangerouslySetInnerHTML={{ __html: newsDetails.body }} />
       </Box>
     </>
   );
