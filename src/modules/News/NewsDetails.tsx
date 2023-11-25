@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { StateType } from 'src/store';
 import { useGetNews } from './hooks';
 import moment from 'moment';
+import DOMPurify from 'dompurify';
 
 interface StateProps {
   isLoading: boolean;
@@ -38,6 +39,7 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
     newsDetails: state.news.newsDetails,
     newsList: state.news.newsList,
   }));
+  const cleanBody = newsDetails?.body ? DOMPurify.sanitize(newsDetails.body) : '';
 
   const allPhotos = newsDetails ? [newsDetails.leadingPhoto, ...newsDetails.photos] : [];
 
@@ -96,7 +98,7 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
               />
             ))}
         </Slider>
-        <div dangerouslySetInnerHTML={{ __html: newsDetails.body }} />
+        <div dangerouslySetInnerHTML={{ __html: cleanBody }} />
       </Box>
     </>
   );
