@@ -1,5 +1,5 @@
 import { Typography, Box } from '@mui/material';
-import { styled, useTheme } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/system';
 import { Divider, Paragraph, Slider } from '@UG/libs/components';
 import { News } from '@UG/libs/types';
 import { useEffect } from 'react';
@@ -20,15 +20,15 @@ interface NewsDetailsProps {
   id: string;
 }
 
-const StyledTitle = styled(Typography)`
-  font-family: Montserrat;
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 44px;
-  letter-spacing: 0em;
-  margin-bottom: 15px;
-  color: ${({ theme }) => theme.palette.secondary.dark};
-`;
+const StyledTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: 'Montserrat',
+  fontSize: '36px',
+  fontWeight: 700,
+  lineHeight: '44px',
+  letterSpacing: '0em',
+  marginBottom: '15px',
+  color: theme.palette.secondary.dark,
+}));
 
 export const NewsDetails = ({ id }: NewsDetailsProps) => {
   const theme = useTheme();

@@ -1,5 +1,5 @@
 import { Button as MUIButton } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/system';
 
 interface ButtonProps {
   text: string;
@@ -9,30 +9,29 @@ interface ButtonProps {
   className: string;
 }
 
-const StyledButton = styled(MUIButton)`
-  margin: 10px;
-  padding: 0px;
-  padding: 30px;
-  height: 46px;
-  text-transform: uppercase;
-  border-radius: 25px;
-  border: none;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 29px;
-  color: ${({ theme }) => theme.palette.primary.main};
-  background-color: #fbfbfb;
-  box-shadow: 0px 4px 4px 0px #00000040;
-  &:hover {
-    border: none;
-  }
-  &.selected {
-    background-color: #0044b0;
-    color: white;
-  }
-`;
+const StyledButton = styled(MUIButton)(({ theme }) => ({
+  margin: '10px',
+  padding: '30px',
+  height: '46px',
+  textTransform: 'uppercase',
+  borderRadius: '25px',
+  border: 'none',
+  fontFamily: 'Montserrat',
+  fontStyle: 'normal',
+  fontWeight: '700',
+  fontSize: '20px',
+  lineHeight: '29px',
+  color: theme.palette.primary.main,
+  backgroundColor: '#fbfbfb',
+  boxShadow: '0px 4px 4px 0px #00000040',
+  '&:hover': {
+    border: 'none',
+  },
+  '&.selected': {
+    backgroundColor: '#0044b0',
+    color: 'white',
+  },
+}));
 
 export const NewsButton = ({ text, type, name, onClick, className }: ButtonProps) => (
   <StyledButton data-cy={`${name}-button`} variant="outlined" type={type} onClick={onClick} className={className}>

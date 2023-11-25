@@ -1,4 +1,4 @@
-import { styled, useTheme } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/system';
 import { Box, Grid } from '@mui/material';
 import { DetailsTile, ListPageSkeleton, Paragraph, NewsButton } from '@UG/libs/components';
 import { News } from '@UG/libs/types';
@@ -16,13 +16,13 @@ interface StateProps {
   errorMessage: string | null;
 }
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: ${({ theme }) => theme.palette.secondary.dark};
-  font-family: 'Montserrat';
-  font-size: 24px;
-  font-weight: 700;
-`;
+const StyledLink = styled(Link)(({ theme }) => ({
+  textDecoration: 'none',
+  color: theme.palette.secondary.dark,
+  fontFamily: 'Montserrat',
+  fontSize: '24px',
+  fontWeight: 700,
+}));
 
 export const NewsList = () => {
   const { t } = useTranslation();
