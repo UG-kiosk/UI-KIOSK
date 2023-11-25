@@ -11,13 +11,5 @@ export interface News {
   category: NewsCategory;
 }
 
-export enum NewsCategory {
-  NEWS = 'NEWS',
-  STUDENTS = 'STUDENTS',
-  ARCHIVE = 'ARCHIVE',
-}
-
-export enum NewsSource {
-  INF = 'INF',
-  MFI = 'MFI',
-}
+export type NewsCategory = 'NEWS' | 'STUDENTS' | 'ARCHIVE';
+export type NewsSource = 'INF' | 'MFI';
