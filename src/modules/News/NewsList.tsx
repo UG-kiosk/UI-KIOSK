@@ -1,20 +1,11 @@
 import { styled, useTheme } from '@mui/system';
 import { Box, Grid } from '@mui/material';
 import { DetailsTile, ListPageSkeleton, Paragraph, NewsButton } from '@UG/libs/components';
-import { News } from '@UG/libs/types';
-import { useEffect, useMemo, useCallback, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useMemo, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { StateType } from 'src/store';
-import { useGetNews } from './hooks';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
-
-interface StateProps {
-  isLoading: boolean;
-  newsList: News[];
-  errorMessage: string | null;
-}
+import { useNewsList } from './hooks';
 
 const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: 'none',
@@ -26,27 +17,17 @@ const StyledLink = styled(Link)(({ theme }) => ({
 
 export const NewsList = () => {
   const { t } = useTranslation();
-  const { getNewsList } = useGetNews();
   const theme = useTheme();
-  const { isLoading, newsList, errorMessage } = useSelector<StateType, StateProps>(state => ({
-    isLoading: state.news.isLoading,
-    newsList: state.news.newsList,
-    errorMessage: state.news.error,
-  }));
-
+  const { isLoading, newsList, errorMessage, clickedButtonHandler } = useNewsList();
   const [activeButton, setActiveButton] = useState('ALL-button');
 
-  const clickedButtonHandler = useCallback(
+  const handleButtonClick = useCallback(
     (name: string) => {
       setActiveButton(name + '-button');
-      getNewsList(name);
+      clickedButtonHandler(name);
     },
-    [getNewsList],
+    [setActiveButton, clickedButtonHandler],
   );
-
-  useEffect(() => {
-    getNewsList();
-  }, [getNewsList]);
 
   const buttons = useMemo(
     () => (
@@ -58,12 +39,12 @@ export const NewsList = () => {
             type="button"
             text={t('newsPage.' + name.toLowerCase())}
             className={activeButton == name + '-button' ? 'selected' : ''}
-            onClick={() => clickedButtonHandler(name)}
+            onClick={() => handleButtonClick(name)}
           ></NewsButton>
         ))}
       </Box>
     ),
-    [t, activeButton, clickedButtonHandler],
+    [t, activeButton, handleButtonClick],
   );
 
   const newsTiles: JSX.Element[] = useMemo(
