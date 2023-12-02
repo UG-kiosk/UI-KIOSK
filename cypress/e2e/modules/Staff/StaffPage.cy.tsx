@@ -6,16 +6,15 @@ const Header = new HeaderTestFunctions();
 const StaffPage = new StaffPageTestFunctions();
 const Navbar = new NavbarTestFunctions();
 
-// test will be implemented in the future
-
+// language tests will be added later
 describe('StaffPage.cy.tsc', () => {
   beforeEach(() => {
     cy.visit('/staff');
   });
 
-  // it('should render skeleton', () => {
-  //   StaffPage.testStaffListContentPendingStatus();
-  // });
+  it('should render skeleton', () => {
+    StaffPage.testStaffListContentPendingStatus();
+  });
 
   it('should render error-message', () => {
     StaffPage.testStaffListContentOnRequestError();
@@ -23,22 +22,33 @@ describe('StaffPage.cy.tsc', () => {
     Navbar.testNavbarContent();
   });
 
-  it('should render the staff page in Polish', () => {
-    StaffPage.mockGETStaff();
+  it('should render first page of staff list in PL', () => {
+    StaffPage.mockGETStaff1();
+    StaffPage.testStaffListPageOne();
     Header.testHeaderContentPL();
-    // StaffPage.testStaffList();
     Navbar.testNavbarContent();
   });
+});
 
-  it('should render the staff page in English', () => {
-    StaffPage.mockGETStaff();
+describe('StaffPage.cy.tsc - Next Page', () => {
+  beforeEach(() => {
+    cy.visit('/staff?page=2');
+  });
+
+  it('should render second page of staff list in Polish', () => {
+    StaffPage.mockGETStaff2();
     Header.testHeaderContentEN();
-    // StaffPage.testStaffList();
+    StaffPage.testStaffListPageTwo();
     Navbar.testNavbarContent();
   });
+});
 
-  it('should test if links are working', () => {
-    StaffPage.mockGETStaff();
-    // StaffPage.testStaffLink();
+describe('StaffPage.cy.tsc - Cahnging page', () => {
+  beforeEach(() => {
+    cy.visit('/staff');
+  });
+  it('should navigate to the second page and back to the first page', () => {
+    cy.get('.MuiPaginationItem-page').contains('2').click();
+    cy.get('.MuiPaginationItem-page').contains('1').click();
   });
 });

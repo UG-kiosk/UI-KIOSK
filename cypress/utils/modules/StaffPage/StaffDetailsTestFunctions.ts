@@ -1,24 +1,20 @@
-// import { LanguageChangeTestFunctions } from './../LanguageChange/LanguageChangeTestFunctions';
-
-// const LanguageChange = new LanguageChangeTestFunctions();
-
-// test will be implemented later
+import { staff_page_1 } from '../../../fixtures/staff';
 
 export class StaffDetailsTestFunctions {
-  mockGETDetailsWithoutTutorial = async () => {
-    cy.fixture('staff.json')
-      .then(staff => {
-        const object = staff[0];
-        cy.intercept('GET', '/api/staff/63cb1cf20ada513d831bc83d', object);
-      })
-      .as('getDetailsWithoutTutorial');
+  mockGETDetailsWithoutTutorial = () => {
+    cy.intercept('GET', 'https://api-kiosk-dev.onrender.com/staff/656a74c983a231f468534835', {
+      statusCode: 200,
+      body: staff_page_1.content[0],
+    }).as('getDetailsWithoutTutorial');
+    cy.wait('@getDetailsWithoutTutorial');
   };
 
-  mockGETStaffDetailsWithTutorial = async () => {
-    cy.fixture('staff.json').then(staff => {
-      const object = staff[3];
-      cy.intercept('GET', '/api/staff/63cb1cf20ada513d831bc8c9', object).as('getDetailsWithTutorial');
-    });
+  mockGETStaffDetailsWithTutorial = () => {
+    cy.intercept('GET', 'https://api-kiosk-dev.onrender.com/staff/6565b4e62ac7bade08e0dbe9', {
+      statusCode: 200,
+      body: staff_page_1.content[14],
+    }).as('getDetailsWithTutorial');
+    cy.wait('@getDetailsWithTutorial');
   };
 
   private getStaffDetailsName = () => cy.getBySelector('academic-name');
@@ -30,92 +26,50 @@ export class StaffDetailsTestFunctions {
   private getDetailsTileTutorialSchedule = () => cy.getBySelector('tutorial-schedule');
 
   testDetailsWithoutTutorialPL = () => {
-    cy.visit('/staff/63cb1cf20ada513d831bc83d');
     this.mockGETDetailsWithoutTutorial();
     cy.wait('@getDetailsWithoutTutorial');
     this.getStaffDetailsName().should('exist');
+    this.getStaffDetailsName().contains('dr Justyna Barzowska');
     this.getDetailsTile().should('exist');
     this.getDetailsTile().should('have.length', 4);
-    this.getDetailsTilePost().contains('Starszy wykładowca');
+    this.getDetailsTilePost().contains('Adiunkt');
     this.getDetailsTile().eq(1).contains('Wydział Matematyki, Fizyki i Informatyki');
-    this.getDetailsTile().eq(2).contains('Instytut Informatyki');
-    this.getDetailsTile().eq(3).contains('Zakład Sztucznej Inteligencji');
+    this.getDetailsTile().eq(2).contains('Instytut Fizyki Doświadczalnej');
+    this.getDetailsTile().eq(3).contains('Zakład Spektroskopii Fazy Skondensowanej');
     this.getDetailsTileContact().should('exist');
     this.getDetailsTileContact().contains('Kontakt');
-    this.getDetailsTileContactEmail().contains('E-mail: joanna.czarnowska@mat.ug.edu.pl');
+    this.getDetailsTileContactEmail().contains('E-mail: justyna.barzowska@ug.edu.pl');
     this.getDetailsTileTutorial().should('not.exist');
     this.getDetailsTileTutorialSchedule().should('not.exist');
   };
 
   testDetailsWithTutorialPL = () => {
-    cy.visit('/staff/63cb1cf20ada513d831bc8c9');
     this.mockGETStaffDetailsWithTutorial();
-    cy.wait('@getDetailsWithTutorial');
     this.getStaffDetailsName().should('exist');
+    this.getStaffDetailsName().contains('dr Rafał Lutowski');
     this.getDetailsTile().should('exist');
     this.getDetailsTile().should('have.length', 4);
-    this.getDetailsTilePost().contains('Asystent');
+    this.getDetailsTilePost().contains('Adiunkt');
     this.getDetailsTile().eq(1).contains('Wydział Matematyki, Fizyki i Informatyki');
-    this.getDetailsTile().eq(2).contains('Instytut Informatyki');
-    this.getDetailsTile().eq(3).contains('Zakład Optymalizacji Kombinatorycznej');
+    this.getDetailsTile().eq(2).contains('Instytut Matematyki');
+    this.getDetailsTile().eq(3).contains('Zakład Geometrii');
     this.getDetailsTileContact().should('exist');
     this.getDetailsTileContact().contains('Kontakt');
-    this.getDetailsTileContactEmail().contains('E-mail: mateusz.miotk@inf.ug.edu.pl');
+    this.getDetailsTileContactEmail().contains('E-mail: rafal.lutowski@ug.edu.pl');
     this.getDetailsTileTutorial().should('exist');
     this.getDetailsTileTutorial().contains('Konsultacje');
     this.getDetailsTileTutorialSchedule().should('exist');
-    this.getDetailsTileTutorialSchedule().contains('Czwartki 8-10 ');
+    this.getDetailsTileTutorialSchedule().contains('Środy, w godzinach 10:15-11:45 lub po umówieniu się.');
   };
-
-  // commented out because language option will be change later
-  //   testDetailsWithoutTutorialEN = () => {
-  //     cy.visit('/api/staff/63cb1cf20ada513d831bc83d');
-  //     this.mockGETDetailsWithoutTutorial();
-  //     LanguageChange.changeLanguage();
-  //     this.getStaffDetailsName().should('exist');
-  //     this.getDetailsTile().should('exist');
-  //     this.getDetailsTile().should('have.length', 4);
-  //     this.getDetailsTile().eq(1).contains('Wydział Matematyki, Fizyki i Informatyki');
-  //     this.getDetailsTile().eq(2).contains('Instytut Informatyki');
-  //     this.getDetailsTile().eq(3).contains('Zakład Sztucznej Inteligencji');
-  //     this.getDetailsTileContact().should('exist');
-  //     this.getDetailsTileContact().contains('Contact');
-  //     this.getDetailsTileContactEmail().contains('E-mail: joanna.czarnowska@mat.ug.edu.pl');
-  //     this.getDetailsTileTutorial().should('not.exist');
-  //     this.getDetailsTileTutorialSchedule().should('not.exist');
-  //   };
-
-  //   // commented out because language option will be change later
-  //   testDetailsWithTutorialEN = () => {
-  //     cy.visit('/api/staff/63cb1cf20ada513d831bc8c9');
-  //     this.mockGETStaffDetailsWithTutorial();
-  //     LanguageChange.changeLanguage();
-  //     this.getStaffDetailsName().should('exist');
-  //     this.getDetailsTile().should('exist');
-  //     this.getDetailsTile().should('have.length', 4);
-  //     this.getDetailsTilePost().contains('Asystent');
-  //     this.getDetailsTile().eq(1).contains('Wydział Matematyki, Fizyki i Informatyki');
-  //     this.getDetailsTile().eq(2).contains('Instytut Informatyki');
-  //     this.getDetailsTile().eq(3).contains('Zakład Optymalizacji Kombinatorycznej');
-  //     this.getDetailsTileContact().should('exist');
-  //     this.getDetailsTileContact().contains('Contact');
-  //     this.getDetailsTileContactEmail().contains('E-mail: mateusz.miotk@inf.ug.edu.pl');
-  //     this.getDetailsTileTutorial().should('exist');
-  //     this.getDetailsTileTutorial().contains('Tutorial');
-  //     this.getDetailsTileTutorialSchedule().should('exist');
-  //     this.getDetailsTileTutorialSchedule().contains('Czwartki 8-10 ');
-  //   };
-
   // pending status and error handling
 
   private getSkeletonRow = () => cy.getBySelector('skeleton-row');
   private getSkeletonTile = () => cy.getBySelector('skeleton-tile');
 
   testDetailsContentPendingStatus = () => {
-    cy.intercept('GET', '/staff/63cb1cf20ada513d831bc83d', request => {
+    cy.intercept('GET', 'https://api-kiosk-dev.onrender.com/staff/656a74c983a231f468534835', request => {
       request.responseTimeout = 5000;
     });
-    this.mockGETDetailsWithoutTutorial();
     this.getSkeletonRow().should('exist');
     this.getSkeletonTile().should('exist');
     this.getDetailsTile().should('have.length', 4);
@@ -125,7 +79,7 @@ export class StaffDetailsTestFunctions {
   private getErrorMessage = () => cy.getBySelector('error-message');
 
   testDetailsContentOnRequestError = () => {
-    cy.intercept('GET', '/api/staff/63cb1cf20ada513d831bc83d', {
+    cy.intercept('GET', 'https://api-kiosk-dev.onrender.com/staff/656a74c983a231f468534835', {
       statusCode: 500,
     }).as('staffDetails');
     this.getErrorMessage().should('exist');
