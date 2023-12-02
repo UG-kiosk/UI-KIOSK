@@ -7,37 +7,37 @@ const StaffDetails = new StaffDetailsTestFunctions();
 const Navbar = new NavbarTestFunctions();
 
 describe('StaffDetailsPage.cy.tsc', () => {
-  // let's skip this test for now
-  // it('should render skeleton', () => {
-  //   cy.visit('/staff/63cb1cf20ada513d831bc83d');
-  //   StaffDetails.testDetailsContentPendingStatus();
-  // });
+  beforeEach(() => {
+    cy.visit('/staff/656a74c983a231f468534835');
+  });
+
+  it('should render skeleton', () => {
+    StaffDetails.testDetailsContentPendingStatus();
+    Header.testHeaderContentPL();
+    Navbar.testNavbarContent();
+  });
 
   it('should render error-message', () => {
-    cy.visit('/staff/63cb1cf20ada513d831bc83d');
     StaffDetails.testDetailsContentOnRequestError();
     Header.testHeaderContentPL();
     Navbar.testNavbarContent();
   });
 
-  // let's skip these tests for now
-  // it('should render the staff detail page in Polish without tutorial', () => {
-  //   StaffDetails.testDetailsWithoutTutorialPL();
-  //   Header.testHeaderContentPL();
-  // });
+  it('should render the faculty member details page in PL', () => {
+    StaffDetails.testDetailsWithoutTutorialPL();
+    Header.testHeaderContentPL();
+    Navbar.testNavbarContent();
+  });
+});
 
-  // it('should render the staff detail page in English option without tutorial', () => {
-  //   StaffDetails.testDetailsWithTutorialEN();
-  //   Header.testHeaderContentEN();
-  // });
+describe('StaffDetailsPage.cy.tsc', () => {
+  before(() => {
+    cy.visit('/staff/6565b4e62ac7bade08e0dbe9');
+  });
 
-  // it('should render the staff detail page in Polish option with tutorial', () => {
-  //   StaffDetails.testDetailsWithTutorialPL();
-  //   Header.testHeaderContentPL();
-  // });
-
-  // it('should render the staff detail page in English option with tutorial', () => {
-  //   Header.testHeaderContentEN();
-  //   StaffDetails.testDetailsWithTutorialEN();
-  // });
+  it('should render the faculty member details page in PL', () => {
+    StaffDetails.testDetailsWithTutorialPL();
+    Header.testHeaderContentPL();
+    Navbar.testNavbarContent();
+  });
 });

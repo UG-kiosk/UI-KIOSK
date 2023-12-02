@@ -94,6 +94,7 @@ export const StaffList = () => {
         shape="rounded"
         color="primary"
         size="large"
+        data-cy="staff-pagination"
       />
     </>
   );
