@@ -1,3 +1,4 @@
+import { API_URL } from 'cypress/constants';
 import { staff_page_1, staff_page_2 } from '../../../fixtures/staff';
 
 export class StaffPageTestFunctions {
@@ -6,17 +7,41 @@ export class StaffPageTestFunctions {
   private getStaffListTileLink = () => cy.getBySelector('link-to-staff-details');
 
   mockGETStaff1 = () => {
-    cy.intercept('GET', 'https://api-kiosk-dev.onrender.com/staff', { statusCode: 200, body: staff_page_1 }).as(
-      'getStaff',
-    );
+    cy.intercept('GET', API_URL + '/staff', { statusCode: 200, body: staff_page_1 }).as('getStaff');
     cy.wait('@getStaff');
   };
 
   mockGETStaff2 = () => {
-    cy.intercept('GET', 'https://api-kiosk-dev.onrender.com/staff?page=2', { statusCode: 200, body: staff_page_2 }).as(
-      'getStaff',
-    );
+    cy.intercept('GET', API_URL + '/staff?page=2', { statusCode: 200, body: staff_page_2 }).as('getStaff');
     cy.wait('@getStaff');
+  };
+
+  testGoToNextPage = () => {
+    cy.get('#root > div.MuiBox-root.css-f4xtbg > nav > ul > li:last-child() > button').click();
+    cy.location().should(loc => {
+      expect(loc.href).to.include('/staff?page=2');
+    });
+  };
+
+  testGoToTheFirstPage = () => {
+    cy.get('.MuiPaginationItem-page').contains('1').click();
+    cy.location().should(loc => {
+      expect(loc.href).to.include('/staff');
+    });
+  };
+
+  testGoToTheSecondPage = () => {
+    cy.get('.MuiPaginationItem-page').contains('2').click();
+    cy.location().should(loc => {
+      expect(loc.href).to.include('/staff?page=2');
+    });
+  };
+
+  testGoToPreviousPage = () => {
+    cy.get('#root > div.MuiBox-root.css-f4xtbg > nav > ul > li:nth-child(1) > button').click();
+    cy.location().should(loc => {
+      expect(loc.href).to.include('/staff?page=1');
+    });
   };
 
   testStaffListPageOne = () => {

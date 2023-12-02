@@ -30,8 +30,8 @@ describe('StaffDetailsPage.cy.tsc', () => {
   });
 });
 
-describe('StaffDetailsPage.cy.tsc - more info', () => {
-  beforeEach(() => {
+describe('StaffDetailsPage.cy.tsc', () => {
+  before(() => {
     cy.visit('/staff/6565b4e62ac7bade08e0dbe9');
   });
 

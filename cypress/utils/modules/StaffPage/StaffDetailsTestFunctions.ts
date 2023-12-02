@@ -1,8 +1,9 @@
+import { API_URL } from 'cypress/constants';
 import { staff_page_1 } from '../../../fixtures/staff';
 
 export class StaffDetailsTestFunctions {
   mockGETDetailsWithoutTutorial = () => {
-    cy.intercept('GET', 'https://api-kiosk-dev.onrender.com/staff/656a74c983a231f468534835', {
+    cy.intercept('GET', API_URL + '/staff/656a74c983a231f468534835', {
       statusCode: 200,
       body: staff_page_1.content[0],
     }).as('getDetailsWithoutTutorial');
@@ -10,7 +11,7 @@ export class StaffDetailsTestFunctions {
   };
 
   mockGETStaffDetailsWithTutorial = () => {
-    cy.intercept('GET', 'https://api-kiosk-dev.onrender.com/staff/6565b4e62ac7bade08e0dbe9', {
+    cy.intercept('GET', API_URL + '/staff/6565b4e62ac7bade08e0dbe9', {
       statusCode: 200,
       body: staff_page_1.content[14],
     }).as('getDetailsWithTutorial');
@@ -61,13 +62,13 @@ export class StaffDetailsTestFunctions {
     this.getDetailsTileTutorialSchedule().should('exist');
     this.getDetailsTileTutorialSchedule().contains('Środy, w godzinach 10:15-11:45 lub po umówieniu się.');
   };
-  // pending status and error handling
 
+  // pending status and error handling
   private getSkeletonRow = () => cy.getBySelector('skeleton-row');
   private getSkeletonTile = () => cy.getBySelector('skeleton-tile');
 
   testDetailsContentPendingStatus = () => {
-    cy.intercept('GET', 'https://api-kiosk-dev.onrender.com/staff/656a74c983a231f468534835', request => {
+    cy.intercept('GET', API_URL + '/staff/656a74c983a231f468534835', request => {
       request.responseTimeout = 5000;
     });
     this.getSkeletonRow().should('exist');
@@ -79,7 +80,7 @@ export class StaffDetailsTestFunctions {
   private getErrorMessage = () => cy.getBySelector('error-message');
 
   testDetailsContentOnRequestError = () => {
-    cy.intercept('GET', 'https://api-kiosk-dev.onrender.com/staff/656a74c983a231f468534835', {
+    cy.intercept('GET', API_URL + '/staff/656a74c983a231f468534835', {
       statusCode: 500,
     }).as('staffDetails');
     this.getErrorMessage().should('exist');

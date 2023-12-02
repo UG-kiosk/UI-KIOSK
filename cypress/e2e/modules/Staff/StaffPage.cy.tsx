@@ -43,12 +43,28 @@ describe('StaffPage.cy.tsc - Next Page', () => {
   });
 });
 
-describe('StaffPage.cy.tsc - Changing page', () => {
-  beforeEach(() => {
+describe('StaffPage.cy.tsc - Pagination', () => {
+  it('should go to the next page', () => {
     cy.visit('/staff');
+    StaffPage.mockGETStaff1();
+    StaffPage.testGoToNextPage();
   });
-  it('should navigate to the second page and back to the first page', () => {
-    cy.get('.MuiPaginationItem-page').contains('2').click();
-    cy.get('.MuiPaginationItem-page').contains('1').click();
+
+  it('should go to the previous page', () => {
+    cy.visit('/staff?page=2');
+    StaffPage.mockGETStaff2();
+    StaffPage.testGoToPreviousPage();
+  });
+
+  it('should go to the second page', () => {
+    cy.visit('/staff');
+    StaffPage.mockGETStaff1();
+    StaffPage.testGoToTheSecondPage();
+  });
+
+  it('should go to the first page', () => {
+    cy.visit('/staff?page=2');
+    StaffPage.mockGETStaff2();
+    StaffPage.testGoToTheFirstPage();
   });
 });
