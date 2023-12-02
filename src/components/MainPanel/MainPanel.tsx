@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import SchoolIcon from '@mui/icons-material/School';
+import FeedIcon from '@mui/icons-material/Feed';
 import { useTranslation } from 'react-i18next';
 
 const StyledLink = styled(Link)`
@@ -54,7 +55,12 @@ export const MainPanel = () => {
         <Tile tileWidth={473} />
       </Grid>
       <Grid item xs={6} container justifyContent="flex-end" data-cy="tile">
-        <Tile tileWidth={473} />
+        <StyledLink to="news">
+          <Tile tileWidth={473}>
+            <FeedIcon sx={{ fontSize: '190px' }} data-cy="feed-alt-icon" />
+            <Paragraph data-cy="news-link-label">{t('mainPanel.news')}</Paragraph>
+          </Tile>
+        </StyledLink>
       </Grid>
     </Grid>
   );

@@ -4,6 +4,7 @@ import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import { MajorsPage } from './modules/Majors';
 import { Header, Navbar, ContentContainer } from '@UG/libs/components';
 import { StaffPage } from './modules/Staff';
+import { NewsPage } from './modules/News';
 
 const routes: RouteObject[] = [
   {
@@ -64,6 +65,31 @@ const routes: RouteObject[] = [
         <Header />
         <ContentContainer>
           <StaffPage />
+        </ContentContainer>
+        <Navbar />
+      </>
+    ),
+  },
+
+  {
+    path: '/news',
+    element: (
+      <>
+        <Header />
+        <ContentContainer>
+          <NewsPage />
+        </ContentContainer>
+        <Navbar />
+      </>
+    ),
+  },
+  {
+    path: '/news/:_id',
+    element: (
+      <>
+        <Header />
+        <ContentContainer>
+          <NewsPage />
         </ContentContainer>
         <Navbar />
       </>
