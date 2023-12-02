@@ -43,7 +43,7 @@ describe('StaffPage.cy.tsc - Next Page', () => {
   });
 });
 
-describe('StaffPage.cy.tsc - Cahnging page', () => {
+describe('StaffPage.cy.tsc - Changing page', () => {
   beforeEach(() => {
     cy.visit('/staff');
   });
