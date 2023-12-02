@@ -82,7 +82,7 @@ export const NewsList = () => {
                 <Paragraph fontWeight={700} fontSize={15} color={theme.palette.primary.main} margin="5px 0px 5px">
                   {` • ${moment(datetime).format('DD-MM-YYYY')} • ${source}`}
                 </Paragraph>
-                {shortBody.length != 0 && (
+                {shortBody && shortBody.length != 0 && (
                   <Paragraph fontWeight={400} fontSize={15} color={theme.palette.primary.dark}>
                     {shortBody}
                   </Paragraph>
