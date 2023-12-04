@@ -1,11 +1,9 @@
-export interface MajorContent {
-  element: string;
-  text: string;
-}
+import { Degree } from '../Degree';
 
 export interface Major {
   _id: string;
   name: string;
   url: string;
-  content: MajorContent[];
+  content: string;
+  degree: Degree;
 }

@@ -18,5 +18,7 @@
     "all": "WSZYSTKO",
     "inf": "INFORMATYKA",
     "mfi": "WYDZIAŁ MFI"
-  }
+  },
+  "noResults": "Przepraszamy, wygląda na to, że nie znaleziono treści.",
+  "degree": { "BACHELOR": "Licencjackie", "MASTER": "Magisterskie", "ALL": "Wszystko" }
 }

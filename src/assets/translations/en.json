@@ -18,5 +18,7 @@
     "all": "All",
     "inf": "INF",
     "mfi": "MFI"
-  }
+  },
+  "noResults": "Sorry, but we don't have any results.",
+  "degree": { "BACHELOR": "Bachelor", "MASTER": "Master", "ALL": "All" }
 }

@@ -1,11 +1,12 @@
-import { styled } from '@mui/material/styles';
-import { DetailsTile, ListPageSkeleton } from '@UG/libs/components';
-import { Major } from '@UG/libs/types';
+import { styled, useTheme } from '@mui/material/styles';
+import { DetailsTile, ListPageSkeleton, Error, FilterPanel, Paragraph } from '@UG/libs/components';
+import { Degree, Major } from '@UG/libs/types';
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { StateType } from 'src/store';
 import { useGetMajors } from './hooks';
+import { useTranslation } from 'react-i18next';
 
 interface StateProps {
   isLoading: boolean;
@@ -22,6 +23,8 @@ const StyledLink = styled(Link)`
 `;
 
 export const MajorsList = () => {
+  const { t } = useTranslation();
+  const theme = useTheme();
   const { getMajorsList } = useGetMajors();
   const { isLoading, majorsList, errorMessage } = useSelector<StateType, StateProps>(state => ({
     isLoading: state.majors.isLoading,
@@ -35,27 +38,39 @@ export const MajorsList = () => {
 
   const majorsTiles: JSX.Element[] = useMemo(
     () =>
-      majorsList.map(({ name, _id }) => (
-        <StyledLink to={_id} key={name} data-cy="major-tile-container">
-          <DetailsTile>{name}</DetailsTile>
+      majorsList.map(({ name, _id, degree }) => (
+        <StyledLink to={_id} key={_id} data-cy="major-tile-container">
+          <DetailsTile backgroundColor={theme.palette.background.paper}>
+            <Paragraph color={theme.palette.secondary.dark}>{name}</Paragraph>
+            <Paragraph fontWeight={500} fontSize={16} color={theme.palette.primary.main}>
+              {t('degree.' + degree)}
+            </Paragraph>
+          </DetailsTile>
         </StyledLink>
       )),
-    [majorsList],
+    [majorsList, t, theme.palette.background.paper, theme.palette.primary.main, theme.palette.secondary.dark],
   );
 
-  //TODO change layout as soon as we get designs
   if (!isLoading && errorMessage) {
-    return (
-      <p style={{ marginTop: '150px' }} data-cy="error-message">
-        {errorMessage}
-      </p>
-    );
+    return <Error data-cy="error-message" />;
   }
 
-  //TODO change layout as soon as we get designs
   if (isLoading && !errorMessage) {
-    return <ListPageSkeleton />;
+    return <ListPageSkeleton mt={80} height={100} />;
   }
 
-  return <>{majorsTiles}</>;
+  if (!majorsTiles.length) {
+    return <p>{t('noResults')}</p>;
+  }
+
+  return (
+    <>
+      <FilterPanel
+        buttonKeys={[Degree.BACHELOR, Degree.MASTER]}
+        buttonGroupTranslationKey={'degree'}
+        paramName={'degree'}
+      />
+      {majorsTiles}
+    </>
+  );
 };

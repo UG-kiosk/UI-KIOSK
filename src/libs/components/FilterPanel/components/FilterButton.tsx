@@ -33,7 +33,7 @@ const StyledButton = styled(MUIButton)(({ theme }) => ({
   },
 }));
 
-export const NewsButton = ({ text, type, name, onClick, className }: ButtonProps) => (
+export const FilterButton = ({ text, type, name, onClick, className }: ButtonProps) => (
   <StyledButton data-cy={`${name}-button`} variant="outlined" type={type} onClick={onClick} className={className}>
     {text}
   </StyledButton>
