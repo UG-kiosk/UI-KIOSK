@@ -1,6 +1,6 @@
 import { styled, useTheme } from '@mui/material/styles';
-import { DetailsTile, ListPageSkeleton } from '@UG/libs/components';
-import { Major } from '@UG/libs/types';
+import { DetailsTile, ListPageSkeleton, Error, FilterPanel } from '@UG/libs/components';
+import { Degree, Major } from '@UG/libs/types';
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -46,23 +46,26 @@ export const MajorsList = () => {
     [majorsList, theme.palette.background.paper],
   );
 
-  //TODO change layout as soon as we get designs
   if (!isLoading && errorMessage) {
-    return (
-      <p style={{ marginTop: '150px' }} data-cy="error-message">
-        {errorMessage}
-      </p>
-    );
+    return <Error data-cy="error-message" />;
   }
 
-  //TODO change layout as soon as we get designs
   if (isLoading && !errorMessage) {
-    return <ListPageSkeleton />;
+    return <ListPageSkeleton mt={80} height={100} />;
   }
 
   if (!majorsTiles.length) {
     return <p>{t('noResultsInLanguage')}</p>;
   }
 
-  return <>{majorsTiles}</>;
+  return (
+    <>
+      <FilterPanel
+        buttonKeys={[Degree.BACHELOR, Degree.MASTER]}
+        buttonGroupTranslationKey={'degree'}
+        paramName={'degree'}
+      />
+      {majorsTiles}
+    </>
+  );
 };

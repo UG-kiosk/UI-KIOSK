@@ -1,12 +1,14 @@
-import { Language, Major } from '@UG/libs/types';
+import { Degree, Language, Major } from '@UG/libs/types';
 import axios from 'axios';
 import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { finishLoading, setError, setMajorDetails, setMajorsList, startLoading } from '../../../state/MajorsSlice';
+import { useSearchParams } from 'react-router-dom';
 
 export const useGetMajors = () => {
   const dispatch = useDispatch();
+  const [searchParams] = useSearchParams();
   const { i18n } = useTranslation();
 
   const currentLanguage = useMemo((): Language => {
@@ -17,8 +19,12 @@ export const useGetMajors = () => {
     try {
       dispatch(startLoading());
 
+      const degree = searchParams.get('degree') as Degree | null;
+
+      const params = { language: currentLanguage, ...(degree ? { degree } : {}) };
+
       const { data: majorsList } = await axios.get<Major[]>('/api/majors', {
-        params: { language: currentLanguage },
+        params,
       });
 
       dispatch(setMajorsList(majorsList));
@@ -29,7 +35,7 @@ export const useGetMajors = () => {
       dispatch(setError(errorMessage));
       dispatch(finishLoading());
     }
-  }, [currentLanguage, dispatch]);
+  }, [currentLanguage, dispatch, searchParams]);
 
   const getMajorDetails = useCallback(
     async (id: string) => {

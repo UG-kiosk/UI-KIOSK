@@ -1,11 +1,12 @@
 import { styled, useTheme } from '@mui/system';
 import { Box, Grid } from '@mui/material';
-import { DetailsTile, ListPageSkeleton, Paragraph, NewsButton } from '@UG/libs/components';
+import { DetailsTile, ListPageSkeleton, Paragraph } from '@UG/libs/components';
 import { useMemo, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { useNewsList } from './hooks';
+import { FilterButton } from '../../libs/components/FilterPanel/FilterButton';
 
 const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: 'none',
@@ -33,14 +34,14 @@ export const NewsList = () => {
     () => (
       <Box mb={2}>
         {['ALL', 'MFI', 'INF'].map(name => (
-          <NewsButton
+          <FilterButton
             name={name}
             key={name}
             type="button"
             text={t('newsPage.' + name.toLowerCase())}
             className={activeButton == name + '-button' ? 'selected' : ''}
             onClick={() => handleButtonClick(name)}
-          ></NewsButton>
+          ></FilterButton>
         ))}
       </Box>
     ),
