@@ -18,5 +18,6 @@
     "all": "All",
     "inf": "INF",
     "mfi": "MFI"
-  }
+  },
+  "noResultsInLanguage": "Sorry, but we don't have any results in this language."
 }

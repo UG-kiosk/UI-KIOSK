@@ -1,15 +1,16 @@
 import { Major } from '@UG/libs/types';
-import { useMemo } from 'react';
-import { usePrepareMajorDetails } from '../hooks';
+import { useTranslation } from 'react-i18next';
 
 interface MajorDetailsInfoProps {
   major: Major;
 }
 
 export const MajorDetailsInfo = ({ major }: MajorDetailsInfoProps) => {
-  const { prepareMajorDetails } = usePrepareMajorDetails();
+  const { t } = useTranslation();
 
-  const majorDetails = useMemo(() => prepareMajorDetails(major.content), [major.content, prepareMajorDetails]);
+  if (!major.content) {
+    return <p>{t('noResultsInLanguage')}</p>;
+  }
 
-  return <>{majorDetails}</>;
+  return <div dangerouslySetInnerHTML={{ __html: major.content }}></div>;
 };

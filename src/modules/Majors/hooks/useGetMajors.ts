@@ -1,18 +1,25 @@
-import { Major } from '@UG/libs/types';
+import { Language, Major } from '@UG/libs/types';
 import axios from 'axios';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { finishLoading, setError, setMajorDetails, setMajorsList, startLoading } from 'src/state/MajorsSlice';
+import { finishLoading, setError, setMajorDetails, setMajorsList, startLoading } from '../../../state/MajorsSlice';
 
 export const useGetMajors = () => {
   const dispatch = useDispatch();
+  const { i18n } = useTranslation();
+
+  const currentLanguage = useMemo((): Language => {
+    return i18n.language as Language;
+  }, [i18n.language]);
 
   const getMajorsList = useCallback(async () => {
     try {
       dispatch(startLoading());
 
-      // url will be changed as soon as we deploy API
-      const { data: majorsList } = await axios.get<Major[]>('/api/majors');
+      const { data: majorsList } = await axios.get<Major[]>('/api/majors', {
+        params: { language: currentLanguage },
+      });
 
       dispatch(setMajorsList(majorsList));
       dispatch(finishLoading());
@@ -22,15 +29,16 @@ export const useGetMajors = () => {
       dispatch(setError(errorMessage));
       dispatch(finishLoading());
     }
-  }, [dispatch]);
+  }, [currentLanguage, dispatch]);
 
   const getMajorDetails = useCallback(
     async (id: string) => {
       try {
         dispatch(startLoading());
 
-        // url will be changed as soon as we deploy API
-        const { data: majorDetails } = await axios.get<Major>(`/api/major/${id}`);
+        const { data: majorDetails } = await axios.get<Major>(`/api/majors/${id}`, {
+          params: { language: currentLanguage },
+        });
 
         dispatch(setMajorDetails(majorDetails));
         dispatch(finishLoading());
@@ -40,7 +48,7 @@ export const useGetMajors = () => {
         dispatch(setError(errorMessage));
       }
     },
-    [dispatch],
+    [currentLanguage, dispatch],
   );
 
   return { getMajorsList, getMajorDetails };

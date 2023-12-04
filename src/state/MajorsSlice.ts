@@ -21,6 +21,8 @@ export const majors = createSlice({
   reducers: {
     startLoading(state: MajorsType) {
       state.isLoading = true;
+      state.majorDetails = null;
+      state.majorsList = [];
       state.error = null;
     },
     setMajorsList(state: MajorsType, action: PayloadAction<Major[]>) {
