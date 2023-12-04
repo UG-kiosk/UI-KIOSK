@@ -4,3 +4,4 @@ export * from './Major';
 export * from './Staff';
 export * from './News';
 export * from './Pagination';
+export * from './Degree';

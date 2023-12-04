@@ -1,6 +1,6 @@
 import { styled, useTheme } from '@mui/material/styles';
-import { DetailsTile, ListPageSkeleton } from '@UG/libs/components';
-import { Major } from '@UG/libs/types';
+import { DetailsTile, ListPageSkeleton, Error, FilterPanel, Paragraph } from '@UG/libs/components';
+import { Degree, Major } from '@UG/libs/types';
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -38,31 +38,39 @@ export const MajorsList = () => {
 
   const majorsTiles: JSX.Element[] = useMemo(
     () =>
-      majorsList.map(({ name, _id }) => (
+      majorsList.map(({ name, _id, degree }) => (
         <StyledLink to={_id} key={_id} data-cy="major-tile-container">
-          <DetailsTile backgroundColor={theme.palette.background.paper}>{name}</DetailsTile>
+          <DetailsTile backgroundColor={theme.palette.background.paper}>
+            <Paragraph color={theme.palette.secondary.dark}>{name}</Paragraph>
+            <Paragraph fontWeight={500} fontSize={16} color={theme.palette.primary.main}>
+              {t('degree.' + degree)}
+            </Paragraph>
+          </DetailsTile>
         </StyledLink>
       )),
-    [majorsList, theme.palette.background.paper],
+    [majorsList, t, theme.palette.background.paper, theme.palette.primary.main, theme.palette.secondary.dark],
   );
 
-  //TODO change layout as soon as we get designs
   if (!isLoading && errorMessage) {
-    return (
-      <p style={{ marginTop: '150px' }} data-cy="error-message">
-        {errorMessage}
-      </p>
-    );
+    return <Error data-cy="error-message" />;
   }
 
-  //TODO change layout as soon as we get designs
   if (isLoading && !errorMessage) {
-    return <ListPageSkeleton />;
+    return <ListPageSkeleton mt={80} height={100} />;
   }
 
   if (!majorsTiles.length) {
-    return <p>{t('noResultsInLanguage')}</p>;
+    return <p>{t('noResults')}</p>;
   }
 
-  return <>{majorsTiles}</>;
+  return (
+    <>
+      <FilterPanel
+        buttonKeys={[Degree.BACHELOR, Degree.MASTER]}
+        buttonGroupTranslationKey={'degree'}
+        paramName={'degree'}
+      />
+      {majorsTiles}
+    </>
+  );
 };

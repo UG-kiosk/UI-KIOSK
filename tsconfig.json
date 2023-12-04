@@ -23,7 +23,8 @@
     "skipLibCheck": true,
     "paths": {
       "@UG/libs/components": ["./src/libs/components"],
-      "@UG/libs/types": ["./src/libs/types"]
+      "@UG/libs/types": ["./src/libs/types"],
+      "@UG/libs/hooks": ["./src/libs/hooks"]
     }
   },
   "include": ["src/**/*", "cypress", "./src/assets/images/index.d.ts"],

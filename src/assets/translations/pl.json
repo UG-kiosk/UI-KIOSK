@@ -19,5 +19,6 @@
     "inf": "INFORMATYKA",
     "mfi": "WYDZIAŁ MFI"
   },
-  "noResultsInLanguage": "Przepraszamy, wygląda na to, że nie ma treści w tym języku."
+  "noResults": "Przepraszamy, wygląda na to, że nie znaleziono treści.",
+  "degree": { "BACHELOR": "Licencjackie", "MASTER": "Magisterskie", "ALL": "Wszystko" }
 }

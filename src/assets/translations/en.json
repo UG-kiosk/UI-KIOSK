@@ -19,5 +19,6 @@
     "inf": "INF",
     "mfi": "MFI"
   },
-  "noResultsInLanguage": "Sorry, but we don't have any results in this language."
+  "noResults": "Sorry, but we don't have any results.",
+  "degree": { "BACHELOR": "Bachelor", "MASTER": "Master", "ALL": "All" }
 }
