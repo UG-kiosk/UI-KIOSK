@@ -1,5 +1,5 @@
 import { styled, useTheme } from '@mui/material/styles';
-import { DetailsTile, ListPageSkeleton, Error, FilterPanel } from '@UG/libs/components';
+import { DetailsTile, ListPageSkeleton, Error, FilterPanel, Paragraph } from '@UG/libs/components';
 import { Degree, Major } from '@UG/libs/types';
 import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
@@ -38,12 +38,17 @@ export const MajorsList = () => {
 
   const majorsTiles: JSX.Element[] = useMemo(
     () =>
-      majorsList.map(({ name, _id }) => (
+      majorsList.map(({ name, _id, degree }) => (
         <StyledLink to={_id} key={_id} data-cy="major-tile-container">
-          <DetailsTile backgroundColor={theme.palette.background.paper}>{name}</DetailsTile>
+          <DetailsTile backgroundColor={theme.palette.background.paper}>
+            <Paragraph color={theme.palette.secondary.dark}>{name}</Paragraph>
+            <Paragraph fontWeight={500} fontSize={16} color={theme.palette.primary.main}>
+              {t('degree.' + degree)}
+            </Paragraph>
+          </DetailsTile>
         </StyledLink>
       )),
-    [majorsList, theme.palette.background.paper],
+    [majorsList, t, theme.palette.background.paper, theme.palette.primary.main, theme.palette.secondary.dark],
   );
 
   if (!isLoading && errorMessage) {
@@ -55,7 +60,7 @@ export const MajorsList = () => {
   }
 
   if (!majorsTiles.length) {
-    return <p>{t('noResultsInLanguage')}</p>;
+    return <p>{t('noResults')}</p>;
   }
 
   return (

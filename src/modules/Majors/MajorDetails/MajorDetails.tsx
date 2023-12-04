@@ -1,12 +1,13 @@
 import { Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { DetailsTile, Divider } from '@UG/libs/components';
+import { styled, useTheme } from '@mui/material/styles';
+import { DetailsTile, Divider, Paragraph, Error } from '@UG/libs/components';
 import { Major } from '@UG/libs/types';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { StateType } from 'src/store';
 import { MajorDetailsInfo } from './MajorDetailsInfo';
 import { useGetMajors } from '../hooks';
+import { useTranslation } from 'react-i18next';
 
 interface StateProps {
   isLoading: boolean;
@@ -30,6 +31,8 @@ const StyledTitle = styled(Typography)`
 `;
 
 export const MajorDetails = ({ id }: MajorDetailsProps) => {
+  const { t } = useTranslation();
+  const theme = useTheme();
   const { getMajorDetails } = useGetMajors();
   const { isLoading, errorMessage, majorDetails } = useSelector<StateType, StateProps>(state => ({
     isLoading: state.majors.isLoading,
@@ -42,13 +45,8 @@ export const MajorDetails = ({ id }: MajorDetailsProps) => {
     getMajorDetails(id);
   }, [id, getMajorDetails]);
 
-  //TODO change layout as soon as we get designs
   if (!isLoading && errorMessage) {
-    return (
-      <>
-        <p style={{ marginTop: '150px' }}>{errorMessage}</p>
-      </>
-    );
+    return <Error data-cy="error-message" />;
   }
 
   //TODO change layout as soon as we get designs
@@ -60,19 +58,17 @@ export const MajorDetails = ({ id }: MajorDetailsProps) => {
     );
   }
 
-  //TODO change layout as soon as we get designs
   if (!majorDetails) {
-    return (
-      <>
-        <p style={{ marginTop: '150px' }}>sorry but we couldn&apos;t find {id}</p>
-      </>
-    );
+    return <Error data-cy="error-message" />;
   }
 
   return (
     <>
       <StyledTitle data-cy="title">{majorDetails.name}</StyledTitle>
       <Divider />
+      <Paragraph fontWeight={700} fontSize={24} color={theme.palette.primary.main}>
+        {t('degree.' + majorDetails.degree)}
+      </Paragraph>
       <DetailsTile width={975} padding="40px 40px">
         <MajorDetailsInfo major={majorDetails} />
       </DetailsTile>

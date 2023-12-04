@@ -9,7 +9,7 @@ export const MajorDetailsInfo = ({ major }: MajorDetailsInfoProps) => {
   const { t } = useTranslation();
 
   if (!major.content) {
-    return <p>{t('noResultsInLanguage')}</p>;
+    return <p>{t('noResults')}</p>;
   }
 
   return <div dangerouslySetInnerHTML={{ __html: major.content }}></div>;
