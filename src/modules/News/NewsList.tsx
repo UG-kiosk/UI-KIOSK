@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { useNewsList } from './hooks';
-import { FilterButton } from '../../libs/components/FilterPanel/FilterButton';
+import { FilterButton } from '../../libs/components/FilterPanel/components/FilterButton';
 
 const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: 'none',

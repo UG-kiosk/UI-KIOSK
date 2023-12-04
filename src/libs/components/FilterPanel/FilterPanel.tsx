@@ -1,8 +1,8 @@
-import { useSearchParam } from '../../hooks';
-import { FilterButton } from './FilterButton';
+import { FilterButton } from './components/FilterButton';
 import { Box } from '@mui/material';
-import { useCallback, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useFilterPanel } from './hooks/useFilterPanel';
 
 interface FilterPanelProps {
   buttonKeys: string[];
@@ -11,24 +11,8 @@ interface FilterPanelProps {
 }
 
 export const FilterPanel = ({ buttonKeys, buttonGroupTranslationKey, paramName }: FilterPanelProps) => {
-  const { handleParamChange, getSearchParam } = useSearchParam();
+  const { handleButtonClick, selectedButton } = useFilterPanel();
   const { t } = useTranslation();
-
-  const handleButtonClick = useCallback(
-    (value: string) => {
-      handleParamChange(paramName, value);
-    },
-    [handleParamChange, paramName],
-  );
-
-  const selectedButton = useMemo(() => {
-    const selectedParam = getSearchParam(paramName);
-
-    if (selectedParam === null) {
-      return 'ALL';
-    }
-    return selectedParam;
-  }, [getSearchParam, paramName]);
 
   const filterbuttons = useMemo(
     () => (
@@ -39,13 +23,13 @@ export const FilterPanel = ({ buttonKeys, buttonGroupTranslationKey, paramName }
             key={name}
             type="button"
             text={t(buttonGroupTranslationKey + '.' + name)}
-            className={selectedButton == name ? 'selected' : ''}
-            onClick={() => handleButtonClick(name)}
+            className={selectedButton(paramName) == name ? 'selected' : ''}
+            onClick={() => handleButtonClick(paramName, name)}
           ></FilterButton>
         ))}
       </Box>
     ),
-    [buttonGroupTranslationKey, buttonKeys, handleButtonClick, selectedButton, t],
+    [buttonGroupTranslationKey, buttonKeys, handleButtonClick, paramName, selectedButton, t],
   );
 
   return filterbuttons;
