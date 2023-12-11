@@ -72,8 +72,9 @@ export class StaffDetailsTestFunctions {
       request.responseTimeout = 5000;
     });
     this.getSkeletonRow().should('exist');
+    this.getSkeletonRow().should('have.length', 3);
     this.getSkeletonTile().should('exist');
-    this.getDetailsTile().should('have.length', 4);
+    this.getSkeletonTile().should('have.length', 2);
   };
 
   // error handling will be improved in the future
