@@ -16,6 +16,7 @@ describe('NewsListPage', () => {
   });
 
   it('should render error message', () => {
+    NewsPage.testNewsListContentOnRequestError();
     Header.testHeaderContentPL();
     Navbar.testNavbarContent();
   });
