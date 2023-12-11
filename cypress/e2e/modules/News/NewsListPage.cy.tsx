@@ -24,5 +24,7 @@ describe('NewsListPage', () => {
   it('should render news list in PL', () => {
     Header.testHeaderContentPL();
     Navbar.testNavbarContent();
+    NewsPage.mockGETNews();
+    NewsPage.testNewsListContentPL();
   });
 });
