@@ -35,7 +35,6 @@ export const NewsList = () => {
       <Box mb={2}>
         {['ALL', 'MFI', 'INF'].map(name => (
           <FilterButton
-            name={name}
             key={name}
             type="button"
             text={t('newsPage.' + name.toLowerCase())}

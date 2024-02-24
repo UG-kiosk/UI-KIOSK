@@ -21,10 +21,29 @@ describe('NewsListPage', () => {
     Navbar.testNavbarContent();
   });
 
-  it('should render news list in PL', () => {
+  it('should render all news list in PL', () => {
     Header.testHeaderContentPL();
     Navbar.testNavbarContent();
     NewsPage.mockGETNews();
+    NewsPage.testNewsListButtonsPL();
     NewsPage.testNewsListContentPL();
+  });
+
+  it('should render mfi news list in PL', () => {
+    Header.testHeaderContentPL();
+    Navbar.testNavbarContent();
+    NewsPage.testNewsListButtonsPL();
+    NewsPage.goToMFI();
+    NewsPage.mockGETNewsMFI();
+    NewsPage.testNewsMFIListContentPL();
+  });
+
+  it('should render inf news list in PL', () => {
+    Header.testHeaderContentPL();
+    Navbar.testNavbarContent();
+    NewsPage.testNewsListButtonsPL();
+    NewsPage.goToINF();
+    NewsPage.mockGETNewsINF();
+    NewsPage.testNewsINFListContentPL();
   });
 });
