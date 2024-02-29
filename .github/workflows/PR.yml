@@ -33,6 +33,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node_modules_artifact
+          path: node_modules
 
       - name: list files
         run: ls -la
@@ -55,6 +56,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node_modules_artifact
+          path: node_modules
 
       - name: unit test
         run: yarn test
