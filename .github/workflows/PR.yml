@@ -36,7 +36,7 @@ jobs:
           key: node_modules
 
       - name: list files
-        run: ls -la node_modules
+        run: ls -la
 
       - name: read prettier package.json
         run: cat node_modules/prettier/package.json
