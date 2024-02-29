@@ -7,16 +7,10 @@ on:
 jobs:
   install-dependencies:
     runs-on: ubuntu-latest
-    # container: node:16-alpine
+    container: node:16-alpine
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
       - name: install dependencies
         run: yarn install --frozen-lockfile
@@ -24,27 +18,21 @@ jobs:
       - name: Upload node_modules_artifact
         uses: actions/upload-artifact@v4
         with:
-          name: node_modules
-          path: ./node_modules
+          name: node_modules_artifact
+          path: node_modules
 
   verify-code-formatting:
     needs: install-dependencies
     runs-on: ubuntu-latest
-    # container: node:16-alpine
+    container: node:16-alpine
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
-
       - name: Download node_modules artifact
         uses: actions/download-artifact@v4
         with:
-          name: node_modules
+          name: node_modules_artifact
 
       - name: test prettier
         run: yarn prettier:ci
@@ -63,7 +51,7 @@ jobs:
       - name: Download node_modules artifact
         uses: actions/download-artifact@v4
         with:
-          name: node_modules
+          name: node_modules_artifact
 
       - name: unit test
         run: yarn test
