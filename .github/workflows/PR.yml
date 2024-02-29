@@ -35,6 +35,9 @@ jobs:
           name: node_modules_artifact
           path: node_modules
 
+      - name: add permissions to node_modules
+        run: sudo chmod -R +x node_modules
+
       - name: list files
         run: ls -la
 
@@ -57,6 +60,9 @@ jobs:
         with:
           name: node_modules_artifact
           path: node_modules
+
+      - name: add permissions to node_modules
+        run: sudo chmod -R +x node_modules
 
       - name: unit test
         run: yarn test
