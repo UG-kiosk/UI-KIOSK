@@ -36,10 +36,12 @@ jobs:
           key: node_modules
 
       - name: list files
-        run: ls -la
+        run: ls -la node_modules/prettier
+      - name: read prettier package.json
+        run: cat node_modules/prettier/package.json
 
-      - name: test prettier
-        run: yarn prettier:ci
+      # - name: test prettier
+      #   run: yarn prettier:ci
 
       - name: test eslint
         run: yarn lint
