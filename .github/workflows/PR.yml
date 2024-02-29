@@ -15,14 +15,11 @@ jobs:
       - name: install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: delete .bin
-        run: rm -rf node_modules/.bin
-
-      - name: Upload node_modules_artifact
-        uses: actions/upload-artifact@v4
+      - name: cache node_modules
+        uses: actions/cache@v4
         with:
-          name: node_modules_artifact
           path: node_modules
+          key: node_modules
 
   verify-code-formatting:
     needs: install-dependencies
@@ -32,11 +29,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download node_modules artifact
-        uses: actions/download-artifact@v4
+      - name: use cached node_modules
+        uses: actions/cache@v4
         with:
-          name: node_modules_artifact
           path: node_modules
+          key: node_modules
 
       - name: list files
         run: ls -la
@@ -55,11 +52,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download node_modules artifact
-        uses: actions/download-artifact@v4
+      - name: use cached node_modules
+        uses: actions/cache@v4
         with:
-          name: node_modules_artifact
           path: node_modules
+          key: node_modules
 
       - name: unit test
         run: yarn test
