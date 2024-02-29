@@ -61,7 +61,3 @@ jobs:
 
       - name: e2e tests
         run: yarn e2e:ci
-
-
-Error:  Invalid configuration for file "/__w/UI-KIOSK/UI-KIOSK/@cush/relative/lib/relative.d.ts":
-Error:  Cannot find package '@alloc/prettier-config' imported from /__w/UI-KIOSK/UI-KIOSK/node_modules/@cush/relative/package.json
