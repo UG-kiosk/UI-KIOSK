@@ -15,6 +15,9 @@ jobs:
       - name: install dependencies
         run: yarn install --frozen-lockfile
 
+      - name: delete .bin
+        run: rm -rf node_modules/.bin
+
       - name: Upload node_modules_artifact
         uses: actions/upload-artifact@v4
         with:
@@ -34,9 +37,6 @@ jobs:
         with:
           name: node_modules_artifact
           path: node_modules
-
-      - name: add permissions to node_modules
-        run: sudo chmod -R +x node_modules
 
       - name: list files
         run: ls -la
@@ -60,9 +60,6 @@ jobs:
         with:
           name: node_modules_artifact
           path: node_modules
-
-      - name: add permissions to node_modules
-        run: sudo chmod -R +x node_modules
 
       - name: unit test
         run: yarn test
