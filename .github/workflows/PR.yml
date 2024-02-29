@@ -7,10 +7,16 @@ on:
 jobs:
   install-dependencies:
     runs-on: ubuntu-latest
-    container: node:16-alpine
+    # container: node:16-alpine
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
 
       - name: install dependencies
         run: yarn install --frozen-lockfile
@@ -24,10 +30,16 @@ jobs:
   verify-code-formatting:
     needs: install-dependencies
     runs-on: ubuntu-latest
-    container: node:16-alpine
+    # container: node:16-alpine
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
 
       - name: Download node_modules artifact
         uses: actions/download-artifact@v4
@@ -58,4 +70,3 @@ jobs:
 
       - name: e2e tests
         run: yarn e2e:ci
-# test commit
