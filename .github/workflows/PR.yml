@@ -15,15 +15,6 @@ jobs:
       - name: install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: list files
-        run: ls -la node_modules
-
-      - name: list files prettier
-        run: ls -la node_modules/prettier
-
-      - name: read prettier package.json
-        run: cat node_modules/prettier/package.json
-
       - name: cache node_modules
         uses: actions/cache@v4
         with:
@@ -43,12 +34,6 @@ jobs:
         with:
           path: node_modules
           key: node_modules
-
-      - name: list files
-        run: ls -la node_modules
-
-      - name: read prettier package.json
-        run: cat node_modules/prettier/package.json
 
       # - name: test prettier
       #   run: yarn prettier:ci
