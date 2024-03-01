@@ -42,6 +42,9 @@ jobs:
           name: node_modules
           path: node_modules.tar.gz
 
+      - name: list files
+        run: ls -la
+
       - name: Extract node_modules
         run: tar xzf node_modules.tar.gz
 
