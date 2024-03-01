@@ -15,34 +15,40 @@ jobs:
       - name: install dependencies
         run: yarn install --frozen-lockfile
 
+      - name: check permissions
+        run: ls -l node_modules/.bin
+
       - name: Upload node_modules_artifact
         uses: actions/upload-artifact@v4
         with:
           name: node_modules
           path: node_modules
 
-  # verify-code-formatting:
-  #   needs: install-dependencies
-  #   runs-on: ubuntu-latest
-  #   container: node:16-alpine
+  verify-code-formatting:
+    needs: install-dependencies
+    runs-on: ubuntu-latest
+    container: node:16-alpine
 
-  #   steps:
-  #     - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-  #     - name: Download node_modules artifact
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: node_modules
-  #         path: node_modules
+      - name: Download node_modules artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: node_modules
+          path: node_modules
 
-  # - name: test prettier
-  #   run: yarn prettier:ci
+      - name: check permissions
+        run: ls -l node_modules/.bin
 
-  # - name: test eslint
-  #   run: yarn lint
+      - name: test prettier
+        run: yarn prettier:ci
+
+      - name: test eslint
+        run: yarn lint
 
   run-tests:
-    needs: [install-dependencies]
+    needs: [install-dependencies, verify-code-formatting]
     runs-on: ubuntu-latest
     container: node:16-alpine
 
