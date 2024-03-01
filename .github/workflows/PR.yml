@@ -40,13 +40,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node_modules
-          path: node_modules.tar.gz
+          # path: node_modules.tar.gz
 
       - name: list files
         run: ls -la
 
-      # - name: check tar file
-      #   run: ls -la node_modules.tar.gz
+      - name: check tar file
+        run: ls -la node_modules.tar.gz
 
       - name: Extract node_modules
         run: tar xzf node_modules.tar.gz
