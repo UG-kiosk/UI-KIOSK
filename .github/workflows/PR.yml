@@ -23,9 +23,6 @@ jobs:
       - name: list files
         run: ls -la
 
-      - name: check whoami
-        run: whoami
-
       - name: Upload node_modules_artifact
         uses: actions/upload-artifact@v4
         with:
@@ -48,14 +45,14 @@ jobs:
           name: node_modules
           path: node_modules
 
-      - name: check whoami
-        run: whoami
-
       - name: check permissions
         run: ls -l node_modules/.bin
 
       - name: grant permissions
         run: chmod +x node_modules/.bin/*
+
+      - name: grant package.json permissions
+        run: chmod +x package.json
 
       - name: check permissions
         run: ls -l node_modules/.bin
