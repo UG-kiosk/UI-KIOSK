@@ -24,6 +24,12 @@ jobs:
       - name: install dependencies
         run: yarn install --frozen-lockfile
 
+      - name: list files
+        run: ls -la
+
+      - name: check permissions
+        run: ls -la node_modules/.bin
+
       - name: test prettier
         run: yarn prettier:ci
 
