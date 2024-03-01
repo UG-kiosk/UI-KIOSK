@@ -24,6 +24,9 @@ jobs:
       - name: check permissions
         run: ls -l node_modules/.bin
 
+      - name: list files
+        run: ls -la
+
       - name: Upload node_modules_artifact
         uses: actions/upload-artifact@v4
         with:
