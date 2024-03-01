@@ -17,17 +17,14 @@ jobs:
       - name: install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: check permissions
-        run: ls -l node_modules/.bin
-
-      - name: list files
-        run: ls -la
+      - name: Tar node_modules directory
+        run: tar czf node_modules.tar.gz node_modules
 
       - name: Upload node_modules_artifact
         uses: actions/upload-artifact@v4
         with:
           name: node_modules
-          path: node_modules
+          path: node_modules.tar.gz
 
   verify-code-formatting:
     needs: install-dependencies
@@ -39,14 +36,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # - name: Download node_modules artifact
-      #   uses: actions/download-artifact@v4
-      #   with:
-      #     name: node_modules
-      #     path: node_modules
+      - name: Download node_modules artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: node_modules
+          path: node_modules.tar.gz
 
-      - name: install dependencies
-        run: yarn install --frozen-lockfile
+      - name: Extract node_modules
+        run: tar xzf node_modules.tar.gz
 
       - name: check permissions
         run: ls -l node_modules/.bin
@@ -81,7 +78,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node_modules
-          path: node_modules
+          path: node_modules.tar.gz
+
+      - name: Extract node_modules
+        run: tar xzf node_modules.tar.gz
 
       - name: unit test
         run: yarn test
