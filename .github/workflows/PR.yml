@@ -39,11 +39,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download node_modules artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: node_modules
-          path: node_modules
+      # - name: Download node_modules artifact
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: node_modules
+      #     path: node_modules
+
+      - name: install dependencies
+        run: yarn install --frozen-lockfile
 
       - name: check permissions
         run: ls -l node_modules/.bin
