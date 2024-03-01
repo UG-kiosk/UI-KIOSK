@@ -41,6 +41,12 @@ jobs:
       - name: check permissions
         run: ls -l node_modules/.bin
 
+      - name: grant permissions
+        run: chmod +x node_modules/.bin/*
+
+      - name: check permissions
+        run: ls -l node_modules/.bin
+
       - name: test prettier
         run: yarn prettier:ci
 
