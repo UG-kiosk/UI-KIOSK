@@ -7,16 +7,12 @@ on:
 jobs:
   install-dependencies:
     runs-on: ubuntu-latest
-    # container: node:16-alpine
+    container:
+      image: node:18-alpine
+      options: --user root
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
       - name: install dependencies
         run: yarn install --frozen-lockfile
@@ -31,21 +27,17 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: node_modules
-          path: ./node_modules
+          path: node_modules
 
   verify-code-formatting:
     needs: install-dependencies
     runs-on: ubuntu-latest
-    # container: node:16-alpine
+    container:
+      image: node:18-alpine
+      options: --user root
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
       - name: Download node_modules artifact
         uses: actions/download-artifact@v4
