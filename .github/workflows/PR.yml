@@ -18,7 +18,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Tar node_modules directory
-        run: tar czf node_modules.tar.gz node_modules
+        run: tar czf node_modules.tar.gz -C node_modules .
 
       - name: Upload node_modules_artifact
         uses: actions/upload-artifact@v4
@@ -45,8 +45,8 @@ jobs:
       - name: list files
         run: ls -la
 
-      - name: check tar file
-        run: ls -la node_modules.tar.gz
+      # - name: check tar file
+      #   run: ls -la node_modules.tar.gz
 
       - name: Extract node_modules
         run: tar xzf node_modules.tar.gz
