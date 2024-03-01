@@ -45,6 +45,9 @@ jobs:
       - name: list files
         run: ls -la
 
+      - name: check tar file
+        run: ls -la node_modules.tar.gz
+
       - name: Extract node_modules
         run: tar xzf node_modules.tar.gz
 
