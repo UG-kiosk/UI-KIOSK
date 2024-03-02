@@ -86,5 +86,8 @@ jobs:
       - name: Extract node_modules
         run: mkdir node_modules && tar xzf node_modules.tar.gz -C ./node_modules
 
+      - name: install cypress
+        run: yarn add cypress
+
       - name: e2e tests
         run: yarn e2e:ci
