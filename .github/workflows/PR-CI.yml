@@ -7,7 +7,9 @@ on:
 jobs:
   install-dependencies:
     runs-on: ubuntu-latest
-    container: node:16-alpine
+    container:
+      image: node:18-alpine
+      options: --user root
 
     steps:
       - uses: actions/checkout@v4
@@ -15,16 +17,21 @@ jobs:
       - name: install dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Tar node_modules directory
+        run: tar czf node_modules.tar.gz -C node_modules .
+
       - name: Upload node_modules_artifact
         uses: actions/upload-artifact@v4
         with:
           name: node_modules
-          path: ./node_modules
+          path: node_modules.tar.gz
 
   verify-code-formatting:
     needs: install-dependencies
     runs-on: ubuntu-latest
-    container: node:16-alpine
+    container:
+      image: node:18-alpine
+      options: --user root
 
     steps:
       - uses: actions/checkout@v4
@@ -33,6 +40,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node_modules
+
+      - name: Extract node_modules
+        run: mkdir node_modules && tar xzf node_modules.tar.gz -C ./node_modules
 
       - name: test prettier
         run: yarn prettier:ci
@@ -52,6 +62,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node_modules
+          path: node_modules.tar.gz
+
+      - name: Extract node_modules
+        run: mkdir node_modules && tar xzf node_modules.tar.gz -C ./node_modules
 
       - name: unit test
         run: yarn test
