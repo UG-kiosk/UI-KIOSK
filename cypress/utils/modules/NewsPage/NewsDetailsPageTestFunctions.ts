@@ -16,7 +16,6 @@ export class NewsDetailsTestFunctions {
   private getNewsContent = () => cy.getBySelector('news-content');
 
   testNewsDetailsPL = () => {
-    //this.mockGETNewsDetails();
     this.getNewsTitle().should('exist');
     this.getNewsTitle().contains('WYKŁAD OTWARTY');
     this.getNewsInfo().should('exist');
