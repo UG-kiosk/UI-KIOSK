@@ -2,7 +2,8 @@ name: Develop
 
 on:
   pull_request:
-    branches: 'test'
+    branches: 
+    - test
 
 jobs:
   install-dependencies:
