@@ -99,6 +99,7 @@ jobs:
 
     env:
       image_tag: kusmier/kiosk-ui-develop:${GITHUB_SHA}
+      image_latest: kusmier/kiosk-ui-develop:latest
 
     steps:
       - uses: actions/checkout@v4
@@ -110,9 +111,13 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build Docker Image
         run: docker build -t ${{ env.image_tag }} .
+      - name: Build Docker Image Latest
+        run: docker build -t ${{ env.image_latest }} .
 
       - name: Push Docker Image
         run: docker push ${{ env.image_tag }}
+      - name: Push Docker Image Latest
+        run: docker push -t ${{ env.image_latest }} .
 
   # deploy:
   #   needs: [install-dependencies, verify-code-formatting, run-unit-tests, run-e2e-tests, release]
