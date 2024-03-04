@@ -119,10 +119,10 @@ jobs:
       - name: Push Docker Image Latest
         run: docker push ${{ env.image_latest }}
 
-  # deploy:
-  #   needs: [install-dependencies, verify-code-formatting, run-unit-tests, run-e2e-tests, release]
-  #   runs-on: ubuntu-latest
+  deploy:
+    needs: [install-dependencies, verify-code-formatting, run-unit-tests, run-e2e-tests, release]
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     - name: Trigger deploy webhook
-  #       run: curl --request POST '${{ secrets.DEPLOY_WEBHOOK_URL_REST }}'
+    steps:
+      - name: Trigger deploy webhook
+        run: curl --request POST '${{ secrets.DEPLOY_DEVELOP_WEBHOOK }}'
