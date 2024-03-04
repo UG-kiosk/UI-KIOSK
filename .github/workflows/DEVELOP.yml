@@ -61,7 +61,7 @@ jobs:
         run: yarn e2e:ci
   
   release:
-    needs: [install-dependencies, verify-code-formatting]
+    needs: [install-dependencies, verify-code-formatting, run-tests]
     runs-on: ubuntu-latest
 
     env:
