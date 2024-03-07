@@ -1,12 +1,12 @@
 import { Box, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { DetailsTile, Divider, Header, Navbar } from '@UG/libs/components';
+import { Divider, Header, Navbar, Error } from '@UG/libs/components';
 import { Events } from '@UG/libs/types';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { StateType } from 'src/store';
-import { useGetEvents } from './hooks';
+// import { useGetEvents } from './hooks';
 
 interface StateProps {
   isLoading: boolean;
@@ -29,7 +29,7 @@ export const EventsDetailsPage = () => {
   const { name } = useParams();
   const navigate = useNavigate();
 
-  const { isLoading, eventsList, errorMessage,  } = useSelector<StateType, StateProps>(state => ({
+  const { isLoading, eventsList, errorMessage } = useSelector<StateType, StateProps>(state => ({
     isLoading: state.events.isLoading,
     eventsList: state.events.eventsList,
     errorMessage: state.events.error,
@@ -37,13 +37,11 @@ export const EventsDetailsPage = () => {
 
   const eventDetails = eventsList?.find(event => event.name === name);
 
-
   useEffect(() => {
     if (!name) {
       navigate('/error');
-    } 
+    }
   }, [name, navigate]);
-
 
   if (!isLoading && errorMessage) {
     return (
@@ -70,7 +68,6 @@ export const EventsDetailsPage = () => {
       <>
         <Header />
         <Error />
-
       </>
     );
   }
@@ -81,7 +78,6 @@ export const EventsDetailsPage = () => {
       <Box marginTop="150px" marginBottom="40px" marginLeft="auto" marginRight="auto" width={975}>
         <StyledTitle data-cy="title">{eventDetails.name}</StyledTitle>
         <Divider />
-
       </Box>
       <Navbar />
     </>

@@ -2,12 +2,11 @@ import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetEvents } from './hooks';
 import { StateType } from 'src/store';
-import { Header, Navbar, DetailsTile, Paragraph, ListPageSkeleton, Error } from '@UG/libs/components';
+import { Header, Navbar, DetailsTile, ListPageSkeleton } from '@UG/libs/components';
 import { Events } from '@UG/libs/types';
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
-// import { SearchBar } from '../../libs/components/SearchBar';
 
 interface StateProps {
   isLoading: boolean;
@@ -37,16 +36,14 @@ export const EventsList = () => {
 
   const eventsTiles: JSX.Element[] = useMemo(
     () =>
-      //TODO - change name to id
-      eventsList.map(({ name }) => (
-        <StyledLink to={name} key={name} data-cy="major-tile-container">
+      eventsList.map(({ name, _id }) => (
+        <StyledLink to={_id} key={name} data-cy="events-tile-container">
           <DetailsTile>{name}</DetailsTile>
         </StyledLink>
       )),
     [eventsList],
   );
 
-  //TODO change layout as soon as we get designs
   if (!isLoading && errorMessage) {
     return (
       <>
@@ -59,7 +56,6 @@ export const EventsList = () => {
     );
   }
 
-  //TODO change layout as soon as we get designs
   if (isLoading && !errorMessage) {
     return (
       <>
@@ -85,7 +81,7 @@ export const EventsList = () => {
           width: 1080,
         }}
       >
-        {majorsTiles}
+        {eventsTiles}
       </Box>
       <Navbar />
     </>
