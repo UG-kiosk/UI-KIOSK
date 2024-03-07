@@ -6,11 +6,19 @@
   },
   "mainPanel": {
     "staff": "skład osobowy",
-    "majors": "kierunki studiów"
+    "majors": "kierunki studiów",
+    "news": "aktualności"
   },
   "search": "szukaj",
   "staffPage": {
     "contact": "Kontakt",
     "tutorial": "Konsultacje"
-  }
+  },
+  "newsPage": {
+    "all": "WSZYSTKO",
+    "inf": "INFORMATYKA",
+    "mfi": "WYDZIAŁ MFI"
+  },
+  "noResults": "Przepraszamy, wygląda na to, że nie znaleziono treści.",
+  "degree": { "BACHELOR": "Licencjackie", "MASTER": "Magisterskie", "ALL": "Wszystko" }
 }

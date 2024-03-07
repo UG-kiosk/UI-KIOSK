@@ -6,11 +6,19 @@
   },
   "mainPanel": {
     "majors": "majors",
-    "staff": "faculty members"
+    "staff": "faculty members",
+    "news": "news"
   },
   "search": "search",
   "staffPage": {
     "contact": "Contact",
     "tutorial": "Tutorials"
-  }
+  },
+  "newsPage": {
+    "all": "All",
+    "inf": "INF",
+    "mfi": "MFI"
+  },
+  "noResults": "Sorry, but we don't have any results.",
+  "degree": { "BACHELOR": "Bachelor", "MASTER": "Master", "ALL": "All" }
 }
