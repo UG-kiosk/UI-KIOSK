@@ -98,8 +98,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      image_tag: ${{ KIOSK_UI_PRODUCTION_IMAGE }}:${GITHUB_SHA}
-      image_latest: ${{ KIOSK_UI_PRODUCTION_IMAGE }}:latest
+      image_tag: ${{ secrets.KIOSK_UI_PRODUCTION_IMAGE }}:${GITHUB_SHA}
+      image_latest: ${{ secrets.KIOSK_UI_PRODUCTION_IMAGE }}:latest
 
     steps:
       - uses: actions/checkout@v4
