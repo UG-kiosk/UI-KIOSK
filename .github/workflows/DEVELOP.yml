@@ -98,8 +98,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      image_tag: kusmier/kiosk-ui-develop:${GITHUB_SHA}
-      image_latest: kusmier/kiosk-ui-develop:latest
+      image_tag: ${{ KIOSK_DEVELOP_IMAGE }}:${GITHUB_SHA}
+      image_latest: ${{ KIOSK_DEVELOP_IMAGE }}:latest
 
     steps:
       - uses: actions/checkout@v4
