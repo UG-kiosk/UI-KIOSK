@@ -1,129 +1,128 @@
-# name: Develop
+name: Develop
 
-# on:
-#   push:
-#     branches:
-#       - 'test'
+on:
+  push:
+    branches:
+      - 'test'
 
-# jobs:
-#   install-dependencies:
-#     runs-on: ubuntu-latest
-#     container:
-#       image: node:18-alpine
+jobs:
+  install-dependencies:
+    runs-on: ubuntu-latest
+    container:
+      image: node:18-alpine
 
-#     steps:
-#       - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-#       - name: install dependencies
-#         run: yarn install --frozen-lockfile
+      - name: install dependencies
+        run: yarn install --frozen-lockfile
 
-#       - name: list files
-#         run: ls -la /
+      - name: list files
+        run: ls -la /
 
-#       - name: Tar node_modules directory
-#         run: tar czf node_modules.tar.gz -C node_modules .
+      - name: Tar node_modules directory
+        run: tar czf node_modules.tar.gz -C node_modules .
 
-#       - name: Upload node_modules_artifact
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: node_modules
-#           path: node_modules.tar.gz
+      - name: Upload node_modules_artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: node_modules
+          path: node_modules.tar.gz
 
-#   verify-code-formatting:
-#     needs: install-dependencies
-#     runs-on: ubuntu-latest
-#     container:
-#       image: node:18-alpine
+  verify-code-formatting:
+    needs: install-dependencies
+    runs-on: ubuntu-latest
+    container:
+      image: node:18-alpine
 
-#     steps:
-#       - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-#       - name: Download node_modules artifact
-#         uses: actions/download-artifact@v4
-#         with:
-#           name: node_modules
+      - name: Download node_modules artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: node_modules
 
-#       - name: Extract node_modules
-#         run: mkdir node_modules && tar xzf node_modules.tar.gz -C ./node_modules
+      - name: Extract node_modules
+        run: mkdir node_modules && tar xzf node_modules.tar.gz -C ./node_modules
 
-#       - name: test prettier
-#         run: yarn prettier:ci
+      - name: test prettier
+        run: yarn prettier:ci
 
-#       - name: test eslint
-#         run: yarn lint
+      - name: test eslint
+        run: yarn lint
 
-#   run-unit-tests:
-#     needs: [install-dependencies, verify-code-formatting]
-#     runs-on: ubuntu-latest
-#     container: node:18-alpine
+  run-unit-tests:
+    needs: [install-dependencies, verify-code-formatting]
+    runs-on: ubuntu-latest
+    container: node:18-alpine
 
-#     steps:
-#       - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-#       - name: Download node_modules artifact
-#         uses: actions/download-artifact@v4
-#         with:
-#           name: node_modules
+      - name: Download node_modules artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: node_modules
 
-#       - name: Extract node_modules
-#         run: mkdir node_modules && tar xzf node_modules.tar.gz -C ./node_modules
+      - name: Extract node_modules
+        run: mkdir node_modules && tar xzf node_modules.tar.gz -C ./node_modules
 
-#       - name: unit test
-#         run: yarn test
+      - name: unit test
+        run: yarn test
 
-#   run-e2e-tests:
-#     needs: [install-dependencies, verify-code-formatting, run-unit-tests]
-#     runs-on: ubuntu-latest
-#     container: cypress/base:20.11.0
+  run-e2e-tests:
+    needs: [install-dependencies, verify-code-formatting, run-unit-tests]
+    runs-on: ubuntu-latest
+    container: cypress/base:20.11.0
 
-#     steps:
-#       - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-#       - name: Download node_modules artifact
-#         uses: actions/download-artifact@v4
-#         with:
-#           name: node_modules
+      - name: Download node_modules artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: node_modules
 
-#       - name: Extract node_modules
-#         run: mkdir node_modules && tar xzf node_modules.tar.gz -C ./node_modules
+      - name: Extract node_modules
+        run: mkdir node_modules && tar xzf node_modules.tar.gz -C ./node_modules
 
-#       - name: install cypress
-#         run: yarn add cypress
+      - name: install cypress
+        run: yarn add cypress
 
-#       - name: e2e tests
-#         run: yarn e2e:ci
+      - name: e2e tests
+        run: yarn e2e:ci
 
-#   release:
-#     needs: [install-dependencies, verify-code-formatting, run-unit-tests, run-e2e-tests]
-#     runs-on: ubuntu-latest
+  release:
+    needs: [install-dependencies, verify-code-formatting, run-unit-tests, run-e2e-tests]
+    runs-on: ubuntu-latest
 
-#     env:
-#       image_tag: ${{ secrets.KIOSK_UI_DEVELOP_IMAGE }}:${GITHUB_SHA}
-#       image_latest: ${{ secrets.KIOSK_UI_DEVELOP_IMAGE }}:latest
+    env:
+      image_tag: ${{ secrets.KIOSK_UI_DEVELOP_IMAGE }}:${GITHUB_SHA}
+      image_latest: ${{ secrets.KIOSK_UI_DEVELOP_IMAGE }}:latest
 
-#     steps:
-#       - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-#       - name: Login to Docker Hub
-#         uses: docker/login-action@v3
-#         with:
-#           username: ${{ secrets.DOCKERHUB_USERNAME }}
-#           password: ${{ secrets.DOCKERHUB_TOKEN }}
-#       - name: Build Docker Image
-#         run: docker build -t ${{ env.image_tag }} .
-#       - name: Build Docker Image Latest
-#         run: docker build -t ${{ env.image_latest }} .
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build Docker Image
+        run: docker build -t ${{ env.image_tag }} .
+      - name: Build Docker Image Latest
+        run: docker build -t ${{ env.image_latest }} .
 
-#       - name: Push Docker Image
-#         run: docker push ${{ env.image_tag }}
-#       - name: Push Docker Image Latest
-#         run: docker push ${{ env.image_latest }}
+      - name: Push Docker Image
+        run: docker push ${{ env.image_tag }}
+      - name: Push Docker Image Latest
+        run: docker push ${{ env.image_latest }}
 
-#   deploy:
-#     needs: [install-dependencies, verify-code-formatting, run-unit-tests, run-e2e-tests, release]
-#     runs-on: ubuntu-latest
+  deploy:
+    needs: [install-dependencies, verify-code-formatting, run-unit-tests, run-e2e-tests, release]
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Trigger deploy webhook
-#         run: curl --request POST '${{ secrets.DEPLOY_KIOSK_UI_DEVELOP_WEBHOOK }}'
-v
+    steps:
+      - name: Trigger deploy webhook
+        run: curl --request POST '${{ secrets.DEPLOY_KIOSK_UI_DEVELOP_WEBHOOK }}'
