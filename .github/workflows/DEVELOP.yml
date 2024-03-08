@@ -98,8 +98,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      image_tag: ${{ KIOSK_DEVELOP_IMAGE }}:${GITHUB_SHA}
-      image_latest: ${{ KIOSK_DEVELOP_IMAGE }}:latest
+      image_tag: ${{ KIOSK_UI_DEVELOP_IMAGE }}:${GITHUB_SHA}
+      image_latest: ${{ KIOSK_UI_DEVELOP_IMAGE }}:latest
 
     steps:
       - uses: actions/checkout@v4
@@ -125,4 +125,4 @@ jobs:
 
     steps:
       - name: Trigger deploy webhook
-        run: curl --request POST '${{ secrets.DEPLOY_DEVELOP_WEBHOOK }}'
+        run: curl --request POST '${{ secrets.DEPLOY_KIOSK_UI_DEVELOP_WEBHOOK }}'
