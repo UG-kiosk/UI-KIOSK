@@ -98,7 +98,6 @@ export class NewsListPageTestFunctions {
     cy.intercept('GET', '/news', {
       statusCode: 500,
     }).as('getNewsList');
-
     this.getErrorMessage().should('exist');
   };
 
@@ -106,7 +105,6 @@ export class NewsListPageTestFunctions {
     cy.intercept('GET', '/news', request => {
       request.responseTimeout = 5000;
     });
-
     this.getSkeletonRow().should('have.length', 6);
   };
 }
