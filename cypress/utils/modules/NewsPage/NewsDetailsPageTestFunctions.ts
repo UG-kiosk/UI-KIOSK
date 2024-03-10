@@ -14,7 +14,7 @@ export class NewsDetailsTestFunctions {
   private getNewsInfo = () => cy.getBySelector('news-info');
   private getNewsImage = () => cy.getBySelector('news-img');
   private getNewsContent = () => cy.getBySelector('news-content');
-  private getSkeletonRow = () => cy.getBySelector('skeleton-row');
+  private getSkeletonTile = () => cy.getBySelector('skeleton-tile');
 
   testNewsDetailsPL = () => {
     this.getNewsTitle().should('exist');
@@ -42,6 +42,7 @@ export class NewsDetailsTestFunctions {
     cy.intercept('GET', '/news/657785edb09d333037f7c1b5', request => {
       request.responseTimeout = 5000;
     });
-    this.getSkeletonRow().should('have.length', 2);
+    this.getSkeletonTile().should('exist');
+    this.getSkeletonTile().should('have.length', 3);
   };
 }

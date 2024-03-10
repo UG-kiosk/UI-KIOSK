@@ -1,6 +1,6 @@
 import { Typography, Box } from '@mui/material';
 import { styled, useTheme } from '@mui/system';
-import { Divider, Paragraph, ListPageSkeleton, Slider } from '@UG/libs/components';
+import { Divider, Paragraph, StyledSkeleton, Slider } from '@UG/libs/components';
 import { News } from '@UG/libs/types';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
@@ -60,7 +60,31 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
   if (isLoading && !errorMessage) {
     return (
       <>
-        <ListPageSkeleton width={900} height={300} mt={25} marginBottom={50} tiles={2} />
+        <StyledSkeleton
+          animation="wave"
+          variant="rectangular"
+          width={1000}
+          height={44}
+          mt={25}
+          data-cy="skeleton-tile"
+        />
+        <Divider width={1000} />
+        <StyledSkeleton
+          animation="wave"
+          variant="rectangular"
+          width={1000}
+          height={350}
+          mt={25}
+          data-cy="skeleton-tile"
+        />
+        <StyledSkeleton
+          animation="wave"
+          variant="rectangular"
+          width={1000}
+          height={300}
+          mt={25}
+          data-cy="skeleton-tile"
+        />
       </>
     );
   }
