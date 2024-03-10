@@ -1,6 +1,6 @@
 import { Typography, Box } from '@mui/material';
 import { styled, useTheme } from '@mui/system';
-import { Divider, Paragraph, Slider } from '@UG/libs/components';
+import { Divider, Paragraph, ListPageSkeleton, Slider } from '@UG/libs/components';
 import { News } from '@UG/libs/types';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
@@ -50,7 +50,9 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
   if (!isLoading && errorMessage) {
     return (
       <>
-        <p style={{ marginTop: '150px' }}>{errorMessage}</p>
+        <p style={{ marginTop: '150px' }} data-cy="error-message">
+          {errorMessage}
+        </p>
       </>
     );
   }
@@ -58,7 +60,7 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
   if (isLoading && !errorMessage) {
     return (
       <>
-        <p style={{ marginTop: '150px' }}>loading...</p>
+        <ListPageSkeleton width={900} height={300} mt={25} marginBottom={50} tiles={2} />
       </>
     );
   }
@@ -66,7 +68,9 @@ export const NewsDetails = ({ id }: NewsDetailsProps) => {
   if (!newsDetails) {
     return (
       <>
-        <p style={{ marginTop: '150px' }}>sorry but we couldn&apos;t find {id}</p>
+        <p style={{ marginTop: '150px' }} data-cy="error-message">
+          sorry but we couldn&apos;t find {id}
+        </p>
       </>
     );
   }

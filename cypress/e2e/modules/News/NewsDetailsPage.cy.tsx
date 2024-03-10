@@ -12,11 +12,13 @@ describe('NewsDetailsPage.cy.tsc', () => {
   });
 
   it('should render skeleton', () => {
+    NewsDetails.testNewsDetailsContentPendingStatus();
     Header.testHeaderContentPL();
     Navbar.testNavbarContent();
   });
 
   it('should render error-message', () => {
+    NewsDetails.testNewsDetailsContentOnRequestError();
     Header.testHeaderContentPL();
     Navbar.testNavbarContent();
   });
