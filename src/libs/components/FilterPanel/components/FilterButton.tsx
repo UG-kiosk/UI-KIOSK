@@ -4,7 +4,6 @@ import { styled } from '@mui/system';
 interface ButtonProps {
   text: string;
   type: 'button' | 'submit' | 'reset' | undefined;
-  name: string;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   className: string;
 }
@@ -33,8 +32,8 @@ const StyledButton = styled(MUIButton)(({ theme }) => ({
   },
 }));
 
-export const FilterButton = ({ text, type, name, onClick, className }: ButtonProps) => (
-  <StyledButton data-cy={`${name}-button`} variant="outlined" type={type} onClick={onClick} className={className}>
+export const FilterButton = ({ text, type, onClick, className }: ButtonProps) => (
+  <StyledButton data-cy={'button'} variant="outlined" type={type} onClick={onClick} className={className}>
     {text}
   </StyledButton>
 );
