@@ -75,8 +75,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      image_tag: ${{ secrets.KIOSK_UI_PRODUCTION_IMAGE }}:${GITHUB_SHA}
-      image_latest: ${{ secrets.KIOSK_UI_PRODUCTION_IMAGE }}:latest
+      image_tag: $DOCKER_IMAGE_OWNER:${GITHUB_SHA}
+      image_latest: $DOCKER_IMAGE_OWNER:latest
 
     steps:
       - uses: actions/checkout@v4
@@ -86,15 +86,16 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build Docker Image
-        run: docker build -t ${{ env.image_tag }} .
-      - name: Build Docker Image Latest
-        run: docker build -t ${{ env.image_latest }} .
 
-      - name: Push Docker Image
-        run: docker push ${{ env.image_tag }}
-      - name: Push Docker Image Latest
-        run: docker push ${{ env.image_latest }}
+      - name: Build Docker Images
+        run: |
+          docker build -t ${{ env.image_tag }} .
+          docker tag ${{ env.image_tag }} ${{ env.image_latest }}
+
+      - name: Push Docker Images
+        run: |
+          docker push ${{ env.image_tag }}
+          docker push ${{ env.image_latest }}
 
   deploy:
     needs: [install-dependencies, run-unit-tests, run-e2e-tests, release]
