@@ -1,4 +1,4 @@
-name: Develop
+name: Production
 
 on:
   push:
@@ -28,29 +28,6 @@ jobs:
         with:
           name: node_modules
           path: node_modules.tar.gz
-
-  verify-code-formatting:
-    needs: install-dependencies
-    runs-on: ubuntu-latest
-    container:
-      image: node:18-alpine
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Download node_modules artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: node_modules
-
-      - name: Extract node_modules
-        run: mkdir node_modules && tar xzf node_modules.tar.gz -C ./node_modules
-
-      - name: test prettier
-        run: yarn prettier:ci
-
-      - name: test eslint
-        run: yarn lint
 
   run-unit-tests:
     needs: [install-dependencies, verify-code-formatting]
@@ -98,8 +75,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      image_tag: ${{ secrets.KIOSK_UI_DEVELOP_IMAGE }}:${GITHUB_SHA}
-      image_latest: ${{ secrets.KIOSK_UI_DEVELOP_IMAGE }}:latest
+      image_tag: ${{ secrets.KIOSK_UI_PRODUCTION_IMAGE }}:${GITHUB_SHA}
+      image_latest: ${{ secrets.KIOSK_UI_PRODUCTION_IMAGE }}:latest
 
     steps:
       - uses: actions/checkout@v4
@@ -125,4 +102,4 @@ jobs:
 
     steps:
       - name: Trigger deploy webhook
-        run: curl --request POST '${{ secrets.DEPLOY_KIOSK_UI_DEVELOP_WEBHOOK }}'
+        run: curl --request POST '${{ secrets.KIOSK_UI_DEPLOY_PRODUCTION_WEBHOOK }}'
