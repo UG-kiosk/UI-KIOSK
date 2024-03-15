@@ -72,8 +72,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      image_tag: ${{vars.DOCKER_IMAGE_OWNER}}:${GITHUB_SHA}
-      image_latest: ${{vars.DOCKER_IMAGE_OWNER}}:latest
+      image_tag: ${{vars.DOCKER_IMAGE_OWNER}}/kiosk-ui-production:${GITHUB_SHA}
+      image_latest: ${{vars.DOCKER_IMAGE_OWNER}}/kiosk-ui-production:latest
 
     steps:
       - uses: actions/checkout@v4
