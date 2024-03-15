@@ -100,4 +100,4 @@ jobs:
 
     steps:
       - name: Trigger deploy webhook
-        run: curl --request POST '${{ secrets.KIOSK_UI_DEPLOY_PRODUCTION_WEBHOOK }}'
+        run: curl --request POST '${{ secrets.DEPLOY_KIOSK_UI_PRODUCTION_WEBHOOK }}'
