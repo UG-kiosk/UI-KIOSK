@@ -17,9 +17,6 @@ jobs:
       - name: install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: list files
-        run: ls -la /
-
       - name: Tar node_modules directory
         run: tar czf node_modules.tar.gz -C node_modules .
 

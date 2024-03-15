@@ -17,9 +17,6 @@ jobs:
       - name: install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: list files
-        run: ls -la /
-
       - name: Tar node_modules directory
         run: tar czf node_modules.tar.gz -C node_modules .
 
@@ -75,8 +72,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      image_tag: $DOCKER_IMAGE_OWNER:${GITHUB_SHA}
-      image_latest: $DOCKER_IMAGE_OWNER:latest
+      image_tag: ${{vars.DOCKER_IMAGE_OWNER}}:${GITHUB_SHA}
+      image_latest: ${{vars.DOCKER_IMAGE_OWNER}}:latest
 
     steps:
       - uses: actions/checkout@v4
