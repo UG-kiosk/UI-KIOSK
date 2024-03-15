@@ -3,7 +3,7 @@ name: Develop
 on:
   push:
     branches:
-      - 'test'
+      - 'develop'
 
 jobs:
   install-dependencies:
