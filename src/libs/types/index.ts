@@ -5,3 +5,4 @@ export * from './Staff';
 export * from './News';
 export * from './Pagination';
 export * from './Degree';
+export * from './Events';
