@@ -24,7 +24,7 @@ const StyledTitle = styled(Typography)`
   color: ${({ theme }) => theme.palette.secondary.dark};
 `;
 
-export const EventsDetailsPage = () => {
+export const EventsDetails = () => {
   // const { getEventsDetails } = useGetEvents();
   const { name } = useParams();
   const navigate = useNavigate();

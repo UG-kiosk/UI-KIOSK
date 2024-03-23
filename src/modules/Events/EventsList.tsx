@@ -36,8 +36,8 @@ export const EventsList = () => {
 
   const eventsTiles: JSX.Element[] = useMemo(
     () =>
-      eventsList.map(({ name, _id }) => (
-        <StyledLink to={_id} key={name} data-cy="events-tile-container">
+      eventsList.map(({ name }) => (
+        <StyledLink to={name} key={name} data-cy="events-tile-container">
           <DetailsTile>{name}</DetailsTile>
         </StyledLink>
       )),

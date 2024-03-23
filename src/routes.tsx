@@ -5,7 +5,7 @@ import { MajorsPage } from './modules/Majors';
 import { Header, Navbar, ContentContainer } from '@UG/libs/components';
 import { StaffPage } from './modules/Staff';
 import { NewsPage } from './modules/News';
-import { EventsList, EventsDetailsPage } from './modules/Events';
+import { EventsList, EventsDetails } from './modules/Events';
 
 const routes: RouteObject[] = [
   {
@@ -102,7 +102,7 @@ const routes: RouteObject[] = [
   },
   {
     path: '/events/:_id',
-    element: <EventsDetailsPage />,
+    element: <EventsDetails />,
   },
   {
     path: '*',

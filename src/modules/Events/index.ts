@@ -1,2 +1,2 @@
-export * from './EventsListPage';
-export * from './EventsDetailsPage'; 
+export * from './EventsList';
+export * from './EventsDetails';
