@@ -17,7 +17,8 @@
   "newsPage": {
     "all": "WSZYSTKO",
     "inf": "INFORMATYKA",
-    "mfi": "WYDZIAŁ MFI"
+    "mfi": "WYDZIAŁ MFI",
+    "noNews": "Brak aktualności"
   },
   "noResults": "Przepraszamy, wygląda na to, że nie znaleziono treści.",
   "degree": { "BACHELOR": "Licencjackie", "MASTER": "Magisterskie", "ALL": "Wszystko" }

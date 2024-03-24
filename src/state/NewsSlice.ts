@@ -6,6 +6,7 @@ export interface NewsType {
   newsList: News[];
   newsDetails: News | null;
   error: string | null;
+  totalPages: number;
 }
 
 const initialState: NewsType = {
@@ -13,6 +14,7 @@ const initialState: NewsType = {
   newsList: [],
   newsDetails: null,
   error: null,
+  totalPages: 1,
 };
 
 export const news = createSlice({
@@ -37,9 +39,12 @@ export const news = createSlice({
     setError(state: NewsType, action: PayloadAction<string>) {
       state.error = action.payload;
     },
+    setPageInfo(state: NewsType, action: PayloadAction<{ totalPages: number }>) {
+      state.totalPages = action.payload.totalPages;
+    },
   },
 });
 
-export const { startLoading, setNewsList, setNewsDetails, finishLoading, setError } = news.actions;
+export const { startLoading, setNewsList, setNewsDetails, finishLoading, setError, setPageInfo } = news.actions;
 
 export const newsReducer = news.reducer;
