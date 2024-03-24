@@ -14,13 +14,13 @@ interface StateProps {
   errorMessage: string | null;
 }
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: ${({ theme }) => theme.palette.secondary.dark};
-  font-family: 'Montserrat';
-  font-size: 24px;
-  font-weight: 700;
-`;
+const StyledLink = styled(Link)(({ theme }) => ({
+  textDecoration: 'none',
+  color: theme.palette.secondary.dark,
+  fontFamily: 'Montserrat',
+  fontSize: '24px',
+  fontWeight: 700,
+}));
 
 export const MajorsList = () => {
   const { t } = useTranslation();

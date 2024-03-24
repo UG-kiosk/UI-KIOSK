@@ -9,16 +9,16 @@ interface LanguageChangeProps {
   fontSize?: number;
 }
 
-const StyledLanguageChange = styled('button')<LanguageChangeProps>`
-  color: ${({ theme, color }) => (color ? color : theme.palette.primary.main)};
-  border: none;
-  background-color: ${({ theme, bgColor }) => (bgColor ? bgColor : theme.palette.primary.light)};
-  font-family: Montserrat;
-  font-size: ${({ fontSize }) => (fontSize ? fontSize : 32)}px;
-  font-weight: 800;
-  line-height: 39px;
-  letter-spacing: 0em;
-`;
+const StyledLanguageChange = styled('button')<LanguageChangeProps>(({ theme, color, bgColor, fontSize }) => ({
+  color: color ? color : theme.palette.primary.main,
+  border: 'none',
+  backgroundColor: bgColor ? bgColor : theme.palette.primary.light,
+  fontFamily: 'Montserrat',
+  fontSize: fontSize ? fontSize : 32,
+  fontWeight: 800,
+  lineHeight: '39px',
+  letterSpacing: '0em',
+}));
 
 export const LanguageChange = ({ ...props }: LanguageChangeProps) => {
   const { i18n } = useTranslation();

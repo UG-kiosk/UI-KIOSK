@@ -6,16 +6,16 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
-const NavButtons = styled(Button)`
-  color: ${({ theme }) => theme.palette.primary.main};
-  border-radius: 50px;
-  width: 200px;
-  font-size: 54px;
-`;
+const NavButtons = styled(Button)(({ theme }) => ({
+  color: theme.palette.primary.main,
+  borderRadius: '50px',
+  width: '200px',
+  fontSize: '54px',
+}));
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-`;
+const StyledLink = styled(Link)({
+  textDecoration: 'none',
+});
 
 export const Navbar = () => {
   const navigate = useNavigate();

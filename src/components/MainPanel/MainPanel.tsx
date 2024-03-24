@@ -7,9 +7,9 @@ import SchoolIcon from '@mui/icons-material/School';
 import FeedIcon from '@mui/icons-material/Feed';
 import { useTranslation } from 'react-i18next';
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-`;
+const StyledLink = styled(Link)({
+  textDecoration: 'none',
+});
 
 export const MainPanel = () => {
   const { t } = useTranslation();

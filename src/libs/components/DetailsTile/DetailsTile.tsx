@@ -1,3 +1,4 @@
+import { Theme } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { ReactNode } from 'react';
 
@@ -19,19 +20,18 @@ const StyledDetailsTile = styled('div', {
     prop !== 'backgroundColor' &&
     prop !== 'borderRadius' &&
     prop !== 'gap',
-})<DetailsTileProps>`
-  width: ${({ width }) => (width ? `${width}px` : '900px')};
-  margin: ${({ marginTop }) => (marginTop ? marginTop : 20)}px auto;
-  height: auto;
-  padding: ${({ padding }) => (padding ? padding : '20px 40px')};
-  background-color: ${({ backgroundColor, theme }) =>
-    backgroundColor ? backgroundColor : theme.palette.background.default};
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(174, 174, 192, 0.4);
-  border-radius: ${({ borderRadius }) => (borderRadius ? `${borderRadius}px` : '55px')};
-  gap: ${({ gap }) => (gap ? `${gap}px` : '0')};
-  display: flex;
-  flex-direction: column;
-`;
+})((props: DetailsTileProps & { theme: Theme }) => ({
+  width: props.width ? `${props.width}px` : '900px',
+  margin: `${props.marginTop ? props.marginTop : 20}px auto`,
+  height: 'auto',
+  padding: props.padding ? props.padding : '20px 40px',
+  backgroundColor: props.backgroundColor ? props.backgroundColor : props.theme.palette.background.default,
+  boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(174, 174, 192, 0.4)',
+  borderRadius: props.borderRadius ? `${props.borderRadius}px` : '55px',
+  gap: props.gap ? `${props.gap}px` : '0',
+  display: 'flex',
+  flexDirection: 'column',
+}));
 
 export const DetailsTile = ({ children, width, marginTop, padding, backgroundColor, gap }: DetailsTileProps) => {
   return (

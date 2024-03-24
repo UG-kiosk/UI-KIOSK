@@ -8,19 +8,17 @@ interface TileProps {
   tileHeight?: number;
 }
 
-const StyledTile = styled('div', {
-  shouldForwardProp: prop => prop !== 'tileWidth' && prop !== 'tileHeight',
-})<TileProps>`
-  height: ${({ tileHeight }) => (tileHeight ? `${tileHeight}px` : '320px')};
-  width: ${({ tileWidth }) => (tileWidth ? `${tileWidth}px` : '985px')};
-  border-radius: 55px;
-  background-color: ${({ theme }) => theme.palette.secondary.main};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: ${({ theme }) => theme.palette.background.default};
-`;
+const StyledTile = styled('div')<TileProps>(({ theme, tileWidth, tileHeight }) => ({
+  height: tileHeight ? `${tileHeight}px` : '320px',
+  width: tileWidth ? `${tileWidth}px` : '985px',
+  borderRadius: '55px',
+  backgroundColor: theme.palette.secondary.main,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  color: theme.palette.background.default,
+}));
 
 export const Tile = ({ children, className, tileWidth, tileHeight }: TileProps) => (
   <StyledTile tileWidth={tileWidth} tileHeight={tileHeight} className={className}>

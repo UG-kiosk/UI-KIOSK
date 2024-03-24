@@ -9,9 +9,9 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { SubmitHandler } from 'react-hook-form';
 import { Pagination } from '@mui/material';
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-`;
+const StyledLink = styled(Link)({
+  textDecoration: 'none',
+});
 
 interface FormData {
   name: string;
