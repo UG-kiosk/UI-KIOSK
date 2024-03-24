@@ -7,41 +7,41 @@ interface InputProps {
   fieldName: string;
   type?: string;
 }
-const StyledSearchTextField = styled(TextField)`
-  width: 710px;
-  margin-bottom: 40px;
-  & input {
-    font-family: 'Montserrat';
-    color: ${({ theme }) => theme.palette.primary.dark};
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-  & .MuiInputBase-root {
-    height: 56px;
-  }
-  & fieldset {
-    border-radius: 25px;
-  }
-  & .MuiOutlinedInput-root:hover {
-    & fieldset {
-      border: 1px solid ${({ theme }) => theme.palette.primary.main};
-    }
-  }
-  & .MuiFormLabel-root {
-    font-weight: 700;
-  }
-  & label {
-    align-items: center;
-    font-weight: 700;
-    margin-left: 30px;
-    margin-top: 7px;
-    color: ${({ theme }) => theme.palette.secondary.main};
-  }
-  & legend {
-    color: ${({ theme }) => theme.palette.primary.main};
-    margin-left: 30px;
-  }
-`;
+const StyledSearchTextField = styled(TextField)(({ theme }) => ({
+  width: '710px',
+  marginBottom: '40px',
+  '& input': {
+    fontFamily: 'Montserrat',
+    color: theme.palette.primary.dark,
+    marginLeft: '20px',
+    marginRight: '20px',
+  },
+  '& .MuiInputBase-root': {
+    height: '56px',
+  },
+  '& fieldset': {
+    borderRadius: '25px',
+  },
+  '& .MuiOutlinedInput-root:hover': {
+    '& fieldset': {
+      border: `1px solid ${theme.palette.primary.main}`,
+    },
+  },
+  '& .MuiFormLabel-root': {
+    fontWeight: 700,
+  },
+  '& label': {
+    alignItems: 'center',
+    fontWeight: 700,
+    marginLeft: '30px',
+    marginTop: '7px',
+    color: theme.palette.secondary.main,
+  },
+  '& legend': {
+    color: theme.palette.primary.main,
+    marginLeft: '30px',
+  },
+}));
 
 export const SearchInput = ({ label, fieldName, type = 'text' }: InputProps) => {
   const {

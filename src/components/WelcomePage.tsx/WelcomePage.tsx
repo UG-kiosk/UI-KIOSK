@@ -8,44 +8,44 @@ import ug_logo_pl from 'src/assets/images/ug_logo_pl_white.png';
 import ug_logo_en from 'src/assets/images/ug_logo_en_white.png';
 import { useTranslation } from 'react-i18next';
 
-const StyledHeader = styled('div')`
-  display: flex;
-  justify-content: space-between;
-  width: 920px;
-  margin: 50px 80px;
-`;
+const StyledHeader = styled('div')({
+  display: 'flex',
+  justifyContent: 'space-between',
+  width: '920px',
+  margin: '50px 80px',
+});
 
-const StyledTitle = styled('h1')`
-  width: 695px;
-  height: 209px;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 800;
-  font-size: 96px;
-  line-height: 117px;
-  text-align: center;
-  color: ${({ theme }) => theme.palette.secondary.light};
-`;
+const StyledTitle = styled('h1')(({ theme }) => ({
+  color: theme.palette.secondary.light,
+  width: '695px',
+  height: '209px',
+  fontFamily: 'Montserrat',
+  fontStyle: 'normal',
+  fontWeight: '800',
+  fontSize: '96px',
+  lineHeight: '117px',
+  textAlign: 'center',
+}));
 
-const StyledButton = styled('button')`
-  border: 5px solid ${({ theme }) => theme.palette.secondary.light};
-  border-radius: 50px;
-  height: 120px;
-  width: 800px;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 800;
-  font-size: 64px;
-  line-height: 78px;
-  text-align: center;
-  color: ${({ theme }) => theme.palette.secondary.light};
-  background: ${({ theme }) => theme.palette.primary.main};
-`;
+const StyledButton = styled('button')(({ theme }) => ({
+  border: `5px solid ${theme.palette.secondary.light}`,
+  borderRadius: '50px',
+  height: '120px',
+  width: '800px',
+  fontFamily: 'Montserrat',
+  fontStyle: 'normal',
+  fontWeight: '800',
+  fontSize: '64px',
+  lineHeight: '78px',
+  textAlign: 'center',
+  color: theme.palette.secondary.light,
+  background: theme.palette.primary.main,
+}));
 
-const StyledImage = styled('img')`
-  width: 831px;
-  height: 500px;
-`;
+const StyledImage = styled('img')({
+  width: '831px',
+  height: '500px',
+});
 
 export const WelcomePage = () => {
   const dispatch = useDispatch();

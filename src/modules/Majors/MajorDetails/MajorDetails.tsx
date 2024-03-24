@@ -20,15 +20,15 @@ interface MajorDetailsProps {
   id: string;
 }
 
-const StyledTitle = styled(Typography)`
-  font-family: Montserrat;
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 44px;
-  letter-spacing: 0em;
-  margin-bottom: 15px;
-  color: ${({ theme }) => theme.palette.secondary.dark};
-`;
+const StyledTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: 'Montserrat',
+  fontSize: '36px',
+  fontWeight: 700,
+  lineHeight: '44px',
+  letterSpacing: '0em',
+  marginBottom: '15px',
+  color: theme.palette.secondary.dark,
+}));
 
 export const MajorDetails = ({ id }: MajorDetailsProps) => {
   const { t } = useTranslation();

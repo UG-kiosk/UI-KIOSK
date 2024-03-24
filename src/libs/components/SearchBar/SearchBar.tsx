@@ -22,14 +22,14 @@ interface SearchFormTypes {
   [SearchFormFieldsNames.NAME]: string;
 }
 
-const StyledSearchButton = styled(Button)`
-  width: 56px;
-  height: 56px;
-  margin-left: 20px;
-  color: ${({ theme }) => theme.palette.primary.main};
-  border-radius: 25px;
-  font-size: 12px;
-`;
+const StyledSearchButton = styled(Button)(({ theme }) => ({
+  width: '56px',
+  height: '56px',
+  marginLeft: '20px',
+  color: theme.palette.primary.main,
+  borderRadius: '25px',
+  fontSize: '12px',
+}));
 
 export const SearchBar = ({ query, onSubmit }: SearchBarProps) => {
   const { t } = useTranslation();

@@ -1,12 +1,13 @@
 import { styled } from '@mui/material/styles';
 import { Stack, Alert, AlertTitle } from '@mui/material';
 
-const StyledAlertTitle = styled(AlertTitle)`
-  font-family: 'Montserrat';
-`;
-const StyledAlert = styled(Alert)`
-  font-family: 'Montserrat';
-`;
+const StyledAlertTitle = styled(AlertTitle)({
+  fontFamily: 'Montserrat',
+});
+
+const StyledAlert = styled(Alert)({
+  fontFamily: 'Montserrat',
+});
 
 // optional props will be added later
 export const Error = () => (

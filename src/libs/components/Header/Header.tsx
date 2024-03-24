@@ -8,25 +8,25 @@ import ug_logo_en from 'src/assets/images/ug_logo_en_blue.png';
 import eu_flag from 'src/assets/images/eu_flag.jpg';
 import { useMemo } from 'react';
 
-const StyledLogoPL = styled('img')`
-  height: 60px;
-`;
+const StyledLogoPL = styled('img')({
+  height: '60px',
+});
 
-const StyledFlag = styled('img')`
-  height: 32px;
-`;
+const StyledFlag = styled('img')({
+  height: '32px',
+});
 
-const StyledLine = styled('div')`
-  border-left: 3px solid ${({ theme }) => theme.palette.secondary.main};
-  height: 50px;
-`;
+const StyledLine = styled('div')(({ theme }) => ({
+  borderLeft: `3px solid ${theme.palette.secondary.main}`,
+  height: '50px',
+}));
 
-const StyledGridElement = styled('div')`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 35px;
-`;
+const StyledGridElement = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: '35px',
+});
 
 export const Header = () => {
   const { t } = useTranslation(Namespaces.LIBS);

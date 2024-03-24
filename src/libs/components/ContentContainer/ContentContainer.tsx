@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Theme } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { ReactNode } from 'react';
 
@@ -12,17 +12,17 @@ interface ContentContainerProps {
 }
 const StyledContentContainer = styled(Box, {
   shouldForwardProp: prop => prop !== 'marginTop' && prop !== 'marginBottom' && prop !== 'width',
-})<ContentContainerProps>`
-  margin-left: ${({ marginLeft }) => (marginLeft ? `${marginLeft} px` : 'auto')};
-  margin-right: ${({ marginRight }) => (marginRight ? `${marginRight} px` : 'auto')};
-  margin-top: ${({ marginTop }) => (marginTop ? marginTop : 150)}px;
-  margin-bottom: ${({ marginBottom }) => (marginBottom ? marginBottom : 180)}px;
-  width: ${({ width }) => (width ? `${width}px` : '1080px')};
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-`;
+})((props: ContentContainerProps & { theme: Theme }) => ({
+  marginLeft: props.marginLeft ? `${props.marginLeft}px` : 'auto',
+  marginRight: props.marginRight ? `${props.marginRight}px` : 'auto',
+  marginTop: props.marginTop ? `${props.marginTop}px` : '150px',
+  marginBottom: props.marginBottom ? `${props.marginBottom}px` : '180px',
+  width: props.width ? `${props.width}px` : '1080px',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+}));
 
 export const ContentContainer = ({
   children,

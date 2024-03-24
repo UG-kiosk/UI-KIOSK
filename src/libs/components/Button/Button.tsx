@@ -7,25 +7,25 @@ interface ButtonProps {
   name: string;
 }
 
-const StyledButton = styled(MUIButton)`
-  margin: 26px;
-  padding: 0px;
-  padding-left: 26px;
-  padding-right: 26px;
-  height: 46px;
-  border: 3px solid ${({ theme }) => theme.palette.primary.main};
-  border-radius: 50px;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  color: ${({ theme }) => theme.palette.primary.main};
-  text-transform: lowercase;
-  &:hover {
-    border: 3px solid ${({ theme }) => theme.palette.secondary.dark};
-  }
-`;
+const StyledButton = styled(MUIButton)(({ theme }) => ({
+  margin: '26px',
+  padding: '0px',
+  paddingLeft: '26px',
+  paddingRight: '26px',
+  height: '46px',
+  border: `3px solid ${theme.palette.primary.main}`,
+  borderRadius: '50px',
+  fontFamily: 'Montserrat',
+  fontStyle: 'normal',
+  fontWeight: 700,
+  fontSize: '20px',
+  lineHeight: '24px',
+  color: theme.palette.primary.main,
+  textTransform: 'lowercase',
+  '&:hover': {
+    border: `3px solid ${theme.palette.secondary.dark}`,
+  },
+}));
 
 export const Button = ({ text, type, name }: ButtonProps) => (
   <StyledButton data-cy={`${name}-button`} variant="outlined" type={type}>
