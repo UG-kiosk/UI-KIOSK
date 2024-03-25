@@ -145,7 +145,7 @@ export const NewsList = () => {
             shape="rounded"
             color="primary"
             size="large"
-            data-cy="staff-pagination"
+            data-cy="news-pagination"
           />
         </>
       ) : (

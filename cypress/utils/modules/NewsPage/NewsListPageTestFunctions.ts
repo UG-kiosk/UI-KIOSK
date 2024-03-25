@@ -6,29 +6,32 @@ export class NewsListPageTestFunctions {
   private getNewsListTile = () => cy.getBySelector('details-tile');
   private getSkeletonRow = () => cy.getBySelector('skeleton-row');
   private getNewsButtons = () => cy.getBySelector('button');
+  private getNewsPagination = () => cy.getBySelector('news-pagination');
 
   mockGETNews1 = () => {
-    cy.intercept('GET', API_URL + '/news?language=Pl', { statusCode: 200, body: news_page_1 }).as('getNews1');
-    cy.wait('@getNews1');
+    cy.intercept('GET', API_URL + '/news?language=Pl', { statusCode: 200, body: news_page_1 }).as('getNews');
+    cy.wait('@getNews');
   };
 
   mockGETNews2 = () => {
-    cy.intercept('GET', API_URL + '/news?language=Pl', { statusCode: 200, body: news_page_2 }).as('getNews2');
+    cy.intercept('GET', API_URL + '/news?language=Pl&page=2', { statusCode: 200, body: news_page_2 }).as('getNews2');
     cy.wait('@getNews2');
   };
 
   mockGETNewsMFI = () => {
-    cy.intercept('GET', API_URL + '/news?source=MFI&language=Pl', { statusCode: 200, body: news_page_mfi }).as(
-      'getMFINews',
+    cy.intercept('GET', API_URL + '/news?language=Pl&source=MFI', { statusCode: 200, body: news_page_mfi }).as(
+      'getNewsMFI',
     );
-    cy.wait('@getMFINews');
+    this.goToMFI();
+    cy.wait('@getNewsMFI');
   };
 
   mockGETNewsINF = () => {
-    cy.intercept('GET', API_URL + '/news?source=INF&language=Pl', { statusCode: 200, body: news_page_inf }).as(
-      'getINFNews',
+    cy.intercept('GET', API_URL + '/news?language=Pl&source=INF', { statusCode: 200, body: news_page_inf }).as(
+      'getNewsINF',
     );
-    cy.wait('@getINFNews');
+    this.goToINF();
+    cy.wait('@getNewsINF');
   };
 
   goToMFI() {
@@ -40,30 +43,30 @@ export class NewsListPageTestFunctions {
   }
 
   testGoToNextPage = () => {
-    //cy.get('#root > div.MuiBox-root.css-f4xtbg > nav > ul > li:last-child() > button').click();
+    cy.get('#root > div.MuiBox-root.css-f4xtbg > nav > ul > li:last-child() > button').click();
     cy.location().should(loc => {
-      expect(loc.href).to.include('/news?page=2&language=Pl');
+      expect(loc.href).to.include('/news?page=2');
     });
   };
 
   testGoToTheFirstPage = () => {
     cy.get('.MuiPaginationItem-page').contains('1').click();
     cy.location().should(loc => {
-      expect(loc.href).to.include('/news');
+      expect(loc.href).to.include('/news?page=1');
     });
   };
 
   testGoToTheSecondPage = () => {
     cy.get('.MuiPaginationItem-page').contains('2').click();
     cy.location().should(loc => {
-      expect(loc.href).to.include('/news?page=2&language=Pl');
+      expect(loc.href).to.include('/news?page=2');
     });
   };
 
   testGoToPreviousPage = () => {
-    //cy.get('#root > div.MuiBox-root.css-f4xtbg > nav > ul > li:nth-child(1) > button').click();
+    cy.get('#root > div.MuiBox-root.css-f4xtbg > nav > ul > li:nth-child(1) > button').click();
     cy.location().should(loc => {
-      expect(loc.href).to.include('/news?page=1&language=Pl');
+      expect(loc.href).to.include('/news?page=1');
     });
   };
 
@@ -94,6 +97,7 @@ export class NewsListPageTestFunctions {
         'src',
         'https://mfi.ug.edu.pl/sites/mfi.ug.edu.pl/files/styles/news_main_page/public/_nodes/news/111884/images/plakat-mfi1.png.webp?itok=6sViyCye',
       );
+    this.getNewsPagination().should('exist');
   };
 
   testNewsListContentPLPageTwo = () => {

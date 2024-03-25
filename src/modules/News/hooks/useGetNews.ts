@@ -20,7 +20,9 @@ export const useGetNews = () => {
           ...(page ? { page } : {}),
         };
 
-        const { data } = await axios.get<Pagination<News>>('/news?language=Pl', { params });
+        const { data } = await axios.get<Pagination<News>>('http://localhost:5202/news?language=Pl', {
+          params,
+        });
         const { content, pagination } = data;
         const totalPages = pagination.totalPages;
         dispatch(setNewsList(content));
