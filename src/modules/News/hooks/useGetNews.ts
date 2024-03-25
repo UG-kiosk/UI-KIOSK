@@ -42,7 +42,7 @@ export const useGetNews = () => {
       try {
         dispatch(startLoading());
 
-        const { data: newsDetails } = await axios.get<News>(`/api/news/${id}`);
+        const { data: newsDetails } = await axios.get<News>(`http://localhost:5202/news/${id}`);
         dispatch(setNewsDetails(newsDetails));
         dispatch(finishLoading());
       } catch (error: any) {
