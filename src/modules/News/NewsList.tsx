@@ -29,14 +29,14 @@ export const NewsList = () => {
       clickedButtonHandler(name);
       setSearchParams({ page: '1' });
     },
-    [setActiveButton, clickedButtonHandler],
+    [setActiveButton, setSearchParams, clickedButtonHandler],
   );
 
   const handlePageChange = useCallback(
     (_event: ChangeEvent<unknown>, page: number) => {
       setSearchParams({ page: page.toString() });
     },
-    [searchParams, setSearchParams],
+    [setSearchParams],
   );
 
   const getPageNumber = useMemo(() => {
