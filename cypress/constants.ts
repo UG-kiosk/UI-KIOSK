@@ -1,1 +1,1 @@
-export const API_URL = 'https://api-kiosk-dev.onrender.com';
+export const API_URL = 'http://localhost:5202';

@@ -8,14 +8,16 @@ interface StateProps {
   isLoading: boolean;
   newsList: News[];
   errorMessage: string | null;
+  totalPages: number;
 }
 
 export const useNewsList = () => {
   const { getNewsList } = useGetNews();
-  const { isLoading, newsList, errorMessage } = useSelector<StateType, StateProps>(state => ({
+  const { isLoading, newsList, errorMessage, totalPages } = useSelector<StateType, StateProps>(state => ({
     isLoading: state.news.isLoading,
     newsList: state.news.newsList,
     errorMessage: state.news.error,
+    totalPages: state.news.totalPages,
   }));
 
   const clickedButtonHandler = useCallback(
@@ -29,5 +31,5 @@ export const useNewsList = () => {
     getNewsList();
   }, [getNewsList]);
 
-  return { isLoading, newsList, errorMessage, clickedButtonHandler };
+  return { isLoading, newsList, errorMessage, clickedButtonHandler, totalPages };
 };

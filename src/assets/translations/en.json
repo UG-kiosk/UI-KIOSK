@@ -17,7 +17,8 @@
   "newsPage": {
     "all": "All",
     "inf": "INF",
-    "mfi": "MFI"
+    "mfi": "MFI",
+    "noNews": "No news"
   },
   "noResults": "Sorry, but we don't have any results.",
   "degree": { "BACHELOR": "Bachelor", "MASTER": "Master", "ALL": "All" }

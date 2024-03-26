@@ -1,11 +1,11 @@
 import { API_URL } from 'cypress/constants';
-import { news_page } from '../../../fixtures/news';
+import { news_page_1 } from '../../../fixtures/news';
 
 export class NewsDetailsTestFunctions {
   mockGETNewsDetails = () => {
     cy.intercept('GET', API_URL + '/news/657785edb09d333037f7c1b5', {
       statusCode: 200,
-      body: news_page[0],
+      body: news_page_1.content[0],
     }).as('getDetailsNews');
     cy.wait('@getDetailsNews');
   };

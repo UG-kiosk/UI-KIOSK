@@ -1,8 +1,8 @@
 import { styled, useTheme } from '@mui/system';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Pagination } from '@mui/material';
 import { DetailsTile, ListPageSkeleton, Paragraph } from '@UG/libs/components';
-import { useMemo, useState, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { ChangeEvent, useMemo, useState, useCallback } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { useNewsList } from './hooks';
@@ -19,16 +19,30 @@ const StyledLink = styled(Link)(({ theme }) => ({
 export const NewsList = () => {
   const { t } = useTranslation();
   const theme = useTheme();
-  const { isLoading, newsList, errorMessage, clickedButtonHandler } = useNewsList();
+  const { isLoading, newsList, errorMessage, clickedButtonHandler, totalPages } = useNewsList();
   const [activeButton, setActiveButton] = useState('ALL-button');
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleButtonClick = useCallback(
     (name: string) => {
       setActiveButton(name + '-button');
       clickedButtonHandler(name);
+      setSearchParams({ page: '1' });
     },
-    [setActiveButton, clickedButtonHandler],
+    [setActiveButton, setSearchParams, clickedButtonHandler],
   );
+
+  const handlePageChange = useCallback(
+    (_event: ChangeEvent<unknown>, page: number) => {
+      setSearchParams({ page: page.toString() });
+    },
+    [setSearchParams],
+  );
+
+  const getPageNumber = useMemo(() => {
+    const page = searchParams.get('page');
+    return page ? parseInt(page, 10) : 1;
+  }, [searchParams]);
 
   const buttons = useMemo(
     () => (
@@ -121,7 +135,24 @@ export const NewsList = () => {
   return (
     <>
       {buttons}
-      {newsTiles}
+      {newsTiles.length > 0 ? (
+        <>
+          {newsTiles}
+          <Pagination
+            page={getPageNumber}
+            count={totalPages}
+            onChange={handlePageChange}
+            shape="rounded"
+            color="primary"
+            size="large"
+            data-cy="news-pagination"
+          />
+        </>
+      ) : (
+        <p style={{ marginTop: '150px' }} data-cy="error-message">
+          {t('newsPage.noNews')}
+        </p>
+      )}
     </>
   );
 };
