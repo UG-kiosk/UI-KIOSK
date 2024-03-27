@@ -30,7 +30,7 @@
     "react-hook-form": "~7.39.4",
     "react-i18next": "~12.1.1",
     "react-redux": "~8.0.5",
-    "react-router-dom": "~6.4.3",
+    "react-router-dom": "~6.18.0",
     "vite-tsconfig-paths": "~3.6.0",
     "yup": "~0.32.11"
   },
