@@ -1,7 +1,8 @@
-import { styled } from '@mui/material/styles';
+import { SxProps, Theme, styled } from '@mui/material/styles';
 
 interface StyledDividerProps {
   width?: number;
+  styled?: SxProps<Theme>;
 }
 
 const StyledDivider = styled('div', {
@@ -12,6 +13,6 @@ const StyledDivider = styled('div', {
   border-bottom: 1px solid ${({ theme }) => theme.palette.primary.dark};
 `;
 
-export const Divider = ({ width }: StyledDividerProps) => {
-  return <StyledDivider data-cy="divider" width={width} />;
+export const Divider = ({ width, styled }: StyledDividerProps) => {
+  return <StyledDivider data-cy="divider" width={width} sx={styled} />;
 };

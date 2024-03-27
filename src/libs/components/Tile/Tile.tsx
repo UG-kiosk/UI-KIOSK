@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles';
+import { SxProps, Theme, styled } from '@mui/material/styles';
 import { ReactNode } from 'react';
 
 interface TileProps {
@@ -6,6 +6,7 @@ interface TileProps {
   className?: string;
   tileWidth?: number;
   tileHeight?: number;
+  styled?: SxProps<Theme>;
 }
 
 const StyledTile = styled('div', {
@@ -22,8 +23,8 @@ const StyledTile = styled('div', {
   color: ${({ theme }) => theme.palette.background.default};
 `;
 
-export const Tile = ({ children, className, tileWidth, tileHeight }: TileProps) => (
-  <StyledTile tileWidth={tileWidth} tileHeight={tileHeight} className={className}>
+export const Tile = ({ children, className, tileWidth, tileHeight, styled }: TileProps) => (
+  <StyledTile tileWidth={tileWidth} tileHeight={tileHeight} className={className} sx={styled}>
     {children}
   </StyledTile>
 );

@@ -7,7 +7,7 @@ import { RouterProvider } from 'react-router-dom';
 import { ThemeProvider as EmotionThemeProvier } from '@emotion/react';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
-import router from './routes';
+import router from './router/routes';
 import { store } from './store';
 import { Provider } from 'react-redux';
 

@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
-import { ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-interface DetailsTileProps {
+interface DetailsTileProps extends ComponentPropsWithoutRef<'div'> {
   width?: number;
   marginTop?: number;
   padding?: string;
@@ -33,7 +33,15 @@ const StyledDetailsTile = styled('div', {
   flex-direction: column;
 `;
 
-export const DetailsTile = ({ children, width, marginTop, padding, backgroundColor, gap }: DetailsTileProps) => {
+export const DetailsTile = ({
+  children,
+  width,
+  marginTop,
+  padding,
+  backgroundColor,
+  gap,
+  ...props
+}: DetailsTileProps) => {
   return (
     <StyledDetailsTile
       width={width}
@@ -42,6 +50,7 @@ export const DetailsTile = ({ children, width, marginTop, padding, backgroundCol
       backgroundColor={backgroundColor}
       gap={gap}
       data-cy="details-tile"
+      {...props}
     >
       {children}
     </StyledDetailsTile>
