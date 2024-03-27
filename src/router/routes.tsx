@@ -2,6 +2,7 @@ import { createBrowserRouter, createRoutesFromElements, Outlet, Route } from 're
 import { Header, ContentContainer, Navbar } from '@UG/libs/components';
 import { paths } from './paths';
 import App from 'src/App';
+import { LoginPage } from 'src/AdminPanel/modules/LoginPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -76,6 +77,18 @@ const router = createBrowserRouter(
       </Route>
       <Route path={paths.root} element={<App />} />
       <Route path="*" element={<div data-cy="error-div">Error: wrong path: {window.location.pathname}</div>} />
+      {/*TO DELETE AFTER ADDING ADMIN PANEL TO OTHER REPO */}
+      <Route
+        path="/admin-panel/login"
+        element={
+          <>
+            <Header />
+            <ContentContainer marginLeft={-6}>
+              <LoginPage />
+            </ContentContainer>
+          </>
+        }
+      />
     </Route>,
   ),
 );
