@@ -47,6 +47,20 @@ const router = createBrowserRouter(
           }}
         />
         <Route
+          path={paths.staff}
+          lazy={async () => {
+            const staff = await import('../modules/Staff');
+            return { Component: staff.StaffPage };
+          }}
+        />
+        <Route
+          path={paths.staffById}
+          lazy={async () => {
+            const ects = await import('../modules/Staff');
+            return { Component: ects.StaffPage };
+          }}
+        />
+        <Route
           path={paths.ectsDegree}
           lazy={async () => {
             const ects = await import('../modules/EctsSubject/Degree');
